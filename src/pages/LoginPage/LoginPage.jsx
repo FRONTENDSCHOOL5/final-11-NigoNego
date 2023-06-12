@@ -1,9 +1,13 @@
 import React from 'react'
+import {Wrapper,Logo,LoginSelect} from '../LoginPage/loginStyle.jsx'
 
 function LoginPage() {
   return (
-    <div>LoginPage</div>
+    <Wrapper>
+      <Logo></Logo>
+      <LoginSelect></LoginSelect>
+    </Wrapper>
   )
 }
 
-export default LoginPage
+export default LoginPage;
