@@ -1,10 +1,9 @@
-import Splash from "./components/Splash";
+import Routing from "./routes/Routing";
 
 function App() {
   return (
     <>
-      <Splash />
-      <Login />
+      <Routing />
     </>
   );
 }
