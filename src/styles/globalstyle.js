@@ -7,18 +7,30 @@ const globalStyle = createGlobalStyle`
 
   * {
     box-sizing: border-box;
-    font-size: 12px;
+  }
+  
+  :root{
+    font-size:10px;
   }
   
   html{
-    width:390px;
     height:100vh; /* cngn */
-    margin: 0 auto;
   }
 
   body {
     width:100%;
     border: 1px solid black;
   }
+
+  button {
+    background-color: initial;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin:0;
+  }
+
 `
 export default globalStyle;
