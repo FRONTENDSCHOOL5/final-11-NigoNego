@@ -10,7 +10,7 @@ function StartSplash() {
       setloading(true);
       setTimeout(()=>{
         setloading(false);
-      },2500);
+      },3500);
     }
   }, []);
 
