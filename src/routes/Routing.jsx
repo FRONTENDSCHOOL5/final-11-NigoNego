@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SplashPage from '../pages/SplashPage/SplashPage'
-import LoginPage from '../pages/LoginPage/LoginPage'
-import JoinPage from '../pages/JoinPage/JoinPage'
+import StartSplash from '../pages/SplashPage/StartSplash';
+import LoginPage from '../pages/LoginPage/LoginPage';
+import JoinPage from '../pages/JoinPage/JoinPage';
 import HomePage from '../pages/HomePage/HomePage'
 import ChatPage from '../pages/ChatPage/ChatPage'
 import PostUploadPage from "../pages/PostPage/PostUpload/PostUpload";
@@ -19,7 +19,7 @@ function Routing() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SplashPage />}/>
+        <Route path="/" element={<StartSplash />}/>
         <Route path="/home" element={<HomePage />}/>
         <Route path="/login" element={<LoginPage />}/>
         <Route path="/join" element={<JoinPage />}/>
