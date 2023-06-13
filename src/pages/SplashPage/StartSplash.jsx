@@ -1,22 +1,20 @@
-import React,{useState,useEffect} from 'react';
-import SplashPage from '../SplashPage/SplashPage';
-import LoginPage from '../LoginPage/LoginPage';
+import React, { useState, useEffect } from "react";
+import SplashPage from "../SplashPage/SplashPage";
+import LoginMain from "../LoginMain/LoginMain";
 
 function StartSplash() {
   const [loading, setloading] = useState(false);
 
-  useEffect(()=>{
-    if (window.location.pathname ==='/'){
+  useEffect(() => {
+    if (window.location.pathname === "/") {
       setloading(true);
-      setTimeout(()=>{
+      setTimeout(() => {
         setloading(false);
-      },3500);
+      }, 4000);
     }
   }, []);
 
-  return (
-    loading ? <SplashPage /> : <LoginPage/>
-  )
+  return loading ? <SplashPage /> : <LoginMain />;
 }
 
 export default StartSplash;

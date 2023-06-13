@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import StartSplash from '../pages/SplashPage/StartSplash';
+import LoginMain from '../pages/LoginMain/LoginMain'
 import LoginPage from '../pages/LoginPage/LoginPage';
 import JoinPage from '../pages/JoinPage/JoinPage';
 import HomePage from '../pages/HomePage/HomePage'
@@ -21,6 +22,7 @@ function Routing() {
       <Routes>
         <Route path="/" element={<StartSplash />}/>
         <Route path="/home" element={<HomePage />}/>
+        <Route path="/loginmain" element={<LoginMain />}/>
         <Route path="/login" element={<LoginPage />}/>
         <Route path="/join" element={<JoinPage />}/>
         <Route path="/chat" element={<ChatPage />}/>

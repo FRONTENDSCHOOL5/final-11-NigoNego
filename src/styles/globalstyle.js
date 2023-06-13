@@ -24,13 +24,17 @@ const globalStyle = createGlobalStyle`
 
   button {
     background-color: initial;
+    cursor: pointer;
   }
 
   ul {
     list-style: none;
     padding: 0;
-    margin:0;
+    margin:0; 
   }
-
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `
 export default globalStyle;
