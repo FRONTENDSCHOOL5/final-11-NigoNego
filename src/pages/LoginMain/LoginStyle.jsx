@@ -10,23 +10,38 @@ import facebookIcon from '../../assets/icons/facebook.png'
 
 const Wrapper = styled.div`
   height: 100vh;
+  color: #767676;
+
 `
 
 const Logo = styled.section`
-  box-shadow: inset 0 0 10px blue;
   width: 100%;
   height: 60%;
   background: url(${logoImage}) bottom no-repeat #FFDE00;;
 `
 
 const LoginSelect = styled.section`
-  box-shadow:inset 0 0 10px red;
   display:flex;
   gap:1.8rem;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   height: 40%;
+
+
+  ul{
+    display : flex;
+    & li:nth-child(1) a {
+      &:after{
+        margin : 0 0.9rem;
+        content:"|";
+      }
+    }
+  }
+  
+  a {
+    font-size: 12px;
+  }
 `
 
 // 소셜 로그인 버튼 기본 스타일
@@ -46,7 +61,6 @@ const BtnLogin = styled.button`
     position: absolute;
     left: 20px;
     top:12.5px;
-    
   }
 `
 

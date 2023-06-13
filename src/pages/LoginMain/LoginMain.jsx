@@ -2,7 +2,7 @@ import React from 'react'
 import {Wrapper,Logo,LoginSelect, KakaoBtnLogin, GoogleBtnLogin, FacebookBtnLogin} from '../LoginMain/LoginStyle.jsx'
 import {Link} from "react-router-dom"
 
-function LoginPage() {
+function LoginMain() {
   return (
     <Wrapper>
       <Logo></Logo>
@@ -19,4 +19,4 @@ function LoginPage() {
   )
 }
 
-export default LoginPage;
+export default LoginMain;
