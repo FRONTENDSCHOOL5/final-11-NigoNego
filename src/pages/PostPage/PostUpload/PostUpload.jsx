@@ -1,7 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function PostUpload() {
-  return (
-    <div>PostUpload</div>
-  )
+    return <div>PostUpload</div>;
 }

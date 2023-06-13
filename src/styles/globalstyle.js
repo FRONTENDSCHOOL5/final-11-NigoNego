@@ -1,6 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
-import { normalize } from "styled-normalize";
-
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
 const globalStyle = createGlobalStyle`
   ${normalize}
@@ -36,5 +35,5 @@ const globalStyle = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
-`
+`;
 export default globalStyle;
