@@ -1,11 +1,12 @@
-import Splash from "./components/Splash";
+import Routing from './routes/Routing';
+import GlobalStyle from './styles/globalstyle';
 
 function App() {
-  return (
-    <>
-      <Splash />
-      <Login />
-    </>
-  );
+    return (
+        <>
+            <GlobalStyle />
+            <Routing />
+        </>
+    );
 }
 export default App;
