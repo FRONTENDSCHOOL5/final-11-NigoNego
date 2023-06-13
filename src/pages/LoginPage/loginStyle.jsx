@@ -49,23 +49,28 @@ const BtnLogin = styled.button`
     
   }
 `
+
 const KakaoBtnLogin = styled(BtnLogin)`
   border-color:#F2C94C;
   &:before {
     background-image: url(${kakaoIcon});
   }
 `
+
 const GoogleBtnLogin = styled(BtnLogin)`
   border-color:#767676;
   &:before {
     background-image: url(${googleIcon});
   }
 `
+
 const FacebookBtnLogin = styled(BtnLogin)`
   border-color:#2D9CDB;
   &:before {
     background-image: url(${facebookIcon});
   }
 `
+
+
 
 export { Wrapper, Logo, LoginSelect, KakaoBtnLogin, FacebookBtnLogin, GoogleBtnLogin };
