@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SplashPage from "../SplashPage/SplashPage";
-import LoginPage from "../LoginPage/LoginPage";
+import LoginMain from "../LoginMain/LoginMain";
 
 function StartSplash() {
   const [loading, setloading] = useState(false);
@@ -14,7 +14,7 @@ function StartSplash() {
     }
   }, []);
 
-  return loading ? <SplashPage /> : <LoginPage />;
+  return loading ? <SplashPage /> : <LoginMain />;
 }
 
 export default StartSplash;
