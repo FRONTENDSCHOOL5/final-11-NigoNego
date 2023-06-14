@@ -6,6 +6,8 @@ import {
   MBtn,
   MdisabledBtn,
   MActivBtn,
+  MSBtn,
+  MSdisabledBtn,
   SBtn,
   SactivBtn,
 } from './components/common/Button/Button';
@@ -20,6 +22,8 @@ function App() {
       <MBtn />
       <MdisabledBtn />
       <MActivBtn />
+      <MSBtn />
+      <MSdisabledBtn />
       <SBtn />
       <SactivBtn />
     </>
