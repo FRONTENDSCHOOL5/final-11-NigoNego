@@ -15,5 +15,8 @@
       }
     ],
     "react/prop-types": "off"
+
+    ]
+
   }
 }
