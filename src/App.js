@@ -1,31 +1,25 @@
 // import Routing from './routes/Routing';
 import GlobalStyle from './styles/globalstyle';
+import Navbar from './components/common/Navbar/Navbar';
+
 import {
-  LBtn,
-  LdisabledBtn,
-  MBtn,
-  MdisabledBtn,
-  MActivBtn,
-  MSBtn,
-  MSdisabledBtn,
-  SBtn,
-  SactivBtn,
-} from './components/common/Button/Button';
+  HeaderBasicNav,
+  HeaderChatNav,
+  HeaderMainNav,
+  HeaderSearchNav,
+  HeaderUploadNav,
+} from './components/common/Header/Header';
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      {/* <Routing /> */}
-      <LBtn />
-      <LdisabledBtn />
-      <MBtn />
-      <MdisabledBtn />
-      <MActivBtn />
-      <MSBtn />
-      <MSdisabledBtn />
-      <SBtn />
-      <SactivBtn />
+      <HeaderBasicNav />
+      <HeaderSearchNav />
+      <HeaderMainNav />
+      <HeaderUploadNav />
+      <HeaderChatNav />
+      <Navbar />
     </>
   );
 }
