@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import arrowLeft from '../../../assets/icons/icon-arrow-left.png';
 import moreIcon from '../../../assets/icons/icon-more-vertical.png';
 
-export function LBtn() {
-  return <LBtnStyle>다음</LBtnStyle>;
+export function LBtn({ content }) {
+  return <LBtnStyle>{content}</LBtnStyle>;
 }
 
-export function LdisabledBtn() {
-  return <LdisabledBtnStyle>다음</LdisabledBtnStyle>;
+export function LdisabledBtn({ content }) {
+  return <LdisabledBtnStyle>{content}</LdisabledBtnStyle>;
 }
 
 export function MBtn() {
@@ -63,7 +63,7 @@ const LBtnStyle = styled(BtnCommonStlye)`
   padding: 8px;
 `;
 const LdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
-  width: 80%;
+  width: 100%;
   padding: 8px;
 `;
 
