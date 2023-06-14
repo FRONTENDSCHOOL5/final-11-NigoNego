@@ -22,7 +22,6 @@ function App() {
       <HeaderUploadNav />
       <HeaderChatNav />
       <Navbar />
-
     </>
   );
 }
