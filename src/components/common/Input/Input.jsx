@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 function Input({ label, type, id, name, placeholder }) {
   return (
     <div>

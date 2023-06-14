@@ -18,6 +18,7 @@ const globalStyle = createGlobalStyle`
     --basic-red:#C01605;
     --basic-blue:#026cc4;
     --basic-black:#000;
+    --basic-border-color: #DBDBDB;
   }
   
   html{
@@ -26,7 +27,7 @@ const globalStyle = createGlobalStyle`
 
   body {
     width:100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
   }
 
   button {
