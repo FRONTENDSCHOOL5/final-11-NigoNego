@@ -21,34 +21,73 @@ export function MActivBtn() {
   return <MActivBtnStyle>언팔로우</MActivBtnStyle>;
 }
 
+export function MSBtn() {
+  return <MSBtnStyle>저장</MSBtnStyle>;
+}
+export function MSdisabledBtn() {
+  return <MSdisabledBtnStyle>저장</MSdisabledBtnStyle>;
+}
+
 export function SBtn() {
-  return <SBtnStyle>저장</SBtnStyle>;
+  return <SactivStyle>팔로우</SactivStyle>;
 }
 
 export function SactivBtn() {
-  return <SactivStyle>저장</SactivStyle>;
+  return <SactivStyle>취소</SactivStyle>;
 }
 
-const LBtnStyle = styled.button`
-  width: 20.125rem;
-  height: 2.75rem;
-  color: red;
+const BtnCommonStlye = styled.button`
+  border-radius: 44px;
+  border-style: none;
+  background-color: var(--basic-yellow);
+  color: #000;
+
+  display: block;
+  margin: 0 auto;
 `;
-const LdisabledBtnStyle = styled.button`
-  color: red;
+
+const BtnCommonStlyeDisabled = styled(BtnCommonStlye)`
+  background-color: var(--light-yellow);
 `;
-const MBtnStyle = styled.button`
-  color: red;
+
+const LBtnStyle = styled(BtnCommonStlye)`
+  width: 80%;
+  padding: 8px;
 `;
-const MdisabledBtnStyle = styled.button`
-  color: red;
+const LdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
+  width: 80%;
+  padding: 8px;
 `;
-const MActivBtnStyle = styled.button`
-  color: red;
+
+const MBtnStyle = styled(BtnCommonStlye)`
+  width: 120px;
+  padding: 5px;
 `;
-const SBtnStyle = styled.button`
-  color: red;
+
+const MdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
+  width: 120px;
+  padding: 5px;
 `;
-const SactivStyle = styled.button`
-  color: red;
+
+const MActivBtnStyle = styled(BtnCommonStlye)`
+  color: var(--basic-grey);
+  background-color: white;
+  border: 1px solid #767676;
+  width: 120px;
+  padding: 5px;
+`;
+const MSBtnStyle = styled(BtnCommonStlye)`
+  width: 90px;
+  padding: 5px;
+`;
+const MSdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
+  width: 90px;
+  padding: 5px;
+`;
+const SactivStyle = styled(BtnCommonStlye)`
+  color: var(--basic-grey);
+  background-color: white;
+  border: 1px solid #767676;
+  width: 56px;
+  padding: 5px;
 `;
