@@ -1,83 +1,106 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { LBtn } from '../../components/common/button/Button';
+import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
+import Input from '../../components/common/Input/Input';
 
-const LoginPageStyle = styled.div`
+const Wrapper = styled.div`
   height: 100vh;
-  padding-top: 30px;
-  box-shadow: inset 0 0 10px green;
-
+  width: 80%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  .inputWrapper {
-    margin: 40px auto 30px auto;
-    & :nth-child(2) {
-      margin-top: 16px;
-      display: block;
-    }
-  }
-  .linkWrapper {
+
+  h1 {
     text-align: center;
-    color: var(--basic-grey);
-    font-size: 12px;
-  }
-
-  form {
-    width: 80%;
-    color: var(--basic-grey);
-    font-size: 12px;
-    margin-bottom: 30px;
-    p {
-      color: #eb5757;
-      margin: 0;
-    }
   }
 `;
 
-const Inputstyle = styled.input`
-  display: block;
-  width: 100%;
-  padding: 12px 0;
-  margin-top: 5px;
-  border-style: none;
-  border-bottom: 1px solid var(--basic-grey);
-  &:focus {
-    outline: 0;
-    border-color: var(--basic-yellow);
-  }
+const FormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: center;
+  color: var(--basic-grey);
 `;
 
-const LabelStyle = styled.div`
+const LinkWrapper = styled.div`
   margin-top: 20px;
+  text-align: center;
+  color: var(--basic-grey);
 `;
 
 function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+
+  function emailCheck(event) {
+    setEmail(event.target.value);
+    const testEmail =
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(
+        email,
+      );
+
+    if (testEmail) {
+      setIsEmailValid(true);
+    } else {
+      setIsEmailValid(false);
+    }
+  }
+
+  function passwordCheck(event) {
+    setPassword(event.target.value);
+    const testPassword = /^[A-Za-z0-9]{8,20}$/;
+    if (password !== '' && password.match(testPassword)) {
+      setIsPasswordValid(true);
+    } else {
+      setIsPasswordValid(false);
+    }
+  }
+
+  function onhandlesubmit(event) {
+    event.preventDefault();
+    // 2. 회원이 맞으면 다음 컴포넌트로 넘어가도록
+  }
+
   return (
-    <LoginPageStyle>
+    <Wrapper>
       <h1>로그인</h1>
-      <form>
-        <div className="inputWrapper">
-          <label htmlFor="email">
-            이메일
-            <Inputstyle id="email" />
-          </label>
-          <p>*이메일 또는 비밀번호가 일치하지 않습니다.</p>
-          <LabelStyle>
-            <label htmlFor="password">
-              비밀번호
-              <Inputstyle id="password" />
-            </label>
-          </LabelStyle>
-          <p>*이메일 또는 비밀번호가 일치하지 않습니다.</p>
-        </div>
-        <LBtn />
+      <form onSubmit={onhandlesubmit}>
+        <FormWrapper>
+          <Input
+            label="이메일"
+            type="email"
+            id="user-email"
+            name="user-email"
+            placeholder=""
+            value={email}
+            onChange={event => emailCheck(event)}
+          />
+          <Input
+            label="비밀번호"
+            type="password"
+            id="user-password"
+            name="user-password"
+            placehoder=""
+            value={password}
+            onChange={event => passwordCheck(event)}
+          />
+
+          {isEmailValid && isPasswordValid ? (
+            <LBtn type="submit" content="로그인" />
+          ) : (
+            <LdisabledBtn content="로그인" />
+          )}
+        </FormWrapper>
       </form>
-      <div className="linkWrapper">
+      <LinkWrapper>
         <Link to="/join">이메일로 회원가입</Link>
-      </div>
-    </LoginPageStyle>
+      </LinkWrapper>
+    </Wrapper>
   );
 }
 

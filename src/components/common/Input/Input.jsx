@@ -1,12 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Input({ label, type, id, name, placeholder }) {
+function Input({ label, type, id, name, placeholder, onChange }) {
   return (
     <div>
       <InputWrapper>
         <LabelStyle htmlFor={id}>{label}</LabelStyle>
-        <InputStyle type={type} id={id} name={name} placeholder={placeholder} />
+        <InputStyle
+          type={type}
+          id={id}
+          name={name}
+          placeholder={placeholder}
+          onChange={onChange}
+        />
         {/* 경고 문구 만들기 */}
       </InputWrapper>
     </div>
