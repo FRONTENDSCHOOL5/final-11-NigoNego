@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import searchIcon from '../../../assets/icons/icon-search.png';
 import { ArrowLeft, MSBtn, MoreIconButton } from '../button/Button';
-import Input from '../Input/Input';
+import SearchInput from '../Input/SearchInput';
 
 export function HeaderBasicNav() {
   return (
@@ -17,7 +17,7 @@ export function HeaderSearchNav() {
   return (
     <HeaderSearchNavStyle>
       <ArrowLeft />
-      <Input />
+      <SearchInput />
     </HeaderSearchNavStyle>
   );
 }
