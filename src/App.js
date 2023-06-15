@@ -6,8 +6,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      {/* <Routing /> */}
-      <Navbar />
+      <Routing />
     </>
   );
 }
