@@ -117,5 +117,6 @@ export function MoreIconButton() {
 }
 
 const MoreIconButtonStyle = styled.button`
+  border: none;
   color: red;
 `;
