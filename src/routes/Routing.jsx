@@ -13,6 +13,7 @@ import MyProfilePage from '../pages/ProfilePage/MyProfilePage/MyProfilePage';
 import YourProfilePage from '../pages/ProfilePage/YourProfilePage/YourProfilePage';
 import SearchPage from '../pages/SearchPage/SearchPage';
 import NotFound from '../pages/NotFound/NotFound';
+import Test from '../components/Test/Test';
 
 function Routing() {
   return (
@@ -31,6 +32,7 @@ function Routing() {
         <Route path="/product" element={<ProductPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/404" element={<NotFound />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
     </BrowserRouter>
   );
