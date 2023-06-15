@@ -1,5 +1,4 @@
-// import Routing from './routes/Routing';
-import Navbar from './components/common/Navbar/Navbar';
+import Routing from './routes/Routing';
 import GlobalStyle from './styles/globalstyle';
 
 function App() {
