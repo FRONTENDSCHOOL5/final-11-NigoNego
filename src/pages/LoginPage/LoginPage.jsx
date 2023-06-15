@@ -39,10 +39,7 @@ function LoginPage() {
 
   function emailCheck(event) {
     setEmail(event.target.value);
-    const testEmail =
-      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(
-        email,
-      );
+    const testEmail = /^[\w.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/.test(email);
 
     if (testEmail) {
       setIsEmailValid(true);
@@ -53,8 +50,8 @@ function LoginPage() {
 
   function passwordCheck(event) {
     setPassword(event.target.value);
-    const testPassword = /^[A-Za-z0-9]{8,20}$/;
-    if (password !== '' && password.match(testPassword)) {
+    const testPassword = /^[0-9]{0,}$/;
+    if (password.match(testPassword)) {
       setIsPasswordValid(true);
     } else {
       setIsPasswordValid(false);
@@ -77,7 +74,7 @@ function LoginPage() {
             id="user-email"
             name="user-email"
             placeholder=""
-            value={email}
+            // value={email}
             onChange={event => emailCheck(event)}
           />
           <Input
@@ -86,7 +83,7 @@ function LoginPage() {
             id="user-password"
             name="user-password"
             placehoder=""
-            value={password}
+            // value={password}
             onChange={event => passwordCheck(event)}
           />
 
