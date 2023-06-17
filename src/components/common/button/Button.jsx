@@ -59,7 +59,7 @@ const BtnCommonStlyeDisabled = styled(BtnCommonStlye)`
 `;
 
 const LBtnStyle = styled(BtnCommonStlye)`
-  width: 80%;
+  width: 100%;
   padding: 8px;
 `;
 const LdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
