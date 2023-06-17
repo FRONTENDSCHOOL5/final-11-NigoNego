@@ -13,14 +13,16 @@
 
 .modal p {
   position: relative;
-  padding: 5px 35px;
+  padding: 12px 62px;
   font-weight: bold;
+  font-size: 16px;
 }
 
 .modal button {
   width: 100%;
   border: none;
-  padding: 8px;
+  padding: 14px;
+  font-size: 16px;
 }
 
 .modal .button-container {
