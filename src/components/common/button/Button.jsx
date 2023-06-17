@@ -35,7 +35,7 @@ export function SBtn() {
 }
 
 export function SactivBtn() {
-  return <SactivStyle>취소</SactivStyle>;
+  return <SdisabledStyle>취소</SdisabledStyle>;
 }
 
 export function ArrowLeft() {
@@ -43,6 +43,14 @@ export function ArrowLeft() {
     <ArrowLeftStyle>
       <img src={arrowLeft} alt="" />
     </ArrowLeftStyle>
+  );
+}
+
+export function MoreIconButton() {
+  return (
+    <MoreIconButtonStyle>
+      <img src={moreIcon} alt="" />
+    </MoreIconButtonStyle>
   );
 }
 
@@ -93,6 +101,12 @@ const MSdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
   padding: 8px;
 `;
 const SactivStyle = styled(BtnCommonStlye)`
+  /* background-color: var(--basic-yellow); */
+  width: 56px;
+  height: 28px;
+  padding: 5px;
+`;
+const SdisabledStyle = styled(BtnCommonStlyeDisabled)`
   color: var(--basic-grey);
   background-color: white;
   border: 1px solid #767676;
@@ -107,14 +121,6 @@ const ArrowLeftStyle = styled.div`
     }
   }
 `;
-
-export function MoreIconButton() {
-  return (
-    <MoreIconButtonStyle>
-      <img src={moreIcon} alt="" />
-    </MoreIconButtonStyle>
-  );
-}
 
 const MoreIconButtonStyle = styled.button`
   color: red;
