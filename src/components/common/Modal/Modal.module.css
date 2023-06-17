@@ -1,0 +1,35 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid var(--basic-border-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal p {
+  position: relative;
+  padding: 5px 35px;
+  font-weight: bold;
+}
+
+.modal button {
+  width: 100%;
+  border: none;
+  padding: 8px;
+}
+
+.modal .button-container {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid var(--basic-border-color);
+}
+
+.button-container .delete {
+  border-left: 1px solid var(--basic-border-color);
+  color: var(--basic-orange);
+}
