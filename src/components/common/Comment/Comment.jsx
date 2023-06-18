@@ -15,16 +15,17 @@ const CommentWrapper = styled.div`
     align-items: center;
 
     display: flex;
-    justify-content: space-between;
   }
   img {
     width: 36px;
+    margin-right: 12px;
   }
   input {
-    width: 80%;
+    width: 100%;
     border: 0;
   }
   button {
+    flex-basis: 60px;
     color: #c4c4c4;
     border: 0;
   }
