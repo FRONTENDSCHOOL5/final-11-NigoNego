@@ -46,6 +46,7 @@ export function HeaderChatNav() {
   return (
     <HeaderChatNavStyle>
       <ArrowLeft />
+      <h1>애월읍 위니브 감귤농장</h1>
       <MoreIconButton />
     </HeaderChatNavStyle>
   );
@@ -70,8 +71,16 @@ const HeaderMainNavStyle = styled(HeaderDefaultStyle)`
   h1 {
     font-size: 1.8rem;
   }
+  button {
+    border: none;
+  }
 `;
 
 const HeaderUploadNavStyle = styled(HeaderDefaultStyle)``;
 
-const HeaderChatNavStyle = styled(HeaderDefaultStyle)``;
+const HeaderChatNavStyle = styled(HeaderDefaultStyle)`
+  h1 {
+    flex-grow: 2;
+    padding-left: 10px;
+  }
+`;
