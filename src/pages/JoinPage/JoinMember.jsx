@@ -8,7 +8,7 @@ import {
 } from './joinMemberStyle';
 import Input from '../../components/common/Input/Input';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
-import Image from '../../components/common/UserImage/UserImage';
+import { LImage } from '../../components/common/UserImage/UserImage';
 import basicImg from '../../assets/images/basic-profile-img.png';
 
 export default function JoinMember() {
@@ -48,7 +48,7 @@ export default function JoinMember() {
         <p>나중에 언제든지 변경할 수 있습니다.</p>
       </HeadingWrapper>
       <ImageWrapper>
-        <Image src={basicImg} alt="이미지 설명" />
+        <LImage src={basicImg} />
       </ImageWrapper>
       <form onSubmit={handleSubmit}>
         <FormWrapper>
