@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import albumIconOff from '../../assets/icons/icon-post-album-off.png';
-import listIconOff from '../../assets/icons/icon-post-list-off.png';
-import albumIconOn from '../../assets/icons/icon-post-album-on.png';
-import listIconOn from '../../assets/icons/icon-post-list-on.png';
+import albumIconOff from '../../../assets/icons/icon-post-album-off.png';
+import listIconOff from '../../../assets/icons/icon-post-list-off.png';
+import albumIconOn from '../../../assets/icons/icon-post-album-on.png';
+import listIconOn from '../../../assets/icons/icon-post-list-on.png';
 
 export default function PostAlignChangeBut() {
   return (

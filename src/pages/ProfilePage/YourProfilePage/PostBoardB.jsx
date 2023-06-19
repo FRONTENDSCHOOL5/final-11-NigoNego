@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import testImg from '../../assets/images/post-test-img.jpg';
+import testImg from '../../../assets/images/post-test-img.jpg';
 
 export default function PostBoardB() {
   return (
