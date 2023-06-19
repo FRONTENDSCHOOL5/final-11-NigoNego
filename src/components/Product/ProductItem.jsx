@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import productItem from '../../assets/images/logoImage.png';
+import productImage from '../../assets/images/프사.png';
 
 const ProductListItem = styled.button`
   width: 100%;
@@ -32,7 +32,7 @@ const ProductListItem = styled.button`
 function ProductItem() {
   return (
     <ProductListItem>
-      <img src={productItem} alt="" />
+      <img src={productImage} alt="" />
       <div>
         <h3>애월읍 노지 감귤</h3>
         <p>35,000원</p>
