@@ -23,8 +23,8 @@ export function MActivBtn() {
   return <MActivBtnStyle>언팔로우</MActivBtnStyle>;
 }
 
-export function MSBtn() {
-  return <MSBtnStyle>저장</MSBtnStyle>;
+export function MSBtn({ content }) {
+  return <MSBtnStyle>{content}</MSBtnStyle>;
 }
 export function MSdisabledBtn() {
   return <MSdisabledBtnStyle>저장</MSdisabledBtnStyle>;
@@ -94,11 +94,13 @@ const MActivBtnStyle = styled(BtnCommonStlye)`
 `;
 const MSBtnStyle = styled(BtnCommonStlye)`
   width: 90px;
-  padding: 8px;
+  height: 32px;
+  padding: 7px;
 `;
 const MSdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
   width: 90px;
-  padding: 8px;
+  height: 32px;
+  padding: 7px;
 `;
 const SactivStyle = styled(BtnCommonStlye)`
   /* background-color: var(--basic-yellow); */
