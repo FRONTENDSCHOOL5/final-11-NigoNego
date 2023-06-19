@@ -8,7 +8,7 @@ import HomePage from '../pages/HomePage/HomePage';
 import ChatPage from '../pages/ChatPage/ChatPage';
 import ChatRoom from '../pages/ChatPage/ChatRoom';
 import PostUploadPage from '../pages/PostPage/PostUpload/PostUpload';
-import PostEditPage from '../pages/PostPage/PostEdit/PostEdit';
+import PostPage from '../pages/PostPage/PostEdit/PostEdit';
 import ProductPage from '../pages/ProductPage/ProductPage';
 import MyProfilePage from '../pages/ProfilePage/MyProfilePage/MyProfilePage';
 import YourProfilePage from '../pages/ProfilePage/YourProfilePage/YourProfilePage';
@@ -30,7 +30,7 @@ function Routing() {
         <Route path="/myprofile" element={<MyProfilePage />} />
         <Route path="/yourprofile" element={<YourProfilePage />} />
         <Route path="/postupload" element={<PostUploadPage />} />
-        <Route path="/postedit" element={<PostEditPage />} />
+        <Route path="/postedit" element={<PostPage />} />
         <Route path="/product" element={<ProductPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/404" element={<NotFound />} />
