@@ -45,5 +45,12 @@ const globalStyle = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
+
+  .body-wrapper {
+    margin: 4.8rem 10px 0px 10px;
+    /* box-shadow: inset 0px 0px 3px 1px rgb(0, 38, 255); */
+    height: 90vh;
+    overflow: scroll;
+  }
 `;
 export default globalStyle;
