@@ -1,7 +1,7 @@
 import React from 'react';
 
 function YourProfilePage() {
-  return <div>YourProfilePage</div>;
+  return <div>YourProfile</div>;
 }
 
 export default YourProfilePage;
