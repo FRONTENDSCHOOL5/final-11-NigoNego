@@ -8,7 +8,8 @@ import {
   UserName,
   UserId,
 } from './UserSearch';
-import testImg from '../../../assets/images/프사.png';
+import testImg from '../../../assets/images/프사.png';
+// import testImg from '../../../assets/images/프사.png';
 import { SBtn } from '../button/Button';
 
 const Userbutton = styled.div`
