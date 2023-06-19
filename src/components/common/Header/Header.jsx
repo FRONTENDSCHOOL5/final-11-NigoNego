@@ -38,7 +38,7 @@ export function HeaderUploadNav() {
   return (
     <HeaderUploadNavStyle>
       <ArrowLeft />
-      <MSBtn />
+      <MSBtn content="업로드" />
     </HeaderUploadNavStyle>
   );
 }
