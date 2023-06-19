@@ -6,6 +6,8 @@ const NavbarWrapper = styled.nav`
   width: 100%;
   border-top: 1px solid var(--basic-border-color);
   color: var(--basic-grey);
+  position: fixed;
+  bottom: 0px;
 `;
 
 const Ul = styled.ul`
