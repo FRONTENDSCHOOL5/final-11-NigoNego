@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Modal.module.css';
+import styled from 'styled-components';
 
 export default function Modal() {
   const [isOpen, setIsOpen] = useState(true);
@@ -9,28 +9,64 @@ export default function Modal() {
   };
 
   const handleDelete = () => {
-    // 삭제 로직을 구현하고, 삭제가 완료되면 setIsOpen(false)를 호출하여 모달을 닫을 수 있습니다.
-    // 여기서는 단순히 삭제 완료를 알리기 위해 console.log만 사용합니다.
     console.log('삭제 완료');
     setIsOpen(false);
   };
 
   if (!isOpen) {
-    // 모달이 닫혔을 때, null을 반환하여 렌더링을 중단합니다.
     return null;
   }
 
   return (
-    <div className={styles.modal}>
-      <p>상품을 삭제할까요?</p>
-      <div className={styles['button-container']}>
-        <button type="submit" onClick={handleCancel}>
+    <ModalWrapper>
+      <ModalText>상품을 삭제할까요?</ModalText>
+      <ButtonContainer>
+        <Button type="submit" onClick={handleCancel}>
           취소
-        </button>
-        <button type="submit" className={styles.delete} onClick={handleDelete}>
+        </Button>
+        <Button type="submit" delete onClick={handleDelete}>
           삭제
-        </button>
-      </div>
-    </div>
+        </Button>
+      </ButtonContainer>
+    </ModalWrapper>
   );
 }
+
+const ModalWrapper = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid var(--basic-border-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ModalText = styled.p`
+  position: relative;
+  padding: 12px 62px;
+  font-weight: bold;
+  font-size: 16px;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  width: 100%;
+  border-top: 1px solid var(--basic-border-color);
+`;
+
+const Button = styled.button`
+  width: 100%;
+  border: none;
+  padding: 14px;
+  font-size: 16px;
+  ${props =>
+    props.delete &&
+    `
+    border-left: 1px solid var(--basic-border-color);
+    color: var(--basic-orange);
+  `}
+`;
