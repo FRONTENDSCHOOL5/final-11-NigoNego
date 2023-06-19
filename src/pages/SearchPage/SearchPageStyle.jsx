@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const UserWrapper = styled.section`
+const SearchWrapper = styled.section`
   height: 88vh;
   width: inherit;
   padding: 16px 24px;
@@ -10,4 +10,4 @@ const UserWrapper = styled.section`
   overflow-y: scroll;
 `;
 
-export default UserWrapper;
+export default SearchWrapper;
