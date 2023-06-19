@@ -6,6 +6,7 @@ import LoginPage from '../pages/LoginPage/LoginPage';
 import JoinPage from '../pages/JoinPage/JoinPage';
 import HomePage from '../pages/HomePage/HomePage';
 import ChatPage from '../pages/ChatPage/ChatPage';
+import ChatRoom from '../pages/ChatPage/ChatRoom';
 import PostUploadPage from '../pages/PostPage/PostUpload/PostUpload';
 import PostPage from '../pages/PostPage/PostEdit/PostEdit';
 import ProductPage from '../pages/ProductPage/ProductPage';
@@ -25,6 +26,7 @@ function Routing() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/join" element={<JoinPage />} />
         <Route path="/chat" element={<ChatPage />} />
+        <Route path="/chatroom" element={<ChatRoom />} />
         <Route path="/myprofile" element={<MyProfilePage />} />
         <Route path="/yourprofile" element={<YourProfilePage />} />
         <Route path="/postupload" element={<PostUploadPage />} />
