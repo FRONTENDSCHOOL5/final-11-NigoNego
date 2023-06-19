@@ -19,6 +19,7 @@ const globalStyle = createGlobalStyle`
     --basic-blue:#026cc4;
     --basic-black:#000;
     --basic-border-color: #DBDBDB;
+    
   }
   
   html{
