@@ -1,10 +1,10 @@
 import React from 'react';
-import HomePost from '../HomePost/HomePost';
+import Navbar from '../common/Navbar/Navbar';
 
 export default function Test() {
   return (
     <div>
-      <HomePost />
+      <Navbar />
     </div>
   );
 }
