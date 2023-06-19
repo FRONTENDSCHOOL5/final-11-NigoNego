@@ -11,6 +11,15 @@ function ChatPage() {
       <UserWrapper>
         <ChatUserList />
         <ChatUserList />
+        <ChatUserList />
+        <ChatUserList />
+        <ChatUserList />
+        <ChatUserList />
+        <ChatUserList />
+        <ChatUserList />
+        <ChatUserList />
+        <ChatUserList />
+        <ChatUserList />
       </UserWrapper>
 
       <Navbar />
