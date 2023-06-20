@@ -21,36 +21,39 @@ export default function PostUpload() {
       url: 'https://api.mandarin.weniv.co.kr/image/uploadfile',
       data: formData,
     }).then(result => {
-      console.log('요청성공');
+      // console.log('요청성공');
       setImage(`https://api.mandarin.weniv.co.kr/${result.data.filename}`);
-      console.log(image);
+      // console.log(image);
     });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('123');
+    const token =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';
     // 게시글 작성 api 호출
-    // try {
-    //   const res = axios({
-    //     method: 'post',
-    //     url: `https://api.mandarin.weniv.co.kr/post`,
-    //     body: {
-    //       post: {
-    //         content: content,
-    //         image: `https://api.mandarin.weniv.co.kr/${image}`,
-    //       },
-    //     },
-    //     headers: {
-    //       Authorization: `Bearer ${token}`,
-    //       'Content-type': 'application/json',
-    //     },
-    //   });
-    //   // 여기서 응답 확인 -> 어떤 응답이 왔는지, 성공 유무
-    //   console.log(res);
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    try {
+      const response = axios({
+        method: 'POST',
+        url: `https://api.mandarin.weniv.co.kr/post`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-type': 'application/json',
+        },
+        data: {
+          post: {
+            content: content,
+            image: `https://api.mandarin.weniv.co.kr/${image}`,
+          },
+        },
+      }).then(response => {
+        console.log(response);
+        // console.log('POST 요청 완료');
+        return axios.get('https://api.mandarin.weniv.co.kr/post');
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -78,11 +81,9 @@ export default function PostUpload() {
     </>
   );
 }
-
 const ProfileWrapper = styled.div`
-  /* flex-shrink: 0; */
+  flex-shrink: 0;
 `;
-
 const PostUploadWrapper = styled.div`
   display: flex;
   margin: 20px 16px 0px;
