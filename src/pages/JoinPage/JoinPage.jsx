@@ -1,34 +1,54 @@
 import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
 import { Wrapper, FormWrapper } from '../LoginPage/LoginPage';
 
 function JoinPage() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
 
   function emailCheck(event) {
-    setEmail(event.target.value);
+    const emailValue = event.target.value;
+    setEmail(emailValue);
+
     const testEmail =
       /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(
-        email,
+        emailValue,
       );
 
     if (testEmail) {
-      setIsEmailValid(true);
-    } else {
-      setIsEmailValid(false);
+      axios
+        .post('https://api.mandarin.weniv.co.kr/user/emailvalid', {
+          user: {
+            email: emailValue,
+          },
+        })
+        .then(response => {
+          if (response.data.isDuplicate) {
+            // 이메일 중복 처리
+            setIsEmailValid(false);
+            console.log('이메일 중복');
+          } else {
+            setIsEmailValid(true);
+            console.log('이메일 중복 아님');
+            console.log(response.data);
+          }
+        })
+        .catch(error => {
+          console.error('이메일 중복 체크 오류:', error);
+        });
     }
   }
 
   function passwordCheck(event) {
     setPassword(event.target.value);
     const testPassword = /^[A-Za-z0-9]{6,20}$/;
-    if (password !== '' && password.match(testPassword)) {
+    if (event.target.value !== '' && event.target.value.match(testPassword)) {
       setIsPasswordValid(true);
     } else {
       setIsPasswordValid(false);
@@ -37,7 +57,15 @@ function JoinPage() {
 
   function onhandlesubmit(event) {
     event.preventDefault();
-    // 2. 회원이 맞으면 다음 컴포넌트로 넘어가도록
+    // 이메일 중복 체크
+    emailCheck(event);
+
+    if (isEmailValid && isPasswordValid) {
+      navigate('/joinmember');
+      console.log(email, password);
+    } else {
+      console.log('입력값이 유효하지 않습니다.');
+    }
   }
 
   return (
@@ -71,9 +99,6 @@ function JoinPage() {
           )}
         </FormWrapper>
       </form>
-      {/* <LinkWrapper>
-        <Link to="/join">이메일로 회원가입</Link>
-      </LinkWrapper> */}
     </Wrapper>
   );
 }

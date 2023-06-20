@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
 
@@ -31,6 +32,8 @@ export const LinkWrapper = styled.div`
 `;
 
 function LoginPage() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -61,15 +64,41 @@ function LoginPage() {
     }
   }
 
-  function onhandlesubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    // 2. 회원이 맞으면 다음 컴포넌트로 넘어가도록
+
+    axios
+      .post(
+        'https://api.mandarin.weniv.co.kr/user/login',
+        {
+          user: {
+            email,
+            password,
+          },
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+      .then(response => {
+        localStorage.setItem('Token', response.headers.authorization);
+        console.log(response);
+        if ((response.status = 200)) {
+          return navigate('/home');
+        }
+      })
+      .catch(err => {
+        // setMessage(err.response.data.message);
+        console.log(err);
+      });
   }
 
   return (
     <Wrapper>
       <h1>로그인</h1>
-      <form onSubmit={onhandlesubmit}>
+      <form onSubmit={handleSubmit}>
         <FormWrapper>
           <Input
             label="이메일"
@@ -85,7 +114,7 @@ function LoginPage() {
             type="password"
             id="user-password"
             name="user-password"
-            placehoder=""
+            placeholder=""
             value={password}
             onChange={event => passwordCheck(event)}
           />

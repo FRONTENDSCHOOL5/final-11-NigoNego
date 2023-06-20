@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import {
   FormWrapper,
   HeadingWrapper,
@@ -12,6 +14,8 @@ import { LImage } from '../../components/common/UserImage/UserImage';
 import basicImg from '../../assets/images/basic-profile-img.png';
 
 export default function JoinMember() {
+  const navigate = useNavigate();
+
   const [userName, setUserName] = useState('');
   const [userID, setUserID] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
@@ -24,7 +28,7 @@ export default function JoinMember() {
     setUserID(e.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     // 사용자 이름 유효성 확인
@@ -35,7 +39,27 @@ export default function JoinMember() {
 
     if (isUserNameValid && isUserIDValid) {
       setIsFormValid(true);
-      // 다음 단계로 진행하는 로직 추가
+      try {
+        // API 요청 보내기
+        const response = await axios.post(
+          'https://api.mandarin.weniv.co.kr/user',
+          {
+            username: userName,
+            email: 'user_email', // 사용자 이메일 값
+            password: 'user_password', // 사용자 패스워드 값
+            accountname: userID,
+            intro: 'user_intro', // 사용자 소개 값
+            image: 'user_image', // 사용자 이미지 값
+          },
+        );
+
+        // 성공적으로 요청을 처리한 후의 로직 추가
+        console.log('회원가입성공:', response.data);
+        response.status = 200 ? navigate('/login') : null;
+      } catch (error) {
+        // API 요청 실패 처리
+        console.error('API 요청 실패:', error);
+      }
     } else {
       setIsFormValid(false);
     }
