@@ -1,126 +1,43 @@
-import React, { useState } from 'react';
+import React from 'react';
+// import Navbar from '../../../components/common/Navbar/Navbar';
 import styled from 'styled-components';
-import { HeaderUploadNav } from '../../../components/common/Header/Header';
-import { SImage } from '../../../components/common/UserImage/UserImage';
-import buttonImg from '../../../assets/images/upload-file.svg';
+import { HeaderBasicNav } from '../../../components/common/Header/Header';
+import HomePost from '../../../components/HomePost/HomePost';
+import CommentInput from '../../../components/common/Comment/CommentInput/Comment';
+import CommentPost from '../../../components/common/Comment/CommentPost/CommentPost';
 
-export default function PostUpload() {
-  // 토큰 가져오는 거 잊으면 안돼요!! -> 토큰인 로그인할 때 받을 수 있음.
-  // 리액트에서 바뀌는 부분, 바뀌어야 하는 부분은 모두 state!
-  const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';
-  // const [content, setContent] = useState('');
-  const [image, setImage] = useState('');
-  // const image = '';
-
-  const handleImageUpload = e => {
-    // 데이터 호출, 비동기에 대해서 조금은 알아보는 것이 좋을 것 같아요!
-
-    // 이미지를 등록하면 이미지 filename을 응답받는 api를 호출할꺼야!
-    // 여기다가 api 호출하는 로직을 작성
-    // 여기서 받은 응답을 어딘가에 저장하기! setImage(filename) -> 미리보기 구현은 끝!
-
-    // 그 이미지 파일이름을 받으면 그거를 사용해서 미리보기 구현한다.
-
-    console.log(e.target.files);
-  };
-
-  // const handleSubmit = () => {
-  //   // 게시글 작성 api 호출
-  //   try {
-  //     const res = axios({
-  //       method: 'post',
-  //       url: `https://api.mandarin.weniv.co.kr/post`,
-  //       body: {
-  //         post: {
-  //           content: content,
-  //           image: `https://api.mandarin.weniv.co.kr/${image}`,
-  //         },
-  //       },
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //         'Content-type': 'application/json',
-  //       },
-  //     });
-  //     // 여기서 응답 확인 -> 어떤 응답이 왔는지, 성공 유무
-  //     console.log(res);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
+function PostPage() {
   return (
-    <>
-      <HeaderUploadNav />
-      <PostUploadWrapper>
-        <ProfileWrapper>
-          <SImage />
-        </ProfileWrapper>
-        <textarea
-          className="inputPost"
-          placeholder="게시글 입력하기…"
-          // value={content}
-          // onChange={e => setContent(e.target.value)}
-        />
-      </PostUploadWrapper>
-      {/* <UploadButton /> */}
-      <UploadButtonStyle>
-        <label htmlFor="input" />
-        <input id="input" type="file" onChange={handleImageUpload} />
-      </UploadButtonStyle>
-      {image.length > 0 && <img src={image} alt="" />}
-    </>
+    <PostPageWrapper>
+      <HeaderBasicNav />
+      <ContentSection>
+        <HomePost />
+      </ContentSection>
+      <hr />
+      <CommentWrapper>
+        <CommentPost />
+        <CommentPost />
+      </CommentWrapper>
+      <CommentInput />
+    </PostPageWrapper>
   );
 }
 
-const ProfileWrapper = styled.div`
-  /* flex-shrink: 0; */
+const PostPageWrapper = styled.div`
+  height: 80vh;
 `;
 
-const PostUploadWrapper = styled.div`
-  display: flex;
-  margin: 20px 16px 0px;
-  .inputPost {
-    margin-top: 10px;
-    font-size: 14px;
-  }
-  & > textarea {
-    height: 300px;
-    border-style: none;
-    width: 100%;
-    margin-left: 12px;
-    &:focus {
-      outline: 0;
-    }
+const CommentWrapper = styled.section`
+  margin: 20px 16px 16px;
+  min-height: 300px;
+`;
+
+const ContentSection = styled.section`
+  padding: 20px 12px 12px;
+  & + hr {
+    margin: 0;
+    border: solid 0.5px #dbdbdb;
   }
 `;
 
-const UploadButtonStyle = styled.div`
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  label {
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-    background-image: url(${buttonImg});
-    background-size: cover;
-  }
-
-  input {
-    display: none;
-  }
-
-  input::file-selector-button {
-    display: none;
-  }
-`;
-
-// function UploadButton() {
-//   return (
-//     <UploadButtonStyle>
-//       <label htmlFor="input" />
-//       <input id="input" type="file" />
-//     </UploadButtonStyle>
-//   );
-// }
+export default PostPage;
