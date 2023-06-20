@@ -11,8 +11,8 @@ export function LdisabledBtn({ content }) {
   return <LdisabledBtnStyle>{content}</LdisabledBtnStyle>;
 }
 
-export function MBtn() {
-  return <MBtnStyle>팔로우</MBtnStyle>;
+export function MBtn({ h, content }) {
+  return <MBtnStyle height={h}>{content}</MBtnStyle>;
 }
 
 export function MdisabledBtn() {
@@ -76,6 +76,7 @@ const LdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
 `;
 
 const MBtnStyle = styled(BtnCommonStlye)`
+  height: ${props => props.height}px;
   width: 120px;
   padding: 5px;
 `;
