@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   height: 100vh;
   width: 80%;
   margin: 0 auto;
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const FormWrapper = styled.div`
+export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -24,7 +24,7 @@ const FormWrapper = styled.div`
   color: var(--basic-grey);
 `;
 
-const LinkWrapper = styled.div`
+export const LinkWrapper = styled.div`
   margin-top: 20px;
   text-align: center;
   color: var(--basic-grey);

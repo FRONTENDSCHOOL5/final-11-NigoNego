@@ -15,6 +15,7 @@ import YourProfilePage from '../pages/ProfilePage/YourProfilePage/YourProfilePag
 import SearchPage from '../pages/SearchPage/SearchPage';
 import NotFound from '../pages/NotFound/NotFound';
 import Test from '../components/Test/Test';
+import JoinMember from '../pages/JoinPage/JoinMember';
 
 function Routing() {
   return (
@@ -25,6 +26,7 @@ function Routing() {
         <Route path="/loginmain" element={<LoginMain />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/join" element={<JoinPage />} />
+        <Route path="/joinmember" element={<JoinMember />} />
         <Route path="/chat" element={<ChatPage />} />
         <Route path="/chatroom" element={<ChatRoom />} />
         <Route path="/myprofile" element={<MyProfilePage />} />
