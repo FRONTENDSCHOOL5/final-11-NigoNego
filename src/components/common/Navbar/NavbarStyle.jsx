@@ -6,19 +6,27 @@ const NavbarWrapper = styled.nav`
   width: 100%;
   border-top: 1px solid var(--basic-border-color);
   color: var(--basic-grey);
-`;
+  position: fixed;
+  bottom: 0px;
+  padding: 10px;
 
-const Ul = styled.ul`
-  display: flex;
-`;
-const Li = styled.li`
-  flex-grow: 1;
+  p {
+    margin: 5px 0 0 0;
+  }
 
-  a {
+  ul {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+  }
+
+  li {
+    flex-grow: 1;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
   }
 `;
 
@@ -63,8 +71,6 @@ const UserProfileActive = styled(NavTapDefault)`
 
 export {
   NavbarWrapper,
-  Ul,
-  Li,
   PostUpload,
   HomeIcon,
   Message,
