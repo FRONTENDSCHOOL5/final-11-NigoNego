@@ -1,43 +1,73 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 // import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
 import { Wrapper, FormWrapper } from '../LoginPage/LoginPage';
+
+const ButtonWrapper = styled.div`
+  margin-top: 30px;
+`;
 
 function JoinPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const [isEmailValid, setIsEmailValid] = useState(false);
-  const [isPasswordValid, setIsPasswordValid] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(null);
+  const [isPasswordValid, setIsPasswordValid] = useState(null);
+  const [errorMessageEM, setErrorMessageEM] = useState('');
+  const [errorMessagePW, setErrorMessagePW] = useState('');
 
   function emailCheck(event) {
-    setEmail(event.target.value);
     const testEmail =
       /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(
-        email,
+        event.target.value,
       );
 
-    if (testEmail) {
+    if (event.target.value === '') {
+      setIsEmailValid(null);
+    } else if (testEmail) {
       setIsEmailValid(true);
+      console.log('이메일 통과');
+      // 여기에 원래 있는 이메일이 있는지 유효성 검사기능추가!!
     } else {
+      // 원래 있는 이메일과 일치했을때 함수
+      setErrorMessageEM('*이미 가입된 이메일 주소입니다.');
       setIsEmailValid(false);
+      console.log('이메일 실패');
     }
   }
 
+  const handleEmailBlur = useCallback(event => {
+    emailCheck(event);
+  }, []);
+
   function passwordCheck(event) {
-    setPassword(event.target.value);
     const testPassword = /^[A-Za-z0-9]{6,20}$/;
-    if (password !== '' && password.match(testPassword)) {
+    if (event.target.value === '') {
+      setIsPasswordValid(null);
+    } else if (
+      event.target.value !== '' &&
+      event.target.value.match(testPassword)
+    ) {
+      console.log('패스워드 통과');
       setIsPasswordValid(true);
     } else {
       setIsPasswordValid(false);
+      setErrorMessagePW('*비밀번호는 6자 이상이어야 합니다.');
+      console.log('패스워드 실패');
     }
   }
 
+  const handlePasswordBlur = useCallback(event => {
+    passwordCheck(event);
+  }, []);
+
   function onhandlesubmit(event) {
     event.preventDefault();
-    // 2. 회원이 맞으면 다음 컴포넌트로 넘어가도록
+
+    // 2. 회원가입 api 데이터 요청
+    //
   }
 
   return (
@@ -52,28 +82,33 @@ function JoinPage() {
             name="user-email"
             placeholder="이메일 주소를 입력해 주세요."
             value={email}
-            onChange={event => emailCheck(event)}
+            onChange={event => setEmail(event.target.value)}
+            onBlur={handleEmailBlur}
+            // validation={isEmailValid}
+            isCorrect={isEmailValid}
+            errorMessage={errorMessageEM}
           />
           <Input
             label="비밀번호"
             type="password"
             id="user-password"
             name="user-password"
-            placeholder="비밀번호를 성절해 주세요."
+            placeholder="비밀번호를 설정해 주세요."
             value={password}
-            onChange={event => passwordCheck(event)}
+            onChange={event => setPassword(event.target.value)}
+            onBlur={handlePasswordBlur}
+            isCorrect={isPasswordValid}
+            errorMessage={errorMessagePW}
           />
-
-          {isEmailValid && isPasswordValid ? (
-            <LBtn type="submit" content="다음" />
-          ) : (
-            <LdisabledBtn content="다음" />
-          )}
+          <ButtonWrapper>
+            {isEmailValid && isPasswordValid ? (
+              <LBtn type="submit" content="다음" />
+            ) : (
+              <LdisabledBtn content="다음" h="32" />
+            )}
+          </ButtonWrapper>
         </FormWrapper>
       </form>
-      {/* <LinkWrapper>
-        <Link to="/join">이메일로 회원가입</Link>
-      </LinkWrapper> */}
     </Wrapper>
   );
 }
