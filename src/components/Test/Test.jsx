@@ -1,10 +1,9 @@
 import React from 'react';
-import HomePost from '../HomePost/HomePost';
-
+import MyProfilePage from '../../pages/ProfilePage/MyProfilePage/MyProfilePage';
 export default function Test() {
   return (
     <div>
-      <HomePost />
+      <MyProfilePage />
     </div>
   );
 }
