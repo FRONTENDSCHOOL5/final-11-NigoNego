@@ -1,11 +1,9 @@
 import React from 'react';
-import Navbar from '../common/Navbar/Navbar';
-import PostUpload from '../../pages/PostPage/PostUpload/PostUpload';
+import MyProfilePage from '../../pages/ProfilePage/MyProfilePage/MyProfilePage';
 export default function Test() {
   return (
     <div>
-      <Navbar />
-      <PostUpload />
+      <MyProfilePage />
     </div>
   );
 }

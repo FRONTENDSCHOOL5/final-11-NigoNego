@@ -1,29 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
-import homePostImg from '../../assets/images/home-post-img.png';
-import likeIcon from '../../assets/icons/like-icon.png';
 import msg from '../../assets/icons/message-icon.png';
 
-export default function HomePost() {
+export default function HomePost({ userDataProps }) {
+  console.log(userDataProps);
   return (
     <HomPostWrapp>
-      <p>
-        옷을 인생을 그러므로 없으면 것은 이상은 것은 우리의 위하여, 뿐이다.
-        이상의 청춘의 뼈 따뜻한 그들의 그와 약동하다. 대고, 못할 넣는 풍부하게
-        뛰노는 인생의 힘있다.
-      </p>
-      <HomePostImg src={homePostImg} />
-      <div>
-        <button type="button">
-          <img src={likeIcon} alt="" />
-          <span>58</span>
-        </button>
-        <button type="button">
-          <img src={msg} alt="" />
-          <span>12</span>
-        </button>
-      </div>
-      <time>2222년 00년 00월</time>
+      {userDataProps.map((item, index) => {
+        return (
+          <>
+            <p key={index}>{item.content}</p>
+            <HomePostImg src={item.image} />
+            <div>
+              <button type="button">
+                <img src={item.author.image} alt="" />
+                <span>58</span>
+              </button>
+              <button type="button">
+                <img src={msg} alt="" />
+                <span>12</span>
+              </button>
+            </div>
+            <time>2222년 00년 00월</time>
+          </>
+        );
+      })}
     </HomPostWrapp>
   );
 }
