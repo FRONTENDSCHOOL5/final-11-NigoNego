@@ -9,6 +9,10 @@ export default function PostUpload() {
   const [content, setContent] = useState('');
   const [image, setImage] = useState('');
 
+  // user 데이터 저장
+  const [userImage, setUserImage] = useState('');
+  const [userContent, setUserContent] = useState('');
+
   const handleImageUpload = e => {
     e.preventDefault();
 
@@ -23,6 +27,7 @@ export default function PostUpload() {
     }).then(result => {
       // console.log('요청성공');
       setImage(`https://api.mandarin.weniv.co.kr/${result.data.filename}`);
+      console.log(toString(image));
       // console.log(image);
     });
   };
@@ -33,7 +38,7 @@ export default function PostUpload() {
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';
     // 게시글 작성 api 호출
     try {
-      const response = axios({
+      axios({
         method: 'POST',
         url: `https://api.mandarin.weniv.co.kr/post`,
         headers: {
@@ -43,19 +48,25 @@ export default function PostUpload() {
         data: {
           post: {
             content: content,
-            image: `https://api.mandarin.weniv.co.kr/${image}`,
+            image: `${image}`,
           },
         },
       }).then(response => {
         console.log(response);
         // console.log('POST 요청 완료');
-        return axios.get('https://api.mandarin.weniv.co.kr/post');
+        setUserContent([...userContent, response.data.post.content]);
+        setUserImage([...userImage, response.data.post.image]);
       });
     } catch (err) {
       console.log(err);
     }
   };
+  console.log(userImage);
+  console.log(userContent);
 
+  // 재랜더링 확인
+  // console.log(userImage);
+  // console.log(userContent);
   return (
     <>
       <form onSubmit={handleSubmit}>
