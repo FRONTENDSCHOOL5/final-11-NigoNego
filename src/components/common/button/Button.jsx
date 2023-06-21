@@ -8,7 +8,11 @@ export function LBtn({ content }) {
 }
 
 export function LdisabledBtn({ h, content }) {
-  return <LdisabledBtnStyle height={h}>{content}</LdisabledBtnStyle>;
+  return (
+    <LdisabledBtnStyle disabled height={h}>
+      {content}
+    </LdisabledBtnStyle>
+  );
 }
 
 export function MBtn({ h, content }) {
