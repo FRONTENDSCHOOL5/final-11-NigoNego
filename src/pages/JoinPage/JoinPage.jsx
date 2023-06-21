@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from 'react';
 // import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
 import { Wrapper, FormWrapper } from '../LoginPage/LoginPage';
@@ -17,6 +19,8 @@ function JoinPage() {
   const [isPasswordValid, setIsPasswordValid] = useState(null);
   const [errorMessageEM, setErrorMessageEM] = useState('');
   const [errorMessagePW, setErrorMessagePW] = useState('');
+  const [isEmailPossible, setIsEmailPossible] = useState('');
+  const navigate = useNavigate();
 
   function emailCheck(event) {
     const testEmail =
@@ -32,8 +36,6 @@ function JoinPage() {
       // 여기에 원래 있는 이메일이 있는지 유효성 검사기능추가!!
     } else {
       // 원래 있는 이메일과 일치했을때 함수
-      setErrorMessageEM('*이미 가입된 이메일 주소입니다.');
-      setIsEmailValid(false);
       console.log('이메일 실패');
     }
   }
@@ -63,11 +65,34 @@ function JoinPage() {
     passwordCheck(event);
   }, []);
 
-  function onhandlesubmit(event) {
+  async function onhandlesubmit(event) {
     event.preventDefault();
+    // if (!isEmailValid || !isPasswordValid) return;
 
-    // 2. 회원가입 api 데이터 요청
-    //
+    try {
+      const url = 'https://api.mandarin.weniv.co.kr';
+
+      const res = await axios.post(`${url}/user/emailvalid`, {
+        user: {
+          email,
+        },
+      });
+      console.log('res', res.data);
+      if (res.data.message === '이미 가입된 이메일 주소 입니다.') {
+        setIsEmailPossible(false);
+        setErrorMessageEM('*이미 가입된 이메일 주소입니다.');
+        console.log('이미 가입된 이메일입니다.');
+      } else {
+        navigate('/joinmember', {
+          state: {
+            email,
+            password,
+          },
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -85,7 +110,7 @@ function JoinPage() {
             onChange={event => setEmail(event.target.value)}
             onBlur={handleEmailBlur}
             // validation={isEmailValid}
-            isCorrect={isEmailValid}
+            isCorrect={isEmailPossible}
             errorMessage={errorMessageEM}
           />
           <Input
