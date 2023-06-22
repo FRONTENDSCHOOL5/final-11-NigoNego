@@ -4,10 +4,12 @@ import { HeaderUploadNav } from '../../../components/common/Header/Header';
 import { SImage } from '../../../components/common/UserImage/UserImage';
 import buttonImg from '../../../assets/images/upload-file.svg';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 export default function PostUpload() {
   const [content, setContent] = useState('');
   const [image, setImage] = useState('');
+  const navigate = useNavigate();
 
   // user 데이터 저장
   const [userImage, setUserImage] = useState('');
@@ -50,8 +52,8 @@ export default function PostUpload() {
           },
         },
       }).then(response => {
+        navigate('/postmain');
         console.log(response);
-        // console.log('POST 요청 완료');
       });
     } catch (err) {
       console.log(err);
