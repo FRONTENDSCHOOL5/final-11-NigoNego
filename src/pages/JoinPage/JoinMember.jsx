@@ -44,12 +44,24 @@ export default function JoinMember() {
       setIsUserNameValid(false);
     }
   };
-
-  const handleIdValid = () => {
+  const handleIdValid = async () => {
     const testID = /^[a-zA-Z0-9]+$/.test(userID);
 
     if (testID) {
-      setIsUserIDValid(true);
+      try {
+        const res = await axios.post(
+          'https://api.mandarin.weniv.co.kr/user/accountnamevalid',
+          {
+            user: {
+              accountname: userID,
+            },
+          },
+        );
+        setIsUserIDValid(true);
+        console.log(res);
+      } catch (error) {
+        console.error(error);
+      }
     } else {
       setIsUserIDValid(false);
     }
