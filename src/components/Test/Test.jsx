@@ -1,10 +1,11 @@
 import React from 'react';
-import MyProfilePage from '../../pages/ProfilePage/MyProfilePage/MyProfilePage';
-import AddProductImg from './../../pages/ProductPage/AddProductImg';
+import ProductPage from './../../pages/ProductPage/ProductPage';
+import ProductInput from '../../pages/ProductPage/ProductInput';
 export default function Test() {
   return (
     <div>
-      <AddProductImg />
+      {/* <ProductPage /> */}
+      <ProductInput />
     </div>
   );
 }

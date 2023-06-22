@@ -54,8 +54,6 @@ export default function PostUpload() {
       }).then(response => {
         console.log(response);
         // console.log('POST 요청 완료');
-        setUserContent([...userContent, response.data.post.content]);
-        setUserImage([...userImage, response.data.post.image]);
       });
     } catch (err) {
       console.log(err);
