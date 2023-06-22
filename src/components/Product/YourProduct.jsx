@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import ProductItem from './ProductItem';
+import YourProductItem from './YourProductItem';
 
 const ProductWrapper = styled.div`
   margin-left: 10px;
@@ -38,7 +38,7 @@ export default function Product() {
     <ProductWrapper>
       <h2>판매 중인 상품</h2>
       <div className="product-list-items">
-        {userData.length > 0 && <ProductItem userData={userData} />}
+        {userData.length > 0 && <YourProductItem userData={userData} />}
       </div>
     </ProductWrapper>
   );

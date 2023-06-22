@@ -1,11 +1,13 @@
 import React from 'react';
-import HomePost from '../../../components/HomePost/HomePost';
-import Product from '../../../components/Product/Product';
-// import ProfileUser from '../../../components/ProfileHeader/ProfileUser';
-export default function YourProfilePage() {
-  return <div>{/* <ProfileUser /> */}</div>;
+import YourProduct from '../../../components/Product/YourProduct';
+import YourHomePost from '../../../components/HomePost/YourHomePost';
+import YourProfileHeader from '../../../components/YourProfileHeader/YourProfileHeader';
+export default function MyProfilePage() {
+  return (
+    <div>
+      <YourProfileHeader />
+      <YourProduct />
+      <YourHomePost />
+    </div>
+  );
 }
-/**
- * 1. YourProduct, YourHomePost 만들기
- * 2.
- */

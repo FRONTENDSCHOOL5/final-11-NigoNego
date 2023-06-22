@@ -43,15 +43,15 @@
 // export default MyProfilePage;
 
 import React from 'react';
-// import HomePost from '../../../components/HomePost/HomePost';
-// import Product from '../../../components/Product/Product';
-import ProfileUser from '../../../components/ProfileHeader/ProfileUser';
+import HomePost from '../../../components/HomePost/HomePost';
+import Product from '../../../components/Product/Product';
+import ProfileHeader from '../../../components/ProfileHeader/ProfileHeader';
 export default function MyProfilePage() {
   return (
     <div>
-      <ProfileUser />
-      {/* <Product />
-      <HomePost /> */}
+      <ProfileHeader />
+      <Product />
+      <HomePost />
     </div>
   );
 }

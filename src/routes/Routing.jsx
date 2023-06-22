@@ -4,7 +4,7 @@ import StartSplash from '../pages/SplashPage/StartSplash';
 import LoginMain from '../pages/LoginMain/LoginMain';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import JoinPage from '../pages/JoinPage/JoinPage';
-import HomePage from '../pages/HomePage/HomePage';
+import HomeFeed from '../pages/HomeFeed/HomeFeed';
 import ChatPage from '../pages/ChatPage/ChatPage';
 import ChatRoom from '../pages/ChatPage/ChatRoom';
 import PostUploadPage from '../pages/PostPage/PostUpload/PostUpload';
@@ -22,7 +22,7 @@ function Routing() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<StartSplash />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/homefeed" element={<HomeFeed />} />
         <Route path="/loginmain" element={<LoginMain />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/join" element={<JoinPage />} />
