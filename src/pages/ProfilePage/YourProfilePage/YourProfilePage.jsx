@@ -1,7 +1,11 @@
 import React from 'react';
-
-function YourProfilePage() {
-  return <div>YourProfile</div>;
+import HomePost from '../../../components/HomePost/HomePost';
+import Product from '../../../components/Product/Product';
+// import ProfileUser from '../../../components/ProfileHeader/ProfileUser';
+export default function YourProfilePage() {
+  return <div>{/* <ProfileUser /> */}</div>;
 }
-
-export default YourProfilePage;
+/**
+ * 1. YourProduct, YourHomePost 만들기
+ * 2.
+ */

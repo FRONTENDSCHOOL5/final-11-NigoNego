@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import 프사 from '../../assets/images/프사.png';
-import FollowNumber from './FollowNumber';
 
 const ProfileUserWrapper = styled.div`
-  /* box-shadow: inset 0 0 10px blue; */
+  box-shadow: inset 0 0 10px blue;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -15,18 +13,51 @@ const ProfileUserWrapper = styled.div`
     width: 110px;
   }
 `;
+const FollowNumberWrapper = styled.div`
+  box-shadow: inset 0 0 10px purple;
+  padding: 20px 12px;
+`;
 
-export default function ProfileUser() {
+// export default function ProfileUser({ myProfileData }) {
+//   console.log(myProfileData);
+//   return (
+//     <ProfileUserWrapper>
+//       <FollowNumberWrapper>
+//         <h3>{'기본' ?? myProfileData.followerCount}</h3>
+//         <small>followers</small>
+//       </FollowNumberWrapper>
+//       <div>
+//         <img src={'기본' ?? myProfileData.image} alt="프로필사진" />
+//         <h2>{'기본' ?? myProfileData.username}</h2>
+//         <small>{'기본' ?? myProfileData.accountname}</small>
+//         <p>{'기본' ?? myProfileData.intro}</p>
+//       </div>
+//       <FollowNumberWrapper>
+//         <h3>{'기본' ?? myProfileData.followingCount}</h3>
+//         <small>followings</small>
+//       </FollowNumberWrapper>
+//     </ProfileUserWrapper>
+//   );
+// }
+
+export default function ProfileUser({ myProfileData }) {
+  console.log(myProfileData);
   return (
     <ProfileUserWrapper>
-      <FollowNumber />
+      <FollowNumberWrapper>
+        <h3>{myProfileData.followerCount}</h3>
+        <small>followers</small>
+      </FollowNumberWrapper>
       <div>
-        <img src={프사} alt="프로필사진" />
-        <h2>애월읍 위니브 감귤농장</h2>
-        <small>@weniv-Mandarin</small>
-        <p>애월읍 감귤 전국 배송, 귤따기 체험, 감귤농장</p>
+        <img src={myProfileData.image} alt="프로필사진" />
+        <h2>{myProfileData.username}</h2>
+        <small>{myProfileData.accountname}</small>
+        <p>{myProfileData.intro}</p>
       </div>
-      <FollowNumber />
+      <FollowNumberWrapper>
+        <h3>{myProfileData.followingCount}</h3>
+        <small>followings</small>
+      </FollowNumberWrapper>
     </ProfileUserWrapper>
   );
 }

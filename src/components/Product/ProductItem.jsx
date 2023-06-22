@@ -29,16 +29,22 @@ const ProductListItem = styled.button`
   }
 `;
 
-function ProductItem() {
+function ProductItem({ userData }) {
   return (
-    <ProductListItem>
-      <img src={productImage} alt="" />
-      <div>
-        <h3>애월읍 노지 감귤</h3>
-        <p>35,000원</p>
-      </div>
-    </ProductListItem>
+    <>
+      {/* {console.log(userData)} */}
+      {userData.map((data, index) => {
+        return (
+          <ProductListItem key={index}>
+            <img src={data.itemImage} alt="" />
+            <div>
+              <h3>{data.itemName}</h3>
+              <p>{data.price}</p>
+            </div>
+          </ProductListItem>
+        );
+      })}
+    </>
   );
 }
-
 export default ProductItem;
