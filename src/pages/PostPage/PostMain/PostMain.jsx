@@ -1,4 +1,5 @@
 import React from 'react';
+
 // import Navbar from '../../../components/common/Navbar/Navbar';
 import styled from 'styled-components';
 import { HeaderBasicNav } from '../../../components/common/Header/Header';
@@ -6,7 +7,7 @@ import HomePost from '../../../components/HomePost/HomePost';
 import CommentInput from '../../../components/common/Comment/CommentInput/Comment';
 import CommentPost from '../../../components/common/Comment/CommentPost/CommentPost';
 
-function PostPage() {
+function PostMain({ img }) {
   return (
     <PostPageWrapper>
       <HeaderBasicNav />
@@ -40,4 +41,4 @@ const ContentSection = styled.section`
   }
 `;
 
-export default PostPage;
+export default PostMain;
