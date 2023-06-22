@@ -27,8 +27,6 @@ export default function PostUpload() {
     }).then(result => {
       // console.log('요청성공');
       setImage(`https://api.mandarin.weniv.co.kr/${result.data.filename}`);
-      console.log(toString(image));
-      // console.log(image);
     });
   };
 
