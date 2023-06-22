@@ -5,6 +5,7 @@ import { ArrowLeft, MSBtn, MoreIconButton } from '../button/Button';
 import SearchInput from '../Input/SearchInput';
 
 export function HeaderBasicNav() {
+  // 뒤로가기 버튼 구현하기;
   return (
     <HeaderBasicNavStyle>
       <ArrowLeft />
@@ -37,7 +38,7 @@ export function HeaderUploadNav() {
   return (
     <HeaderUploadNavStyle>
       <ArrowLeft />
-      <MSBtn />
+      <MSBtn content="업로드" />
     </HeaderUploadNavStyle>
   );
 }
@@ -45,7 +46,8 @@ export function HeaderUploadNav() {
 export function HeaderChatNav() {
   return (
     <HeaderChatNavStyle>
-      <ArrowLeft />
+      <ArrowLeft onclick />
+      <h1>애월읍 위니브 감귤농장</h1>
       <MoreIconButton />
     </HeaderChatNavStyle>
   );
@@ -70,8 +72,16 @@ const HeaderMainNavStyle = styled(HeaderDefaultStyle)`
   h1 {
     font-size: 1.8rem;
   }
+  button {
+    border: none;
+  }
 `;
 
 const HeaderUploadNavStyle = styled(HeaderDefaultStyle)``;
 
-const HeaderChatNavStyle = styled(HeaderDefaultStyle)``;
+const HeaderChatNavStyle = styled(HeaderDefaultStyle)`
+  h1 {
+    flex-grow: 2;
+    padding-left: 10px;
+  }
+`;
