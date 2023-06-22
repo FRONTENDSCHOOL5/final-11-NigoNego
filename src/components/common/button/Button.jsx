@@ -7,8 +7,12 @@ export function LBtn({ content }) {
   return <LBtnStyle>{content}</LBtnStyle>;
 }
 
-export function LdisabledBtn({ content }) {
-  return <LdisabledBtnStyle>{content}</LdisabledBtnStyle>;
+export function LdisabledBtn({ h, content }) {
+  return (
+    <LdisabledBtnStyle disabled height={h}>
+      {content}
+    </LdisabledBtnStyle>
+  );
 }
 
 export function MBtn({ h, content }) {
@@ -71,6 +75,7 @@ const LBtnStyle = styled(BtnCommonStlye)`
   padding: 8px;
 `;
 const LdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
+  height: ${props => props.height}px;
   width: 100%;
   padding: 8px;
 `;
