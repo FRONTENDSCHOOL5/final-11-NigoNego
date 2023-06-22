@@ -22,6 +22,7 @@ export default function JoinMember() {
   const [userIntro, setUserIntro] = useState(false);
   const [isUserNameValid, setIsUserNameValid] = useState(false);
   const [isUserIDValid, setIsUserIDValid] = useState(false);
+  const [errorMessageID, setErrorMessageID] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -30,7 +31,12 @@ export default function JoinMember() {
   };
 
   const handleUserIDChange = e => {
-    setUserID(e.target.value);
+    const newUserID = e.target.value;
+    setUserID(newUserID);
+    setIsUserIDValid(false); // ID 변경 시에 isUserIDValid 상태를 초기화합니다.
+    if (/^[a-zA-Z0-9]+$/.test(newUserID)) {
+      setErrorMessageID(''); // 유효한 ID인 경우 오류 메시지를 초기화합니다.
+    }
   };
 
   const handleUserIntro = e => {
@@ -57,13 +63,20 @@ export default function JoinMember() {
             },
           },
         );
-        setIsUserIDValid(true);
-        console.log(res);
+        if (res.data.message === '이미 가입된 계정ID 입니다.') {
+          setIsUserIDValid(false);
+          setErrorMessageID('이미 사용 중인 ID 입니다.');
+          console.log(res.data);
+        } else {
+          setIsUserIDValid(true);
+          console.log(res);
+        }
       } catch (error) {
-        console.error(error);
+        console.log(error);
       }
     } else {
       setIsUserIDValid(false);
+      setErrorMessageID('*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.');
     }
   };
 
@@ -134,6 +147,7 @@ export default function JoinMember() {
             value={userID}
             onChange={handleUserIDChange}
             onBlur={handleIdValid}
+            errorMessage={errorMessageID}
           />
           <Input
             label="소개"
