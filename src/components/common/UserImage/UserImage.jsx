@@ -32,12 +32,8 @@ const MProfile = styled(ImageStyle)`
   height: 50px;
 `;
 
-export function MImage({ backgroundUrl, ...props }) {
-  return (
-    <MProfile
-      backgroundUrl={props.backgroundUrl ? props.backgroundUrl : basicImg}
-    />
-  );
+export function MImage({ backgroundUrl }) {
+  return <MProfile backgroundUrl={backgroundUrl ? backgroundUrl : basicImg} />;
 }
 
 const SProfile = styled(ImageStyle)`
