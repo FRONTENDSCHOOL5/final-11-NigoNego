@@ -7,12 +7,16 @@ export function LBtn({ content }) {
   return <LBtnStyle>{content}</LBtnStyle>;
 }
 
-export function LdisabledBtn({ content }) {
-  return <LdisabledBtnStyle>{content}</LdisabledBtnStyle>;
+export function LdisabledBtn({ h, content }) {
+  return (
+    <LdisabledBtnStyle disabled height={h}>
+      {content}
+    </LdisabledBtnStyle>
+  );
 }
 
-export function MBtn() {
-  return <MBtnStyle>팔로우</MBtnStyle>;
+export function MBtn({ h, content }) {
+  return <MBtnStyle height={h}>{content}</MBtnStyle>;
 }
 
 export function MdisabledBtn() {
@@ -71,11 +75,13 @@ const LBtnStyle = styled(BtnCommonStlye)`
   padding: 8px;
 `;
 const LdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
+  height: ${props => props.height}px;
   width: 100%;
   padding: 8px;
 `;
 
 const MBtnStyle = styled(BtnCommonStlye)`
+  height: ${props => props.height}px;
   width: 120px;
   padding: 5px;
 `;

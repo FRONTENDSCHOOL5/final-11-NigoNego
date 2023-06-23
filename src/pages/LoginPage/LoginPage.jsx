@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
 
@@ -36,6 +37,9 @@ function LoginPage() {
 
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
+  const [loginErrMessage, setLoginErrMessage] = useState('');
+  const [isCorrect, setIsCorrect] = useState(null);
+  const navigate = useNavigate();
 
   function emailCheck(event) {
     setEmail(event.target.value);
@@ -53,7 +57,7 @@ function LoginPage() {
 
   function passwordCheck(event) {
     setPassword(event.target.value);
-    const testPassword = /^[A-Za-z0-9]{8,20}$/;
+    const testPassword = /^[A-Za-z0-9]{5,20}$/;
     if (password !== '' && password.match(testPassword)) {
       setIsPasswordValid(true);
     } else {
@@ -61,9 +65,45 @@ function LoginPage() {
     }
   }
 
-  function onhandlesubmit(event) {
+  async function onhandlesubmit(event) {
     event.preventDefault();
-    // 2. 회원이 맞으면 다음 컴포넌트로 넘어가도록
+    const url = 'https://api.mandarin.weniv.co.kr';
+    try {
+      const res = await axios.post(
+        `${url}/user/login`,
+        {
+          user: {
+            email,
+            password,
+          },
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      // const successRes = res.data;
+      console.log(res.data);
+      if (res.data.user) {
+        const userData = res.data.user;
+        const { token, accountname, image } = userData;
+        localStorage.setItem('token', token);
+        localStorage.setItem('accountname', accountname);
+        localStorage.setItem('image', image);
+        navigate('/home');
+      }
+
+      if (res.data.status === 422) {
+        setIsCorrect(false);
+        setLoginErrMessage('*이메일 또는 비밀번호가 일치하지 않습니다.');
+      } else {
+        setIsCorrect(true);
+      }
+    } catch (error) {
+      // 요청이 실패한 경우
+      console.error(error);
+    }
   }
 
   return (
@@ -88,6 +128,8 @@ function LoginPage() {
             placehoder=""
             value={password}
             onChange={event => passwordCheck(event)}
+            isCorrect={isCorrect}
+            errorMessage={loginErrMessage}
           />
 
           {isEmailValid && isPasswordValid ? (
