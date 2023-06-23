@@ -12,6 +12,7 @@ import PostPage from '../pages/PostPage/PostEdit/PostEdit';
 import ProductPage from '../pages/ProductPage/ProductPage';
 import MyProfilePage from '../pages/ProfilePage/MyProfilePage/MyProfilePage';
 import YourProfilePage from '../pages/ProfilePage/YourProfilePage/YourProfilePage';
+import ProfileEditPage from '../pages/ProfilePage/ProfileEditPage/ProfileEditPage';
 import SearchPage from '../pages/SearchPage/SearchPage';
 import NotFound from '../pages/NotFound/NotFound';
 import Test from '../components/Test/Test';
@@ -31,6 +32,7 @@ function Routing() {
         <Route path="/chatroom" element={<ChatRoom />} />
         <Route path="/myprofile" element={<MyProfilePage />} />
         <Route path="/yourprofile" element={<YourProfilePage />} />
+        <Route path="/profileedit" element={<ProfileEditPage />} />
         <Route path="/postupload" element={<PostUploadPage />} />
         <Route path="/postedit" element={<PostPage />} />
         <Route path="/product" element={<ProductPage />} />

@@ -1,30 +1,33 @@
 import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useRecoilValue } from 'recoil';
+import { authAtom } from '../../../atom/atoms';
 import {
-  FormWrapper,
-  HeadingWrapper,
   Wrapper,
+  HeadingWrapper,
+  FormWrapper,
   ImageWrapper,
-  BtnWrapper,
-} from './joinMemberStyle';
+  // BtnWrapper,
+} from './ProfileEditStyle';
+import { HeaderEditdNav } from '../../../components/common/Header/Header';
+import Input from '../../../components/common/Input/Input';
+// import { LBtn, LdisabledBtn } from '../../../components/common/button/Button';
+import { LImage } from '../../../components/common/UserImage/UserImage';
+import basicImg from '../../../assets/images/basic-profile-img.png';
+// import UploadButton from '../../../components/common/button/UploadButton';
+import SlideModal from '../../../components/common/Modal/SlideModal';
 
-import Input from '../../components/common/Input/Input';
-import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
-import { LImage } from '../../components/common/UserImage/UserImage';
-import basicImg from '../../assets/images/basic-profile-img.png';
-import UploadButton from '../../components/common/button/UploadButton';
-
-export default function JoinMember() {
+export default function ProfileEditPage() {
   const [userName, setUserName] = useState('');
   const [userID, setUserID] = useState('');
-  const [isFormValid, setIsFormValid] = useState(true);
+  const [isFormValid, setIsFormValid] = useState(false);
   const [userIntro, setUserIntro] = useState(false);
   const [isUserNameValid, setIsUserNameValid] = useState(false);
   const [isUserIDValid, setIsUserIDValid] = useState(false);
   const [errorMessageID, setErrorMessageID] = useState('');
   const navigate = useNavigate();
-  const location = useLocation();
+  const auth = useRecoilValue(authAtom);
 
   const handleUserNameChange = e => {
     setUserName(e.target.value);
@@ -65,17 +68,24 @@ export default function JoinMember() {
         );
         if (res.data.message === '이미 가입된 계정ID 입니다.') {
           setIsUserIDValid(false);
+          // setIsFormValid(false);
+
           setErrorMessageID('이미 사용 중인 ID 입니다.');
           console.log(res.data);
         } else {
           setIsUserIDValid(true);
           console.log(res);
+          setIsFormValid(true);
+
+          // console.log(localStorage.token);
         }
       } catch (error) {
         console.log(error);
       }
     } else {
       setIsUserIDValid(false);
+      setIsFormValid(false);
+
       setErrorMessageID('*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.');
     }
   };
@@ -88,29 +98,33 @@ export default function JoinMember() {
       // 다음 단계로 진행하는 로직 추가
       try {
         // API 요청 보내기
-        const response = await axios.post(
+        const response = await axios.put(
           'https://api.mandarin.weniv.co.kr/user',
           {
             user: {
               username: userName,
-              email: location.state.email, // 사용자 이메일 값
-              password: location.state.password, // 사용자 패스워드 값
               accountname: userID,
-              intro: userIntro, // 사용자 소개 값
-              image: '', // 사용자 이미지 값}
+              intro: userIntro,
+              image: '',
+            },
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${auth}`,
+              'Content-type': 'application/json',
             },
           },
         );
 
         // 성공적으로 요청을 처리한 후의 로직 추가
-        console.log('회원가입성공:', response.data);
-        navigate('/login');
+        console.log('프로필 수정 성공:', response.data);
       } catch (error) {
         // API 요청 실패 처리
         // 여기에 ID 혹은 Name 중복입니다 추가
         console.error('API 요청 실패:', error);
         setIsUserNameValid(true);
       }
+      navigate('/myprofile');
     } else {
       setIsFormValid(false);
     }
@@ -118,13 +132,19 @@ export default function JoinMember() {
 
   return (
     <Wrapper>
+      <SlideModal />
+      <HeaderEditdNav
+        content="저장"
+        isFormValid={isFormValid}
+        handleSave={handleSubmit}
+      />
       <HeadingWrapper>
         <h1>프로필 설정</h1>
         <p>나중에 언제든지 변경할 수 있습니다.</p>
       </HeadingWrapper>
       <ImageWrapper>
         <LImage src={basicImg} />
-        <UploadButton />
+        {/* <UploadButton /> */}
       </ImageWrapper>
       <form onSubmit={handleSubmit}>
         <FormWrapper>
@@ -158,14 +178,6 @@ export default function JoinMember() {
             onChange={handleUserIntro}
             placeholder="자신과 판매할 상품에 대해 소개"
           />
-
-          <BtnWrapper>
-            {isFormValid ? (
-              <LBtn content="감귤마켓 시작하기" />
-            ) : (
-              <LdisabledBtn content="감귤마켓 시작하기" />
-            )}
-          </BtnWrapper>
         </FormWrapper>
       </form>
     </Wrapper>
