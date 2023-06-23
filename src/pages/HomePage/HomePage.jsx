@@ -15,7 +15,7 @@ function HomePage() {
     </Wrapper>
   );
 }
-
+// localstorage.getItem으로 가져오기 token
 function HomeBlank() {
   return (
     <ContentWrapper>

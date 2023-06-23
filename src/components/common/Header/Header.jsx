@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import searchIcon from '../../../assets/icons/icon-search.png';
-import { ArrowLeft, MSBtn, MoreIconButton } from '../button/Button';
+import {
+  ArrowLeft,
+  MSBtn,
+  ProfileEditMSBtn,
+  MoreIconButton,
+} from '../button/Button';
 import SearchInput from '../Input/SearchInput';
 
 export function HeaderBasicNav() {
@@ -34,11 +39,24 @@ export function HeaderMainNav() {
   );
 }
 
-export function HeaderUploadNav() {
+export function HeaderUploadNav({ content }) {
   return (
     <HeaderUploadNavStyle>
       <ArrowLeft />
-      <MSBtn content="업로드" />
+      <MSBtn content={content} />
+    </HeaderUploadNavStyle>
+  );
+}
+
+export function HeaderEditdNav({ content, isFormValid, handleSave }) {
+  return (
+    <HeaderUploadNavStyle>
+      <ArrowLeft />
+      <ProfileEditMSBtn
+        content={content}
+        onClick={handleSave}
+        disabled={!isFormValid}
+      />
     </HeaderUploadNavStyle>
   );
 }
