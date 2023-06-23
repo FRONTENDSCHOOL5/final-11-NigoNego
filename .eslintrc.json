@@ -4,18 +4,24 @@
     "es6": true,
     "node": true
   },
-  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "extends": ["react-app", "react-app/jest", "prettier"],
   "rules": {
     "import/no-extraneous-dependencies": "off",
     "no-console": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "jsx-a11y/label-has-associated-control": [
-      2,
-      {
-        "labelAttributes": ["htmlFor"]
-      }
-    ],
-    "react/prop-types": "off"
+    "linebreak-style": 0
   }
+  // "extends": ["airbnb", "plugin:prettier/recommended"],
+  // "rules": {
+  //   "react/react-in-jsx-scope": "off",
+  //   "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+  //   "jsx-a11y/label-has-associated-control": [
+  //     2,
+  //     {
+  //       "labelAttributes": ["htmlFor"]
+  //     }
+  //   ],
+  //   "react/prop-types": "off"
+  // }
 }
