@@ -2,10 +2,16 @@ import React from 'react';
 import YourProduct from '../../../components/Product/YourProduct';
 import YourHomePost from '../../../components/HomePost/YourHomePost';
 import YourProfileHeader from '../../../components/YourProfileHeader/YourProfileHeader';
-export default function MyProfilePage() {
+import { useLocation } from 'react-router-dom';
+
+export default function YourProfilePage() {
+  const location = useLocation();
+  console.log(location);
+  const username = location.state.username;
+
   return (
     <div>
-      <YourProfileHeader />
+      <YourProfileHeader username={username} />
       <YourProduct />
       <YourHomePost />
     </div>

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { GetFollowerData } from '../../../api/getData/getData';
 import { MImage } from '../UserImage/UserImage';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export const StyledUser = styled.div`
   height: 5rem;
@@ -38,21 +41,51 @@ export const UserId = styled.div`
   color: var(--basic-grey);
 `;
 
+const BtnWrapper = styled.button`
+  width: 100%;
+  text-align: left;
+
+  * {
+    pointer-events: none;
+  }
+`;
+
+// GetFollowerData
+
 export default function UserSearch({ data }) {
+  const navigate = useNavigate();
+  const [username, setUsername] = useState();
+
+  function moveToYourProfile() {
+    setUsername(data.author.username);
+    navigate('/yourprofile', {
+      state: {
+        username,
+      },
+    });
+    // navigate('/yourprofile', {
+    //   userInfo: {
+    //     username,
+    //   },
+    // });
+  }
+
   return (
     // 클릭시 유저 프로필로 이동하는 기능 추가
-    <StyledUser>
-      <ProfileImgWrapper>
-        <MImage backgroundUrl={data.author.image} />
-        {console.log(data.author.image)}
-      </ProfileImgWrapper>
-      <UserSection>
-        <UserName>
-          {/* 애월읍을 검색했을때 검색한 부분만 색이 변해야함 */}
-          <strong>{data.author.username}</strong>
-        </UserName>
-        <UserId>{data.author.accountname}</UserId>
-      </UserSection>
-    </StyledUser>
+    <BtnWrapper onClick={moveToYourProfile}>
+      <StyledUser>
+        <ProfileImgWrapper>
+          <MImage backgroundUrl={data.author.image} />
+          {console.log(data.author.image)}
+        </ProfileImgWrapper>
+        <UserSection>
+          <UserName>
+            {/* 애월읍을 검색했을때 검색한 부분만 색이 변해야함 */}
+            <strong>{data.author.username}</strong>
+          </UserName>
+          <UserId>{data.author.accountname}</UserId>
+        </UserSection>
+      </StyledUser>
+    </BtnWrapper>
   );
 }

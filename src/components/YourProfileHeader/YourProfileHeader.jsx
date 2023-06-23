@@ -5,15 +5,16 @@ import YourProfileUser from './YourProfileUser';
 import YourProfileBtn from './YourProfileBtn';
 const ProfileHeaderWrapper = styled.div``;
 
-export default function ProfileHeader() {
+export default function ProfileHeader({ username }) {
   const [yourProfileData, setYourProfileData] = useState({});
+
   useEffect(() => {
     const token =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';
     try {
       axios({
         method: 'GET',
-        url: `https://api.mandarin.weniv.co.kr/profile/real_binky`,
+        url: `https://api.mandarin.weniv.co.kr/profile/${username}`,
 
         headers: {
           Authorization: `Bearer ${token}`,
