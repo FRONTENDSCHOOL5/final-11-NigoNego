@@ -1,36 +1,19 @@
 import axios from 'axios';
 
-export const baseUrl = 'https://api.mandarin.weniv.co.kr/';
+export const baseUrl = 'https://api.mandarin.weniv.co.kr';
 
-export const instance = axios.create({
-  baseURL: baseUrl,
-  headers: { 'Content-Type': 'application/json' },
-});
-
-export const imgInstance = axios.create({
-  baseURL: baseUrl,
-  headers: { 'Content-Type': 'multipart/form-data' },
-});
-
-export const axiosPrivate = axios.create({
+//get
+export const getDataBase = axios.create({
   baseURL: baseUrl,
   headers: {
+    Authorization:
+      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20',
     'Content-Type': 'application/json',
   },
 });
 
-// axiosPrivate.interceptors.request.use(
-//   config => {
-//     const token = JSON.pase(localStorage.getItem('auth'));
-
-//     if (!config.headers.Authorization) {
-//       config.headers = {
-//         ...config.headers,
-//         Authorization: `Bearer ${token}`,
-//       };
-//     }
-
-//     return config;
-//   },
-//   error => Promise.reject(error),
-// );
+// post
+export const postDataBase = axios.create({
+  baseURL: baseUrl,
+  headers: { 'Content-Type': 'multipart/form-data' },
+});
