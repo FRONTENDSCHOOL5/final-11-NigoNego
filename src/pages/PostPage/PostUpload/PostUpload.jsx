@@ -68,7 +68,7 @@ export default function PostUpload() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <HeaderUploadNav />
+        <HeaderUploadNav content={'업로드'} />
         <PostUploadWrapper>
           <ProfileWrapper>
             <SImage />

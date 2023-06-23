@@ -71,7 +71,7 @@ function LoginPage() {
         console.log(res.data.user.email);
         setAuth(auth);
         if (auth) {
-          navigate('/home');
+          navigate('/homefeed');
         }
       }
 
