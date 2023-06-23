@@ -30,6 +30,19 @@ export function MActivBtn() {
 export function MSBtn({ content }) {
   return <MSBtnStyle>{content}</MSBtnStyle>;
 }
+
+export function ProfileEditMSBtn({ content, onClick, disabled }) {
+  return (
+    <MSBtnStyle
+      onClick={onClick}
+      disabled={disabled}
+      className={disabled ? 'disabled' : ''}
+    >
+      {content}
+    </MSBtnStyle>
+  );
+}
+
 export function MSdisabledBtn() {
   return <MSdisabledBtnStyle>저장</MSdisabledBtnStyle>;
 }
@@ -102,6 +115,18 @@ const MSBtnStyle = styled(BtnCommonStlye)`
   width: 90px;
   height: 32px;
   padding: 7px;
+  background-color: ${({ disabled }) =>
+    disabled ? ' var(--light-yellow)' : ' var(--basic-yellow)'};
+  color: ${({ disabled }) => (disabled ? '' : 'black')};
+
+  &:hover {
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
 `;
 const MSdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
   width: 90px;
