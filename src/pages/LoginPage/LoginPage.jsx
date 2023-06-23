@@ -2,34 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useRecoilState } from 'recoil';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
-
-export const Wrapper = styled.div`
-  height: 100vh;
-  width: 80%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-
-  h1 {
-    text-align: center;
-  }
-`;
-
-export const FormWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  text-align: center;
-  color: var(--basic-grey);
-`;
-
-export const LinkWrapper = styled.div`
-  margin-top: 20px;
-  text-align: center;
-  color: var(--basic-grey);
-`;
+import { authAtom } from '../../atom/atoms';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -41,11 +17,13 @@ function LoginPage() {
   const [isCorrect, setIsCorrect] = useState(null);
   const navigate = useNavigate();
 
+  const [auth, setAuth] = useRecoilState(authAtom);
+
   function emailCheck(event) {
     setEmail(event.target.value);
     const testEmail =
       /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(
-        email,
+        event.target.value,
       );
 
     if (testEmail) {
@@ -87,12 +65,15 @@ function LoginPage() {
       console.log(res.data);
       if (res.data.user) {
         const userData = res.data.user;
-        const { token, accountname, image, _id } = userData;
-        localStorage.setItem('token', token);
-        localStorage.setItem('accountname', accountname);
-        localStorage.setItem('image', image);
-        localStorage.setItem('id', _id);
-        navigate('/home');
+
+        const { token, accountname } = userData;
+        localStorage.setItem('auth', JSON.stringify(token));
+        localStorage.setItem('account', JSON.stringify(accountname));
+        console.log(res.data.user.email);
+        setAuth(auth);
+        if (auth) {
+          navigate('/home');
+        }
       }
 
       if (res.data.status === 422) {
@@ -126,7 +107,7 @@ function LoginPage() {
             type="password"
             id="user-password"
             name="user-password"
-            placehoder=""
+            placeholder=""
             value={password}
             onChange={event => passwordCheck(event)}
             isCorrect={isCorrect}
@@ -148,3 +129,29 @@ function LoginPage() {
 }
 
 export default LoginPage;
+
+export const Wrapper = styled.div`
+  height: 100vh;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    text-align: center;
+  }
+`;
+
+export const FormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: center;
+  color: var(--basic-grey);
+`;
+
+export const LinkWrapper = styled.div`
+  margin-top: 20px;
+  text-align: center;
+  color: var(--basic-grey);
+`;

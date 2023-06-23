@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 export default function Modal() {
   const [isOpen, setIsOpen] = useState(true);
@@ -26,6 +27,42 @@ export default function Modal() {
         </Button>
         <Button type="submit" delete onClick={handleDelete}>
           삭제
+        </Button>
+      </ButtonContainer>
+    </ModalWrapper>
+  );
+}
+
+export function LogoutModal() {
+  const [isOpen, setIsOpen] = useState(true);
+  const navigate = useNavigate();
+
+  const handleCancel = () => {
+    setIsOpen(false);
+  };
+
+  const handleDelete = () => {
+    console.log('로그아웃 완료');
+    setIsOpen(false);
+    localStorage.removeItem('auth');
+    localStorage.removeItem('account');
+    console.log(localStorage);
+    navigate('/login');
+  };
+
+  if (!isOpen) {
+    return null;
+  }
+
+  return (
+    <ModalWrapper>
+      <ModalText>로그아웃을 할까요?</ModalText>
+      <ButtonContainer>
+        <Button type="submit" onClick={handleCancel}>
+          취소
+        </Button>
+        <Button type="submit" delete onClick={handleDelete}>
+          로그아웃
         </Button>
       </ButtonContainer>
     </ModalWrapper>
