@@ -87,10 +87,11 @@ function LoginPage() {
       console.log(res.data);
       if (res.data.user) {
         const userData = res.data.user;
-        const { token, accountname, image } = userData;
+        const { token, accountname, image, _id } = userData;
         localStorage.setItem('token', token);
         localStorage.setItem('accountname', accountname);
         localStorage.setItem('image', image);
+        localStorage.setItem('id', _id);
         navigate('/home');
       }
 

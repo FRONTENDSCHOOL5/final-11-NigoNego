@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import userDefaultImage from '../../../../assets/images/basic-profile-img.png';
 
 const CommentWrapper = styled.div`
@@ -35,34 +36,38 @@ const CommentWrapper = styled.div`
   }
 `;
 
-export default function CommentInput() {
+export default function CommentInput({ userId }) {
   const [comment, setComment] = useState('');
-  const commentChange = event => {
+  const commentChange = useCallback(event => {
     setComment(event.target.value);
-  };
+  }, []);
   const isBtnDisable = comment === '';
-  // async function onhandlesubmit(event) {
-  //   event.preventDefault();
-  //   const token = localStorage.getItem("token");
-  //   const id = localStorage.getItem().id;
 
-  //   try {
-  //     const url = 'https://api.mandarin.weniv.co.kr';
+  const onhandlesubmit = useCallback(async event => {
+    event.preventDefault();
 
-  //     const res = await axios.post(${url}/post/:{post_id}/comments, {
-  //       comment: {
-  //         content: iscomment,
-  //       },
-  //       header: {
-  //         "Authorization" : "Bearer ${token}",
-  //         "Content-type" : "application/json"
-  //       },
-  //     });
-  //     console.log('res', res.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+    try {
+      const url = 'https://api.mandarin.weniv.co.kr';
+      const token = localStorage.getItem('token');
+      const res = await axios.post(`${url}/post/${userId}/comments`, {
+        comment: {
+          content: comment,
+        },
+        header: {
+          Authorization: `Bearer ${token}`,
+          'Content-type': 'application/json',
+        },
+      });
+      // 여기서 왜 토큰값이 안정해졌을까 ...
+      // id 가 undefined 가 나오는데...
+      console.log('댓글 데이터 전송 성공');
+      console.log('res', res.data);
+      console.log(`${token}`);
+    } catch (error) {
+      console.log('댓글 데이터 전송 실패');
+      console.log(error);
+    }
+  }, []);
   return (
     <CommentWrapper disableBtn={comment}>
       <form>
@@ -73,7 +78,12 @@ export default function CommentInput() {
           placeholder="댓글 입력하기"
           onChange={commentChange}
         />
-        <button type="submit" disabled={isBtnDisable}>
+        <button
+          type="submit"
+          value={comment}
+          disabled={isBtnDisable}
+          onClick={onhandlesubmit}
+        >
           게시
         </button>
       </form>

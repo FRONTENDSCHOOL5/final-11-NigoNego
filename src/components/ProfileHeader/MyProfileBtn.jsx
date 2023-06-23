@@ -1,30 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
-import messageIcon from '../../assets/icons/message-icon.png';
-import { MBtn } from '../common/button/Button';
 
 const FollowBtnWrapper = styled.div`
-  /* box-shadow: inset 0 0 10px red; */
   display: flex;
   justify-content: center;
   gap: 8px;
-
-  .shareBtn {
-    border: 2px solid #dbdbdb;
-    border-radius: 50%;
-    padding: 4px;
-  }
+`;
+const BtnCommonStlye = styled.button`
+  border-radius: 44px;
+  border-style: none;
+  background-color: var(--basic-yellow);
+  color: #000;
+  display: block;
+`;
+const MActivBtnStyle = styled(BtnCommonStlye)`
+  color: var(--basic-grey);
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  width: 120px;
+  padding: 8px;
 `;
 export default function FllowBtn() {
   return (
     <FollowBtnWrapper>
-      <button className="shareBtn" type="button">
-        <img src={messageIcon} alt="메시지아이콘" />
-      </button>
-      <MBtn />
-      <button className="shareBtn" type="button">
-        <img src={messageIcon} alt="공유아이콘" />
-      </button>
+      <MActivBtnStyle>프로필 수정</MActivBtnStyle>
+      <MActivBtnStyle>상품등록</MActivBtnStyle>
     </FollowBtnWrapper>
   );
 }
