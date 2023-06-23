@@ -52,7 +52,7 @@ export default function PostUpload() {
           },
         },
       }).then(response => {
-        navigate('/postmain');
+        navigate('/myprofile');
         console.log(response);
       });
     } catch (err) {

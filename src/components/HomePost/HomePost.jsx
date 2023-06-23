@@ -6,11 +6,7 @@ import axios from 'axios';
 
 export default function HomePost() {
   const [userData, setUserData] = useState('');
-  // const [userContent, setUserContent] = useState('');
-  // const [userImg, setUserImg] = useState('');
-  // const [updatedAt, setUpdatedAt] = useState('');
-  // const [commentCount, setCommentCount] = useState(0);
-  // const [heartCount, setHeartCount] = useState(0);
+
   useEffect(() => {
     const token =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';

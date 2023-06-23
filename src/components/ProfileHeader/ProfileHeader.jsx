@@ -21,7 +21,7 @@ export default function ProfileHeader() {
         },
       }).then(response => {
         setMyProfileData(response.data.profile);
-        // console.log(response);
+        console.log(response);
       });
     } catch (err) {
       console.log('에러');
@@ -30,6 +30,7 @@ export default function ProfileHeader() {
 
   return (
     <ProfileHeaderWrapper>
+      {console.log(myProfileData)}
       {Object.keys(myProfileData).length > 0 && (
         <ProfileUser myProfileData={myProfileData} />
       )}

@@ -39,18 +39,17 @@ export const UserId = styled.div`
 `;
 
 export default function UserSearch({ data }) {
-  console.log(data.author);
-  console.log(data.image);
   return (
     // 클릭시 유저 프로필로 이동하는 기능 추가
     <StyledUser>
       <ProfileImgWrapper>
-        <MImage backgroundUrl={data.image} />
+        <MImage backgroundUrl={data.author.image} />
+        {console.log(data.author.image)}
       </ProfileImgWrapper>
       <UserSection>
         <UserName>
           {/* 애월읍을 검색했을때 검색한 부분만 색이 변해야함 */}
-          <strong>애월읍</strong>위니브 감귤농장
+          <strong>{data.author.username}</strong>
         </UserName>
         <UserId>{data.author.accountname}</UserId>
       </UserSection>
