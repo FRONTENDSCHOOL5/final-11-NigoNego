@@ -75,7 +75,7 @@ export default function PostUpload() {
           </ProfileWrapper>
           <textarea
             className="inputPost"
-            placeholder="게시글 입력하기…"
+            placeholder="게시글 입력하기"
             value={content}
             onChange={e => setContent(e.target.value)}
           />

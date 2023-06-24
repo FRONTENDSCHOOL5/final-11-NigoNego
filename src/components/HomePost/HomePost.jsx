@@ -65,44 +65,38 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import msg from '../../assets/icons/message-icon.svg';
 import like from '../../assets/icons/like-icon.svg';
-import axios from 'axios';
 import { GetHomePostData } from '../../api/getData/getData';
+import UserSearch from '../common/User/UserSearch';
 
 // import { baseUrl, instance, imgInstance } from '../../api/Api';
 // import { test1, test2, test3 } from '../components/Api';
 
-export default function HomePost() {
-  const [postData, setPostData] = useState('');
+export default function HomePost({ data }) {
+  // const [postData, setPostData] = useState('');
 
-  useEffect(() => {
-    GetHomePostData().then(response => {
-      setPostData(response.data.post);
-      console.log(response.data.post);
-    });
-  }, []);
+  // useEffect(() => {
+  //   GetHomePostData().then(response => {
+  //     setPostData(response.data.post);
+  //     console.log(response.data.post);
+  //   });
+  // }, []);
 
   return (
     <>
-      {postData.length > 0 &&
-        postData.map(data => {
-          return (
-            <>
-              <p>{data.content}</p>
-              <HomePostImg src={data.image} />
-              <div>
-                <button type="button">
-                  <img src={msg} alt="" />
-                  <span>123</span>
-                </button>
-                <button type="button">
-                  <img src={like} alt="" />
-                  <span>123</span>
-                </button>
-              </div>
-              <time>{data.updatedAt}</time>
-            </>
-          );
-        })}
+      <UserSearch data={data} />
+      <p>{data.content}</p>
+      <HomePostImg src={data.image} />
+      <div>
+        <button type="button">
+          <img src={msg} alt="" />
+          <span>123</span>
+        </button>
+        <button type="button">
+          <img src={like} alt="" />
+          <span>123</span>
+        </button>
+      </div>
+      <time>{data.updatedAt}</time>
     </>
   );
 }
