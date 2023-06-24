@@ -18,6 +18,7 @@ import Test from '../components/Test/Test';
 import JoinMember from '../pages/JoinPage/JoinMember';
 import PostMain from '../pages/PostPage/PostMain/PostMain';
 import HomeBlank from '../pages/HomePage/HomePage';
+import MyFollowersPage from '../pages/ProfilePage/MyProfilePage/MyFollowersPage';
 
 function Routing() {
   return (
@@ -42,6 +43,7 @@ function Routing() {
         <Route path="/404" element={<NotFound />} />
         <Route path="/test" element={<Test />} />
         <Route path="/postmain" element={<PostMain />} />
+        <Route path="/myfollowers" element={<MyFollowersPage />} />
       </Routes>
     </BrowserRouter>
   );

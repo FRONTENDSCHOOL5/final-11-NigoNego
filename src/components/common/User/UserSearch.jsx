@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 export const StyledUser = styled.div`
   height: 5rem;
   width: 100%;
-  max-width: 50rem;
+  min-width: 50rem;
   display: flex;
   strong {
     color: var(--basic-orange);
@@ -77,7 +77,6 @@ export default function UserSearch({ data }) {
       <StyledUser>
         <ProfileImgWrapper>
           <MImage backgroundUrl={data.author.image} />
-          {console.log(data.author.image)}
         </ProfileImgWrapper>
         <UserSection>
           <UserName>
