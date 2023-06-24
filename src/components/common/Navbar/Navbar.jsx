@@ -3,10 +3,6 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import {
   NavbarWrapper,
-  PostUpload,
-  HomeIcon,
-  Message,
-  UserProfile,
   PostUploadActive,
   HomeIconActive,
   MessageActive,
