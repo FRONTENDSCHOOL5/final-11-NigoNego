@@ -35,7 +35,7 @@ export default function Navbar() {
         <li>
           <Link to="/myprofile">
             <UserProfileActive />
-            <p>이메일로 회원가입</p>
+            <p>프로필</p>
           </Link>
           {/* <a href="www.jdjkd.com">
             <p>프로필</p>
