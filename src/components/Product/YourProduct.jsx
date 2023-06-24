@@ -13,7 +13,7 @@ const ProductWrapper = styled.div`
 
 // 작업
 
-export default function Product() {
+export default function YourProduct({ accountname }) {
   const [userData, setUserData] = useState('');
   useEffect(() => {
     const token =
@@ -21,7 +21,7 @@ export default function Product() {
     try {
       axios({
         method: 'GET',
-        url: `https://api.mandarin.weniv.co.kr/product/nigonego`,
+        url: `https://api.mandarin.weniv.co.kr/product/${accountname}`,
 
         headers: {
           Authorization: `Bearer ${token}`,

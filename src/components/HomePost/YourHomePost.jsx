@@ -3,41 +3,38 @@ import styled from 'styled-components';
 import msg from '../../assets/icons/message-icon.svg';
 import like from '../../assets/icons/like-icon.svg';
 import axios from 'axios';
+import UserSearch from '../common/User/UserSearch';
 
-export default function HomePost() {
-  const [userData, setUserData] = useState('');
-  // const [userContent, setUserContent] = useState('');
-  // const [userImg, setUserImg] = useState('');
-  // const [updatedAt, setUpdatedAt] = useState('');
-  // const [commentCount, setCommentCount] = useState(0);
-  // const [heartCount, setHeartCount] = useState(0);
+export default function YourHomePost({ accountname }) {
+  const [userData, setUserData] = useState(accountname);
+  const [userPost, setUserPost] = useState({});
   useEffect(() => {
     const token =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';
     try {
       axios({
         method: 'GET',
-        url: `https://api.mandarin.weniv.co.kr/post/nigonego/userpost`,
-
+        url: `https://api.mandarin.weniv.co.kr/post/${userData}/userpost`,
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-type': 'application/json',
         },
       }).then(response => {
-        setUserData(response.data.post);
-        console.log(userData);
+        setUserPost(response.data.post);
       });
     } catch (err) {
       console.log('에러');
     }
-  }, []);
+  }, [userData]);
 
   return (
     <>
-      {userData.length > 0 &&
-        userData.map(data => {
+      {userPost.length > 0 &&
+        userPost.map(data => {
           return (
             <>
+              {console.log(userPost)}
+              <UserSearch data={data} />
               <p>{data.content}</p>
               <HomePostImg src={data.image} />
               <div>
@@ -50,7 +47,6 @@ export default function HomePost() {
                   <span>123</span>
                 </button>
               </div>
-              <time>{data.updatedAt}</time>
             </>
           );
         })}
