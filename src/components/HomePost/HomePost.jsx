@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import msg from '../../assets/icons/message-icon.svg';
 import like from '../../assets/icons/like-icon.svg';
-import { GetHomePostData } from '../../api/getData/getData';
 import UserSearch from '../common/User/UserSearch';
-import { useNavigate } from 'react-router-dom';
 
-export default function HomePost({ data, id }) {
-  const [postId, setPostId] = useState('');
+export default function HomePost({ data }) {
+  // const [feedPost, setFeedPost] = useState('');
   const navigate = useNavigate();
+
   const postMainHandler = () => {
     // setPostId(id);
-    console.log(id);
+    console.log(data.id);
     navigate('/postmain', {
       state: {
-        id,
+        id: data.id,
       },
     });
   };

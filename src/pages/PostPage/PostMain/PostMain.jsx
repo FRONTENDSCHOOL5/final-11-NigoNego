@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { HeaderBasicNav } from '../../../components/common/Header/Header';
-import HomePost from '../../../components/HomePost/MyHomePost';
+import HomePost from '../../../components/HomePost/HomePost';
 import CommentInput from '../../../components/common/Comment/CommentInput/Comment';
 import CommentPost from '../../../components/common/Comment/CommentPost/CommentPost';
 import { useLocation } from 'react-router-dom';
