@@ -8,16 +8,16 @@ import msg from '../../assets/icons/message-icon.svg';
 import like from '../../assets/icons/like-icon.svg';
 import UserSearch from '../../components/common/User/UserSearch';
 import HomePost from '../../components/HomePost/HomePost';
-import { authAtom, accountAtom } from '../../atom/atoms';
+import { authAtom, accountNameAtom } from '../../atom/atoms';
 import { useRecoilValue } from 'recoil';
 
 function HomeFeed() {
   const [followersData, setFollowersData] = useState('');
 
   const auth = useRecoilValue(authAtom);
-  const account = useRecoilValue(accountAtom);
+  const accountname = useRecoilValue(accountNameAtom);
 
-  console.log(auth, account);
+  console.log(auth, accountname);
   const getFollowers = () => {
     try {
       axios({

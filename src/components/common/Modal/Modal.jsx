@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { authAtom, accountNameAtom } from '../../../atom/atoms';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 
 export default function Modal() {
   const [isOpen, setIsOpen] = useState(true);
@@ -34,6 +36,10 @@ export default function Modal() {
 }
 
 export function LogoutModal() {
+  const [auth, setAuth] = useRecoilState(authAtom);
+  const [accountname, setAccountnameAtom] = useRecoilState(accountNameAtom);
+  const resetAuth = useResetRecoilState(authAtom);
+  const resetAccount = useResetRecoilState(accountNameAtom);
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
 
@@ -41,12 +47,11 @@ export function LogoutModal() {
     setIsOpen(false);
   };
 
-  const handleDelete = () => {
+  const handleLogout = () => {
     console.log('로그아웃 완료');
     setIsOpen(false);
-    localStorage.removeItem('auth');
-    localStorage.removeItem('account');
-    console.log(localStorage);
+    resetAuth();
+    resetAccount();
     navigate('/login');
   };
 
@@ -61,7 +66,7 @@ export function LogoutModal() {
         <Button type="submit" onClick={handleCancel}>
           취소
         </Button>
-        <Button type="submit" delete onClick={handleDelete}>
+        <Button type="submit" delete onClick={handleLogout}>
           로그아웃
         </Button>
       </ButtonContainer>
