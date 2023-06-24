@@ -9,7 +9,6 @@ export default function ProfileHeader({ accountname }) {
   const [yourProfileData, setYourProfileData] = useState({});
 
   useEffect(() => {
-    console.log(1231321313213);
     const token =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';
     try {
@@ -24,7 +23,6 @@ export default function ProfileHeader({ accountname }) {
         },
       }).then(response => {
         setYourProfileData(response.data.profile);
-        console.log(response);
       });
     } catch (err) {
       console.log('에러');
