@@ -1,4 +1,4 @@
-import { atom, RecoilRoot, useRecoilState } from 'recoil';
+import { atom } from 'recoil';
 import { recoilPersist } from 'recoil-persist';
 
 //1. 아무것도 설정 안 하고 쓰는 경우
@@ -12,8 +12,14 @@ export const authAtom = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const accountAtom = atom({
-  key: 'account',
+export const accountNameAtom = atom({
+  key: 'accountname',
+  default: '',
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const followingAtom = atom({
+  key: 'following',
   default: '',
   effects_UNSTABLE: [persistAtom],
 });

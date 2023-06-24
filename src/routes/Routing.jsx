@@ -17,6 +17,7 @@ import NotFound from '../pages/NotFound/NotFound';
 import Test from '../components/Test/Test';
 import JoinMember from '../pages/JoinPage/JoinMember';
 import PostMain from '../pages/PostPage/PostMain/PostMain';
+import HomeBlank from '../pages/HomePage/HomePage';
 
 function Routing() {
   return (
@@ -24,6 +25,7 @@ function Routing() {
       <Routes>
         <Route path="/" element={<StartSplash />} />
         <Route path="/homefeed" element={<HomeFeed />} />
+        <Route path="/home" element={<HomeBlank />} />
         <Route path="/loginmain" element={<LoginMain />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/join" element={<JoinPage />} />
@@ -33,6 +35,7 @@ function Routing() {
         <Route path="/myprofile" element={<MyProfilePage />} />
         <Route path="/yourprofile" element={<YourProfilePage />} />
         <Route path="/profileedit" element={<ProfileEditPage />} />
+        <Route path="/postmain" element={<PostMain />} />
         <Route path="/postupload" element={<PostUploadPage />} />
         <Route path="/product" element={<ProductPage />} />
         <Route path="/search" element={<SearchPage />} />

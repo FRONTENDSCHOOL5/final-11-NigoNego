@@ -7,8 +7,8 @@ import Navbar from '../../components/common/Navbar/Navbar';
 import msg from '../../assets/icons/message-icon.svg';
 import like from '../../assets/icons/like-icon.svg';
 import UserSearch from '../../components/common/User/UserSearch';
-import HomePost from '../../components/HomePost/HomePost';
-import { authAtom, accountAtom } from '../../atom/atoms';
+import HomePost from '../../components/HomePost/MyHomePost';
+import { authAtom, accountNameAtom } from '../../atom/atoms';
 import { useRecoilValue } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,9 +17,9 @@ function HomeFeed() {
   const [postId, setPostId] = useState(null);
   const navigate = useNavigate();
   const auth = useRecoilValue(authAtom);
-  const account = useRecoilValue(accountAtom);
+  const accountname = useRecoilValue(accountNameAtom);
 
-  console.log(auth, account);
+  console.log(auth, accountname);
   const getFollowers = () => {
     try {
       axios({

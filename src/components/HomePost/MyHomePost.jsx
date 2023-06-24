@@ -2,38 +2,26 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import msg from '../../assets/icons/message-icon.svg';
 import like from '../../assets/icons/like-icon.svg';
-import axios from 'axios';
+import { GetHomePostData } from '../../api/getData/getData';
 import UserSearch from '../common/User/UserSearch';
 
-export default function YourHomePost({ accountname }) {
-  const [userData, setUserData] = useState(accountname);
-  const [userPost, setUserPost] = useState({});
+export default function MyHomePost() {
+  const [myPost, setMyPost] = useState({});
+  // const [postData, setPostData] = useState('');
+
   useEffect(() => {
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';
-    try {
-      axios({
-        method: 'GET',
-        url: `https://api.mandarin.weniv.co.kr/post/${userData}/userpost`,
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-type': 'application/json',
-        },
-      }).then(response => {
-        setUserPost(response.data.post);
-      });
-    } catch (err) {
-      console.log('에러');
-    }
-  }, [userData]);
+    GetHomePostData().then(response => {
+      setMyPost(response.data.post);
+      console.log(myPost);
+    });
+  }, []);
 
   return (
     <>
-      {userPost.length > 0 &&
-        userPost.map(data => {
+      {myPost.length > 0 &&
+        myPost.map(data => {
           return (
             <>
-              {console.log(userPost)}
               <UserSearch data={data} />
               <p>{data.content}</p>
               <HomePostImg src={data.image} />
