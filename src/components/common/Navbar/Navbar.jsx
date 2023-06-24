@@ -13,34 +13,11 @@ import {
   UserProfileActive,
 } from './NavbarStyle';
 
+import { Link } from 'react-router-dom';
 export default function Navbar() {
   return (
     <NavbarWrapper>
       <ul>
-        <li>
-          <a href="www.jdjkd.com">
-            <HomeIcon />
-            <p>홈</p>
-          </a>
-        </li>
-        <li>
-          <a href="www.jdjkd.com">
-            <Message />
-            <p>채팅</p>
-          </a>
-        </li>
-        <li>
-          <a href="www.jdjkd.com">
-            <PostUpload />
-            <p>게시물 작성</p>
-          </a>
-        </li>
-        <li>
-          <a href="www.jdjkd.com">
-            <UserProfile />
-            <p>프로필</p>
-          </a>
-        </li>
         <li>
           <a href="www.jdjkd.com">
             <HomeIconActive />
@@ -60,10 +37,13 @@ export default function Navbar() {
           </a>
         </li>
         <li>
-          <a href="www.jdjkd.com">
+          <Link to="/myprofile">
             <UserProfileActive />
+            <p>이메일로 회원가입</p>
+          </Link>
+          {/* <a href="www.jdjkd.com">
             <p>프로필</p>
-          </a>
+          </a> */}
         </li>
       </ul>
     </NavbarWrapper>
