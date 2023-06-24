@@ -26,6 +26,7 @@ export default function ProfileEditPage() {
   const [isUserNameValid, setIsUserNameValid] = useState(false);
   const [isUserIDValid, setIsUserIDValid] = useState(false);
   const [errorMessageID, setErrorMessageID] = useState('');
+
   const navigate = useNavigate();
   const auth = useRecoilValue(authAtom);
 
@@ -76,8 +77,6 @@ export default function ProfileEditPage() {
           setIsUserIDValid(true);
           console.log(res);
           setIsFormValid(true);
-
-          // console.log(localStorage.token);
         }
       } catch (error) {
         console.log(error);

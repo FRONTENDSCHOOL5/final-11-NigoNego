@@ -5,6 +5,8 @@ import { SImage } from '../../../components/common/UserImage/UserImage';
 import buttonImg from '../../../assets/images/upload-file.svg';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { authAtom } from '../../../atom/atoms';
+import { useRecoilValue } from 'recoil';
 
 export default function PostUpload() {
   const [content, setContent] = useState('');
@@ -14,6 +16,8 @@ export default function PostUpload() {
   // user 데이터 저장
   const [userImage, setUserImage] = useState('');
   const [userContent, setUserContent] = useState('');
+
+  const auth = useRecoilValue(authAtom);
 
   const handleImageUpload = e => {
     e.preventDefault();
@@ -34,15 +38,13 @@ export default function PostUpload() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';
     // 게시글 작성 api 호출
     try {
       axios({
         method: 'POST',
         url: `https://api.mandarin.weniv.co.kr/post`,
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${auth}`,
           'Content-type': 'application/json',
         },
         data: {
@@ -68,7 +70,7 @@ export default function PostUpload() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <HeaderUploadNav />
+        <HeaderUploadNav content={'업로드'} />
         <PostUploadWrapper>
           <ProfileWrapper>
             <SImage />

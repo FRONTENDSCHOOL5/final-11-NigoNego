@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { HeaderBasicNav } from '../../components/common/Header/Header';
@@ -7,23 +8,24 @@ import msg from '../../assets/icons/message-icon.svg';
 import like from '../../assets/icons/like-icon.svg';
 import UserSearch from '../../components/common/User/UserSearch';
 import HomePost from '../../components/HomePost/HomePost';
-
-import { useState, useEffect } from 'react';
+import { authAtom, accountNameAtom } from '../../atom/atoms';
+import { useRecoilValue } from 'recoil';
 
 function HomeFeed() {
   const [followersData, setFollowersData] = useState('');
 
-  const getFollowers = () => {
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';
+  const auth = useRecoilValue(authAtom);
+  const accountname = useRecoilValue(accountNameAtom);
 
+  console.log(auth, accountname);
+  const getFollowers = () => {
     try {
       axios({
         method: 'GET',
         url: `https://api.mandarin.weniv.co.kr/post/feed`,
 
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${auth}`,
           'Content-type': 'application/json',
         },
       }).then(response => {
