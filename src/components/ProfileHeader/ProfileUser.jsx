@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const ProfileUserWrapper = styled.div`
   box-shadow: inset 0 0 10px blue;
@@ -18,47 +19,27 @@ const FollowNumberWrapper = styled.div`
   padding: 20px 12px;
 `;
 
-// export default function ProfileUser({ myProfileData }) {
-//   console.log(myProfileData);
-//   return (
-//     <ProfileUserWrapper>
-//       <FollowNumberWrapper>
-//         <h3>{'기본' ?? myProfileData.followerCount}</h3>
-//         <small>followers</small>
-//       </FollowNumberWrapper>
-//       <div>
-//         <img src={'기본' ?? myProfileData.image} alt="프로필사진" />
-//         <h2>{'기본' ?? myProfileData.username}</h2>
-//         <small>{'기본' ?? myProfileData.accountname}</small>
-//         <p>{'기본' ?? myProfileData.intro}</p>
-//       </div>
-//       <FollowNumberWrapper>
-//         <h3>{'기본' ?? myProfileData.followingCount}</h3>
-//         <small>followings</small>
-//       </FollowNumberWrapper>
-//     </ProfileUserWrapper>
-//   );
-// }
-
 export default function ProfileUser({ myProfileData }) {
-  console.log(myProfileData);
-  console.log();
   return (
     <ProfileUserWrapper>
-      <FollowNumberWrapper>
-        <h3>{myProfileData.followerCount}</h3>
-        <small>followers</small>
-      </FollowNumberWrapper>
+      <Link to={'/myfollowers'} state={{ value: 'follower' }}>
+        <FollowNumberWrapper>
+          <h3>{myProfileData.followerCount}</h3>
+          <small>followers</small>
+        </FollowNumberWrapper>
+      </Link>
       <div>
         <img src={myProfileData.image} alt="프로필사진" />
         <h2>{myProfileData.username}</h2>
         <small>{myProfileData.accountname}</small>
         <p>{myProfileData.intro}</p>
       </div>
-      <FollowNumberWrapper>
-        <h3>{myProfileData.followingCount}</h3>
-        <small>followings</small>
-      </FollowNumberWrapper>
+      <Link to={`/myfollowers`} state={{ value: 'following' }}>
+        <FollowNumberWrapper>
+          <h3>{myProfileData.followingCount}</h3>
+          <small>followings</small>
+        </FollowNumberWrapper>
+      </Link>
     </ProfileUserWrapper>
   );
 }
