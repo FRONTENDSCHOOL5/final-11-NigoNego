@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useRecoilState } from 'recoil';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
-import { authAtom } from '../../atom/atoms';
+import { authAtom, accountAtom } from '../../atom/atoms';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -18,6 +18,7 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const [auth, setAuth] = useRecoilState(authAtom);
+  const [account, setAccountAtom] = useRecoilState(accountAtom);
 
   function emailCheck(event) {
     setEmail(event.target.value);
@@ -67,12 +68,11 @@ function LoginPage() {
         const userData = res.data.user;
 
         const { token, accountname } = userData;
-        localStorage.setItem('auth', JSON.stringify(token));
-        localStorage.setItem('account', JSON.stringify(accountname));
         console.log(res.data.user.email);
-        setAuth(auth);
-        if (auth) {
-          navigate('/home');
+        setAuth(token);
+        setAccountAtom(accountname);
+        if (token) {
+          navigate('/homefeed');
         }
       }
 

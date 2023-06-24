@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { HeaderBasicNav } from '../../components/common/Header/Header';
@@ -6,23 +7,25 @@ import Navbar from '../../components/common/Navbar/Navbar';
 import msg from '../../assets/icons/message-icon.svg';
 import like from '../../assets/icons/like-icon.svg';
 import UserSearch from '../../components/common/User/UserSearch';
-
-import { useState, useEffect } from 'react';
+import HomePost from '../../components/HomePost/HomePost';
+import { authAtom, accountAtom } from '../../atom/atoms';
+import { useRecoilValue } from 'recoil';
 
 function HomeFeed() {
   const [followersData, setFollowersData] = useState('');
 
-  const getFollowers = () => {
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';
+  const auth = useRecoilValue(authAtom);
+  const account = useRecoilValue(accountAtom);
 
+  console.log(auth, account);
+  const getFollowers = () => {
     try {
       axios({
         method: 'GET',
         url: `https://api.mandarin.weniv.co.kr/post/feed`,
 
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${auth}`,
           'Content-type': 'application/json',
         },
       }).then(response => {
@@ -42,22 +45,23 @@ function HomeFeed() {
       {followersData.length > 0 &&
         followersData.map(data => {
           return (
-            <>
-              <UserSearch data={data} />
-              <p>{data.content}</p>
-              <HomePostImg src={data.image} />
-              <div>
-                <button type="button">
-                  <img src={msg} alt="" />
-                  <span>{data.heartCount}</span>
-                </button>
-                <button type="button">
-                  <img src={like} alt="" />
-                  {/* <span>{data.author.commentCount}</span> */}
-                </button>
-              </div>
-              {/* <time>{data.updatedAt}</time> */}
-            </>
+            <HomePost data={data} />
+            // <>
+            //   <UserSearch data={data} />
+            //   <p>{data.content}</p>
+            //   <HomePostImg src={data.image} />
+            //   <div>
+            //     <button type="button">
+            //       <img src={msg} alt="" />
+            //       <span>{data.heartCount}</span>
+            //     </button>
+            //     <button type="button">
+            //       <img src={like} alt="" />
+            //       <span>{data.author.commentCount}</span>
+            //     </button>
+            //   </div>
+            //   <time>{data.updatedAt}</time>
+            // </>
           );
         })}
       {/* <div>{followresData}</div> */}
@@ -73,3 +77,14 @@ const HomePostImg = styled.img`
 `;
 
 export default HomeFeed;
+
+/**
+ * 1. 유저를 클릭하면
+ * 2. 해당 유저의
+ * 3. your profile 페이지로 이동
+ * onClick={(e) => {함수1(e)}}
+ * 함수1의 역할1. yourprofile로 이동
+ * 함수1의 역할2. 해당 데이터를 받아와서
+ * useNavigator('/yourprofile')
+ * your profile 페이지에서 특정 유저가 데이터가 선택되는 방법은?
+ */
