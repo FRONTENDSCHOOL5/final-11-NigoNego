@@ -6,7 +6,6 @@ import { useLocation } from 'react-router-dom';
 
 export default function YourProfilePage() {
   const location = useLocation();
-  console.log(location);
   const accountname = location.state.accountname;
 
   return (

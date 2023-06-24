@@ -10,10 +10,12 @@ import UserSearch from '../../components/common/User/UserSearch';
 import HomePost from '../../components/HomePost/HomePost';
 import { authAtom, accountAtom } from '../../atom/atoms';
 import { useRecoilValue } from 'recoil';
+import { useNavigate } from 'react-router-dom';
 
 function HomeFeed() {
-  const [followersData, setFollowersData] = useState('');
-
+  const [followersData, setFollowersData] = useState([]);
+  const [postId, setPostId] = useState(null);
+  const navigate = useNavigate();
   const auth = useRecoilValue(authAtom);
   const account = useRecoilValue(accountAtom);
 
@@ -30,6 +32,7 @@ function HomeFeed() {
         },
       }).then(response => {
         setFollowersData(response.data.posts);
+        console.log(followersData);
       });
     } catch (err) {
       console.log('에러');
@@ -39,13 +42,18 @@ function HomeFeed() {
   useEffect(() => {
     getFollowers();
   }, []);
+
+  useEffect(() => {
+    console.log(followersData);
+  }, [followersData]);
+
   return (
     <>
       <HeaderBasicNav />
       {followersData.length > 0 &&
         followersData.map(data => {
           return (
-            <HomePost data={data} />
+            <HomePost data={data} id={data.id} />
             // <>
             //   <UserSearch data={data} />
             //   <p>{data.content}</p>
