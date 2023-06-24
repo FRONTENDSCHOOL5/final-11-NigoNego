@@ -19,12 +19,8 @@ const LProfile = styled(ImageStyle)`
   height: 110px;
 `;
 
-export function LImage({ backgroundUrl, ...props }) {
-  return (
-    <LProfile
-      backgroundUrl={props.backgroundUrl ? props.backgroundUrl : basicImg}
-    />
-  );
+export function LImage({ backgroundUrl }) {
+  return <LProfile backgroundUrl={backgroundUrl || basicImg} />;
 }
 
 const MProfile = styled(ImageStyle)`
@@ -33,7 +29,7 @@ const MProfile = styled(ImageStyle)`
 `;
 
 export function MImage({ backgroundUrl }) {
-  return <MProfile backgroundUrl={backgroundUrl ? backgroundUrl : basicImg} />;
+  return <MProfile backgroundUrl={backgroundUrl || basicImg} />;
 }
 
 const SProfile = styled(ImageStyle)`
@@ -41,12 +37,8 @@ const SProfile = styled(ImageStyle)`
   height: 42px;
 `;
 
-export function SImage({ backgroundUrl, ...props }) {
-  return (
-    <SProfile
-      backgroundUrl={props.backgroundUrl ? props.backgroundUrl : basicImg}
-    />
-  );
+export function SImage({ backgroundUrl }) {
+  return <SProfile backgroundUrl={backgroundUrl || basicImg} />;
 }
 
 const XSProfile = styled(ImageStyle)`
