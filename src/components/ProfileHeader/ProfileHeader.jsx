@@ -29,7 +29,7 @@ export default function ProfileHeader() {
     } catch (err) {
       console.log('에러');
     }
-  }, [auth]);
+  }, []);
 
   return (
     <ProfileHeaderWrapper>
