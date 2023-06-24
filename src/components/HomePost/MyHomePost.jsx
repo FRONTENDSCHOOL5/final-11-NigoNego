@@ -14,7 +14,7 @@ export default function MyHomePost() {
       setMyPost(response.data.post);
       console.log(myPost);
     });
-  }, []);
+  }, [myPost]);
 
   return (
     <>

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import ProductItem from './ProductItem';
-
+import { useRecoilValue } from 'recoil';
+import { authAtom } from '../../atom/atoms';
 const ProductWrapper = styled.div`
   margin-left: 10px;
   .product-list-items {
@@ -15,16 +16,16 @@ const ProductWrapper = styled.div`
 
 export default function Product() {
   const [userData, setUserData] = useState('');
+  const auth = useRecoilValue(authAtom);
+
   useEffect(() => {
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';
     try {
       axios({
         method: 'GET',
         url: `https://api.mandarin.weniv.co.kr/product/nigonego`,
 
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${auth}`,
           'Content-type': 'application/json',
         },
       }).then(response => {
@@ -33,7 +34,7 @@ export default function Product() {
     } catch (err) {
       console.log('에러');
     }
-  }, []);
+  }, [auth]);
   return (
     <ProductWrapper>
       <h2>판매 중인 상품</h2>
