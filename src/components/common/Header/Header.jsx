@@ -71,6 +71,15 @@ export function HeaderChatNav() {
   );
 }
 
+export function HeaderContentdNav({ content }) {
+  return (
+    <HeaderChatNavStyle>
+      <ArrowLeft onclick />
+      <h1>{content}</h1>
+    </HeaderChatNavStyle>
+  );
+}
+
 // 상단바 기본 style
 const HeaderDefaultStyle = styled.div`
   /* box-shadow: inset 0px 0px 3px 1px rgb(0, 38, 255); */
