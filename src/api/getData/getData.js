@@ -16,6 +16,24 @@ import { getDataBase } from "../Api";
   }
 };
 
+
+
+
+
+// homepost
+export const GetMyProfileData = async () => {
+  try {
+    // id부분 props 로 재작업하기
+    // const res = await getDataBase.get(`/post/${id}`);
+    const response = await getDataBase.get(`/profile/nigonego`)
+    return response
+  } catch (err) {
+    console.log("오류")
+  }
+};
+
+
+
 export const GetFollowerData = async () => {
   try {
     // id부분 props 로 재작업하기
