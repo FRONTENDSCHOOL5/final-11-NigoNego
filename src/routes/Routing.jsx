@@ -24,36 +24,35 @@ import { authAtom } from '../atom/atoms';
 function Routing() {
   const Login = useRecoilValue(authAtom);
 
+  const PrivateRoute = ({ element, ...rest }) => {
+    return Login ? (
+      <Route {...rest} element={element}></Route>
+    ) : (
+      <Navigate to="/login" replace state={{ from: rest.location }}></Navigate>
+    );
+  };
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<StartSplash />} />
+        <Route path="/homefeed" element={<HomeFeed />} />
+        <Route path="/home" element={<HomeBlank />} />
         <Route path="/loginmain" element={<LoginMain />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/join" element={<JoinPage />} />
         <Route path="/joinmember" element={<JoinMember />} />
-
-        {Login ? (
-          <Routes>
-            <Route path="/homefeed" element={<HomeFeed />} />
-            <Route path="/home" element={<HomeBlank />} />
-            <Route path="/chat" element={<ChatPage />} />
-            <Route path="/chatroom" element={<ChatRoom />} />
-            <Route path="/myprofile" element={<MyProfilePage />} />
-            <Route path="/yourprofile" element={<YourProfilePage />} />
-            <Route path="/profileedit" element={<ProfileEditPage />} />
-            <Route path="/postmain" element={<PostMain />} />
-            <Route path="/postupload" element={<PostUploadPage />} />
-            <Route path="/product" element={<ProductPage />} />
-            <Route path="/search" element={<SearchPage />} />
-            <Route path="/postmain" element={<PostMain />} />
-          </Routes>
-        ) : (
-          <Route path="/loginmain" element={<LoginPage />} />
-        )}
-
+        <Route path="/chat" element={<ChatPage />} />
+        <Route path="/chatroom" element={<ChatRoom />} />
+        <Route path="/myprofile" element={<MyProfilePage />} />
+        <Route path="/yourprofile" element={<YourProfilePage />} />
+        <Route path="/profileedit" element={<ProfileEditPage />} />
+        <Route path="/postmain" element={<PostMain />} />
+        <Route path="/postupload" element={<PostUploadPage />} />
+        <Route path="/product" element={<ProductPage />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="/test" element={<Test />} />
+        <Route path="/postmain" element={<PostMain />} />
       </Routes>
     </BrowserRouter>
   );
