@@ -5,7 +5,7 @@ import YourProfileUser from './YourProfileUser';
 import YourProfileBtn from './YourProfileBtn';
 const ProfileHeaderWrapper = styled.div``;
 
-export default function ProfileHeader({ username }) {
+export default function ProfileHeader({ accountname }) {
   const [yourProfileData, setYourProfileData] = useState({});
 
   useEffect(() => {
@@ -14,7 +14,8 @@ export default function ProfileHeader({ username }) {
     try {
       axios({
         method: 'GET',
-        url: `https://api.mandarin.weniv.co.kr/profile/${username}`,
+        // url: `https://api.mandarin.weniv.co.kr/profile/${username}`,
+        url: `https://api.mandarin.weniv.co.kr/profile/${accountname}`,
 
         headers: {
           Authorization: `Bearer ${token}`,

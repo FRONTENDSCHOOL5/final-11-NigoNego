@@ -54,15 +54,32 @@ const BtnWrapper = styled.button`
 
 export default function UserSearch({ data }) {
   const navigate = useNavigate();
-  const [username, setUsername] = useState();
+  const [accountname, setAccountName] = useState('');
 
-  function moveToYourProfile() {
-    setUsername(data.author.username);
+  useEffect(() => {
+    console.log(data.author.accountname);
+    setAccountName(data.author.accountname);
     navigate('/yourprofile', {
       state: {
-        username,
+        accountname,
       },
     });
+    // navigate('/yourprofile', {
+    //   userInfo: {W
+    //     username,
+    //   },
+    // });
+  }, [accountname, navigate]);
+
+  function moveToYourProfile() {
+    // console.log(data.author.accountname);
+    // setAccountName(data.author.accountname);
+    // console.log(accountname);
+    // navigate('/yourprofile', {
+    //   state: {
+    //     accountname,
+    //   },
+    // });
     // navigate('/yourprofile', {
     //   userInfo: {
     //     username,

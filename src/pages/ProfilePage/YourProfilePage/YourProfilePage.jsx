@@ -7,11 +7,11 @@ import { useLocation } from 'react-router-dom';
 export default function YourProfilePage() {
   const location = useLocation();
   console.log(location);
-  const username = location.state.username;
+  const accountname = location.state.accountname;
 
   return (
     <div>
-      <YourProfileHeader username={username} />
+      <YourProfileHeader username={accountname} />
       <YourProduct />
       <YourHomePost />
     </div>
