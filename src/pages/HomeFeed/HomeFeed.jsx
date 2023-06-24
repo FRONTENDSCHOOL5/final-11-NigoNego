@@ -7,7 +7,7 @@ import Navbar from '../../components/common/Navbar/Navbar';
 import msg from '../../assets/icons/message-icon.svg';
 import like from '../../assets/icons/like-icon.svg';
 import UserSearch from '../../components/common/User/UserSearch';
-import HomePost from '../../components/HomePost/HomePost';
+import HomePost from '../../components/HomePost/MyHomePost';
 import { authAtom, accountNameAtom } from '../../atom/atoms';
 import { useRecoilValue } from 'recoil';
 
