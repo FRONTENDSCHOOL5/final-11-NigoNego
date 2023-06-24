@@ -1,80 +1,42 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-import { HeaderBasicNav } from '../../components/common/Header/Header';
-import Navbar from '../../components/common/Navbar/Navbar';
-import msg from '../../assets/icons/message-icon.svg';
-import like from '../../assets/icons/like-icon.svg';
-import UserSearch from '../../components/common/User/UserSearch';
-import HomePost from '../../components/HomePost/MyHomePost';
-import { authAtom, accountNameAtom } from '../../atom/atoms';
+import React, { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
+// import { useNavigate } from 'react-router-dom';
+import { authAtom, accountNameAtom } from '../../atom/atoms';
+import { GetHomeFeedData } from '../../api/getData/getData';
+import HomePost from '../../components/HomePost/HomePost';
+import Navbar from '../../components/common/Navbar/Navbar';
+import { HeaderBasicNav } from '../../components/common/Header/Header';
 
 function HomeFeed() {
-  const [followersData, setFollowersData] = useState('');
-
+  // const [postId, setPostId] = useState(null);
+  // const navigate = useNavigate();
   const auth = useRecoilValue(authAtom);
+
   const accountname = useRecoilValue(accountNameAtom);
 
   console.log(auth, accountname);
-  const getFollowers = () => {
-    try {
-      axios({
-        method: 'GET',
-        url: `https://api.mandarin.weniv.co.kr/post/feed`,
 
-        headers: {
-          Authorization: `Bearer ${auth}`,
-          'Content-type': 'application/json',
-        },
-      }).then(response => {
-        setFollowersData(response.data.posts);
-      });
-    } catch (err) {
-      console.log('에러');
-    }
-  };
+  const [feedPost, setFeedPost] = useState([]);
 
   useEffect(() => {
-    getFollowers();
+    GetHomeFeedData().then(response => {
+      setFeedPost(response.data.posts);
+      console.log(feedPost);
+    });
   }, []);
+
   return (
     <>
       <HeaderBasicNav />
-      {followersData.length > 0 &&
-        followersData.map(data => {
-          return (
-            <HomePost data={data} />
-            // <>
-            //   <UserSearch data={data} />
-            //   <p>{data.content}</p>
-            //   <HomePostImg src={data.image} />
-            //   <div>
-            //     <button type="button">
-            //       <img src={msg} alt="" />
-            //       <span>{data.heartCount}</span>
-            //     </button>
-            //     <button type="button">
-            //       <img src={like} alt="" />
-            //       <span>{data.author.commentCount}</span>
-            //     </button>
-            //   </div>
-            //   <time>{data.updatedAt}</time>
-            // </>
-          );
+      {feedPost.length > 0 &&
+        feedPost.map(data => {
+          return <HomePost data={data} />;
         })}
       {/* <div>{followresData}</div> */}
       <Navbar />
     </>
   );
 }
-
-const HomePostImg = styled.img`
-  vertical-align: middle;
-  padding-bottom: 10px;
-  width: 500px;
-`;
 
 export default HomeFeed;
 

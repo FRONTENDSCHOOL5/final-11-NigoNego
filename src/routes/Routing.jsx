@@ -42,8 +42,6 @@ function Routing() {
         <Route path="/search" element={<SearchPage />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="/test" element={<Test />} />
-        <Route path="/postmain" element={<PostMain />} />
-        <Route path="/myfollowers" element={<MyFollowersPage />} />
       </Routes>
     </BrowserRouter>
   );
