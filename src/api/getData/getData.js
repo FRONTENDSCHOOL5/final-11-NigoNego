@@ -5,7 +5,7 @@ import { getDataBase } from "../Api";
 
 
 // homepost
- export const GetHomePostData = async () => {
+export const GetHomePostData = async () => {
   try {
     // id부분 props 로 재작업하기
     // const res = await getDataBase.get(`/post/${id}`);
@@ -16,7 +16,16 @@ import { getDataBase } from "../Api";
   }
 };
 
-
+export const GetHomeFeedData = async () => {
+  try {
+    // id부분 props 로 재작업하기
+    
+    const response = await getDataBase.get(`/post/feed`)
+    return response
+  } catch (err) {
+    console.log("오류")
+  }
+};
 
 
 
@@ -77,12 +86,3 @@ export const GetFollowerData = async () => {
 //   console.log('에러');
 // }
 // }
-
-
-
-
-
-
-
-
-
