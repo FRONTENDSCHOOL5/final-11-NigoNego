@@ -33,6 +33,7 @@ function Routing() {
         <Route path="/myprofile" element={<MyProfilePage />} />
         <Route path="/yourprofile" element={<YourProfilePage />} />
         <Route path="/profileedit" element={<ProfileEditPage />} />
+        <Route path="/postmain" element={<PostMain />} />
         <Route path="/postupload" element={<PostUploadPage />} />
         <Route path="/product" element={<ProductPage />} />
         <Route path="/search" element={<SearchPage />} />

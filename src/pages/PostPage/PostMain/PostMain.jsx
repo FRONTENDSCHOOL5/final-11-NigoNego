@@ -7,7 +7,7 @@ import HomePost from '../../../components/HomePost/HomePost';
 import CommentInput from '../../../components/common/Comment/CommentInput/Comment';
 import CommentPost from '../../../components/common/Comment/CommentPost/CommentPost';
 
-function PostMain({ img }) {
+function PostMain() {
   return (
     <PostPageWrapper>
       <HeaderBasicNav />
