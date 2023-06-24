@@ -15,6 +15,7 @@ export default function YourHomePost({ accountname }) {
       axios({
         method: 'GET',
         url: `https://api.mandarin.weniv.co.kr/post/${userData}/userpost`,
+        // url: `https://api.mandarin.weniv.co.kr/profile/${userData}/following`, //isfollow이슈
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-type': 'application/json',
@@ -33,7 +34,6 @@ export default function YourHomePost({ accountname }) {
         userPost.map(data => {
           return (
             <>
-              {console.log(userPost)}
               <UserSearch data={data} />
               <p>{data.content}</p>
               <HomePostImg src={data.image} />

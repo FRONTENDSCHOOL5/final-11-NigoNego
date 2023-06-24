@@ -31,6 +31,9 @@ export default function UserFollow() {
     <>
       {getData.length > 0 &&
         getData.map(data => {
+          {
+            console.log(data);
+          }
           return (
             <StyledFollower>
               <MImage backgroundUrl={data.image} />
@@ -47,14 +50,3 @@ export default function UserFollow() {
     </>
   );
 }
-
-// useEffect(() => {
-//   // console.log(data.author.accountname);
-//   if (accountname) {
-//     navigate('/yourprofile', {
-//       state: {
-//         accountname: accountname,
-//       },
-//     });
-//   }
-// }, [accountname]);
