@@ -44,8 +44,7 @@ export const GetMyProfileData = async () => {
 
 
 
-// 팔로워, 리스트
-
+// 팔로워, 팔로잉 리스트
 export const GetFollowerData = async (getData) => {
   try {
     // id부분 props 로 재작업하기
@@ -56,6 +55,10 @@ export const GetFollowerData = async (getData) => {
     console.log("오류")
   }
 };
+
+
+
+
 
 
 

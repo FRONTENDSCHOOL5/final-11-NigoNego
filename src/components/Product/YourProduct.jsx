@@ -29,17 +29,23 @@ export default function YourProduct({ accountname }) {
         },
       }).then(response => {
         setUserData(response.data.product);
+        console.log(userData);
       });
     } catch (err) {
       console.log('에러');
     }
   }, []);
+
   return (
-    <ProductWrapper>
-      <h2>판매 중인 상품</h2>
-      <div className="product-list-items">
-        {userData.length > 0 && <YourProductItem userData={userData} />}
-      </div>
-    </ProductWrapper>
+    <>
+      {userData.length > 0 && (
+        <ProductWrapper>
+          <h2>판매 중인 상품</h2>
+          <div className="product-list-items">
+            <YourProductItem userData={userData} />
+          </div>
+        </ProductWrapper>
+      )}
+    </>
   );
 }
