@@ -57,34 +57,18 @@ export default function UserSearch({ data }) {
   const [accountname, setAccountName] = useState('');
 
   useEffect(() => {
-    console.log(data.author.accountname);
-    setAccountName(data.author.accountname);
-    navigate('/yourprofile', {
-      state: {
-        accountname,
-      },
-    });
-    // navigate('/yourprofile', {
-    //   userInfo: {W
-    //     username,
-    //   },
-    // });
-  }, [accountname, navigate]);
+    // console.log(data.author.accountname);
+    if (accountname) {
+      navigate('/yourprofile', {
+        state: {
+          accountname: accountname,
+        },
+      });
+    }
+  }, [accountname]);
 
   function moveToYourProfile() {
-    // console.log(data.author.accountname);
-    // setAccountName(data.author.accountname);
-    // console.log(accountname);
-    // navigate('/yourprofile', {
-    //   state: {
-    //     accountname,
-    //   },
-    // });
-    // navigate('/yourprofile', {
-    //   userInfo: {
-    //     username,
-    //   },
-    // });
+    setAccountName(data.author.accountname);
   }
 
   return (

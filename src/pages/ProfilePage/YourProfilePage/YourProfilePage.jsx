@@ -11,7 +11,7 @@ export default function YourProfilePage() {
 
   return (
     <div>
-      <YourProfileHeader username={accountname} />
+      <YourProfileHeader accountname={accountname} />
       <YourProduct />
       <YourHomePost />
     </div>
