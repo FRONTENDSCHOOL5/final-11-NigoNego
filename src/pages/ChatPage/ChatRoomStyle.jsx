@@ -4,24 +4,20 @@ const ChatWrapper = styled.div`
   background-color: var('--light-grey');
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  gap: 9px;
+  margin-top: 20px;
 `;
 
 // 상대방 메시지
 const SenderWrapper = styled.div`
   display: flex;
-  gap: 12px;
-  /* padding-top: 10px;
-  padding-left: 12px;
-  padding-right: 50px; */
 `;
 
 const ChatMessage = styled.div`
-  border: 1px solid black;
+  border: 1px solid #dbdbdb;
   padding: 12px;
   word-wrap: break-word;
   max-width: 70%;
-  font-size: 14px;
 `;
 const SenderMessage = styled(ChatMessage)`
   border-radius: 0px 10px 10px 10px;
@@ -34,13 +30,8 @@ const ChatMessageTime = styled.div`
 `;
 
 // 유저 메시지
-const UserWrapper = styled.div`
-  display: flex;
+const UserWrapper = styled(ChatMessageTime)`
   flex-direction: row-reverse;
-  gap: 12px;
-  padding-top: 10px;
-  /* padding-left: 12px;
-  padding-right: 50px; */
 `;
 
 const UserMessage = styled(ChatMessage)`
@@ -52,48 +43,32 @@ const UserMessage = styled(ChatMessage)`
 const ChatNav = styled.nav`
   width: 100%;
   height: 4.8rem;
-  border-top: 1px solid var(--basic-border-color);
-  color: var(--basic-grey);
   position: fixed;
   bottom: 0px;
   display: flex;
-  /* padding-left: 20px; */
-  /* padding-right: 20px; */
-`;
-
-const UploadImageWrapper = styled.div`
-  background-color: #ccc;
-  height: inherit;
-  width: 50px;
-  text-align: center;
-`;
-
-const UploadImage = styled.button`
-  width: 4.8rem;
-  height: inherit;
-  border-radius: 50%;
+  gap: 25px;
+  align-items: center;
 `;
 
 const ChattingForm = styled.form`
   height: inherit;
-  border: 1px solid black;
-  flex-grow: 8;
-  font-size: 16px;
+  width: 100%;
 `;
 const MyChatting = styled.input`
-  width: 90%;
   height: inherit;
+  width: 90%;
+  border: 0;
 `;
 
 const ChattingSend = styled.button`
-  width: 10%;
   height: inherit;
-  /* border: none; */
+  width: 10%;
+  border: 0;
+  color: var(--basic-gray);
 `;
 
 export {
   SenderWrapper,
-  UploadImageWrapper,
   ChattingForm,
   ChattingSend,
   ChatMessage,
@@ -101,7 +76,6 @@ export {
   ChatWrapper,
   ChatNav,
   UserWrapper,
-  UploadImage,
   MyChatting,
   SenderMessage,
   UserMessage,

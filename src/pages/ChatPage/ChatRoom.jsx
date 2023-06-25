@@ -65,9 +65,7 @@ export default function ChatRoom() {
 
       {/* 하단 전송버튼 */}
       <ChatNav>
-        <UploadImageWrapper>
-          <UploadImage />
-        </UploadImageWrapper>
+        <SImage />
         <ChattingForm>
           <MyChatting placeholder="메시지 입력하기" />
           <ChattingSend p>전송</ChattingSend>
