@@ -1,44 +1,69 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+// Product.js
+
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import ProductItem from './ProductItem';
-import { useRecoilValue } from 'recoil';
-import { authAtom } from '../../atom/atoms';
+import { GetProDuctListLimit } from '../../api/getData/getData';
+
 const ProductWrapper = styled.div`
-  margin-left: 10px;
   .product-list-items {
     display: flex;
     gap: 10px;
+    overflow-x: auto;
+
+    button {
+      flex: 0 0 auto;
+      width: 140px;
+      border: none;
+    }
   }
 `;
 
-// 작업
+export default function Product({ accountname }) {
+  const [userData, setUserData] = useState([]);
+  const productListRef = useRef(null);
+  console.log(accountname);
+  useEffect(() => {
+    fetchData(0); // 초기 데이터 로드
+  }, []);
 
-export default function Product() {
-  const [userData, setUserData] = useState('');
-  const auth = useRecoilValue(authAtom);
+  const fetchData = (skip = 5) => {
+    // yoon 부분을 바꾸면 됨
+    GetProDuctListLimit(skip, accountname)
+      .then(response => {
+        setUserData(prevData => [...prevData, ...response.data.product]);
+      })
+      .catch(error => console.error(error));
+  };
 
   useEffect(() => {
-    try {
-      axios({
-        method: 'GET',
-        url: `https://api.mandarin.weniv.co.kr/product/nigonego`,
+    const handleScroll = () => {
+      const container = productListRef.current;
+      if (container) {
+        const { scrollLeft, clientWidth, scrollWidth } = container;
+        if (scrollLeft + clientWidth >= scrollWidth) {
+          const skip = userData.length;
+          fetchData(skip);
+        }
+      }
+    };
 
-        headers: {
-          Authorization: `Bearer ${auth}`,
-          'Content-type': 'application/json',
-        },
-      }).then(response => {
-        setUserData(response.data.product);
-      });
-    } catch (err) {
-      console.log('에러');
+    const productList = productListRef.current;
+    if (productList) {
+      productList.addEventListener('scroll', handleScroll);
     }
-  }, [auth]);
+
+    return () => {
+      if (productList) {
+        productList.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, [userData]);
+
   return (
     <ProductWrapper>
       <h2>판매 중인 상품</h2>
-      <div className="product-list-items">
+      <div className="product-list-items" ref={productListRef}>
         {userData.length > 0 && <ProductItem userData={userData} />}
       </div>
     </ProductWrapper>

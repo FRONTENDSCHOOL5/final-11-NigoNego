@@ -3,10 +3,6 @@ import axios from 'axios';
 import styled from 'styled-components';
 import ProfileUser from './ProfileUser';
 import MyProfileBtn from './MyProfileBtn';
-import { useRecoilValue } from 'recoil';
-import { authAtom } from '../../atom/atoms';
-
-const ProfileHeaderWrapper = styled.div``;
 
 export default function ProfileHeader() {
   const [myProfileData, setMyProfileData] = useState({});
@@ -30,6 +26,8 @@ export default function ProfileHeader() {
       console.log('에러');
     }
   }, []);
+
+  const ProfileHeaderWrapper = styled.div``;
 
   return (
     <ProfileHeaderWrapper>
