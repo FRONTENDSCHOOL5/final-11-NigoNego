@@ -103,14 +103,17 @@ const PostUploadWrapper = styled.div`
       display: block;
       border: 0px;
       width: 100%;
+      padding: 12px 6px;
     }
     img {
+      margin-top: 10px;
       display: block;
       overflow: hidden;
       width: 100%;
       height: 200px;
       object-fit: cover;
-      box-shadow: inset 0 0 10px green;
+      border-radius: 10px;
+      overflow: hidden;
     }
   }
 `;
