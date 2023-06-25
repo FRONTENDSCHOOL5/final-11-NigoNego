@@ -50,5 +50,11 @@ const ChatUser = styled.section`
       margin: 0;
       padding: 0;
     }
+    p {
+      color: var(--basic-grey);
+    }
+    time {
+      color: var(--light-grey);
+    }
   }
 `;

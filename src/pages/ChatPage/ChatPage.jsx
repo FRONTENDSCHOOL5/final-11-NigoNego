@@ -4,7 +4,7 @@ import Navbar from '../../components/common/Navbar/Navbar';
 import ChatUserList from '../../components/Chat/ChatUserList';
 import styled from 'styled-components';
 
-const UserWrapper = styled.section`
+const CommonWrapper = styled.section`
   height: 80vh;
   overflow-y: scroll;
 `;
@@ -13,7 +13,7 @@ function ChatPage() {
   return (
     <>
       <HeaderBasicNav />
-      <UserWrapper>
+      <CommonWrapper>
         <ChatUserList />
         <ChatUserList />
         <ChatUserList />
@@ -25,7 +25,7 @@ function ChatPage() {
         <ChatUserList />
         <ChatUserList />
         <ChatUserList />
-      </UserWrapper>
+      </CommonWrapper>
 
       <Navbar />
     </>
