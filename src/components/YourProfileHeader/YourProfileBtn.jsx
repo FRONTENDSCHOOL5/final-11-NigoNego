@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import messageIcon from '../../assets/icons/message-icon.png';
 import { MBtn } from '../common/button/Button';
+import { ReactComponent as BtnShare } from '../../assets/image/BtnShare.svg';
+import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
 
 const FollowBtnWrapper = styled.div`
   /* box-shadow: inset 0 0 10px red; */
@@ -10,8 +11,8 @@ const FollowBtnWrapper = styled.div`
   gap: 8px;
 
   .shareBtn {
-    border: 2px solid #dbdbdb;
-    border-radius: 50%;
+    border: 1px solid #dbdbdb;
+    border-radius: 30px;
     padding: 4px;
   }
 `;
@@ -19,11 +20,11 @@ export default function YourProfileBtn() {
   return (
     <FollowBtnWrapper>
       <button className="shareBtn" type="button">
-        <img src={messageIcon} alt="메시지아이콘" />
+        <BtnComment width="24px" />
       </button>
-      <MBtn />
+      <MBtn content="팔로우" />
       <button className="shareBtn" type="button">
-        <img src={messageIcon} alt="공유아이콘" />
+        <BtnShare width="24px" />
       </button>
     </FollowBtnWrapper>
   );
