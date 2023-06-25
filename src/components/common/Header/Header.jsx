@@ -91,8 +91,9 @@ const HeaderDefaultStyle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* position: fixed; */
+  position: fixed;
   top: 0;
+  z-index: 100;
   padding: 0 10px;
   background-color: #fff;
   .inputComponent {

@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { HeaderMainNav } from '../../components/common/Header/Header';
 import Navbar from '../../components/common/Navbar/Navbar';
-import basicLogo from '../../assets/images/logoImage.png';
 import { MBtn } from '../../components/common/button/Button';
+import { ReactComponent as LogoColorImg } from '../../assets/image/LogoColorImg.svg';
 
 function HomePage() {
   return (
@@ -19,10 +19,9 @@ function HomePage() {
 function HomeBlank() {
   return (
     <ContentWrapper>
-      {/* 기능구현 고민된다.. */}
-      <img src={basicLogo} alt="Logo" />
+      <LogoColorImg width="160px" height="160px" />
       <p>유저를 검색해 팔로우 해보세요.</p>
-      <MBtn h="44" content="검색" />
+      <MBtn content="검색" />
     </ContentWrapper>
   );
 }
@@ -32,7 +31,7 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  gap: 10px;
 `;
 
 const Wrapper = styled.div`
