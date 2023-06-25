@@ -3,19 +3,25 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const ProfileUserWrapper = styled.div`
-  box-shadow: inset 0 0 10px blue;
+  /* box-shadow: inset 0 0 10px blue; */
   display: flex;
   justify-content: center;
   text-align: center;
-  padding: 20px 0;
+  padding-top: 20px;
+  align-items: center;
+
+  a {
+    margin-bottom: 100px;
+  }
 
   img {
     border-radius: 50%;
     width: 110px;
+    height: 110px;
   }
 `;
 const FollowNumberWrapper = styled.div`
-  box-shadow: inset 0 0 10px purple;
+  /* box-shadow: inset 0 0 10px purple; */
   padding: 20px 12px;
 `;
 

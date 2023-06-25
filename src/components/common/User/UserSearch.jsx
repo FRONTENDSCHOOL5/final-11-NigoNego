@@ -69,7 +69,6 @@ export default function UserSearch({ data }) {
   function moveToYourProfile() {
     setAccountName(data.author.accountname);
     setYourProduct(data.author);
-    console.log(data);
     setFollower(data.author);
     // setYourProduct;
   }

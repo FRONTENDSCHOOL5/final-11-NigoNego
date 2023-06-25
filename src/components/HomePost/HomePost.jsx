@@ -46,5 +46,5 @@ export default function HomePost({ data }) {
 const HomePostImg = styled.img`
   vertical-align: middle;
   padding-bottom: 10px;
-  width: 500px;
+  width: 100%;
 `;
