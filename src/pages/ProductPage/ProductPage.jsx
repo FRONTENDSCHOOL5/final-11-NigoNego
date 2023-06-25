@@ -3,8 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Input from '../../components/common/Input/Input';
 import { HeaderUploadNav } from '../../components/common/Header/Header';
-// import { HeaderUploadNav } from '../common/Header/Header';
-import buttonImg from '../../assets/images/upload-file.svg';
+import { ReactComponent as BtnImgUpload } from '../../assets/image/BtnImgUpload.svg';
 
 export default function ProductPage() {
   const [itemName, setItemName] = useState('');
@@ -66,100 +65,91 @@ export default function ProductPage() {
   }
 
   return (
-    <ProductPageWrapp>
+    <GlobalWrapper>
       <form onSubmit={handleSubmit}>
-        <HeaderUploadNav />
-        <AddProductImgWrapp>
-          <p>이미지 등록</p>
-          <div className="img-wrapper">
-            {itemImage.length > 0 && <img src={itemImage} alt="" />}
-          </div>
-
-          <UploadButtonStyle>
-            <label htmlFor="input" />
-            <input id="input" type="file" onChange={handleImageUpload} />
-          </UploadButtonStyle>
-        </AddProductImgWrapp>
-        <div className="input-wrapper">
-          <Input
-            label="상품명"
-            placeholder="2~10자 이내여야 합니다."
-            onChange={e => {
-              setItemName(e.target.value);
-            }}
-          />
-        </div>
-        <div className="input-wrapper">
-          <Input
-            label="가격"
-            placeholder="숫자만 입력 가능합니다."
-            onChange={e => {
-              setPrice(e.target.value);
-            }}
-          />
-        </div>
-        <div className="input-wrapper">
-          <Input
-            label="판매링크"
-            placeholder="URL을 입력해 주세요."
-            onChange={e => {
-              setLink(e.target.value);
-            }}
-          />
-        </div>
+        <HeaderUploadNav content="업로드" />
+        <ul>
+          <li>
+            <p className="title">이미지 등록</p>
+            <ImgUploadWrapp>
+              <label htmlFor="input">
+                <BtnImgUpload
+                  width="34px"
+                  height="34px"
+                  fill="#c4c4c4"
+                  stroke="#fff"
+                />
+              </label>
+              <input id="input" type="file" onChange={handleImageUpload} />
+              {itemImage.length > 0 && <img src={itemImage} alt="" />}
+            </ImgUploadWrapp>
+          </li>
+          <li>
+            <label className="title">상품명</label>
+            <Input
+              placeholder="2~10자 이내여야 합니다."
+              onChange={e => {
+                setItemName(e.target.value);
+              }}
+            />
+          </li>
+          <li>
+            <label className="title">가격</label>
+            <Input
+              placeholder="숫자만 입력 가능합니다."
+              onChange={e => {
+                setPrice(e.target.value);
+              }}
+            />
+          </li>
+          <li>
+            <label className="title">판매링크</label>
+            <Input
+              placeholder="URL을 입력해 주세요."
+              onChange={e => {
+                setLink(e.target.value);
+              }}
+            />
+          </li>
+        </ul>
       </form>
-    </ProductPageWrapp>
+    </GlobalWrapper>
   );
 }
 
-const ProductPageWrapp = styled.div`
-  .input-wrapper {
-    margin: 20px 0;
+const GlobalWrapper = styled.div`
+  form {
+    .title {
+      font-size: 12px;
+      margin-bottom: 12px;
+      color: var(--basic-grey);
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
   }
 `;
-const AddProductImgWrapp = styled.div`
+const ImgUploadWrapp = styled.div`
+  width: 100%;
+  height: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+
+  background: var(--light-grey);
   position: relative;
-
-  img {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-  }
-
-  .img-wrapper {
-    height: 200px;
-    background-color: var(--basic-border-color);
-  }
-
-  button {
-    border: none;
-    padding: 0;
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    bottom: 0;
-    right: 0;
-    margin: 20px;
-  }
-`;
-
-const UploadButtonStyle = styled.div`
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
   label {
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-    background-image: url(${buttonImg});
-    background-size: cover;
+    position: absolute;
+    right: 7px;
+    bottom: 7px;
   }
-
   input {
     display: none;
   }
-
-  input::file-selector-button {
-    display: none;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `;
