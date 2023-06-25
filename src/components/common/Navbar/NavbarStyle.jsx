@@ -8,14 +8,14 @@ const NavbarWrapper = styled.nav`
   color: var(--basic-grey);
   position: fixed;
   bottom: 0px;
-  padding: 10px;
-
+  background-color: #fff;
   p {
     margin: 5px 0 0 0;
   }
 
   ul {
     display: flex;
+    padding: 10px;
   }
 
   li {
