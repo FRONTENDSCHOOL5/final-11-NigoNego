@@ -9,7 +9,6 @@ const NavbarWrapper = styled.nav`
   position: fixed;
   bottom: 0px;
   background-color: #fff;
-  margin-left: -10px;
   p {
     margin: 5px 0 0 0;
   }

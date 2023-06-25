@@ -91,7 +91,6 @@ const HeaderDefaultStyle = styled.div`
   align-items: center;
   position: fixed;
   top: 0;
-  margin-left: -10px;
   padding: 0 10px;
   background-color: #fff;
 `;

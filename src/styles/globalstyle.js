@@ -7,12 +7,14 @@ const globalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
   
   :root {
     font-size:10px;
     --light-yellow:#FFECA7;
     --basic-yellow:#FFDE00;
     --basic-grey:#767676;
+    --bg-border-color:#F2F2F2;
     --light-grey:#EFEFEF;
     --basic-orange:#F37831;
     --basic-red:#C01605;

@@ -33,13 +33,10 @@ export default function Navbar() {
           </a>
         </li>
         <li>
-          <Link to="/myprofile">
+          <a href="www.jdjkd.com">
             <UserProfileActive />
             <p>프로필</p>
-          </Link>
-          {/* <a href="www.jdjkd.com">
-            <p>프로필</p>
-          </a> */}
+          </a>
         </li>
       </ul>
     </NavbarWrapper>
