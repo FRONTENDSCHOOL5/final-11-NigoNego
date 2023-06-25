@@ -5,7 +5,7 @@ import { getDataBase } from "../Api";
 
 
 // homepost
- export const GetHomePostData = async () => {
+export const GetHomePostData = async () => {
   try {
     // id부분 props 로 재작업하기
     // const res = await getDataBase.get(`/post/${id}`);
@@ -16,17 +16,93 @@ import { getDataBase } from "../Api";
   }
 };
 
-export const GetFollowerData = async () => {
+export const GetHomeFeedData = async () => {
   try {
     // id부분 props 로 재작업하기
-    // const res = await getDataBase.get(`/post/${id}`);
-    const response = await getDataBase.get(`/profile/follower`)
+    
+    const response = await getDataBase.get(`/post/feed`)
     return response
   } catch (err) {
     console.log("오류")
   }
 };
 
+
+
+// homepost
+export const GetMyProfileData = async () => {
+  try {
+    // id부분 props 로 재작업하기
+    // const res = await getDataBase.get(`/post/${id}`);
+    const response = await getDataBase.get(`/profile/nigonego`)
+    return response
+  } catch (err) {
+    console.log("오류")
+  }
+};
+
+
+
+
+// 팔로워, 팔로잉 리스트
+export const GetFollowerData = async (getData) => {
+  try {
+    // id부분 props 로 재작업하기
+    // const res = await getDataBase.get(`/post/${id}`);
+    const response = await getDataBase.get(`/profile/nigonego/${getData}`)
+    return response
+  } catch (err) {
+    console.log("오류")
+  }
+};
+
+
+// 리스트 고치기
+// 내 상품리스트 무한스크롤 가져오기
+export const GetProDuctListLimit = async (skip,accountname) => {
+  try {
+     const response = await getDataBase.get(`/product/${accountname}/?limit=5&skip=${skip}`)
+     return response
+  } catch (err) {
+    console.log("오류")
+  }
+};
+
+
+
+// 포스트 무한스크롤 가져오기
+export const GetPostListLimit = async (skip,accountname) => {
+  try {
+    const response = await getDataBase.get(`/post/${accountname}/userpost/?limit=2&skip=${skip}`)
+    return response
+  } catch (err) {
+    console.log("오류")
+  }
+};
+
+
+
+
+
+
+
+// 무한 스크롤 컴포넌트
+
+
+// function ScrollEvent(width){
+// <Div width={width}/>
+
+// }
+
+
+
+
+// const Div = styled.div`
+
+// width: ${props=>props.width}
+
+
+// `
 
 
 
@@ -59,12 +135,3 @@ export const GetFollowerData = async () => {
 //   console.log('에러');
 // }
 // }
-
-
-
-
-
-
-
-
-

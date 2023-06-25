@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { GetFollowerData } from '../../../api/getData/getData';
 import { MImage } from '../UserImage/UserImage';
 import { useNavigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
 
 export const StyledUser = styled.div`
   height: 5rem;
@@ -55,7 +53,8 @@ const BtnWrapper = styled.button`
 export default function UserSearch({ data }) {
   const navigate = useNavigate();
   const [accountname, setAccountName] = useState('');
-
+  const [yourProduct, setYourProduct] = useState('');
+  const [follower, setFollower] = useState('');
   useEffect(() => {
     // console.log(data.author.accountname);
     if (accountname) {
@@ -69,6 +68,9 @@ export default function UserSearch({ data }) {
 
   function moveToYourProfile() {
     setAccountName(data.author.accountname);
+    setYourProduct(data.author);
+    setFollower(data.author);
+    // setYourProduct;
   }
 
   return (
