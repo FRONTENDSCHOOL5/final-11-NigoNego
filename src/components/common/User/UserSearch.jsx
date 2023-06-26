@@ -31,7 +31,6 @@ export const UserName = styled.div`
 
 export const UserId = styled.div`
   flex-basis: 50%;
-  line-height: 2.5rem;
   font-size: 12px;
   color: var(--basic-grey);
 `;

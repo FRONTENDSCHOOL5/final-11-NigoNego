@@ -28,7 +28,7 @@ export default function HomePost({ data }) {
         <section onClick={postMainHandler}>
           <p>{data.content}</p>
           <HomePostImg src={data.image} />
-          <div>
+          <div className="post-item-wrapper">
             <button type="button">
               <BtnComment width="24px" />
               <span>123</span>
