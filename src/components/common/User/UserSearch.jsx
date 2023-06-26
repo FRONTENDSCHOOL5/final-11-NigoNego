@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 export const StyledUser = styled.div`
   height: 5rem;
   width: 100%;
-  min-width: 50rem;
   display: flex;
   strong {
     color: var(--basic-orange);

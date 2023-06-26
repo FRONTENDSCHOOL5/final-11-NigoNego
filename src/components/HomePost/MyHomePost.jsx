@@ -80,7 +80,7 @@ const HomePostImg = styled.img`
 `;
 
 const MyHomePostwarpper = styled.div`
-  height: 50vh;
+  height: 60vh;
   overflow: scroll;
   /* box-shadow: inset 0px 0px 3px 5px rgb(0, 38, 255); */
 
