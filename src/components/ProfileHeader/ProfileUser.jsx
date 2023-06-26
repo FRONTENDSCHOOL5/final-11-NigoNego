@@ -28,7 +28,10 @@ const FollowNumberWrapper = styled.div`
 export default function ProfileUser({ myProfileData }) {
   return (
     <ProfileUserWrapper>
-      <Link to={'/myfollowers'} state={{ value: 'follower' }}>
+      <Link
+        to={'/myfollowers'}
+        state={{ value: 'follower', myProfileData: myProfileData }}
+      >
         <FollowNumberWrapper>
           <h3>{myProfileData.followerCount}</h3>
           <small>followers</small>
@@ -40,7 +43,10 @@ export default function ProfileUser({ myProfileData }) {
         <small>{myProfileData.accountname}</small>
         <p>{myProfileData.intro}</p>
       </div>
-      <Link to={`/myfollowers`} state={{ value: 'following' }}>
+      <Link
+        to={`/myfollowers`}
+        state={{ value: 'following', myProfileData: myProfileData }}
+      >
         <FollowNumberWrapper>
           <h3>{myProfileData.followingCount}</h3>
           <small>followings</small>
