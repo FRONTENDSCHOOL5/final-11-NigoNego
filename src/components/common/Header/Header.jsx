@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as IconSearch } from '../../../assets/image/IconSearch.svg';
-import { ReactComponent as IconArrowLeft } from '../../../assets/image/IconArrowLeft.svg';
-import { ReactComponent as IconMoreView } from '../../../assets/image/IconMoreView.svg';
 // import searchIcon from '../../../assets/icons/icon-search.svg';
 
 import {
@@ -18,8 +16,8 @@ export function HeaderBasicNav() {
   // 뒤로가기 버튼 구현하기;
   return (
     <HeaderDefaultStyle>
-      <IconArrowLeft width="24px" height="24px" />
-      <IconMoreView width="24px" height="24px" />
+      <ArrowLeft />
+      <MoreIconButton />
     </HeaderDefaultStyle>
   );
 }
@@ -27,7 +25,7 @@ export function HeaderBasicNav() {
 export function HeaderSearchNav() {
   return (
     <HeaderDefaultStyle>
-      <IconArrowLeft width="24px" height="24px" />
+      <ArrowLeft />
       <div className="inputComponent">
         <SearchInput />
       </div>
@@ -45,6 +43,7 @@ export function HeaderMainNav({ content }) {
   return (
     <HeaderDefaultStyle>
       <h1>{content}</h1>
+
       <button onClick={handleButtonClick} type="button">
         <IconSearch width="24px" height="24px" />
       </button>
@@ -55,7 +54,7 @@ export function HeaderMainNav({ content }) {
 export function HeaderUploadNav({ content }) {
   return (
     <HeaderDefaultStyle>
-      <IconArrowLeft width="24px" height="24px" />
+      <ArrowLeft />
       <MSBtn content={content} />
     </HeaderDefaultStyle>
   );
@@ -64,7 +63,7 @@ export function HeaderUploadNav({ content }) {
 export function HeaderEditdNav({ content, isFormValid, handleSave }) {
   return (
     <HeaderDefaultStyle>
-      <IconArrowLeft width="24px" height="24px" />
+      <ArrowLeft />
       <ProfileEditMSBtn
         content={content}
         onClick={handleSave}
@@ -78,10 +77,10 @@ export function HeaderChatNav({ content }) {
   return (
     <HeaderDefaultStyle>
       <div className="havetitle">
-        <IconArrowLeft width="24px" height="24px" />
+        <ArrowLeft />
         <h2>{content}123</h2>
       </div>
-      <IconMoreView width="24px" height="24px" />
+      <MoreIconButton />
     </HeaderDefaultStyle>
   );
 }
@@ -89,7 +88,7 @@ export function HeaderChatNav({ content }) {
 export function HeaderContentdNav({ content }) {
   return (
     <HeaderDefaultStyle>
-      <IconArrowLeft width="24px" height="24px" />
+      <ArrowLeft />
       <h2>{content}</h2>
     </HeaderDefaultStyle>
   );
@@ -121,14 +120,3 @@ const HeaderDefaultStyle = styled.div`
     }
   }
 `;
-
-const Button = styled.button`
-  border: none;
-`;
-
-const Img = styled.img`
-  border: 1px solid black;
-  padding: 30px;
-`;
-
-// const HeaderUploadNavStyle = styled(HeaderDefaultStyle)``;

@@ -7,13 +7,12 @@ import {
   Wrapper,
   ImageWrapper,
   BtnWrapper,
+  UploadButtonStyle,
 } from './joinMemberStyle';
 
 import Input from '../../components/common/Input/Input';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import { LImage } from '../../components/common/UserImage/UserImage';
-import basicImg from '../../assets/images/basic-profile-img.png';
-import UploadButton from '../../components/common/button/UploadButton';
 
 export default function JoinMember() {
   const [userName, setUserName] = useState('');
@@ -23,6 +22,8 @@ export default function JoinMember() {
   const [isUserNameValid, setIsUserNameValid] = useState(false);
   const [isUserIDValid, setIsUserIDValid] = useState(false);
   const [errorMessageID, setErrorMessageID] = useState('');
+  const [userImage, setUserImage] = useState('');
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -50,6 +51,7 @@ export default function JoinMember() {
       setIsUserNameValid(false);
     }
   };
+
   const handleIdValid = async () => {
     const testID = /^[a-zA-Z0-9]+$/.test(userID);
 
@@ -80,6 +82,23 @@ export default function JoinMember() {
     }
   };
 
+  const handleImageUpload = e => {
+    e.preventDefault();
+
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('image', file);
+
+    axios({
+      method: 'POST',
+      url: 'https://api.mandarin.weniv.co.kr/image/uploadfile',
+      data: formData,
+    }).then(result => {
+      const imageUrl = `https://api.mandarin.weniv.co.kr/${result.data.filename}`;
+      setUserImage(imageUrl);
+    });
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
 
@@ -97,7 +116,7 @@ export default function JoinMember() {
               password: location.state.password, // 사용자 패스워드 값
               accountname: userID,
               intro: userIntro, // 사용자 소개 값
-              image: '', // 사용자 이미지 값}
+              image: userImage, // 사용자 이미지 값}
             },
           },
         );
@@ -123,9 +142,13 @@ export default function JoinMember() {
         <p>나중에 언제든지 변경할 수 있습니다.</p>
       </HeadingWrapper>
       <ImageWrapper>
-        <LImage src={basicImg} />
-        <UploadButton />
+        <LImage backgroundUrl={userImage} />
+        <UploadButtonStyle>
+          <label htmlFor="input" />
+          <input id="input" type="file" onChange={handleImageUpload} />
+        </UploadButtonStyle>
       </ImageWrapper>
+
       <form onSubmit={handleSubmit}>
         <FormWrapper>
           <Input

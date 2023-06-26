@@ -10,10 +10,16 @@ import styled from 'styled-components';
 //   ChatDate,
 // } from './ChatUserListStyle';
 import { MImage } from '../common/UserImage/UserImage';
+import { useNavigate } from 'react-router-dom';
 
-export default function ChatUserList() {
+export default function ChatUserList({ userId }) {
+  const navigate = useNavigate();
+
+  const handleChatClick = () => {
+    navigate(`chatroom/${userId}`);
+  };
   return (
-    <ChatUser>
+    <ChatUser onClick={handleChatClick}>
       <MImage />
       <div className="userInfoText">
         <h2>애월읍 위니브 감귤농장</h2>
@@ -38,6 +44,7 @@ const ChatUser = styled.section`
     h2 {
       margin: 0;
       padding: 0;
+      cursor: pointer;
     }
   }
   .underText {
