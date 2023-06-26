@@ -7,6 +7,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router';
 import { authAtom } from '../../../atom/atoms';
 import { useRecoilValue } from 'recoil';
+import Navbar from '../../../components/common/Navbar/Navbar';
+import BodyGlobal from './../../../styles/BodyGlobal';
 
 export default function PostUpload() {
   const [content, setContent] = useState('');
@@ -71,24 +73,27 @@ export default function PostUpload() {
     <>
       <form onSubmit={handleSubmit}>
         <HeaderUploadNav content={'업로드'} />
-        <PostUploadWrapper>
-          <ProfileWrapper>
-            <SImage />
-          </ProfileWrapper>
-          <textarea
-            className="inputPost"
-            placeholder="게시글 입력하기"
-            value={content}
-            onChange={e => setContent(e.target.value)}
-          />
-          {image.length > 0 && <img src={image} alt="" />}
-        </PostUploadWrapper>
-        {/* <UploadButton /> */}
-        <UploadButtonStyle>
-          <label htmlFor="input" />
-          <input id="input" type="file" onChange={handleImageUpload} />
-        </UploadButtonStyle>
+        <BodyGlobal>
+          <PostUploadWrapper>
+            <ProfileWrapper>
+              <SImage />
+            </ProfileWrapper>
+            <textarea
+              className="inputPost"
+              placeholder="게시글 입력하기"
+              value={content}
+              onChange={e => setContent(e.target.value)}
+            />
+            {image.length > 0 && <img src={image} alt="" />}
+          </PostUploadWrapper>
+          {/* <UploadButton /> */}
+          <UploadButtonStyle>
+            <label htmlFor="input" />
+            <input id="input" type="file" onChange={handleImageUpload} />
+          </UploadButtonStyle>
+        </BodyGlobal>
       </form>
+      <Navbar />
     </>
   );
 }
