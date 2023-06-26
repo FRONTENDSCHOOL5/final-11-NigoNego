@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import arrowLeft from '../../../assets/icons/icon-arrow-left.png';
 import moreIcon from '../../../assets/icons/icon-more-vertical.png';
-
+import { useNavigate } from 'react-router-dom';
+import SlideModal from '../Modal/SlideModal';
 export function LBtn({ content }) {
   return <LBtnStyle>{content}</LBtnStyle>;
 }
@@ -15,8 +16,12 @@ export function LdisabledBtn({ h, content }) {
   );
 }
 
-export function MBtn({ h, content }) {
-  return <MBtnStyle height={h}>{content}</MBtnStyle>;
+export function MBtn({ h, content, onClick }) {
+  return (
+    <MBtnStyle height={h} onClick={onClick}>
+      {content}
+    </MBtnStyle>
+  );
 }
 
 export function MdisabledBtn() {
@@ -56,18 +61,32 @@ export function SactivBtn() {
 }
 
 export function ArrowLeft() {
+  const navigate = useNavigate();
+
+  const handleback = () => {
+    navigate(-1);
+  };
   return (
-    <ArrowLeftStyle>
+    <ArrowLeftStyle onClick={handleback}>
       <img src={arrowLeft} alt="" />
     </ArrowLeftStyle>
   );
 }
 
 export function MoreIconButton() {
+  const [isSideSlideOpen, setIsSideSlideOpen] = useState(false);
+
+  const handleIconClick = () => {
+    setIsSideSlideOpen(!isSideSlideOpen);
+  };
+
   return (
-    <MoreIconButtonStyle>
-      <img src={moreIcon} alt="" />
-    </MoreIconButtonStyle>
+    <>
+      <MoreIconButtonStyle onClick={handleIconClick}>
+        <img src={moreIcon} alt="" />
+      </MoreIconButtonStyle>
+      {isSideSlideOpen && <SlideModal></SlideModal>}
+    </>
   );
 }
 
@@ -152,6 +171,9 @@ const ArrowLeftStyle = styled.div`
     img {
       vertical-align: middle;
     }
+  }
+  :hover {
+    cursor: pointer;
   }
 `;
 
