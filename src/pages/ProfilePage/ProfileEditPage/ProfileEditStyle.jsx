@@ -4,7 +4,6 @@ const Wrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  margin: 50px;
 `;
 const HeadingWrapper = styled.div`
   text-align: center;

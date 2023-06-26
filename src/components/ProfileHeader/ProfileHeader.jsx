@@ -4,18 +4,22 @@ import styled from 'styled-components';
 import ProfileUser from './ProfileUser';
 import MyProfileBtn from './MyProfileBtn';
 
-export default function ProfileHeader({ accountname }) {
+
+import { useRecoilValue } from 'recoil';
+import { authAtom } from '../../atom/atoms';
+export default function ProfileHeader() {
+
   const [myProfileData, setMyProfileData] = useState({});
+  const auth = useRecoilValue(authAtom);
+
   useEffect(() => {
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';
     try {
       axios({
         method: 'GET',
         url: `https://api.mandarin.weniv.co.kr/profile/${accountname}`,
 
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${auth}`,
           'Content-type': 'application/json',
         },
       }).then(response => {

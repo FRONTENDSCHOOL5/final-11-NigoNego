@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const FollowBtnWrapper = styled.div`
   display: flex;
@@ -21,10 +22,20 @@ const MActivBtnStyle = styled(BtnCommonStlye)`
   padding: 8px;
 `;
 export default function FllowBtn() {
+  const navigate = useNavigate();
+
+  const handleProfileEdit = () => {
+    navigate('/profileedit');
+  };
+
+  const handlePostUpload = () => {
+    navigate('/postupload');
+  };
+
   return (
     <FollowBtnWrapper>
-      <MActivBtnStyle>프로필 수정</MActivBtnStyle>
-      <MActivBtnStyle>상품등록</MActivBtnStyle>
+      <MActivBtnStyle onClick={handleProfileEdit}>프로필 수정</MActivBtnStyle>
+      <MActivBtnStyle onClick={handlePostUpload}>상품등록</MActivBtnStyle>
     </FollowBtnWrapper>
   );
 }
