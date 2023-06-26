@@ -42,12 +42,16 @@ const CommentWrapper = styled.div`
   }
 `;
 
-export default function CommentInput({ userId }) {
+export default function CommentInput({
+  userId,
+  setRecentCommentData,
+  getComment,
+}) {
   const [comment, setComment] = useState('');
   const auth = useRecoilValue(authAtom);
+
   const handleCommentChange = event => {
     setComment(event.target.value);
-    console.log(userId, auth, userId);
   };
   const isBtnDisable = comment === '';
 
@@ -89,14 +93,17 @@ export default function CommentInput({ userId }) {
         },
       );
       // id 가 undefined 가 나오는데... 이거 앞에서 해결함
-      // 여기서 왜 토큰이 안정해졌을까 ...djqt
+      // 여기서 왜 토큰이 안정해졌을까 ...djqt 해결완.. 중괄호 잘써라..
       console.log('댓글 데이터 전송 성공');
-      console.log('res', res.data);
+      setRecentCommentData(res.data);
+      getComment();
+      console.log(res.data);
     } catch (error) {
       console.log('댓글 데이터 전송 실패');
       console.log(error);
       console.log(auth);
     }
+    setComment('');
   };
 
   return (

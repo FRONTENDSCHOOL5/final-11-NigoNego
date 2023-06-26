@@ -9,13 +9,18 @@ import CommentPost from '../../../components/common/Comment/CommentPost/CommentP
 import { useLocation } from 'react-router-dom';
 import { authAtom } from '../../../atom/atoms';
 import { useRecoilValue } from 'recoil';
+import { GetCommentData } from '../../../api/getData/getData';
 
 function PostMain() {
   const auth = useRecoilValue(authAtom);
   const location = useLocation();
   const [postData, setPostData] = useState(null);
+  const [commentData, setCommentData] = useState([]);
+  const [recentCommentData, setRecentCommentData] = useState('');
   const url = 'https://api.mandarin.weniv.co.kr';
   const postId = location.state.id;
+
+  //post 데이터 요청
   const getData = useCallback(async () => {
     try {
       const res = await axios.get(`${url}/post/${postId}`, {
@@ -32,10 +37,28 @@ function PostMain() {
     }
   }, []);
 
+  const getComment = useCallback(async () => {
+    GetCommentData(postId).then(response => {
+      setCommentData(response.data.comments);
+      console.log(recentCommentData);
+      if (commentData.length > 0) {
+        if (recentCommentData !== '') {
+          setCommentData(commentData => [...commentData, recentCommentData]);
+          console.log(commentData);
+        }
+      }
+    });
+  }, []);
+
   useEffect(() => {
     // getMyAccountName();
     getData();
   }, [auth, postId, getData]);
+
+  useEffect(() => {
+    getComment();
+  }, [recentCommentData]);
+  //comment 데이터 요청
 
   // useEffect(() => {
   //   getMyProfilePic();
@@ -55,10 +78,18 @@ function PostMain() {
       </ContentSection>
       <hr />
       <CommentWrapper>
-        <CommentPost />
-        <CommentPost />
+        {commentData.length > 0 &&
+          commentData.map(comments => {
+            return <CommentPost comments={comments} />;
+          })}
       </CommentWrapper>
-      {postId !== null && <CommentInput userId={postId} />}
+      {postId !== null && (
+        <CommentInput
+          userId={postId}
+          setRecentCommentData={setRecentCommentData}
+          getComment={getComment}
+        />
+      )}
     </PostPageWrapper>
   );
 }
@@ -69,7 +100,7 @@ const PostPageWrapper = styled.div`
 
 const CommentWrapper = styled.section`
   margin: 20px 16px 16px;
-  min-height: 300px;
+  /* min-height: 300px; */
 `;
 
 const ContentSection = styled.section`
