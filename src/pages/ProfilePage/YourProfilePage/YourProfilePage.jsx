@@ -13,8 +13,8 @@ export default function YourProfilePage() {
   const accountname = location.state.accountname;
   return (
     <div>
+      <HeaderBasicNav />
       <BodyGlobal>
-        <HeaderBasicNav />
         <YourProfileHeader accountname={accountname} />
         {/* BodyGlobal 컴포넌트를 사용합니다. */}
         <YourProduct accountname={accountname} />

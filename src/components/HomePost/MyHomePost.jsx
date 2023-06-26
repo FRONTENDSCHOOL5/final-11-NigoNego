@@ -4,7 +4,6 @@ import msg from '../../assets/icons/message-icon.svg';
 import like from '../../assets/icons/like-icon.svg';
 import { GetPostListLimit } from '../../api/getData/getData';
 import UserSearch from '../common/User/UserSearch';
-import BodyGlobal from '../../styles/BodyGlobal';
 
 export default function MyHomePost({ accountname }) {
   const [userData, setUserData] = useState([]);

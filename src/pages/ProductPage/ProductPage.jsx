@@ -11,12 +11,7 @@ export default function ProductPage() {
   const [price, setPrice] = useState('');
   const [link, setLink] = useState('');
 
-  // const [content, setContent] = useState('');
   const [itemImage, setItemImage] = useState('');
-
-  // user 데이터 저장
-  // const [userImage, setUserImage] = useState('');
-  // const [userContent, setUserContent] = useState('');
 
   const handleImageUpload = e => {
     e.preventDefault();

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import messageIcon from '../../assets/icons/message-icon.png';
 import { MBtn } from '../common/button/Button';
 
 const FollowBtnWrapper = styled.div`
@@ -19,11 +18,11 @@ export default function YourProfileBtn() {
   return (
     <FollowBtnWrapper>
       <button className="shareBtn" type="button">
-        <img src={messageIcon} alt="메시지아이콘" />
+        <img alt="메시지아이콘" />
       </button>
       <MBtn />
       <button className="shareBtn" type="button">
-        <img src={messageIcon} alt="공유아이콘" />
+        <img alt="공유아이콘" />
       </button>
     </FollowBtnWrapper>
   );

@@ -19,10 +19,8 @@ export const ProfileImgWrapper = styled.div`
 `;
 
 export const UserSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
   padding-left: 1.2rem;
+  margin-right: auto;
 `;
 
 export const UserName = styled.div`
@@ -56,7 +54,6 @@ export default function UserSearch({ data }) {
   const [yourProduct, setYourProduct] = useState('');
   const [follower, setFollower] = useState('');
   useEffect(() => {
-    // console.log(data.author.accountname);
     if (accountname) {
       navigate('/yourprofile', {
         state: {
@@ -70,7 +67,6 @@ export default function UserSearch({ data }) {
     setAccountName(data.author.accountname);
     setYourProduct(data.author);
     setFollower(data.author);
-    // setYourProduct;
   }
 
   return (

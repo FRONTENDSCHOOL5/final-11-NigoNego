@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import ProfileUser from './ProfileUser';
 import MyProfileBtn from './MyProfileBtn';
 
-export default function ProfileHeader() {
+export default function ProfileHeader({ accountname }) {
   const [myProfileData, setMyProfileData] = useState({});
   useEffect(() => {
     const token =
@@ -12,7 +12,7 @@ export default function ProfileHeader() {
     try {
       axios({
         method: 'GET',
-        url: `https://api.mandarin.weniv.co.kr/profile/nigonego`,
+        url: `https://api.mandarin.weniv.co.kr/profile/${accountname}`,
 
         headers: {
           Authorization: `Bearer ${token}`,

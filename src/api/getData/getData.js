@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { getDataBase } from "../Api";
 
 // export const token =
@@ -61,8 +62,9 @@ export const GetFollowerData = async (getData) => {
 // 내 상품리스트 무한스크롤 가져오기
 export const GetProDuctListLimit = async (skip,accountname) => {
   try {
-     const response = await getDataBase.get(`/product/${accountname}/?limit=5&skip=${skip}`)
-     return response
+    // const response = await getDataBase.get(`/product/nigonego/?limit=5&skip=${skip}`)
+    const response = await getDataBase.get(`/product/${accountname}/?limit=5&skip=${skip}`)
+    return response
   } catch (err) {
     console.log("오류")
   }
@@ -73,6 +75,11 @@ export const GetProDuctListLimit = async (skip,accountname) => {
 // 포스트 무한스크롤 가져오기
 export const GetPostListLimit = async (skip,accountname) => {
   try {
+    // id부분 props 로 재작업하기
+    // const res = await getDataBase.get(`/post/${id}`);
+    // const response = await getDataBase.get(`/product/${accountName}/?limit=${limit}&skip=${skip}`)
+
+    // const response = await getDataBase.get(`/post/nigonego/userpost/?limit=2&skip=${skip}`)
     const response = await getDataBase.get(`/post/${accountname}/userpost/?limit=2&skip=${skip}`)
     return response
   } catch (err) {

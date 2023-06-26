@@ -5,6 +5,7 @@ import { UserSection, UserName, UserId } from './UserSearch';
 import { SBtn } from '../button/Button';
 import { GetFollowerData } from '../../../api/getData/getData';
 import { useLocation } from 'react-router-dom';
+import BodyGlobal from '../../../styles/BodyGlobal';
 
 const StyledFollower = styled.section`
   width: 100%;
@@ -29,24 +30,23 @@ export default function UserFollow() {
 
   return (
     <>
-      {getData.length > 0 &&
-        getData.map(data => {
-          {
-            console.log(data);
-          }
-          return (
-            <StyledFollower>
-              <MImage backgroundUrl={data.image} />
-              <UserSection>
-                <UserName>
-                  <strong>{data.accountname}</strong>
-                </UserName>
-                <UserId>{data.intro}</UserId>
-              </UserSection>
-              <SBtn />
-            </StyledFollower>
-          );
-        })}
+      <BodyGlobal>
+        {getData.length > 0 &&
+          getData.map(data => {
+            return (
+              <StyledFollower>
+                <MImage backgroundUrl={data.image} />
+                <UserSection>
+                  <UserName>
+                    <strong>{data.accountname}</strong>
+                  </UserName>
+                  <UserId>{data.intro}</UserId>
+                </UserSection>
+                <SBtn />
+              </StyledFollower>
+            );
+          })}
+      </BodyGlobal>
     </>
   );
 }
