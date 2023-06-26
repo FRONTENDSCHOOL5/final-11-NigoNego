@@ -20,7 +20,10 @@ export default function ChatUserList({ userId }) {
   };
   return (
     <ChatUser onClick={handleChatClick}>
-      <MImage />
+      <ImgWrapper>
+        <Circle />
+        <MImage />
+      </ImgWrapper>
       <div className="userInfoText">
         <h2>애월읍 위니브 감귤농장</h2>
         <div className="underText">
@@ -37,14 +40,15 @@ const ChatUser = styled.section`
   width: 100%;
   align-items: center;
   padding: 10px 0;
+  border: 1px solid black;
   /* box-shadow: inset 0 0 10px red; */
+  cursor: pointer;
   .userInfoText {
     width: 100%;
     margin-left: 12px;
     h2 {
       margin: 0;
       padding: 0;
-      cursor: pointer;
     }
   }
   .underText {
@@ -64,4 +68,13 @@ const ChatUser = styled.section`
       color: var(--light-grey);
     }
   }
+`;
+
+const ImgWrapper = styled.div``;
+const Circle = styled.div`
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--basic-yellow);
 `;
