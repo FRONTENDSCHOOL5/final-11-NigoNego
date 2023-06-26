@@ -5,7 +5,6 @@ import { recoilPersist } from 'recoil-persist';
 //localStorage에 저장되며, key 이름은 'recoil-persist'로 저장됨
 const { persistAtom } = recoilPersist();
 
-//2. sessionStorage에 저장하고 싶은 경우
 export const authAtom = atom({
   key: 'auth',
   default: '',

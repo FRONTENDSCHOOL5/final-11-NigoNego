@@ -5,6 +5,8 @@ import Input from '../../components/common/Input/Input';
 import { HeaderUploadNav } from '../../components/common/Header/Header';
 // import { HeaderUploadNav } from '../common/Header/Header';
 import buttonImg from '../../assets/images/upload-file.svg';
+import { authAtom } from '../../atom/atoms';
+import { useRecoilValue } from 'recoil';
 
 export default function ProductPage() {
   const [itemName, setItemName] = useState('');
@@ -17,6 +19,8 @@ export default function ProductPage() {
   // user 데이터 저장
   // const [userImage, setUserImage] = useState('');
   // const [userContent, setUserContent] = useState('');
+
+  const auth = useRecoilValue(authAtom);
 
   const handleImageUpload = e => {
     e.preventDefault();
@@ -36,15 +40,13 @@ export default function ProductPage() {
   };
   function handleSubmit(e) {
     e.preventDefault();
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';
     // 게시글 작성 api 호출
     try {
       axios({
         method: 'POST',
         url: `https://api.mandarin.weniv.co.kr/product`,
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${auth}`,
           'Content-type': 'application/json',
         },
 

@@ -131,7 +131,6 @@ export default function ProfileEditPage() {
 
   return (
     <Wrapper>
-      <SlideModal />
       <HeaderEditdNav
         content="저장"
         isFormValid={isFormValid}

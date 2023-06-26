@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import searchIcon from '../../../assets/icons/icon-search.png';
+import searchIcon from '../../../assets/icons/icon-search.svg';
 import {
   ArrowLeft,
   MSBtn,
@@ -8,6 +8,7 @@ import {
   MoreIconButton,
 } from '../button/Button';
 import SearchInput from '../Input/SearchInput';
+import { useNavigate } from 'react-router-dom';
 
 export function HeaderBasicNav() {
   // 뒤로가기 버튼 구현하기;
@@ -29,12 +30,19 @@ export function HeaderSearchNav() {
 }
 
 export function HeaderMainNav() {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate('/search'); // 넘어가고자 하는 페이지의 경로를 설정해주세요
+  };
+
   return (
     <HeaderMainNavStyle>
       <h1>니고네고 피드</h1>
-      <button type="button">
-        <img src={searchIcon} alt="" />
-      </button>
+
+      <Button onClick={handleButtonClick}>
+        <Img src={searchIcon} alt="검색 아이콘" />
+      </Button>
     </HeaderMainNavStyle>
   );
 }
@@ -80,7 +88,7 @@ const HeaderDefaultStyle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
+  position: static;
   top: 0;
   padding: 0 10px;
   background-color: #fff;
@@ -94,9 +102,15 @@ const HeaderMainNavStyle = styled(HeaderDefaultStyle)`
   h1 {
     font-size: 1.8rem;
   }
-  button {
-    border: none;
-  }
+`;
+
+const Button = styled.button`
+  border: none;
+`;
+
+const Img = styled.img`
+  border: 1px solid black;
+  padding: 30px;
 `;
 
 const HeaderUploadNavStyle = styled(HeaderDefaultStyle)``;

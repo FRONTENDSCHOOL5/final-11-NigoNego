@@ -35,7 +35,6 @@ function PostMain() {
       console.log('post 데이터 전송 실패');
       console.log(error);
     }
-  }, []);
 
   const getComment = useCallback(async () => {
     GetCommentData(postId).then(response => {

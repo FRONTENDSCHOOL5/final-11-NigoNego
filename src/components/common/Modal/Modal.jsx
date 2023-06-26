@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { authAtom, accountNameAtom } from '../../../atom/atoms';
+import { authAtom, accountNameAtom, followingAtom } from '../../../atom/atoms';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 
 export default function Modal() {
@@ -38,8 +38,11 @@ export default function Modal() {
 export function LogoutModal() {
   const [auth, setAuth] = useRecoilState(authAtom);
   const [accountname, setAccountnameAtom] = useRecoilState(accountNameAtom);
+  const [following, setFollowing] = useRecoilState(followingAtom);
+
   const resetAuth = useResetRecoilState(authAtom);
   const resetAccount = useResetRecoilState(accountNameAtom);
+  const resetFollowing = useResetRecoilState(followingAtom);
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
 
@@ -52,6 +55,7 @@ export function LogoutModal() {
     setIsOpen(false);
     resetAuth();
     resetAccount();
+    resetFollowing();
     navigate('/login');
   };
 

@@ -40,7 +40,7 @@ function Routing() {
         <Route path="/postupload" element={<PostUploadPage />} />
         <Route path="/product" element={<ProductPage />} />
         <Route path="/search" element={<SearchPage />} />
-        <Route path="/404" element={<NotFound />} />
+        <Route path="/*" element={<NotFound />} />
         <Route path="/test" element={<Test />} />
         <Route path="/myfollowers" element={<MyFollowersPage />} />
       </Routes>

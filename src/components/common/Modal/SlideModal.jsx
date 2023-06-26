@@ -35,13 +35,15 @@ export default function SlideModal() {
 }
 
 const SlideModalWrapper = styled.div`
-  box-shadow: inset 0px 0px 3px 1px rgb(0, 38, 255);
   text-align: center;
   padding: 10px 0;
+  border: 3px solid black;
   border-radius: 10px 10px 0 0;
-
-  img {
-  }
+  position: fixed;
+  left: 0px;
+  bottom: 50px;
+  background-color: white;
+  width: 100%;
 `;
 
 const StyledUl = styled.ul`
