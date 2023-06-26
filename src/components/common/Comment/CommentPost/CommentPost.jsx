@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+// import { useRecoilValue } from 'recoil';
+// import { authAtom } from '../../../../atom/atoms';
+// import { GetCommentData } from '../../../../api/getData/getData';
 import styled from 'styled-components';
 import { XSImage } from '../../UserImage/UserImage';
 import { MoreIconButton } from '../../button/Button';
 
-function CommentPost() {
+function CommentPost(comments) {
+  // const auth = useRecoilValue(authAtom);
+  // const [commentData, setCommentData] = useState([]);
+
+  useEffect(() => {
+    console.log(comments.content);
+  }, []);
+
   return (
     <CommentPostWrapper>
       <CommentHead>
@@ -17,7 +27,7 @@ function CommentPost() {
           <MoreIconButton />
         </ButtonWrapper>
       </CommentHead>
-      <CommentText contents="내용입니다내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다." />
+      <CommentText contents={comments.content} />
     </CommentPostWrapper>
   );
 }

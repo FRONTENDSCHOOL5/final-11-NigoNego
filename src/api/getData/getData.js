@@ -80,6 +80,19 @@ export const GetPostListLimit = async (skip,accountname) => {
   }
 };
 
+//댓글 리스트
+export const GetCommentData = async (postId) => {
+  try {
+    // id부분 props 로 재작업하기
+    // const res = await getDataBase.get(`/post/${id}`);
+    const response = await getDataBase.get(`/post/${postId}/comments`)
+    return response
+  } catch (err) {
+    console.log("오류")
+    console.log(postId.postId);
+  }
+};
+
 
 
 
