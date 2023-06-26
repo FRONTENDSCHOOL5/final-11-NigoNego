@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import msg from '../../assets/icons/message-icon.svg';
 import like from '../../assets/icons/like-icon.svg';
 import UserSearch from '../common/User/UserSearch';
+import { ReactComponent as BtnHeart } from '../../assets/image/BtnHeart.svg';
+import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
 
 export default function HomePost({ data }) {
   // const [feedPost, setFeedPost] = useState('');
@@ -28,11 +30,11 @@ export default function HomePost({ data }) {
           <HomePostImg src={data.image} />
           <div>
             <button type="button">
-              <img src={msg} alt="" />
+              <BtnComment width="24px" />
               <span>123</span>
             </button>
             <button type="button">
-              <img src={like} alt="" />
+              <BtnHeart width="24px" fill="none" stroke="#767676" />
               <span>123</span>
             </button>
           </div>

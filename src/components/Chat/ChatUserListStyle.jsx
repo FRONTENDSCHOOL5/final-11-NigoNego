@@ -17,7 +17,6 @@ export const UserSection = styled.section`
   flex-basis: 100%;
   justify-content: space-evenly;
   padding-left: 1.2rem;
-  border: 1px solid black;
 `;
 
 export const UserName = styled.div`
@@ -33,5 +32,4 @@ export const UserChat = styled.div`
 export const ChatDate = styled.p`
   color: var(--basic-grey);
   font-size: 12px;
-  border: 1px solid black;
 `;

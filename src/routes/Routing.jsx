@@ -43,6 +43,7 @@ function Routing() {
         <Route path="/404" element={<NotFound />} />
         <Route path="/test" element={<Test />} />
         <Route path="/myfollowers" element={<MyFollowersPage />} />
+        <Route path="/postmain" element={<PostMain />} />
       </Routes>
     </BrowserRouter>
   );
