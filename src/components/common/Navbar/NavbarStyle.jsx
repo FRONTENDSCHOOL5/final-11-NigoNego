@@ -14,6 +14,7 @@ const NavbarWrapper = styled.nav`
   ul {
     display: flex;
     padding: 10px;
+    justify-content: center;
   }
 
   li {
