@@ -3,9 +3,12 @@ import axios from 'axios';
 import styled from 'styled-components';
 import ProfileUser from './ProfileUser';
 import MyProfileBtn from './MyProfileBtn';
+
+
 import { useRecoilValue } from 'recoil';
 import { authAtom } from '../../atom/atoms';
 export default function ProfileHeader() {
+
   const [myProfileData, setMyProfileData] = useState({});
   const auth = useRecoilValue(authAtom);
 
@@ -13,7 +16,7 @@ export default function ProfileHeader() {
     try {
       axios({
         method: 'GET',
-        url: `https://api.mandarin.weniv.co.kr/profile/nigonego`,
+        url: `https://api.mandarin.weniv.co.kr/profile/${accountname}`,
 
         headers: {
           Authorization: `Bearer ${auth}`,

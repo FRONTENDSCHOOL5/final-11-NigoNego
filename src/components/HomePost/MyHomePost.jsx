@@ -4,7 +4,6 @@ import msg from '../../assets/icons/message-icon.svg';
 import like from '../../assets/icons/like-icon.svg';
 import { GetPostListLimit } from '../../api/getData/getData';
 import UserSearch from '../common/User/UserSearch';
-import BodyGlobal from '../../styles/BodyGlobal';
 
 export default function MyHomePost({ accountname }) {
   const [userData, setUserData] = useState([]);
@@ -81,7 +80,7 @@ const HomePostImg = styled.img`
 `;
 
 const MyHomePostwarpper = styled.div`
-  height: 50vh;
+  height: 60vh;
   overflow: scroll;
   /* box-shadow: inset 0px 0px 3px 5px rgb(0, 38, 255); */
 

@@ -7,8 +7,7 @@ export default function SearchInput() {
 
 const SearchInputStyle = styled.input`
   background: red;
-  width: 80%;
-  margin: auto;
+  width: 100%;
   padding: 10px;
   border-radius: 3.2rem;
   background-color: #f2f2f2;

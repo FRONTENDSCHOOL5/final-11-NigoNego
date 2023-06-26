@@ -22,13 +22,11 @@ const ProductWrapper = styled.div`
 export default function Product({ accountname }) {
   const [userData, setUserData] = useState([]);
   const productListRef = useRef(null);
-  console.log(accountname);
   useEffect(() => {
     fetchData(0); // 초기 데이터 로드
   }, []);
 
   const fetchData = (skip = 5) => {
-    // yoon 부분을 바꾸면 됨
     GetProDuctListLimit(skip, accountname)
       .then(response => {
         setUserData(prevData => [...prevData, ...response.data.product]);

@@ -72,49 +72,49 @@ export default function PostUpload() {
       <form onSubmit={handleSubmit}>
         <HeaderUploadNav content={'업로드'} />
         <PostUploadWrapper>
-          <ProfileWrapper>
-            <SImage />
-          </ProfileWrapper>
-          <textarea
-            className="inputPost"
-            placeholder="게시글 입력하기"
-            value={content}
-            onChange={e => setContent(e.target.value)}
-          />
-          {image.length > 0 && <img src={image} alt="" />}
+          <SImage />
+          <div className="postContent">
+            <textarea
+              className="inputPost"
+              placeholder="게시글 입력하기"
+              value={content}
+              onChange={e => setContent(e.target.value)}
+            />
+            {image.length > 0 && <img src={image} alt="" />}
+          </div>
         </PostUploadWrapper>
-        {/* <UploadButton /> */}
-        <UploadButtonStyle>
-          <label htmlFor="input" />
-          <input id="input" type="file" onChange={handleImageUpload} />
-        </UploadButtonStyle>
       </form>
+
+      <UploadButtonStyle>
+        <label htmlFor="input" />
+        <input id="input" type="file" onChange={handleImageUpload} />
+      </UploadButtonStyle>
     </>
   );
 }
-const ProfileWrapper = styled.div`
-  flex-shrink: 0;
-`;
+
 const PostUploadWrapper = styled.div`
-  display: flex;
-  margin: 20px 16px 0px;
-  .inputPost {
-    margin-top: 10px;
-    font-size: 14px;
-  }
-  & > textarea {
-    height: 300px;
-    border-style: none;
-    width: 100%;
-    margin-left: 12px;
-    &:focus {
-      outline: 0;
+  /* box-shadow: inset 0 0 10px red; */
+  /* 공통 margin, padding 적용 */
+  .postContent {
+    margin-top: -30px;
+    margin-left: 60px;
+    textarea {
+      display: block;
+      border: 0px;
+      width: 100%;
+      padding: 12px 6px;
     }
-  }
-  img {
-    box-shadow: inset 0 0 10px red;
-    width: 100%;
-    height: 200px;
+    img {
+      margin-top: 10px;
+      display: block;
+      overflow: hidden;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      overflow: hidden;
+    }
   }
 `;
 

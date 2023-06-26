@@ -1,5 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ReactComponent as IconSearch } from '../../../assets/image/IconSearch.svg';
+import { ReactComponent as IconArrowLeft } from '../../../assets/image/IconArrowLeft.svg';
+import { ReactComponent as IconMoreView } from '../../../assets/image/IconMoreView.svg';
+
+import { MSBtn, ProfileEditMSBtn } from '../button/Button';
 import searchIcon from '../../../assets/icons/icon-search.svg';
 import {
   ArrowLeft,
@@ -13,21 +18,24 @@ import { useNavigate } from 'react-router-dom';
 export function HeaderBasicNav() {
   // 뒤로가기 버튼 구현하기;
   return (
-    <HeaderBasicNavStyle>
-      <ArrowLeft />
-      <MoreIconButton />
-    </HeaderBasicNavStyle>
+    <HeaderDefaultStyle>
+      <IconArrowLeft width="24px" height="24px" />
+      <IconMoreView width="24px" height="24px" />
+    </HeaderDefaultStyle>
   );
 }
 
 export function HeaderSearchNav() {
   return (
-    <HeaderSearchNavStyle>
-      <ArrowLeft />
-      <SearchInput />
-    </HeaderSearchNavStyle>
+    <HeaderDefaultStyle>
+      <IconArrowLeft width="24px" height="24px" />
+      <div className="inputComponent">
+        <SearchInput />
+      </div>
+    </HeaderDefaultStyle>
   );
 }
+
 
 export function HeaderMainNav() {
   const navigate = useNavigate();
@@ -44,38 +52,50 @@ export function HeaderMainNav() {
         <Img src={searchIcon} alt="검색 아이콘" />
       </Button>
     </HeaderMainNavStyle>
+
   );
 }
 
 export function HeaderUploadNav({ content }) {
   return (
-    <HeaderUploadNavStyle>
-      <ArrowLeft />
+    <HeaderDefaultStyle>
+      <IconArrowLeft width="24px" height="24px" />
       <MSBtn content={content} />
-    </HeaderUploadNavStyle>
+    </HeaderDefaultStyle>
   );
 }
 
 export function HeaderEditdNav({ content, isFormValid, handleSave }) {
   return (
-    <HeaderUploadNavStyle>
-      <ArrowLeft />
+    <HeaderDefaultStyle>
+      <IconArrowLeft width="24px" height="24px" />
       <ProfileEditMSBtn
         content={content}
         onClick={handleSave}
         disabled={!isFormValid}
       />
-    </HeaderUploadNavStyle>
+    </HeaderDefaultStyle>
   );
 }
 
-export function HeaderChatNav() {
+export function HeaderChatNav({ content }) {
   return (
-    <HeaderChatNavStyle>
-      <ArrowLeft onclick />
-      <h1>애월읍 위니브 감귤농장</h1>
-      <MoreIconButton />
-    </HeaderChatNavStyle>
+    <HeaderDefaultStyle>
+      <div className="havetitle">
+        <IconArrowLeft width="24px" height="24px" />
+        <h2>{content}123</h2>
+      </div>
+      <IconMoreView width="24px" height="24px" />
+    </HeaderDefaultStyle>
+  );
+}
+
+export function HeaderContentdNav({ content }) {
+  return (
+    <HeaderDefaultStyle>
+      <IconArrowLeft width="24px" height="24px" />
+      <h2>{content}</h2>
+    </HeaderDefaultStyle>
   );
 }
 
@@ -90,18 +110,14 @@ const HeaderDefaultStyle = styled.div`
   align-items: center;
   position: static;
   top: 0;
+  z-index: 100;
   padding: 0 10px;
   background-color: #fff;
-`;
-
-const HeaderBasicNavStyle = styled(HeaderDefaultStyle)``;
-
-const HeaderSearchNavStyle = styled(HeaderDefaultStyle)``;
-
-const HeaderMainNavStyle = styled(HeaderDefaultStyle)`
-  h1 {
-    font-size: 1.8rem;
+  .inputComponent {
+    width: 100%;
+    margin-left: 12px;
   }
+
 `;
 
 const Button = styled.button`
@@ -115,9 +131,12 @@ const Img = styled.img`
 
 const HeaderUploadNavStyle = styled(HeaderDefaultStyle)``;
 
-const HeaderChatNavStyle = styled(HeaderDefaultStyle)`
-  h1 {
-    flex-grow: 2;
-    padding-left: 10px;
+
+  .havetitle {
+    display: flex;
+    align-items: center;
+    h2 {
+      margin-left: 12px;
+    }
   }
 `;
