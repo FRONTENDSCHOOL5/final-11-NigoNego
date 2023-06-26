@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import { ReactComponent as IconSearch } from '../../../assets/image/IconSearch.svg';
 import { ReactComponent as IconArrowLeft } from '../../../assets/image/IconArrowLeft.svg';
 import { ReactComponent as IconMoreView } from '../../../assets/image/IconMoreView.svg';
+// import searchIcon from '../../../assets/icons/icon-search.svg';
 
-import { MSBtn, ProfileEditMSBtn } from '../button/Button';
-import searchIcon from '../../../assets/icons/icon-search.svg';
 import {
   ArrowLeft,
   MSBtn,
@@ -36,8 +35,7 @@ export function HeaderSearchNav() {
   );
 }
 
-
-export function HeaderMainNav() {
+export function HeaderMainNav({ content }) {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
@@ -45,14 +43,12 @@ export function HeaderMainNav() {
   };
 
   return (
-    <HeaderMainNavStyle>
-      <h1>니고네고 피드</h1>
-
-      <Button onClick={handleButtonClick}>
-        <Img src={searchIcon} alt="검색 아이콘" />
-      </Button>
-    </HeaderMainNavStyle>
-
+    <HeaderDefaultStyle>
+      <h1>{content}</h1>
+      <button onClick={handleButtonClick} type="button">
+        <IconSearch width="24px" height="24px" />
+      </button>
+    </HeaderDefaultStyle>
   );
 }
 
@@ -117,7 +113,13 @@ const HeaderDefaultStyle = styled.div`
     width: 100%;
     margin-left: 12px;
   }
-
+  .havetitle {
+    display: flex;
+    align-items: center;
+    h2 {
+      margin-left: 12px;
+    }
+  }
 `;
 
 const Button = styled.button`
@@ -129,14 +131,4 @@ const Img = styled.img`
   padding: 30px;
 `;
 
-const HeaderUploadNavStyle = styled(HeaderDefaultStyle)``;
-
-
-  .havetitle {
-    display: flex;
-    align-items: center;
-    h2 {
-      margin-left: 12px;
-    }
-  }
-`;
+// const HeaderUploadNavStyle = styled(HeaderDefaultStyle)``;

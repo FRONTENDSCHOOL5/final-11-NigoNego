@@ -3,14 +3,12 @@ import axios from 'axios';
 import styled from 'styled-components';
 import ProfileUser from './ProfileUser';
 import MyProfileBtn from './MyProfileBtn';
-
-
 import { useRecoilValue } from 'recoil';
-import { authAtom } from '../../atom/atoms';
+import { accountNameAtom, authAtom } from '../../atom/atoms';
 export default function ProfileHeader() {
-
   const [myProfileData, setMyProfileData] = useState({});
   const auth = useRecoilValue(authAtom);
+  const accountname = useRecoilValue(accountNameAtom);
 
   useEffect(() => {
     try {
