@@ -17,15 +17,16 @@ const NavbarWrapper = styled.nav`
   }
 
   li {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
+    width: 100px;
 
     button {
-      text-align: center;
+      width: 100%;
       border: none;
       font-size: 1.4rem;
-
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       * {
         pointer-events: none;
       }

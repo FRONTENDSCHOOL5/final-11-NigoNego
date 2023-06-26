@@ -93,7 +93,6 @@ export default function PostUpload() {
           </UploadButtonStyle>
         </BodyGlobal>
       </form>
-      <Navbar />
     </>
   );
 }
