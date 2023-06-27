@@ -34,7 +34,12 @@ export default function ProfileHeader({ accountname }) {
       {Object.keys(yourProfileData).length > 0 && (
         <YourProfileUser myProfileData={yourProfileData} />
       )}
-      <YourProfileBtn />
+      {Object.keys(yourProfileData).length > 0 && (
+        <YourProfileBtn
+          myProfileData={yourProfileData}
+          accountname={accountname}
+        />
+      )}
     </ProfileHeaderWrapper>
   );
 }
