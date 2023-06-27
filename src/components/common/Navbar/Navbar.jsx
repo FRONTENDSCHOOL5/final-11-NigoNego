@@ -39,7 +39,11 @@ export default function Navbar() {
       <ul>
         <li>
           <button value={'/homefeed'} type="button" onClick={handleClick}>
-            <HomeIcon fill={homeFill} onClick={handleClick} />
+            <HomeIcon
+              fill={homeFill}
+              onClick={handleClick}
+              stroke={homeFill !== 'none' ? '#fff' : '#767676'}
+            />
             <p>홈</p>
           </button>
         </li>

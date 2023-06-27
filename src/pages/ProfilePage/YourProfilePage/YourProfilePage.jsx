@@ -44,7 +44,7 @@ export default function YourProfilePage() {
         <YourProfileHeader accountname={accountname} />
         <YourProduct accountname={accountname} />
 
-        <HeaderDefaultStyle>
+        <ImgAlignNav>
           <button onClick={e => handleClickList(e)}>
             <BtnGrid
               width="26px"
@@ -61,7 +61,7 @@ export default function YourProfilePage() {
               stroke={isClickedGrid ? '#767676' : '#dbdbdb'}
             />
           </button>
-        </HeaderDefaultStyle>
+        </ImgAlignNav>
 
         {isClickedList && <YourHomePost accountname={accountname} />}
         {isClickedGrid && <HomePostGrid accountname={accountname} />}
@@ -71,8 +71,9 @@ export default function YourProfilePage() {
   );
 }
 
-const HeaderDefaultStyle = styled.div`
+const ImgAlignNav = styled.div`
   height: 4.8rem;
+  margin: 6px 0 16px 0;
   border-top: 1px solid var(--basic-border-color);
   border-bottom: 1px solid var(--basic-border-color);
   width: 100%;
