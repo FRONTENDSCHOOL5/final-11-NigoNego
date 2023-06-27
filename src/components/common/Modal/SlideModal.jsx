@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import slideIcon from '../../../assets/icons/slide-top-icon.png';
-import { LogoutModal } from './Modal';
+import { LogoutModal, CommentModal } from './Modal';
 
 export default function SlideModal() {
   const navigate = useNavigate();
@@ -34,6 +34,41 @@ export default function SlideModal() {
   );
 }
 
+//댓글 슬라이드 모달 추가
+
+export function CommentSlideModal({ isMyComment, closeModal }) {
+  return (
+    <SlideModalBackground onClick={closeModal}>
+      <SlideModalWrapper>
+        <img src={slideIcon} alt="" />
+        <StyledUl>
+          {isMyComment ? (
+            <>
+              <StyledLi>삭제</StyledLi>
+              <StyledLi>수정</StyledLi>
+            </>
+          ) : (
+            <StyledLi>신고하기</StyledLi>
+          )}
+        </StyledUl>
+      </SlideModalWrapper>
+    </SlideModalBackground>
+  );
+}
+
+const SlideModalBackground = styled.div`
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  overflow: hidden;
+`;
 const SlideModalWrapper = styled.div`
   text-align: center;
   padding: 10px 0;
@@ -44,6 +79,7 @@ const SlideModalWrapper = styled.div`
   bottom: 50px;
   background-color: white;
   width: 100%;
+  z-index: 100;
 `;
 
 const StyledUl = styled.ul`

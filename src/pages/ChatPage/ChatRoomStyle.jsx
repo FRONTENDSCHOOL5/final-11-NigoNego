@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import buttonImg from '../../assets/images/upload-file.svg';
 const CommonWrapper = styled.section``;
 const ChatWrapper = styled.div`
   background-color: var('--light-grey');
@@ -71,6 +72,27 @@ const ChattingSend = styled.button`
   width: 10%;
   border: 0;
   color: var(--basic-gray);
+`;
+
+export const UploadButtonStyle = styled.div`
+  position: fixed;
+  /* bottom: 16px; */
+  right: 16px;
+  label {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background-image: url(${buttonImg});
+    background-size: cover;
+  }
+
+  input {
+    display: none;
+  }
+
+  input::file-selector-button {
+    display: none;
+  }
 `;
 
 export {

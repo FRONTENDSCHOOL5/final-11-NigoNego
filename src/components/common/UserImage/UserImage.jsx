@@ -43,13 +43,9 @@ export function SImage({ backgroundUrl }) {
 
 const XSProfile = styled(ImageStyle)`
   width: 36px;
-  height: 35px;
+  height: 36px;
 `;
 
-export function XSImage({ backgroundUrl, ...props }) {
-  return (
-    <XSProfile
-      backgroundUrl={props.backgroundUrl ? props.backgroundUrl : basicImg}
-    />
-  );
+export function XSImage({ backgroundUrl }) {
+  return <XSProfile backgroundUrl={backgroundUrl ? backgroundUrl : basicImg} />;
 }

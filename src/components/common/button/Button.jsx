@@ -178,7 +178,7 @@ const ArrowLeftStyle = styled.div`
   }
 `;
 
-const MoreIconButtonStyle = styled.button`
+export const MoreIconButtonStyle = styled.button`
   border: none;
   color: red;
 `;
