@@ -31,11 +31,11 @@ export default function HomePost({ data }) {
           <div className="post-item-wrapper">
             <button type="button">
               <BtnComment width="24px" />
-              <span>123</span>
+              <span>{data.commentCount}</span>
             </button>
             <button type="button">
               <BtnHeart width="24px" fill="none" stroke="#767676" />
-              <span>123</span>
+              <span>{data.heartCount}</span>
             </button>
           </div>
           <time>{data.updatedAt}</time>
