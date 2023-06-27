@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
 import { Wrapper, FormWrapper } from '../LoginPage/LoginPage';
+import MainWrapperF from '../../styles/MainGlobal';
 
 const ButtonWrapper = styled.div`
   margin-top: 30px;
@@ -96,45 +97,47 @@ function JoinPage() {
   }
 
   return (
-    <Wrapper>
-      <h1>회원가입 페이지</h1>
-      <form onSubmit={onhandlesubmit}>
-        <FormWrapper>
-          <Input
-            label="이메일"
-            type="email"
-            id="user-email"
-            name="user-email"
-            placeholder="이메일 주소를 입력해 주세요."
-            value={email}
-            onChange={event => setEmail(event.target.value)}
-            onBlur={handleEmailBlur}
-            // validation={isEmailValid}
-            isCorrect={isEmailPossible}
-            errorMessage={errorMessageEM}
-          />
-          <Input
-            label="비밀번호"
-            type="password"
-            id="user-password"
-            name="user-password"
-            placeholder="비밀번호를 설정해 주세요."
-            value={password}
-            onChange={event => setPassword(event.target.value)}
-            onBlur={handlePasswordBlur}
-            isCorrect={isPasswordValid}
-            errorMessage={errorMessagePW}
-          />
-          <ButtonWrapper>
-            {isEmailValid && isPasswordValid ? (
-              <LBtn type="submit" content="다음" />
-            ) : (
-              <LdisabledBtn content="다음" h="32" />
-            )}
-          </ButtonWrapper>
-        </FormWrapper>
-      </form>
-    </Wrapper>
+    <MainWrapperF>
+      <Wrapper>
+        <h1>회원가입 페이지</h1>
+        <form onSubmit={onhandlesubmit}>
+          <FormWrapper>
+            <Input
+              label="이메일"
+              type="email"
+              id="user-email"
+              name="user-email"
+              placeholder="이메일 주소를 입력해 주세요."
+              value={email}
+              onChange={event => setEmail(event.target.value)}
+              onBlur={handleEmailBlur}
+              // validation={isEmailValid}
+              isCorrect={isEmailPossible}
+              errorMessage={errorMessageEM}
+            />
+            <Input
+              label="비밀번호"
+              type="password"
+              id="user-password"
+              name="user-password"
+              placeholder="비밀번호를 설정해 주세요."
+              value={password}
+              onChange={event => setPassword(event.target.value)}
+              onBlur={handlePasswordBlur}
+              isCorrect={isPasswordValid}
+              errorMessage={errorMessagePW}
+            />
+            <ButtonWrapper>
+              {isEmailValid && isPasswordValid ? (
+                <LBtn type="submit" content="다음" />
+              ) : (
+                <LdisabledBtn content="다음" h="32" />
+              )}
+            </ButtonWrapper>
+          </FormWrapper>
+        </form>
+      </Wrapper>
+    </MainWrapperF>
   );
 }
 

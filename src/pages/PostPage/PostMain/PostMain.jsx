@@ -64,30 +64,31 @@ function PostMain() {
   //커멘트 시간
 
   return (
-    <PostPageWrapper>
-      <HeaderBasicNav />
-      <ContentSection>
-        {/* 여기서 문제였음 postData, postData.id값이 계속 null 이 나왔는데 그이유는 getData가 비동기 함수 인데 
+    <>
+      {/* 여기서 문제였음 postData, postData.id값이 계속 null 이 나왔는데 그이유는 getData가 비동기 함수 인데 
         setPostData()가 실행되기도 전에 HomePost 컴포넌트가 렌더링 되니까 여기서 조건을 추가해주는 방법사용 
         보통 이부분에서 로딩 컴포넌트를 만들어서 삼항연산자안에 postdata가 null일때 로딩컴포넌트를 보여주는 방식으로 함
          */}
-        {postData !== null && <HomePost data={postData} />}
-      </ContentSection>
-      <hr />
-      <CommentWrapper>
-        {commentData.length > 0 &&
-          commentData.map(comment => {
-            return <CommentPost comment={comment} />;
-          })}
-      </CommentWrapper>
-      {postId !== null && (
-        <CommentInput
-          userId={postId}
-          setRecentCommentData={setRecentCommentData}
-          getComment={getComment}
-        />
-      )}
-    </PostPageWrapper>
+      <HeaderBasicNav />
+      <PostPageWrapper>
+        <ContentSection>
+          {postData !== null && <HomePost data={postData} />}
+          <CommentWrapper className="111">
+            {commentData.length > 0 &&
+              commentData.map(comment => {
+                return <CommentPost comment={comment} />;
+              })}
+          </CommentWrapper>
+        </ContentSection>
+        {postId !== null && (
+          <CommentInput
+            userId={postId}
+            setRecentCommentData={setRecentCommentData}
+            getComment={getComment}
+          />
+        )}
+      </PostPageWrapper>
+    </>
   );
 }
 
@@ -101,11 +102,8 @@ const CommentWrapper = styled.section`
 `;
 
 const ContentSection = styled.section`
-  padding: 20px 12px 12px;
-  & + hr {
-    margin: 0;
-    border: solid 0.5px #dbdbdb;
-  }
+  height: 84vh;
+  overflow: scroll;
 `;
 
 export default PostMain;
