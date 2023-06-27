@@ -7,8 +7,9 @@ import { GetProDuctListLimit } from '../../api/getData/getData';
 
 const ProductWrapper = styled.div`
   .product-list-items {
+    max-width: 700px;
     display: flex;
-    gap: 10px;
+    gap: 20px;
     overflow-x: auto;
 
     button {

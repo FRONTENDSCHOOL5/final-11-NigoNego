@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 function HomePage() {
   return (
     <Wrapper>
-      <HeaderMainNav />
+      <HeaderMainNav content={'니고네고 피드'} />
       <HomeBlank />
       <Navbar />
     </Wrapper>

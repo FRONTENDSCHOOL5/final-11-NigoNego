@@ -12,12 +12,8 @@ import {
 } from './ProfileEditStyle';
 import { HeaderEditdNav } from '../../../components/common/Header/Header';
 import Input from '../../../components/common/Input/Input';
-// import { LBtn, LdisabledBtn } from '../../../components/common/button/Button';
 import { LImage } from '../../../components/common/UserImage/UserImage';
-import basicImg from '../../../assets/images/basic-profile-img.png';
-// import UploadButton from '../../../components/common/button/UploadButton';
-import SlideModal from '../../../components/common/Modal/SlideModal';
-
+import { UploadButtonStyle } from '../../JoinPage/joinMemberStyle';
 export default function ProfileEditPage() {
   const [userName, setUserName] = useState('');
   const [userID, setUserID] = useState('');
@@ -26,6 +22,7 @@ export default function ProfileEditPage() {
   const [isUserNameValid, setIsUserNameValid] = useState(false);
   const [isUserIDValid, setIsUserIDValid] = useState(false);
   const [errorMessageID, setErrorMessageID] = useState('');
+  const [userImage, setUserImage] = useState('');
 
   const navigate = useNavigate();
   const auth = useRecoilValue(authAtom);
@@ -89,6 +86,23 @@ export default function ProfileEditPage() {
     }
   };
 
+  const handleImageUpload = e => {
+    e.preventDefault();
+
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('image', file);
+
+    axios({
+      method: 'POST',
+      url: 'https://api.mandarin.weniv.co.kr/image/uploadfile',
+      data: formData,
+    }).then(result => {
+      const imageUrl = `https://api.mandarin.weniv.co.kr/${result.data.filename}`;
+      setUserImage(imageUrl);
+    });
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
 
@@ -104,7 +118,7 @@ export default function ProfileEditPage() {
               username: userName,
               accountname: userID,
               intro: userIntro,
-              image: '',
+              image: userImage, // 사용자 이미지 값}
             },
           },
           {
@@ -140,9 +154,13 @@ export default function ProfileEditPage() {
         <h1>프로필 설정</h1>
         <p>나중에 언제든지 변경할 수 있습니다.</p>
       </HeadingWrapper>
+
       <ImageWrapper>
-        <LImage src={basicImg} />
-        {/* <UploadButton /> */}
+        <LImage backgroundUrl={userImage} />
+        <UploadButtonStyle>
+          <label htmlFor="input" />
+          <input id="input" type="file" onChange={handleImageUpload} />
+        </UploadButtonStyle>
       </ImageWrapper>
       <form onSubmit={handleSubmit}>
         <FormWrapper>
