@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router';
 import { authAtom } from '../../../atom/atoms';
 import { useRecoilValue } from 'recoil';
+import BodyGlobal from '../../../styles/BodyGlobal';
 
 export default function PostUpload() {
   const [content, setContent] = useState('');
@@ -71,20 +72,21 @@ export default function PostUpload() {
     <>
       <form onSubmit={handleSubmit}>
         <HeaderUploadNav content={'업로드'} />
-        <PostUploadWrapper>
-          <SImage />
-          <div className="postContent">
-            <textarea
-              className="inputPost"
-              placeholder="게시글 입력하기"
-              value={content}
-              onChange={e => setContent(e.target.value)}
-            />
-            {image.length > 0 && <img src={image} alt="" />}
-          </div>
-        </PostUploadWrapper>
+        <BodyGlobal>
+          <PostUploadWrapper className="111111">
+            <SImage />
+            <div className="postContent">
+              <textarea
+                className="inputPost"
+                placeholder="게시글 입력하기"
+                value={content}
+                onChange={e => setContent(e.target.value)}
+              />
+              {image.length > 0 && <img src={image} alt="" />}
+            </div>
+          </PostUploadWrapper>
+        </BodyGlobal>
       </form>
-
       <UploadButtonStyle>
         <label htmlFor="input" />
         <input id="input" type="file" onChange={handleImageUpload} />
@@ -95,26 +97,25 @@ export default function PostUpload() {
 
 const PostUploadWrapper = styled.div`
   /* box-shadow: inset 0 0 10px red; */
-  /* 공통 margin, padding 적용 */
-  .postContent {
-    margin-top: -30px;
-    margin-left: 60px;
-    textarea {
-      display: block;
-      border: 0px;
-      width: 100%;
-      padding: 12px 6px;
-    }
-    img {
-      margin-top: 10px;
-      display: block;
-      overflow: hidden;
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-      overflow: hidden;
-    }
+  margin-top: 10px;
+  textarea {
+    display: block;
+    border: 0px;
+    width: 80vw;
+    min-height: 70vh;
+    padding: 12px 6px;
+    resize: none;
+    margin: auto;
+  }
+  img {
+    margin-top: 10px;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    overflow: hidden;
   }
 `;
 

@@ -95,7 +95,7 @@ const SlideModalWrapper = styled.div`
   border-radius: 10px 10px 0 0;
   position: fixed;
   left: 0px;
-  bottom: 50px;
+  bottom: 66px;
   background-color: white;
   width: 100%;
   z-index: 100;

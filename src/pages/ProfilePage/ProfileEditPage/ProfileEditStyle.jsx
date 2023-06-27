@@ -11,8 +11,16 @@ const HeadingWrapper = styled.div`
 
 const ImageWrapper = styled.div`
   margin-top: 1.875rem;
-  display: flex;
   justify-content: center;
+  width: 112px;
+  margin: auto;
+  position: relative;
+
+  .input-s {
+    position: absolute;
+    bottom: -3px;
+    right: 3px;
+  }
 `;
 
 const FormWrapper = styled.div`
@@ -21,6 +29,11 @@ const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
+
+  label {
+    color: var(--basic-grey);
+    font-weight: bold;
+  }
 `;
 const BtnWrapper = styled.div`
   margin-top: 10px;
