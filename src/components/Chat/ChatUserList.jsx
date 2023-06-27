@@ -31,6 +31,7 @@ export default function ChatUserList({ userId }) {
           <time>2020.10.25</time>
         </div>
       </div>
+      <time>2020.10.25</time>
     </ChatUser>
   );
 }
@@ -39,9 +40,16 @@ const ChatUser = styled.section`
   display: flex;
   width: 100%;
   align-items: center;
-  padding: 10px 0;
+  padding: 10px 10px;
   border: 1px solid black;
   /* box-shadow: inset 0 0 10px red; */
+
+  time {
+    color: var(--basic-border-color);
+    margin-left: auto;
+    padding-right: 20px;
+  }
+
   cursor: pointer;
   .userInfoText {
     width: 100%;
@@ -56,16 +64,8 @@ const ChatUser = styled.section`
     justify-content: space-between;
     align-items: center;
     margin-top: 4px;
-    p,
-    time {
-      margin: 0;
-      padding: 0;
-    }
     p {
       color: var(--basic-grey);
-    }
-    time {
-      color: var(--light-grey);
     }
   }
 `;

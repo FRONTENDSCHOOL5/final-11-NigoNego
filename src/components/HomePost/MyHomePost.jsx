@@ -49,12 +49,14 @@ export default function MyHomePost({ accountname }) {
       {userData.length > 0 &&
         userData.map(data => {
           return (
-            <div>
+            <div className="post-item-wrapper">
               <UserSearch data={data} />
               <div className="container">
                 <p>{data.content}</p>
-                <HomePostImg src={data.image} />
-                <div>
+                <div className="img-W">
+                  <HomePostImg src={data.image} />
+                </div>
+                <div className="icon-wrapper">
                   <button type="button">
                     <img src={msg} alt="" />
                     <span>123</span>
@@ -73,21 +75,33 @@ export default function MyHomePost({ accountname }) {
 }
 
 const HomePostImg = styled.img`
-  width: 304px;
-  height: 228px;
-  object-fit: cover;
+  width: 86%;
+  aspect-ratio: 5 / 3;
+  background: orange;
   border-radius: 10px;
+  object-fit: cover;
 `;
 
 const MyHomePostwarpper = styled.div`
-  height: 60vh;
+  height: 66vh;
   overflow: scroll;
   /* box-shadow: inset 0px 0px 3px 5px rgb(0, 38, 255); */
 
+  .icon-wrapper {
+    margin: 10px 0;
+  }
+
   .container {
     margin-left: 70px;
+    max-width: 700px;
   }
   button {
     border: none;
   }
+
+  .post-item-wrapper {
+    margin: 30px 0;
+  }
 `;
+
+export { MyHomePost, HomePostImg, MyHomePostwarpper };
