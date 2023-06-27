@@ -32,7 +32,7 @@ function Routing() {
         <Route path="/join" element={<JoinPage />} />
         <Route path="/joinmember" element={<JoinMember />} />
         <Route path="/chat" element={<ChatPage />} />
-        <Route path="/chatroom" element={<ChatRoom />} />
+        <Route path="/chat/chatroom" element={<ChatRoom />} />
         <Route path="/myprofile" element={<MyProfilePage />} />
         <Route path="/yourprofile" element={<YourProfilePage />} />
         <Route path="/profileedit" element={<ProfileEditPage />} />

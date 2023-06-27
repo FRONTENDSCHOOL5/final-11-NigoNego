@@ -40,10 +40,13 @@ function PostMain() {
   const getComment = useCallback(async () => {
     GetCommentData(postId).then(response => {
       setCommentData(response.data.comments);
-      console.log(recentCommentData);
       if (commentData.length > 0) {
         if (recentCommentData !== '') {
-          setCommentData(commentData => [...commentData, recentCommentData]);
+          setCommentData(commentData => [
+            recentCommentData,
+            ...commentData.reverse(),
+          ]);
+          // setCommentData(commentData => commentData.reverse());
           console.log(commentData);
         }
       }
@@ -53,19 +56,13 @@ function PostMain() {
   useEffect(() => {
     // getMyAccountName();
     getData();
-  }, [auth, postId, getData]);
+  }, [auth, postId]);
 
   useEffect(() => {
     getComment();
-  }, [recentCommentData]);
-  //comment 데이터 요청
+  }, []);
+  //커멘트 시간
 
-  // useEffect(() => {
-  //   getMyProfilePic();
-  //   if (postData) {
-  //     getCommentList();
-  //   }
-  // }, [token, postData]);
   return (
     <PostPageWrapper>
       <HeaderBasicNav />
@@ -79,8 +76,8 @@ function PostMain() {
       <hr />
       <CommentWrapper>
         {commentData.length > 0 &&
-          commentData.map(comments => {
-            return <CommentPost comments={comments} />;
+          commentData.map(comment => {
+            return <CommentPost comment={comment} />;
           })}
       </CommentWrapper>
       {postId !== null && (

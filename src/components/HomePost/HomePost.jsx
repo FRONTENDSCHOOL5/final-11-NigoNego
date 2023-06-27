@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import msg from '../../assets/icons/message-icon.svg';
-import like from '../../assets/icons/like-icon.svg';
 import UserSearch from '../common/User/UserSearch';
 import { ReactComponent as BtnHeart } from '../../assets/image/BtnHeart.svg';
 import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
+import { HomePostImg } from './MyHomePost';
 
 export default function HomePost({ data }) {
   // const [feedPost, setFeedPost] = useState('');
   const navigate = useNavigate();
+  const postListRef = useRef(null);
 
   const postMainHandler = () => {
     // setPostId(id);
@@ -22,10 +22,10 @@ export default function HomePost({ data }) {
   };
 
   return (
-    <>
+    <HomePostwarpper ref={postListRef} className="HomePost">
       <UserSearch data={data} />
       {data && data.content && (
-        <section onClick={postMainHandler}>
+        <section className="container" onClick={postMainHandler}>
           <p>{data.content}</p>
           <HomePostImg src={data.image} />
           <div className="post-item-wrapper">
@@ -41,12 +41,28 @@ export default function HomePost({ data }) {
           <time>{data.updatedAt}</time>
         </section>
       )}
-    </>
+    </HomePostwarpper>
   );
 }
 
-const HomePostImg = styled.img`
-  vertical-align: middle;
-  padding-bottom: 10px;
-  width: 100%;
+const HomePostwarpper = styled.div`
+  height: 44vh;
+  margin-top: 20px;
+  /* box-shadow: inset 0px 0px 3px 5px rgb(0, 38, 255); */
+
+  .icon-wrapper {
+    margin: 10px 0;
+  }
+
+  .container {
+    margin-left: 70px;
+    max-width: 700px;
+  }
+  button {
+    border: none;
+  }
+
+  .post-item-wrapper {
+    margin: 30px 0;
+  }
 `;

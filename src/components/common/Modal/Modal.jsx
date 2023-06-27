@@ -78,6 +78,38 @@ export function LogoutModal() {
   );
 }
 
+//댓글 모달 추가
+export function CommentModal() {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const handleCancel = () => {
+    setIsOpen(false);
+  };
+
+  const handleDelete = () => {
+    console.log('삭제 완료');
+    setIsOpen(false);
+  };
+
+  if (!isOpen) {
+    return null;
+  }
+
+  return (
+    <ModalWrapper>
+      <ModalText>댓글을 삭제할까요?</ModalText>
+      <ButtonContainer>
+        <Button type="submit" onClick={handleCancel}>
+          취소
+        </Button>
+        <Button type="submit" delete onClick={handleDelete}>
+          삭제
+        </Button>
+      </ButtonContainer>
+    </ModalWrapper>
+  );
+}
+
 const ModalWrapper = styled.div`
   position: fixed;
   top: 50%;
