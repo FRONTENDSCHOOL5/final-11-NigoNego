@@ -10,7 +10,7 @@ import { ReactComponent as BtnImgUpload } from '../../assets/image/BtnImgUpload.
 import buttonImg from '../../assets/images/upload-file.svg';
 import { authAtom } from '../../atom/atoms';
 import { useRecoilValue } from 'recoil';
-
+import BodyGlobal from '../../styles/BodyGlobal';
 
 export default function ProductPage() {
   const [itemName, setItemName] = useState('');
@@ -71,55 +71,59 @@ export default function ProductPage() {
   }
 
   return (
-    <GlobalWrapper>
-      <form onSubmit={handleSubmit}>
-        <HeaderUploadNav content="업로드" />
-        <ul>
-          <li>
-            <p className="title">이미지 등록</p>
-            <ImgUploadWrapp>
-              <label htmlFor="input">
-                <BtnImgUpload
-                  width="34px"
-                  height="34px"
-                  fill="#c4c4c4"
-                  stroke="#fff"
+    <>
+      <HeaderUploadNav content="업로드" />
+      <BodyGlobal>
+        <GlobalWrapper>
+          <form onSubmit={handleSubmit}>
+            <ul>
+              <li>
+                <p className="title">이미지 등록</p>
+                <ImgUploadWrapp>
+                  <label htmlFor="input">
+                    <BtnImgUpload
+                      width="34px"
+                      height="34px"
+                      fill="#c4c4c4"
+                      stroke="#fff"
+                    />
+                  </label>
+                  <input id="input" type="file" onChange={handleImageUpload} />
+                  {itemImage.length > 0 && <img src={itemImage} alt="" />}
+                </ImgUploadWrapp>
+              </li>
+              <li>
+                <label className="title">상품명</label>
+                <Input
+                  placeholder="2~10자 이내여야 합니다."
+                  onChange={e => {
+                    setItemName(e.target.value);
+                  }}
                 />
-              </label>
-              <input id="input" type="file" onChange={handleImageUpload} />
-              {itemImage.length > 0 && <img src={itemImage} alt="" />}
-            </ImgUploadWrapp>
-          </li>
-          <li>
-            <label className="title">상품명</label>
-            <Input
-              placeholder="2~10자 이내여야 합니다."
-              onChange={e => {
-                setItemName(e.target.value);
-              }}
-            />
-          </li>
-          <li>
-            <label className="title">가격</label>
-            <Input
-              placeholder="숫자만 입력 가능합니다."
-              onChange={e => {
-                setPrice(e.target.value);
-              }}
-            />
-          </li>
-          <li>
-            <label className="title">판매링크</label>
-            <Input
-              placeholder="URL을 입력해 주세요."
-              onChange={e => {
-                setLink(e.target.value);
-              }}
-            />
-          </li>
-        </ul>
-      </form>
-    </GlobalWrapper>
+              </li>
+              <li>
+                <label className="title">가격</label>
+                <Input
+                  placeholder="숫자만 입력 가능합니다."
+                  onChange={e => {
+                    setPrice(e.target.value);
+                  }}
+                />
+              </li>
+              <li>
+                <label className="title">판매링크</label>
+                <Input
+                  placeholder="URL을 입력해 주세요."
+                  onChange={e => {
+                    setLink(e.target.value);
+                  }}
+                />
+              </li>
+            </ul>
+          </form>
+        </GlobalWrapper>
+      </BodyGlobal>
+    </>
   );
 }
 
@@ -134,14 +138,19 @@ const GlobalWrapper = styled.div`
       display: flex;
       flex-direction: column;
       gap: 16px;
+
+      li {
+        width: 322px;
+        margin: auto;
+      }
     }
   }
 `;
 const ImgUploadWrapp = styled.div`
   width: 100%;
-  height: 240px;
+  height: 204px;
   border-radius: 10px;
-  overflow: hidden;
+  margin: auto;
 
   background: var(--light-grey);
   position: relative;

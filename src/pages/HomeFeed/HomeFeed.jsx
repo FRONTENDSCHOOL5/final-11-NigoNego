@@ -73,7 +73,7 @@ function HomeFeed() {
 }
 
 const HomePostImg = styled.img`
-  width: 86%;
+  width: 100%;
   aspect-ratio: 5 / 3;
   background: orange;
   border-radius: 10px;
@@ -81,7 +81,8 @@ const HomePostImg = styled.img`
 `;
 
 const MyHomePostwarpper = styled.div`
-  height: 90vh;
+  height: 83vh;
+  padding-bottom: 20px;
   overflow: scroll;
   /* box-shadow: inset 0px 0px 3px 5px rgb(0, 38, 255); */
 
@@ -90,7 +91,7 @@ const MyHomePostwarpper = styled.div`
   }
 
   .container {
-    margin-left: 70px;
+    margin: 0 20px 0 70px;
     max-width: 700px;
 
     p {
