@@ -78,7 +78,11 @@ export function MoreIconButton() {
   const [isSideSlideOpen, setIsSideSlideOpen] = useState(false);
 
   const handleIconClick = () => {
-    setIsSideSlideOpen(!isSideSlideOpen);
+    setIsSideSlideOpen(true);
+  };
+
+  const handleSlideModalClose = () => {
+    setIsSideSlideOpen(false);
   };
 
   return (
@@ -86,7 +90,9 @@ export function MoreIconButton() {
       <MoreIconButtonStyle onClick={handleIconClick}>
         <IconMoreView width="24px" height="24px" />
       </MoreIconButtonStyle>
-      {isSideSlideOpen && <SlideModal></SlideModal>}
+      {isSideSlideOpen && (
+        <SlideModal handleSlideModalClose={handleSlideModalClose}></SlideModal>
+      )}
     </>
   );
 }

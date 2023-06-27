@@ -28,14 +28,14 @@ export default function FllowBtn() {
     navigate('/profileedit');
   };
 
-  const handlePostUpload = () => {
-    navigate('/postupload');
+  const handleProduct = () => {
+    navigate('/product');
   };
 
   return (
     <FollowBtnWrapper>
       <MActivBtnStyle onClick={handleProfileEdit}>프로필 수정</MActivBtnStyle>
-      <MActivBtnStyle onClick={handlePostUpload}>상품등록</MActivBtnStyle>
+      <MActivBtnStyle onClick={handleProduct}>상품등록</MActivBtnStyle>
     </FollowBtnWrapper>
   );
 }

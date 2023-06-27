@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import slideIcon from '../../../assets/icons/slide-top-icon.png';
 import { LogoutModal, CommentModal } from './Modal';
 
-export default function SlideModal() {
+export default function SlideModal({ handleSlideModalClose, closeModal }) {
   const navigate = useNavigate();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
@@ -17,20 +17,22 @@ export default function SlideModal() {
   };
 
   return (
-    <SlideModalWrapper>
-      <img src={slideIcon} alt="" />
-      <StyledUl>
-        <StyledLi onClick={() => handleItemClick('/settings')}>
-          설정 및 개인정보
-        </StyledLi>
-        <StyledLi onClick={() => handleItemClick('/LogoutModal')}>
-          로그아웃
-        </StyledLi>
-      </StyledUl>
-      {showLogoutModal && (
-        <LogoutModal onClose={() => setShowLogoutModal(false)} />
-      )}
-    </SlideModalWrapper>
+    <SlideModalBackground onClick={closeModal}>
+      <SlideModalWrapper>
+        <img src={slideIcon} alt="" />
+        <StyledUl>
+          <StyledLi onClick={() => handleItemClick('/settings')}>
+            설정 및 개인정보
+          </StyledLi>
+          <StyledLi onClick={() => handleItemClick('/LogoutModal')}>
+            로그아웃
+          </StyledLi>
+        </StyledUl>
+        {showLogoutModal && (
+          <LogoutModal handleSlideModalClose={handleSlideModalClose} />
+        )}
+      </SlideModalWrapper>
+    </SlideModalBackground>
   );
 }
 

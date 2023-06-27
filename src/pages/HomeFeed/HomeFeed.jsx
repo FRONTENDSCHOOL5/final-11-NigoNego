@@ -1,57 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import { useRecoilValue } from 'recoil';
-// // import { useNavigate } from 'react-router-dom';
-// import { authAtom, accountNameAtom } from '../../atom/atoms';
-// import { GetHomeFeedData } from '../../api/getData/getData';
-// import HomePost from '../../components/HomePost/HomePost';
-// import Navbar from '../../components/common/Navbar/Navbar';
-// import { HeaderBasicNav } from '../../components/common/Header/Header';
-// import BodyGlobal from '../../styles/BodyGlobal';
-
-// function HomeFeed() {
-//   // const [postId, setPostId] = useState(null);
-//   // const navigate = useNavigate();
-//   const auth = useRecoilValue(authAtom);
-
-//   const accountname = useRecoilValue(accountNameAtom);
-
-//   const [feedPost, setFeedPost] = useState([]);
-
-//   useEffect(() => {
-//     GetHomeFeedData().then(response => {
-//       setFeedPost(response.data.posts);
-//       console.log(feedPost);
-//     });
-//   }, []);
-
-//   return (
-//     <>
-//       <HeaderBasicNav />
-//       <BodyGlobal>
-//         {feedPost.length > 0 &&
-//           feedPost.map(data => {
-//             return <HomePost data={data} />;
-//           })}
-//         {/* <div>{followresData}</div> */}
-//       </BodyGlobal>
-//       <Navbar />
-//     </>
-//   );
-// }
-
-// export default HomeFeed;
-
-// /**
-//  * 1. 유저를 클릭하면
-//  * 2. 해당 유저의
-//  * 3. your profile 페이지로 이동
-//  * onClick={(e) => {함수1(e)}}
-//  * 함수1의 역할1. yourprofile로 이동
-//  * 함수1의 역할2. 해당 데이터를 받아와서
-//  * useNavigator('/yourprofile')
-//  * your profile 페이지에서 특정 유저가 데이터가 선택되는 방법은?
-//  */
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useRecoilValue } from 'recoil';
 // import { useNavigate } from 'react-router-dom';
@@ -77,9 +23,10 @@ function HomeFeed() {
     fetchData(0); // 초기 데이터 로드
   }, []);
 
-  const fetchData = (skip = 5) => {
+  const fetchData = (skip = 3) => {
     GetHomeFeedData(skip)
       .then(response => {
+        console.log(response);
         setUserData(prevData => [...prevData, ...response.data.posts]);
       })
       .catch(error => console.error(error));
@@ -109,20 +56,13 @@ function HomeFeed() {
   }, [userData]);
   return (
     <>
+      <HeaderBasicNav />
       <MyHomePostwarpper ref={postListRef} className="myHomePost">
-        <HeaderBasicNav />
         {userData.length > 0 &&
           userData.map(data => {
             return (
               <>
-                <BodyGlobal>
-                  {userData.length > 0 &&
-                    userData.map(data => {
-                      return <HomePost data={data} />;
-                    })}
-                  {/* <div>{followresData}</div> */}
-                </BodyGlobal>
-                <Navbar />
+                <HomePost data={data} />
               </>
             );
           })}
@@ -152,47 +92,22 @@ const MyHomePostwarpper = styled.div`
   .container {
     margin-left: 70px;
     max-width: 700px;
+
+    p {
+      margin: 0 0 10px 0;
+    }
   }
   button {
     border: none;
   }
 
   .post-item-wrapper {
-    margin: 30px 0;
+    padding: 10px 0;
+
+    button {
+      padding: 0 10px 0 0;
+    }
   }
 `;
 
 export default HomeFeed;
-
-// return (
-//   <>
-//     <MyHomePostwarpper ref={postListRef} className="myHomePost">
-//       <HeaderBasicNav />
-//       {userData.length > 0 &&
-//         userData.map(data => {
-//           return (
-//             <div className="post-item-wrapper">
-//               <UserSearch data={data} />
-//               <div className="container">
-//                 <p>{data.content}</p>
-//                 <div className="img-W">
-//                   <HomePostImg src={data.image} />
-//                 </div>
-//                 <div className="icon-wrapper">
-//                   <button type="button">
-//                     {/* <img src={msg} alt="" /> */}
-//                     <span>123</span>
-//                   </button>
-//                   <button type="button">
-//                     {/* <img src={like} alt="" /> */}
-//                     <span>123</span>
-//                   </button>
-//                 </div>
-//               </div>
-//             </div>
-//           );
-//         })}
-//     </MyHomePostwarpper>
-//     <Navbar />
-//   </>
-// );

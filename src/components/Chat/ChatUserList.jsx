@@ -31,7 +31,6 @@ export default function ChatUserList({ userId }) {
           <time>2020.10.25</time>
         </div>
       </div>
-      <time>2020.10.25</time>
     </ChatUser>
   );
 }
@@ -74,7 +73,8 @@ const ImgWrapper = styled.div``;
 const Circle = styled.div`
   width: 15px;
   height: 15px;
-  position: absolute;
+  position: relative;
+  top: 15px;
   border-radius: 50%;
   background-color: var(--basic-yellow);
 `;

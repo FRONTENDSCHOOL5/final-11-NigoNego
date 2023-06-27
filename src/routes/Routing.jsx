@@ -34,15 +34,14 @@ function Routing() {
         <Route path="/chat" element={<ChatPage />} />
         <Route path="/chat/chatroom" element={<ChatRoom />} />
         <Route path="/myprofile" element={<MyProfilePage />} />
-        <Route path="/yourprofile" element={<YourProfilePage />} />
         <Route path="/profileedit" element={<ProfileEditPage />} />
-        <Route path="/postmain" element={<PostMain />} />
+        <Route path="/myfollowers" element={<MyFollowersPage />} />
+        <Route path="/yourprofile" element={<YourProfilePage />} />
         <Route path="/postupload" element={<PostUploadPage />} />
         <Route path="/product" element={<ProductPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/test" element={<Test />} />
-        <Route path="/myfollowers" element={<MyFollowersPage />} />
         <Route path="/postmain" element={<PostMain />} />
       </Routes>
     </BrowserRouter>
