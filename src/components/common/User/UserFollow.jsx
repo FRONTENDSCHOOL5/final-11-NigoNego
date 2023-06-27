@@ -81,7 +81,6 @@ export default function UserFollow() {
 }
 
 const UserFollowWrapper = styled.div`
-  margin: 4.8rem 10px 0 10px;
   height: 83vh;
   overflow: scroll;
 `;
