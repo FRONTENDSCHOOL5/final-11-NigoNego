@@ -6,7 +6,7 @@ import YourHomePost from '../../../components/HomePost/YourHomePost';
 import YourProfileHeader from '../../../components/YourProfileHeader/YourProfileHeader';
 import Navbar from '../../../components/common/Navbar/Navbar';
 import { HeaderBasicNav } from '../../../components/common/Header/Header';
-// import HomePostGrid from '../../../components/HomePost/HomePostGrid';
+import HomePostGrid from '../../../components/HomePost/HomePostGrid';
 
 import styled from 'styled-components';
 import BodyGlobal from '../../../styles/BodyGlobal';
@@ -64,7 +64,7 @@ export default function YourProfilePage() {
         </ImgAlignNav>
 
         {isClickedList && <YourHomePost accountname={accountname} />}
-        {/* {isClickedGrid && <HomePostGrid accountname={accountname} />} */}
+        {isClickedGrid && <HomePostGrid accountname={accountname} />}
       </BodyGlobal>
       <Navbar />
     </div>

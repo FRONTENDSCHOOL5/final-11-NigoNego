@@ -10,9 +10,11 @@ import { ReactComponent as BtnGrid } from '../../../assets/image/BtnGrid.svg';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { useState } from 'react';
+import HomePostGrid from '../../../components/HomePost/HomePostGrid';
+
 export default function MyProfilePage() {
   const userName = useLocation();
-  console.log(userName.state);
+  // console.log(userName.state);
   const [isClickedList, setIsClickedList] = useState(true);
   const [isClickedGrid, setIsClickedGrid] = useState(false);
 
@@ -60,7 +62,7 @@ export default function MyProfilePage() {
         </ImgAlignNav>
 
         {isClickedList && <MyHomePost accountname={userName.state.user} />}
-        {isClickedGrid && <MyHomePost accountname={userName.state.user} />}
+        {isClickedGrid && <HomePostGrid accountname={userName.state.user} />}
       </BodyGlobal>
       <Navbar />
     </>
