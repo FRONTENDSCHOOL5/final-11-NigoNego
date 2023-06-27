@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import SlideModal from '../Modal/SlideModal';
@@ -29,8 +29,8 @@ export function MdisabledBtn() {
   return <MdisabledBtnStyle>팔로우</MdisabledBtnStyle>;
 }
 
-export function MActivBtn() {
-  return <MActivBtnStyle>언팔로우</MActivBtnStyle>;
+export function MActivBtn({ onClick }) {
+  return <MActivBtnStyle onClick={onClick}>언팔로우</MActivBtnStyle>;
 }
 
 export function MSBtn({ content }) {
@@ -81,8 +81,10 @@ export function MoreIconButton() {
     setIsSideSlideOpen(true);
   };
 
-  const handleSlideModalClose = () => {
-    setIsSideSlideOpen(false);
+  const handleModalClose = event => {
+    if (event.target === event.currentTarget) {
+      setIsSideSlideOpen(false);
+    }
   };
 
   return (
@@ -91,7 +93,7 @@ export function MoreIconButton() {
         <IconMoreView width="24px" height="24px" />
       </MoreIconButtonStyle>
       {isSideSlideOpen && (
-        <SlideModal handleSlideModalClose={handleSlideModalClose}></SlideModal>
+        <SlideModal closeModal={handleModalClose}></SlideModal>
       )}
     </>
   );

@@ -6,6 +6,7 @@ import { useRecoilState } from 'recoil';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
 import { authAtom, accountNameAtom, followingAtom } from '../../atom/atoms';
+import MainWrapperF from '../../styles/MainGlobal';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -102,51 +103,52 @@ function LoginPage() {
   }
 
   return (
-    <Wrapper>
-      <h1>로그인</h1>
-      <form onSubmit={onhandlesubmit}>
-        <FormWrapper>
-          <Input
-            label="이메일"
-            type="email"
-            id="user-email"
-            name="user-email"
-            placeholder=""
-            value={email}
-            onChange={event => emailCheck(event)}
-          />
-          <Input
-            label="비밀번호"
-            type="password"
-            id="user-password"
-            name="user-password"
-            placeholder=""
-            value={password}
-            onChange={event => passwordCheck(event)}
-            isCorrect={isCorrect}
-            errorMessage={loginErrMessage}
-          />
+    <MainWrapperF>
+      <Wrapper>
+        <h1>로그인</h1>
+        <form onSubmit={onhandlesubmit}>
+          <FormWrapper>
+            <Input
+              label="이메일"
+              type="email"
+              id="user-email"
+              name="user-email"
+              placeholder=""
+              value={email}
+              onChange={event => emailCheck(event)}
+            />
+            <Input
+              label="비밀번호"
+              type="password"
+              id="user-password"
+              name="user-password"
+              placeholder=""
+              value={password}
+              onChange={event => passwordCheck(event)}
+              isCorrect={isCorrect}
+              errorMessage={loginErrMessage}
+            />
 
-          {isEmailValid && isPasswordValid ? (
-            <LBtn type="submit" content="로그인" />
-          ) : (
-            <LdisabledBtn content="로그인" />
-          )}
-        </FormWrapper>
-      </form>
-      <LinkWrapper>
-        <Link to="/join">이메일로 회원가입</Link>
-      </LinkWrapper>
-    </Wrapper>
+            {isEmailValid && isPasswordValid ? (
+              <LBtn type="submit" content="로그인" />
+            ) : (
+              <LdisabledBtn content="로그인" />
+            )}
+          </FormWrapper>
+        </form>
+        <LinkWrapper>
+          <Link to="/join">이메일로 회원가입</Link>
+        </LinkWrapper>
+      </Wrapper>
+    </MainWrapperF>
   );
 }
 
 export default LoginPage;
 
 export const Wrapper = styled.div`
-  height: 100vh;
   width: 80%;
-  margin: 0 auto;
+  margin: 0px auto;
   display: flex;
   flex-direction: column;
 

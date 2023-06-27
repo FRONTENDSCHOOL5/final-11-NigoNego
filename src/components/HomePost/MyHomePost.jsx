@@ -1,19 +1,28 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import msg from '../../assets/icons/message-icon.svg';
-import like from '../../assets/icons/like-icon.svg';
+
 import { GetPostListLimit } from '../../api/getData/getData';
 import UserSearch from '../common/User/UserSearch';
+import { ReactComponent as BtnHeart } from '../../assets/image/BtnHeart.svg';
+import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
+import { click } from '@testing-library/user-event/dist/click';
 
 export default function MyHomePost({ accountname }) {
   const [userData, setUserData] = useState([]);
   const postListRef = useRef(null);
 
+  const [clickedHeart, setClickedHeart] = useState(Boolean(true));
+
+  function handleClickedHeart(e) {
+    e.preventDefault();
+    setClickedHeart(!clickedHeart);
+  }
+
   useEffect(() => {
     fetchData(0); // 초기 데이터 로드
   }, []);
 
-  const fetchData = (skip = 5) => {
+  const fetchData = (skip = 3) => {
     GetPostListLimit(skip, accountname)
       .then(response => {
         setUserData(prevData => [...prevData, ...response.data.post]);
@@ -58,12 +67,18 @@ export default function MyHomePost({ accountname }) {
                 </div>
                 <div className="icon-wrapper">
                   <button type="button">
-                    <img src={msg} alt="" />
-                    <span>123</span>
+                    <BtnComment width="24px" height="24px" stroke="#767676" />
+                    <span>{data.commentCount}</span>
                   </button>
                   <button type="button">
-                    <img src={like} alt="" />
-                    <span>123</span>
+                    <BtnHeart
+                      width="24px"
+                      height="24px"
+                      fill={clickedHeart ? 'none' : 'red'}
+                      stroke={clickedHeart ? '#767676' : 'red'}
+                      onClick={e => handleClickedHeart(e)}
+                    />
+                    <span>{data.heartCount}</span>
                   </button>
                 </div>
               </div>
@@ -83,7 +98,7 @@ const HomePostImg = styled.img`
 `;
 
 const MyHomePostwarpper = styled.div`
-  height: 66vh;
+  height: 640px;
   overflow: scroll;
   /* box-shadow: inset 0px 0px 3px 5px rgb(0, 38, 255); */
 
@@ -94,13 +109,21 @@ const MyHomePostwarpper = styled.div`
   .container {
     margin-left: 70px;
     max-width: 700px;
+
+    .post-item-wrapper {
+      padding: 10px 0;
+
+      button {
+        padding: 0 10px 0 0;
+      }
+    }
+
+    p {
+      margin: 0 0 10px 0;
+    }
   }
   button {
     border: none;
-  }
-
-  .post-item-wrapper {
-    margin: 30px 0;
   }
 `;
 

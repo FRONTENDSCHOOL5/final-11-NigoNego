@@ -13,6 +13,7 @@ import {
 import Input from '../../components/common/Input/Input';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import { LImage } from '../../components/common/UserImage/UserImage';
+import MainWrapperF from '../../styles/MainGlobal';
 
 export default function JoinMember() {
   const [userName, setUserName] = useState('');
@@ -136,61 +137,63 @@ export default function JoinMember() {
   };
 
   return (
-    <Wrapper>
-      <HeadingWrapper>
-        <h1>프로필 설정</h1>
-        <p>나중에 언제든지 변경할 수 있습니다.</p>
-      </HeadingWrapper>
-      <ImageWrapper>
-        <LImage backgroundUrl={userImage} />
-        <UploadButtonStyle>
-          <label htmlFor="input" />
-          <input id="input" type="file" onChange={handleImageUpload} />
-        </UploadButtonStyle>
-      </ImageWrapper>
+    <MainWrapperF>
+      <Wrapper>
+        <HeadingWrapper>
+          <h1>프로필 설정</h1>
+          <p>나중에 언제든지 변경할 수 있습니다.</p>
+        </HeadingWrapper>
+        <ImageWrapper>
+          <LImage backgroundUrl={userImage} />
+          <UploadButtonStyle className="input-s">
+            <label htmlFor="input" />
+            <input id="input" type="file" onChange={handleImageUpload} />
+          </UploadButtonStyle>
+        </ImageWrapper>
 
-      <form onSubmit={handleSubmit}>
-        <FormWrapper>
-          <Input
-            label="사용자이름"
-            type="text"
-            id="user-name"
-            name="user-name"
-            placeholder="2~10자 이내"
-            value={userName}
-            onChange={handleUserNameChange}
-            onBlur={handleNameValid}
-          />
-          <Input
-            label="계정ID"
-            type="text"
-            id="user-ID"
-            name="user-ID"
-            placeholder="영문, 숫자 특수문자만 사용가능"
-            value={userID}
-            onChange={handleUserIDChange}
-            onBlur={handleIdValid}
-            errorMessage={errorMessageID}
-          />
-          <Input
-            label="소개"
-            type="text"
-            id="user-intro"
-            name="user-intro"
-            value={userIntro}
-            onChange={handleUserIntro}
-            placeholder="자신과 판매할 상품에 대해 소개"
-          />
+        <form onSubmit={handleSubmit}>
+          <FormWrapper>
+            <Input
+              label="사용자이름"
+              type="text"
+              id="user-name"
+              name="user-name"
+              placeholder="2~10자 이내"
+              value={userName}
+              onChange={handleUserNameChange}
+              onBlur={handleNameValid}
+            />
+            <Input
+              label="계정ID"
+              type="text"
+              id="user-ID"
+              name="user-ID"
+              placeholder="영문, 숫자 특수문자만 사용가능"
+              value={userID}
+              onChange={handleUserIDChange}
+              onBlur={handleIdValid}
+              errorMessage={errorMessageID}
+            />
+            <Input
+              label="소개"
+              type="text"
+              id="user-intro"
+              name="user-intro"
+              value={userIntro}
+              onChange={handleUserIntro}
+              placeholder="자신과 판매할 상품에 대해 소개"
+            />
 
-          <BtnWrapper>
-            {isFormValid ? (
-              <LBtn content="감귤마켓 시작하기" />
-            ) : (
-              <LdisabledBtn content="감귤마켓 시작하기" />
-            )}
-          </BtnWrapper>
-        </FormWrapper>
-      </form>
-    </Wrapper>
+            <BtnWrapper>
+              {isFormValid ? (
+                <LBtn content="감귤마켓 시작하기" />
+              ) : (
+                <LdisabledBtn content="감귤마켓 시작하기" />
+              )}
+            </BtnWrapper>
+          </FormWrapper>
+        </form>
+      </Wrapper>
+    </MainWrapperF>
   );
 }
