@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 const Logo = styled.section`
   width: 100%;
   height: 60%;
-  background: url(${logoImage}) bottom no-repeat #ffde00;
+  background: url(${logoImage}) no-repeat bottom/contain #ffde00;
 `;
 
 const LoginSelect = styled.section`

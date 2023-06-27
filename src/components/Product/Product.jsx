@@ -6,16 +6,20 @@ import ProductItem from './ProductItem';
 import { GetProDuctListLimit } from '../../api/getData/getData';
 
 const ProductWrapper = styled.div`
+  text-align: center;
   .product-list-items {
-    max-width: 700px;
     display: flex;
     gap: 20px;
     overflow-x: auto;
+    width: 350px;
+    margin: auto;
 
     button {
       flex: 0 0 auto;
       width: 140px;
       border: none;
+    }
+    h2 {
     }
   }
 `;
@@ -58,7 +62,6 @@ export default function Product({ accountname }) {
       }
     };
   }, [userData]);
-
   return (
     <ProductWrapper>
       <h2>판매 중인 상품</h2>

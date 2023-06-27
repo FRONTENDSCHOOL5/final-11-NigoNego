@@ -46,7 +46,6 @@ export default function HomePost({ data }) {
 }
 
 const HomePostwarpper = styled.div`
-  height: 44vh;
   margin-top: 20px;
   /* box-shadow: inset 0px 0px 3px 5px rgb(0, 38, 255); */
 
@@ -57,12 +56,20 @@ const HomePostwarpper = styled.div`
   .container {
     margin-left: 70px;
     max-width: 700px;
+
+    p {
+      margin: 0 0 10px 0;
+    }
   }
   button {
     border: none;
   }
 
   .post-item-wrapper {
-    margin: 30px 0;
+    padding: 10px 0;
+
+    button {
+      padding: 0 10px 0 0;
+    }
   }
 `;

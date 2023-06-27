@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import slideIcon from '../../../assets/icons/slide-top-icon.png';
 import { LogoutModal, CommentModal } from './Modal';
 
-export default function SlideModal() {
+export default function SlideModal({ closeModal }) {
   const navigate = useNavigate();
+  const modalEl = useRef(); //
+
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const handleItemClick = page => {
@@ -16,21 +18,38 @@ export default function SlideModal() {
     }
   };
 
+  const handleSlideModalClose = () => {
+    setShowLogoutModal(false);
+  };
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (modalEl.current && !modalEl.current.contains(event.target)) {
+        setShowLogoutModal(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <SlideModalWrapper>
-      <img src={slideIcon} alt="" />
-      <StyledUl>
-        <StyledLi onClick={() => handleItemClick('/settings')}>
-          설정 및 개인정보
-        </StyledLi>
-        <StyledLi onClick={() => handleItemClick('/LogoutModal')}>
-          로그아웃
-        </StyledLi>
-      </StyledUl>
-      {showLogoutModal && (
-        <LogoutModal onClose={() => setShowLogoutModal(false)} />
-      )}
-    </SlideModalWrapper>
+    <SlideModalBackground onClick={closeModal}>
+      <SlideModalWrapper ref={modalEl}>
+        <img src={slideIcon} alt="" />
+        <StyledUl>
+          <StyledLi onClick={() => handleItemClick('/settings')}>
+            설정 및 개인정보
+          </StyledLi>
+          <StyledLi onClick={() => handleItemClick('/LogoutModal')}>
+            로그아웃
+          </StyledLi>
+        </StyledUl>
+        {showLogoutModal && <LogoutModal onClose={handleSlideModalClose} />}
+      </SlideModalWrapper>
+    </SlideModalBackground>
   );
 }
 
@@ -76,10 +95,11 @@ const SlideModalWrapper = styled.div`
   border-radius: 10px 10px 0 0;
   position: fixed;
   left: 0px;
-  bottom: 50px;
+  bottom: 66px;
   background-color: white;
   width: 100%;
   z-index: 100;
+  cursor: pointer;
 `;
 
 const StyledUl = styled.ul`

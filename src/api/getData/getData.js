@@ -20,7 +20,7 @@ export const GetHomeFeedData = async (skip) => {
   try {
     // id부분 props 로 재작업하기
     
-    const response = await getDataBase.get(`/post/feed/?limit=3&skip=${skip}`)
+    const response = await getDataBase.get(`/post/feed/?limit=5&skip=${skip}`)
     return response
   } catch (err) {
     console.log("오류")
@@ -79,7 +79,7 @@ export const GetPostListLimit = async (skip,accountname) => {
     // const response = await getDataBase.get(`/product/${accountName}/?limit=${limit}&skip=${skip}`)
 
     // const response = await getDataBase.get(`/post/nigonego/userpost/?limit=2&skip=${skip}`)
-    const response = await getDataBase.get(`/post/${accountname}/userpost/?limit=2&skip=${skip}`)
+    const response = await getDataBase.get(`/post/${accountname}/userpost/?limit=3&skip=${skip}`)
     return response
   } catch (err) {
     console.log("오류")

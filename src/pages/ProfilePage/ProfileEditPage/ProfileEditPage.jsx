@@ -14,6 +14,7 @@ import { HeaderEditdNav } from '../../../components/common/Header/Header';
 import Input from '../../../components/common/Input/Input';
 import { LImage } from '../../../components/common/UserImage/UserImage';
 import { UploadButtonStyle } from '../../JoinPage/joinMemberStyle';
+import BodyGlobal from '../../../styles/BodyGlobal';
 export default function ProfileEditPage() {
   const [userName, setUserName] = useState('');
   const [userID, setUserID] = useState('');
@@ -150,52 +151,54 @@ export default function ProfileEditPage() {
         isFormValid={isFormValid}
         handleSave={handleSubmit}
       />
-      <HeadingWrapper>
-        <h1>프로필 설정</h1>
-        <p>나중에 언제든지 변경할 수 있습니다.</p>
-      </HeadingWrapper>
+      <BodyGlobal>
+        <HeadingWrapper>
+          <h1>프로필 설정</h1>
+          <p>나중에 언제든지 변경할 수 있습니다.</p>
+        </HeadingWrapper>
 
-      <ImageWrapper>
-        <LImage backgroundUrl={userImage} />
-        <UploadButtonStyle>
-          <label htmlFor="input" />
-          <input id="input" type="file" onChange={handleImageUpload} />
-        </UploadButtonStyle>
-      </ImageWrapper>
-      <form onSubmit={handleSubmit}>
-        <FormWrapper>
-          <Input
-            label="사용자이름"
-            type="text"
-            id="user-name"
-            name="user-name"
-            placeholder="2~10자 이내"
-            value={userName}
-            onChange={handleUserNameChange}
-            onBlur={handleNameValid}
-          />
-          <Input
-            label="계정ID"
-            type="text"
-            id="user-ID"
-            name="user-ID"
-            placeholder="영문, 숫자 특수문자만 사용가능"
-            value={userID}
-            onChange={handleUserIDChange}
-            onBlur={handleIdValid}
-            errorMessage={errorMessageID}
-          />
-          <Input
-            label="소개"
-            type="text"
-            id="user-intro"
-            name="user-intro"
-            value={userIntro}
-            onChange={handleUserIntro}
-            placeholder="자신과 판매할 상품에 대해 소개"
-          />
-        </FormWrapper>
-      </form>
+        <ImageWrapper>
+          <LImage backgroundUrl={userImage} />
+          <UploadButtonStyle className="input-s">
+            <label htmlFor="input" />
+            <input id="input" type="file" onChange={handleImageUpload} />
+          </UploadButtonStyle>
+        </ImageWrapper>
+        <form onSubmit={handleSubmit}>
+          <FormWrapper>
+            <Input
+              label="사용자이름"
+              type="text"
+              id="user-name"
+              name="user-name"
+              placeholder="2~10자 이내"
+              value={userName}
+              onChange={handleUserNameChange}
+              onBlur={handleNameValid}
+            />
+            <Input
+              label="계정ID"
+              type="text"
+              id="user-ID"
+              name="user-ID"
+              placeholder="영문, 숫자 특수문자만 사용가능"
+              value={userID}
+              onChange={handleUserIDChange}
+              onBlur={handleIdValid}
+              errorMessage={errorMessageID}
+            />
+            <Input
+              label="소개"
+              type="text"
+              id="user-intro"
+              name="user-intro"
+              value={userIntro}
+              onChange={handleUserIntro}
+              placeholder="자신과 판매할 상품에 대해 소개"
+            />
+          </FormWrapper>
+        </form>
+      </BodyGlobal>
     </Wrapper>
   );
 }

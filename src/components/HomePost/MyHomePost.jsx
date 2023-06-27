@@ -22,7 +22,7 @@ export default function MyHomePost({ accountname }) {
     fetchData(0); // 초기 데이터 로드
   }, []);
 
-  const fetchData = (skip = 5) => {
+  const fetchData = (skip = 3) => {
     GetPostListLimit(skip, accountname)
       .then(response => {
         setUserData(prevData => [...prevData, ...response.data.post]);
@@ -98,7 +98,7 @@ const HomePostImg = styled.img`
 `;
 
 const MyHomePostwarpper = styled.div`
-  height: 66vh;
+  height: 640px;
   overflow: scroll;
   /* box-shadow: inset 0px 0px 3px 5px rgb(0, 38, 255); */
 
@@ -109,13 +109,21 @@ const MyHomePostwarpper = styled.div`
   .container {
     margin-left: 70px;
     max-width: 700px;
+
+    .post-item-wrapper {
+      padding: 10px 0;
+
+      button {
+        padding: 0 10px 0 0;
+      }
+    }
+
+    p {
+      margin: 0 0 10px 0;
+    }
   }
   button {
     border: none;
-  }
-
-  .post-item-wrapper {
-    margin: 30px 0;
   }
 `;
 
