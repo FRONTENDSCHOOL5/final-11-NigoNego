@@ -4,7 +4,6 @@ import { getDataBase } from "../Api";
 // export const token =
 //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';
 
-
 // homepost
 export const GetHomePostData = async () => {
   try {
@@ -17,17 +16,16 @@ export const GetHomePostData = async () => {
   }
 };
 
-export const GetHomeFeedData = async () => {
+export const GetHomeFeedData = async (skip) => {
   try {
     // id부분 props 로 재작업하기
     
-    const response = await getDataBase.get(`/post/feed`)
+    const response = await getDataBase.get(`/post/feed/?limit=3&skip=${skip}`)
     return response
   } catch (err) {
     console.log("오류")
   }
 };
-
 
 
 // homepost

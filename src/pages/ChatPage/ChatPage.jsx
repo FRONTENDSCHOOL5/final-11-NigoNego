@@ -14,19 +14,17 @@ function ChatPage() {
   return (
     <>
       <HeaderBasicNav />
-      <BodyGlobal>
-        <CommonWrapper>
-          <ChatUserList />
-          <ChatUserList />
-          <ChatUserList />
-          <ChatUserList />
-          <ChatUserList />
-          <ChatUserList />
-          <ChatUserList />
-          <ChatUserList />
-          <ChatUserList />
-        </CommonWrapper>
-      </BodyGlobal>
+      <CommonWrapper>
+        <ChatUserList />
+        <ChatUserList />
+        <ChatUserList />
+        <ChatUserList />
+        <ChatUserList />
+        <ChatUserList />
+        <ChatUserList />
+        <ChatUserList />
+        <ChatUserList />
+      </CommonWrapper>
 
       <Navbar />
     </>
