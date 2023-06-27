@@ -7,10 +7,8 @@ import { GetHomeFeedData } from '../../api/getData/getData';
 import HomePost from '../../components/HomePost/HomePost';
 import Navbar from '../../components/common/Navbar/Navbar';
 import { HeaderBasicNav } from '../../components/common/Header/Header';
-import BodyGlobal from '../../styles/BodyGlobal';
-import UserSearch from '../../components/common/User/UserSearch';
 
-function HomeFeed() {
+function HomeFeed(props) {
   // const [postId, setPostId] = useState(null);
   // const navigate = useNavigate();
   const auth = useRecoilValue(authAtom);
@@ -67,7 +65,7 @@ function HomeFeed() {
             );
           })}
       </MyHomePostwarpper>
-      <Navbar />
+      <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
     </>
   );
 }
