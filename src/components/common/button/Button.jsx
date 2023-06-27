@@ -76,10 +76,9 @@ export function ArrowLeft() {
 
 export function MoreIconButton() {
   const [isSideSlideOpen, setIsSideSlideOpen] = useState(false);
-  const modalEl = useRef();
 
   const handleIconClick = () => {
-    setIsSideSlideOpen(!isSideSlideOpen);
+    setIsSideSlideOpen(true);
   };
 
   const handleModalClose = event => {

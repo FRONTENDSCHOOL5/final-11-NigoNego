@@ -23,7 +23,7 @@ function HomeFeed() {
     fetchData(0); // 초기 데이터 로드
   }, []);
 
-  const fetchData = (skip = 5) => {
+  const fetchData = (skip = 3) => {
     GetHomeFeedData(skip)
       .then(response => {
         console.log(response);
