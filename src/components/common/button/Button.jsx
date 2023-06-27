@@ -29,8 +29,8 @@ export function MdisabledBtn() {
   return <MdisabledBtnStyle>팔로우</MdisabledBtnStyle>;
 }
 
-export function MActivBtn() {
-  return <MActivBtnStyle>언팔로우</MActivBtnStyle>;
+export function MActivBtn({ onClick }) {
+  return <MActivBtnStyle onClick={onClick}>언팔로우</MActivBtnStyle>;
 }
 
 export function MSBtn({ content }) {

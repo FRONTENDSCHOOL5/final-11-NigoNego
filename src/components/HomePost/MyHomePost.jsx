@@ -1,13 +1,22 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import msg from '../../assets/icons/message-icon.svg';
-import like from '../../assets/icons/like-icon.svg';
+
 import { GetPostListLimit } from '../../api/getData/getData';
 import UserSearch from '../common/User/UserSearch';
+import { ReactComponent as BtnHeart } from '../../assets/image/BtnHeart.svg';
+import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
+import { click } from '@testing-library/user-event/dist/click';
 
 export default function MyHomePost({ accountname }) {
   const [userData, setUserData] = useState([]);
   const postListRef = useRef(null);
+
+  const [clickedHeart, setClickedHeart] = useState(Boolean(true));
+
+  function handleClickedHeart(e) {
+    e.preventDefault();
+    setClickedHeart(!clickedHeart);
+  }
 
   useEffect(() => {
     fetchData(0); // 초기 데이터 로드
@@ -58,12 +67,18 @@ export default function MyHomePost({ accountname }) {
                 </div>
                 <div className="icon-wrapper">
                   <button type="button">
-                    <img src={msg} alt="" />
-                    <span>123</span>
+                    <BtnComment width="24px" height="24px" stroke="#767676" />
+                    <span>{data.commentCount}</span>
                   </button>
                   <button type="button">
-                    <img src={like} alt="" />
-                    <span>123</span>
+                    <BtnHeart
+                      width="24px"
+                      height="24px"
+                      fill={clickedHeart ? 'none' : 'red'}
+                      stroke={clickedHeart ? '#767676' : 'red'}
+                      onClick={e => handleClickedHeart(e)}
+                    />
+                    <span>{data.heartCount}</span>
                   </button>
                 </div>
               </div>
