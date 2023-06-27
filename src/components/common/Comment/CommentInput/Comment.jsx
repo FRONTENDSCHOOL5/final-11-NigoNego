@@ -5,7 +5,7 @@ import userDefaultImage from '../../../../assets/images/basic-profile-img.png';
 import { authAtom } from '../../../../atom/atoms';
 import { useRecoilValue } from 'recoil';
 
-const CommentWrapper = styled.div`
+export const CommentWrapper = styled.div`
   width: 100%;
   /* 댓글 컴포넌트 하단 고정할지 안할지 */
   /* position: fixed;
@@ -39,6 +39,10 @@ const CommentWrapper = styled.div`
     flex-basis: 60px;
     color: ${props => (props.disableBtn === '' ? '#c4c4c4' : '#FFA200')};
     border: 0;
+  }
+
+  .buttonOnOff {
+    color: ${props => (props.disableBtn === '' ? '#c4c4c4' : '#FFA200')};
   }
 `;
 
