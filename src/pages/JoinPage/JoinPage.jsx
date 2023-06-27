@@ -32,11 +32,15 @@ function JoinPage() {
       setIsEmailValid(null);
     } else if (testEmail) {
       setIsEmailValid(true);
+      setErrorMessageEM('');
+
       console.log('이메일 통과');
       // 여기에 원래 있는 이메일이 있는지 유효성 검사기능추가!!
     } else {
       // 원래 있는 이메일과 일치했을때 함수
       console.log('이메일 실패');
+      setIsEmailValid(false);
+      setErrorMessageEM('*이메일 형식이 유효하지 않습니다.');
     }
   }
 
