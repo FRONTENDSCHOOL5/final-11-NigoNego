@@ -1,8 +1,5 @@
 import styled from 'styled-components';
-const CommonWrapper = styled.section`
-  height: 80vh;
-  overflow-y: scroll;
-`;
+const CommonWrapper = styled.section``;
 const ChatWrapper = styled.div`
   background-color: var('--light-grey');
   display: flex;

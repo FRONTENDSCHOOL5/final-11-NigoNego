@@ -10,17 +10,25 @@ import styled from 'styled-components';
 //   ChatDate,
 // } from './ChatUserListStyle';
 import { MImage } from '../common/UserImage/UserImage';
+import { useNavigate } from 'react-router-dom';
 
-export default function ChatUserList() {
+export default function ChatUserList({ userId }) {
+  const navigate = useNavigate();
+
+  const handleChatClick = () => {
+    navigate(`chatroom/${userId}`);
+  };
   return (
-    <ChatUser>
-      <MImage />
-      <div>
-        <div className="userInfoText">
-          <h2>애월읍 위니브 감귤농장</h2>
-          <div className="underText">
-            <p>text 테스트 원투</p>
-          </div>
+    <ChatUser onClick={handleChatClick}>
+      <ImgWrapper>
+        <Circle />
+        <MImage />
+      </ImgWrapper>
+      <div className="userInfoText">
+        <h2>애월읍 위니브 감귤농장</h2>
+        <div className="underText">
+          <p>text 테스트 원투</p>
+          <time>2020.10.25</time>
         </div>
       </div>
       <time>2020.10.25</time>
@@ -33,6 +41,7 @@ const ChatUser = styled.section`
   width: 100%;
   align-items: center;
   padding: 10px 10px;
+  border: 1px solid black;
   /* box-shadow: inset 0 0 10px red; */
 
   time {
@@ -41,6 +50,7 @@ const ChatUser = styled.section`
     padding-right: 20px;
   }
 
+  cursor: pointer;
   .userInfoText {
     width: 100%;
     margin-left: 12px;
@@ -58,4 +68,13 @@ const ChatUser = styled.section`
       color: var(--basic-grey);
     }
   }
+`;
+
+const ImgWrapper = styled.div``;
+const Circle = styled.div`
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--basic-yellow);
 `;

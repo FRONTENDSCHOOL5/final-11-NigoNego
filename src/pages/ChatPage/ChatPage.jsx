@@ -5,26 +5,25 @@ import ChatUserList from '../../components/Chat/ChatUserList';
 import styled from 'styled-components';
 import BodyGlobal from './../../styles/BodyGlobal';
 
-const CommonWrapper = styled.section`
-  height: 90vh;
-  overflow-y: scroll;
-`;
+const CommonWrapper = styled.section``;
 
 function ChatPage() {
   return (
     <>
       <HeaderBasicNav />
-      <CommonWrapper>
-        <ChatUserList />
-        <ChatUserList />
-        <ChatUserList />
-        <ChatUserList />
-        <ChatUserList />
-        <ChatUserList />
-        <ChatUserList />
-        <ChatUserList />
-        <ChatUserList />
-      </CommonWrapper>
+      <BodyGlobal>
+        <CommonWrapper>
+          <ChatUserList userId="" />
+          <ChatUserList />
+          <ChatUserList />
+          <ChatUserList />
+          <ChatUserList />
+          <ChatUserList />
+          <ChatUserList />
+          <ChatUserList />
+          <ChatUserList />
+        </CommonWrapper>
+      </BodyGlobal>
 
       <Navbar />
     </>
