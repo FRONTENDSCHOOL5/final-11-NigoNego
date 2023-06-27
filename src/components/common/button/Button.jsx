@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import SlideModal from '../Modal/SlideModal';
@@ -76,9 +76,16 @@ export function ArrowLeft() {
 
 export function MoreIconButton() {
   const [isSideSlideOpen, setIsSideSlideOpen] = useState(false);
+  const modalEl = useRef();
 
   const handleIconClick = () => {
     setIsSideSlideOpen(!isSideSlideOpen);
+  };
+
+  const handleModalClose = event => {
+    if (event.target === event.currentTarget) {
+      setIsSideSlideOpen(false);
+    }
   };
 
   return (
@@ -86,7 +93,9 @@ export function MoreIconButton() {
       <MoreIconButtonStyle onClick={handleIconClick}>
         <IconMoreView width="24px" height="24px" />
       </MoreIconButtonStyle>
-      {isSideSlideOpen && <SlideModal></SlideModal>}
+      {isSideSlideOpen && (
+        <SlideModal closeModal={handleModalClose}></SlideModal>
+      )}
     </>
   );
 }
