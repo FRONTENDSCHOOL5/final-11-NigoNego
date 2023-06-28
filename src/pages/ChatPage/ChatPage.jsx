@@ -25,7 +25,7 @@ function ChatPage() {
         </CommonWrapper>
       </BodyGlobal>
 
-      <Navbar />
+      <Navbar homeV={true} chatV={false} postV={true} profileV={true} />
     </>
   );
 }

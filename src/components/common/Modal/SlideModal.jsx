@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import slideIcon from '../../../assets/icons/slide-top-icon.png';
 import { LogoutModal, CommentModal } from './Modal';
 
-export default function SlideModal({ closeModal }) {
+export default function SlideModal() {
   const navigate = useNavigate();
   const modalEl = useRef(); //
 

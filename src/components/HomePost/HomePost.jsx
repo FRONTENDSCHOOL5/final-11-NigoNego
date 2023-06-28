@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import UserSearch from '../common/User/UserSearch';
 import { ReactComponent as BtnHeart } from '../../assets/image/BtnHeart.svg';
 import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
-import { HomePostImg } from './MyHomePost';
 
 export default function HomePost({ data }) {
   // const [feedPost, setFeedPost] = useState('');
@@ -45,6 +44,14 @@ export default function HomePost({ data }) {
   );
 }
 
+const HomePostImg = styled.img`
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  background: orange;
+  border-radius: 10px;
+  object-fit: cover;
+`;
+
 const HomePostwarpper = styled.div`
   margin-top: 20px;
   /* box-shadow: inset 0px 0px 3px 5px rgb(0, 38, 255); */
@@ -54,7 +61,7 @@ const HomePostwarpper = styled.div`
   }
 
   .container {
-    margin-left: 70px;
+    margin: 0 20px 0 70px;
     max-width: 700px;
 
     p {

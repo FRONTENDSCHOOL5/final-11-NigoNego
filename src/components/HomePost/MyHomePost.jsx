@@ -90,7 +90,7 @@ export default function MyHomePost({ accountname }) {
 }
 
 const HomePostImg = styled.img`
-  width: 86%;
+  width: 90%;
   aspect-ratio: 5 / 3;
   background: orange;
   border-radius: 10px;

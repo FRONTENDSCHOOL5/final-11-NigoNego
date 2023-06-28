@@ -7,10 +7,8 @@ import { GetHomeFeedData } from '../../api/getData/getData';
 import HomePost from '../../components/HomePost/HomePost';
 import Navbar from '../../components/common/Navbar/Navbar';
 import { HeaderBasicNav } from '../../components/common/Header/Header';
-import BodyGlobal from '../../styles/BodyGlobal';
-import UserSearch from '../../components/common/User/UserSearch';
 
-function HomeFeed() {
+function HomeFeed(props) {
   // const [postId, setPostId] = useState(null);
   // const navigate = useNavigate();
   const auth = useRecoilValue(authAtom);
@@ -23,7 +21,7 @@ function HomeFeed() {
     fetchData(0); // 초기 데이터 로드
   }, []);
 
-  const fetchData = (skip = 5) => {
+  const fetchData = (skip = 3) => {
     GetHomeFeedData(skip)
       .then(response => {
         console.log(response);
@@ -67,13 +65,13 @@ function HomeFeed() {
             );
           })}
       </MyHomePostwarpper>
-      <Navbar />
+      <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
     </>
   );
 }
 
 const HomePostImg = styled.img`
-  width: 86%;
+  width: 100%;
   aspect-ratio: 5 / 3;
   background: orange;
   border-radius: 10px;
@@ -81,7 +79,8 @@ const HomePostImg = styled.img`
 `;
 
 const MyHomePostwarpper = styled.div`
-  height: 90vh;
+  height: 83vh;
+  padding-bottom: 20px;
   overflow: scroll;
   /* box-shadow: inset 0px 0px 3px 5px rgb(0, 38, 255); */
 
@@ -90,7 +89,7 @@ const MyHomePostwarpper = styled.div`
   }
 
   .container {
-    margin-left: 70px;
+    margin: 0 20px 0 70px;
     max-width: 700px;
 
     p {

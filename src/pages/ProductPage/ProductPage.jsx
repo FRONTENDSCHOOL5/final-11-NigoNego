@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 // import { HeaderUploadNav } from '../common/Header/Header';
 import { authAtom } from '../../atom/atoms';
 import { useRecoilValue } from 'recoil';
+import BodyGlobal from '../../styles/BodyGlobal';
 
 export default function ProductPage() {
   const user = 'nigonego';
@@ -84,6 +85,7 @@ export default function ProductPage() {
     <GlobalWrapper>
       <form onSubmit={handleSubmit}>
         <HeaderUploadNav content="업로드" isFormValid={isFormValid} />
+
         {/* {isBtnActive ? (
           <HeaderUploadNav content="업로드" />
         ) : (
@@ -152,14 +154,19 @@ const GlobalWrapper = styled.div`
       display: flex;
       flex-direction: column;
       gap: 16px;
+
+      li {
+        width: 322px;
+        margin: auto;
+      }
     }
   }
 `;
 const ImgUploadWrapp = styled.div`
   width: 100%;
-  height: 240px;
+  height: 204px;
   border-radius: 10px;
-  overflow: hidden;
+  margin: auto;
 
   background: var(--light-grey);
   position: relative;

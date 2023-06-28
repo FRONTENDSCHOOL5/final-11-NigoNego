@@ -31,7 +31,6 @@ export default function ChatUserList({ userId }) {
           <time>2020.10.25</time>
         </div>
       </div>
-      <time>2020.10.25</time>
     </ChatUser>
   );
 }
@@ -41,8 +40,9 @@ const ChatUser = styled.section`
   width: 100%;
   align-items: center;
   padding: 10px 10px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   /* box-shadow: inset 0 0 10px red; */
+  position: relative;
 
   time {
     color: var(--basic-border-color);
@@ -66,6 +66,8 @@ const ChatUser = styled.section`
     margin-top: 4px;
     p {
       color: var(--basic-grey);
+      font-size: 1.2rem;
+      margin: 5px 0 0 0;
     }
   }
 `;
@@ -74,7 +76,9 @@ const ImgWrapper = styled.div``;
 const Circle = styled.div`
   width: 15px;
   height: 15px;
-  position: absolute;
+  position: relative;
+  top: 15px;
   border-radius: 50%;
   background-color: var(--basic-yellow);
+  position: absolute;
 `;
