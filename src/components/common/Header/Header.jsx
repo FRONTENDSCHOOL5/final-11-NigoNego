@@ -78,7 +78,7 @@ export function HeaderChatNav({ content }) {
     <HeaderDefaultStyle>
       <div className="havetitle">
         <ArrowLeft />
-        <h2>{content}123</h2>
+        <h2>{content}</h2>
       </div>
       <MoreIconButton />
     </HeaderDefaultStyle>
@@ -97,6 +97,9 @@ export function HeaderContentdNav({ content }) {
 // 상단바 기본 style
 const HeaderDefaultStyle = styled.div`
   /* box-shadow: inset 0px 0px 3px 1px rgb(0, 38, 255); */
+  button {
+    border: none;
+  }
   height: 4.8rem;
   border-bottom: 1px solid var(--basic-border-color);
   width: 100%;

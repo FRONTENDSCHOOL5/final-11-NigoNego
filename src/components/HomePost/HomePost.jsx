@@ -23,9 +23,6 @@ export default function HomePost({ data }) {
     });
   };
 
-  function likeHandler() {
-    console.log();
-  }
   return (
     <HomePostwarpper ref={postListRef} className="HomePost">
       <UserSearch data={data} />
@@ -42,7 +39,7 @@ export default function HomePost({ data }) {
             </button>
             <Heart />
           </div>
-          <time>{data.updatedAt}</time>
+          {/* <time>{data.updatedAt}</time> */}
         </section>
       )}
     </HomePostwarpper>

@@ -10,7 +10,7 @@ function SearchPage() {
     <>
       <HeaderSearchNav />
       <SearchWrapper>{data && <UserSearch />}</SearchWrapper>
-      <Navbar />
+      <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
     </>
   );
 }

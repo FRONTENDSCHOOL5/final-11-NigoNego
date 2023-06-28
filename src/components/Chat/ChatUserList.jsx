@@ -25,7 +25,7 @@ export default function ChatUserList({ userId }) {
         <MImage />
       </ImgWrapper>
       <div className="userInfoText">
-        <h2>애월읍 위니브 감귤농장</h2>
+        <h2>{userId}</h2>
         <div className="underText">
           <p>text 테스트 원투</p>
           <time>2020.10.25</time>

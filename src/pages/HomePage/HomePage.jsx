@@ -11,7 +11,7 @@ function HomePage() {
     <Wrapper>
       <HeaderMainNav content={'니고네고 피드'} />
       <HomeBlank />
-      <Navbar />
+      <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
     </Wrapper>
   );
 }
@@ -38,6 +38,7 @@ const ContentWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+  margin-top: 4.8rem;
 `;
 
 const Wrapper = styled.div`

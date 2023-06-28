@@ -18,10 +18,6 @@ export default function SlideModal({ closeModal }) {
     }
   };
 
-  const handleSlideModalClose = () => {
-    setShowLogoutModal(false);
-  };
-
   useEffect(() => {
     const handleClickOutside = event => {
       if (modalEl.current && !modalEl.current.contains(event.target)) {
@@ -37,7 +33,7 @@ export default function SlideModal({ closeModal }) {
   }, []);
 
   return (
-    <SlideModalBackground onClick={handleSlideModalClose}>
+    <SlideModalBackground onClick={closeModal}>
       <SlideModalWrapper ref={modalEl}>
         <img src={slideIcon} alt="" />
         <StyledUl>
