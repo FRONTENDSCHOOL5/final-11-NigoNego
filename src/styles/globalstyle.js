@@ -10,7 +10,7 @@ const globalStyle = createGlobalStyle`
 
   
   :root {
-    font-size:10px;
+    font-size:10.5px;
     --light-yellow:#FFECA7;
     --basic-yellow:#FFDE00;
     --basic-grey:#767676;

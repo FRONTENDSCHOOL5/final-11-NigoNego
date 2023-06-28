@@ -66,7 +66,7 @@ export default function YourProfilePage() {
         {isClickedList && <YourHomePost accountname={accountname} />}
         {isClickedGrid && <HomePostGrid accountname={accountname} />}
       </BodyGlobal>
-      <Navbar />
+      <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
     </div>
   );
 }

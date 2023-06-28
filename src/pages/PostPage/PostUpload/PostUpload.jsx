@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { HeaderUploadNav } from '../../../components/common/Header/Header';
 import { SImage } from '../../../components/common/UserImage/UserImage';
@@ -10,15 +10,24 @@ import { useRecoilValue } from 'recoil';
 import BodyGlobal from '../../../styles/BodyGlobal';
 
 export default function PostUpload() {
+  const navigate = useNavigate();
+  const user = 'nigonego';
+
+  const [isFormValid, setIsFormValid] = useState(false);
   const [content, setContent] = useState('');
   const [image, setImage] = useState('');
-  const navigate = useNavigate();
 
   // user 데이터 저장
   const [userImage, setUserImage] = useState('');
   const [userContent, setUserContent] = useState('');
 
   const auth = useRecoilValue(authAtom);
+
+  useEffect(() => {
+    if (content && image) {
+      setIsFormValid(true);
+    }
+  }, [content, image]);
 
   const handleImageUpload = e => {
     e.preventDefault();
@@ -55,7 +64,9 @@ export default function PostUpload() {
           },
         },
       }).then(response => {
-        navigate('/myprofile');
+        navigate('/myprofile', {
+          state: { user },
+        });
         console.log(response);
       });
     } catch (err) {
@@ -70,21 +81,19 @@ export default function PostUpload() {
   // console.log(userContent);
   return (
     <>
+      <HeaderUploadNav content={'업로드'} />
       <form onSubmit={handleSubmit}>
-        <HeaderUploadNav content={'업로드'} />
         <BodyGlobal>
-          <PostUploadWrapper className="111111">
+          <PostUploadWrapper>
             <SImage />
-            <div className="postContent">
-              <textarea
-                className="inputPost"
-                placeholder="게시글 입력하기"
-                value={content}
-                onChange={e => setContent(e.target.value)}
-              />
-              {image.length > 0 && <img src={image} alt="" />}
-            </div>
+            <textarea
+              className="inputPost"
+              placeholder="게시글 입력하기"
+              value={content}
+              onChange={e => setContent(e.target.value)}
+            />
           </PostUploadWrapper>
+          {image.length > 0 && <UploadImg src={image} alt="" />}
         </BodyGlobal>
       </form>
       <UploadButtonStyle>
@@ -98,25 +107,27 @@ export default function PostUpload() {
 const PostUploadWrapper = styled.div`
   /* box-shadow: inset 0 0 10px red; */
   margin-top: 10px;
+  display: flex;
   textarea {
     display: block;
     border: 0px;
     width: 80vw;
-    min-height: 70vh;
+    min-height: 30vh;
     padding: 12px 6px;
     resize: none;
     margin: auto;
   }
-  img {
-    margin-top: 10px;
-    display: block;
-    overflow: hidden;
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    overflow: hidden;
-  }
+`;
+
+const UploadImg = styled.img`
+  margin-top: 10px;
+  display: block;
+  overflow: hidden;
+  width: 75%;
+  object-fit: cover;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left: 53px;
 `;
 
 const UploadButtonStyle = styled.div`

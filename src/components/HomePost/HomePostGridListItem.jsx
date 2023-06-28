@@ -7,23 +7,26 @@ export default function HomePostGridListItem({ img }) {
     <GridItemImg>
       {console.log(img)}
       <IconImagiesBtn width="30px" height="30px" />
-      <img src={img.image} alt={img.image} />
+      <img src={img.image} alt="이미지" />
     </GridItemImg>
   );
 }
 
 const GridItemImg = styled.div`
   width: 100%;
-  height: 100%;
+  height: 150px;
   position: relative;
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+  .noneImg {
+    background-color: var(--light-grey);
+  }
 `;
 const IconImagiesBtn = styled(IconImagies)`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 6px;
+  right: 6px;
 `;

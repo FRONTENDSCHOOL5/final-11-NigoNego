@@ -3,16 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import UserSearch from '../common/User/UserSearch';
 import { ReactComponent as BtnHeart } from '../../assets/image/BtnHeart.svg';
+import { ReactComponent as BtnHeartF } from '../../assets/image/BtnHeart.svg';
 import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
-import { HomePostImg } from './MyHomePost';
+import Heart from '../common/Heart/Heart';
 
 export default function HomePost({ data }) {
   // const [feedPost, setFeedPost] = useState('');
   const navigate = useNavigate();
   const postListRef = useRef(null);
 
-  const postMainHandler = () => {
+  const postMainHandler = e => {
     // setPostId(id);
+    console.log(e.target.value);
     console.log(data.id);
     navigate('/postmain', {
       state: {
@@ -21,22 +23,24 @@ export default function HomePost({ data }) {
     });
   };
 
+  function likeHandler() {
+    console.log();
+  }
   return (
     <HomePostwarpper ref={postListRef} className="HomePost">
       <UserSearch data={data} />
       {data && data.content && (
-        <section className="container" onClick={postMainHandler}>
-          <p>{data.content}</p>
-          <HomePostImg src={data.image} />
+        <section className="container">
+          <div onClick={postMainHandler}>
+            <p>{data.content}</p>
+            <HomePostImg src={data.image} />
+          </div>
           <div className="post-item-wrapper">
-            <button type="button">
+            <button type="button" className="btn" onClick={postMainHandler}>
               <BtnComment width="24px" />
               <span>{data.commentCount}</span>
             </button>
-            <button type="button">
-              <BtnHeart width="24px" fill="none" stroke="#767676" />
-              <span>{data.heartCount}</span>
-            </button>
+            <Heart />
           </div>
           <time>{data.updatedAt}</time>
         </section>
@@ -44,6 +48,13 @@ export default function HomePost({ data }) {
     </HomePostwarpper>
   );
 }
+
+const HomePostImg = styled.img`
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  border-radius: 10px;
+  object-fit: cover;
+`;
 
 const HomePostwarpper = styled.div`
   margin-top: 20px;
@@ -54,22 +65,27 @@ const HomePostwarpper = styled.div`
   }
 
   .container {
-    margin-left: 70px;
+    margin: 0 20px 0 70px;
     max-width: 700px;
 
     p {
       margin: 0 0 10px 0;
     }
   }
-  button {
-    border: none;
-  }
 
   .post-item-wrapper {
     padding: 10px 0;
+    display: flex;
+  }
 
-    button {
-      padding: 0 10px 0 0;
+  .btn {
+    border: none;
+    padding: 0 10px 0 0;
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 5px;
     }
   }
 `;
