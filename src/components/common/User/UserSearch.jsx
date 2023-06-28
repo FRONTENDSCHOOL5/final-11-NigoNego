@@ -30,14 +30,16 @@ export const UserName = styled.div`
 `;
 
 export const UserId = styled.div`
-  line-height: 0.5;
+  line-height: 1.5;
   font-size: 12px;
   color: var(--basic-grey);
+  margin-right: 5px;
 `;
 
 const BtnWrapper = styled.button`
   width: 100%;
   text-align: left;
+  border: none;
 
   * {
     pointer-events: none;
@@ -76,7 +78,6 @@ export default function UserSearch({ data }) {
         </ProfileImgWrapper>
         <UserSection>
           <UserName>
-            {/* 애월읍을 검색했을때 검색한 부분만 색이 변해야함 */}
             <strong>{data.author.username}</strong>
             <UserId>{data.author.accountname}</UserId>
           </UserName>

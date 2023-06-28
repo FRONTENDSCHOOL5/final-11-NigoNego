@@ -6,6 +6,7 @@ import UserSearch from '../common/User/UserSearch';
 import { ReactComponent as BtnHeart } from '../../assets/image/BtnHeart.svg';
 import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
 import { click } from '@testing-library/user-event/dist/click';
+import Heart from '../common/Heart/Heart';
 
 export default function MyHomePost({ accountname }) {
   const [userData, setUserData] = useState([]);
@@ -66,20 +67,11 @@ export default function MyHomePost({ accountname }) {
                   <HomePostImg src={data.image} />
                 </div>
                 <div className="icon-wrapper">
-                  <button type="button">
+                  <button type="button" className="btn">
                     <BtnComment width="24px" height="24px" stroke="#767676" />
                     <span>{data.commentCount}</span>
                   </button>
-                  <button type="button">
-                    <BtnHeart
-                      width="24px"
-                      height="24px"
-                      fill={clickedHeart ? 'none' : 'red'}
-                      stroke={clickedHeart ? '#767676' : 'red'}
-                      onClick={e => handleClickedHeart(e)}
-                    />
-                    <span>{data.heartCount}</span>
-                  </button>
+                  <Heart />
                 </div>
               </div>
             </div>
@@ -92,7 +84,6 @@ export default function MyHomePost({ accountname }) {
 const HomePostImg = styled.img`
   width: 90%;
   aspect-ratio: 5 / 3;
-  background: orange;
   border-radius: 10px;
   object-fit: cover;
 `;
@@ -104,6 +95,7 @@ const MyHomePostwarpper = styled.div`
 
   .icon-wrapper {
     margin: 10px 0;
+    display: flex;
   }
 
   .container {
@@ -124,6 +116,17 @@ const MyHomePostwarpper = styled.div`
   }
   button {
     border: none;
+  }
+
+  .btn {
+    border: none;
+    padding: 0 10px 0 0;
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 5px;
+    }
   }
 `;
 
