@@ -86,11 +86,6 @@ export default function ProductPage() {
       <form onSubmit={handleSubmit}>
         <HeaderUploadNav content="업로드" isFormValid={isFormValid} />
 
-        {/* {isBtnActive ? (
-          <HeaderUploadNav content="업로드" />
-        ) : (
-          <HeaderUploadDisableNav content="업로드" />
-        )} */}
         <ul>
           <li>
             <p className="title">이미지 등록</p>
