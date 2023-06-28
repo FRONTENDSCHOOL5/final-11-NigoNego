@@ -33,8 +33,8 @@ export function MActivBtn({ onClick }) {
   return <MActivBtnStyle onClick={onClick}>언팔로우</MActivBtnStyle>;
 }
 
-export function MSBtn({ content }) {
-  return <MSBtnStyle>{content}</MSBtnStyle>;
+export function MSBtn({ content, disabled }) {
+  return <MSBtnStyle disabled={disabled}>{content}</MSBtnStyle>;
 }
 
 export function ProfileEditMSBtn({ content, onClick, disabled }) {

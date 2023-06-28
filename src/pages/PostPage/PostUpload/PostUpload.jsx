@@ -13,6 +13,7 @@ export default function PostUpload() {
   const [content, setContent] = useState('');
   const [image, setImage] = useState('');
   const navigate = useNavigate();
+  const user = 'nigonego';
 
   // user 데이터 저장
   const [userImage, setUserImage] = useState('');
@@ -55,7 +56,9 @@ export default function PostUpload() {
           },
         },
       }).then(response => {
-        navigate('/myprofile');
+        navigate('/myprofile', {
+          state: { user },
+        });
         console.log(response);
       });
     } catch (err) {

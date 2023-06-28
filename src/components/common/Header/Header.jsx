@@ -51,11 +51,11 @@ export function HeaderMainNav({ content }) {
   );
 }
 
-export function HeaderUploadNav({ content }) {
+export function HeaderUploadNav({ content, isFormValid }) {
   return (
     <HeaderDefaultStyle>
       <ArrowLeft />
-      <MSBtn content={content} />
+      <MSBtn content={content} disabled={!isFormValid} />
     </HeaderDefaultStyle>
   );
 }

@@ -1,29 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Input from '../../components/common/Input/Input';
 import { HeaderUploadNav } from '../../components/common/Header/Header';
 
 import { ReactComponent as BtnImgUpload } from '../../assets/image/BtnImgUpload.svg';
+import { useNavigate } from 'react-router-dom';
 
 // import { HeaderUploadNav } from '../common/Header/Header';
-import buttonImg from '../../assets/images/upload-file.svg';
 import { authAtom } from '../../atom/atoms';
 import { useRecoilValue } from 'recoil';
 
-
 export default function ProductPage() {
+  const user = 'nigonego';
+  const navigate = useNavigate();
+
   const [itemName, setItemName] = useState('');
   const [price, setPrice] = useState('');
   const [link, setLink] = useState('');
-
   const [itemImage, setItemImage] = useState('');
 
-  // user 데이터 저장
-  // const [userImage, setUserImage] = useState('');
-  // const [userContent, setUserContent] = useState('');
-
   const auth = useRecoilValue(authAtom);
+  const [isFormValid, setIsFormValid] = useState(false);
+  // const [isBtnActive, setIsBtnActive] = useState(Boolean(false));
+  console.log(isFormValid);
+
+  useEffect(() => {
+    if (itemName && price && link && itemImage) {
+      setIsFormValid(true);
+      // setIsBtnActive(Boolean(true))
+    }
+  }, [itemName, price, link, itemImage]);
 
   const handleImageUpload = e => {
     e.preventDefault();
@@ -64,6 +71,9 @@ export default function ProductPage() {
       }).then(response => {
         console.log(response);
         console.log('POST 요청 완료');
+        navigate('/myprofile', {
+          state: { user },
+        });
       });
     } catch (err) {
       console.log(err);
@@ -73,7 +83,12 @@ export default function ProductPage() {
   return (
     <GlobalWrapper>
       <form onSubmit={handleSubmit}>
-        <HeaderUploadNav content="업로드" />
+        <HeaderUploadNav content="업로드" isFormValid={isFormValid} />
+        {/* {isBtnActive ? (
+          <HeaderUploadNav content="업로드" />
+        ) : (
+          <HeaderUploadDisableNav content="업로드" />
+        )} */}
         <ul>
           <li>
             <p className="title">이미지 등록</p>
@@ -93,6 +108,7 @@ export default function ProductPage() {
           <li>
             <label className="title">상품명</label>
             <Input
+              value={itemName}
               placeholder="2~10자 이내여야 합니다."
               onChange={e => {
                 setItemName(e.target.value);
@@ -103,6 +119,7 @@ export default function ProductPage() {
             <label className="title">가격</label>
             <Input
               placeholder="숫자만 입력 가능합니다."
+              value={price}
               onChange={e => {
                 setPrice(e.target.value);
               }}
@@ -112,6 +129,7 @@ export default function ProductPage() {
             <label className="title">판매링크</label>
             <Input
               placeholder="URL을 입력해 주세요."
+              value={link}
               onChange={e => {
                 setLink(e.target.value);
               }}

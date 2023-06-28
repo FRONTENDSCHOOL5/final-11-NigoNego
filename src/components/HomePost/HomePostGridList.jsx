@@ -19,6 +19,7 @@ export default function HomePostGridList({ userPostData }) {
 
 const GridWrapp = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  height: 150px;
   gap: 10px;
 `;
