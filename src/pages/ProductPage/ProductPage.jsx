@@ -99,7 +99,9 @@ export default function ProductPage() {
                 />
               </label>
               <input id="input" type="file" onChange={handleImageUpload} />
-              {itemImage.length > 0 && <img src={itemImage} alt="" />}
+              {itemImage.length > 0 && (
+                <img src={itemImage} alt="" style={{ borderRadius: '10px' }} />
+              )}
             </ImgUploadWrapp>
           </li>
           <li>

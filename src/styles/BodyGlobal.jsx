@@ -11,5 +11,5 @@ const BodyGlobalOuter = styled.div`
   /* margin: 4.8rem; */
   height: 86vh;
   overflow: scroll;
-  margin: ${props => props.margin || '0'} 0 10px 10px;
+  margin: ${props => props.margin || '0'} 10px 0px 10px;
 `;

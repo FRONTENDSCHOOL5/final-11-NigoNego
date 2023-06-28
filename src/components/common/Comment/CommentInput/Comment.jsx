@@ -7,11 +7,8 @@ import { useRecoilValue } from 'recoil';
 
 export const CommentWrapper = styled.div`
   width: 100%;
-  /* 댓글 컴포넌트 하단 고정할지 안할지 */
-  /* position: fixed;
+  position: fixed;
   bottom: 0;
-  border-top: solid 0.5px #dbdbdb;
-  background-color: white; */
   form,
   input,
   button {
