@@ -10,7 +10,7 @@ export default function HomePostGrid({ accountname }) {
     try {
       axios({
         method: 'GET',
-        url: `https://api.mandarin.weniv.co.kr/post/${accountname}/userpost/?limit=999&skip=3`,
+        url: `https://api.mandarin.weniv.co.kr/post/${accountname}/userpost/?limit=999`,
 
         headers: {
           Authorization: `Bearer ${token}`,

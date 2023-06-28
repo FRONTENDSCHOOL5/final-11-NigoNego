@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { HeaderUploadNav } from '../../../components/common/Header/Header';
 import { SImage } from '../../../components/common/UserImage/UserImage';
@@ -10,16 +10,24 @@ import { useRecoilValue } from 'recoil';
 import BodyGlobal from '../../../styles/BodyGlobal';
 
 export default function PostUpload() {
-  const [content, setContent] = useState('');
-  const [image, setImage] = useState('');
   const navigate = useNavigate();
   const user = 'nigonego';
+
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [content, setContent] = useState('');
+  const [image, setImage] = useState('');
 
   // user 데이터 저장
   const [userImage, setUserImage] = useState('');
   const [userContent, setUserContent] = useState('');
 
   const auth = useRecoilValue(authAtom);
+
+  useEffect(() => {
+    if (content && image) {
+      setIsFormValid(true);
+    }
+  }, [content, image]);
 
   const handleImageUpload = e => {
     e.preventDefault();
