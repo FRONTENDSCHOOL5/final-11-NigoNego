@@ -7,11 +7,7 @@ export default function HomePostGridListItem({ img }) {
     <GridItemImg>
       {console.log(img)}
       <IconImagiesBtn width="30px" height="30px" />
-      {img.image ? (
-        <img src={img.image} alt="이미지" />
-      ) : (
-        <img className="noneImg" />
-      )}
+      <img src={img.image} alt="이미지" />
     </GridItemImg>
   );
 }
