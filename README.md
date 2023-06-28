@@ -190,7 +190,7 @@ final-11-NigoNego
 
 ### 6-2. 페어코딩
 라이브쉐어를 이용해 로그인/회원가입 페이지를 함께 작업했습니다. 
-<img src='https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/309baafd-a9e2-477a-b148-1441f24a33b6" width="300px" />
+<img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/309baafd-a9e2-477a-b148-1441f24a33b6" width="300px" />
 
 
 ### 6-3. branch 전략
