@@ -1,4 +1,6 @@
 ## 니고네고 바로가기
+![니고네고 목업](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/df811eda-e672-4767-bdd9-a74c0e7d195e)
+
 - 배포url(추후 배포)
 - Test ID/PW: nigonego@test.com / 123123
 
@@ -9,7 +11,6 @@
 2. [팀 소개](#teamInfo)
 
 ## <span id="projectInfo">1. 프로젝트 소개</span>
-![니고네고 목업](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/df811eda-e672-4767-bdd9-a74c0e7d195e)
 니고네고는 레고를 좋아하는 사람들을 위한 레고 전용 플랫폼입니다. <br />
 니고네고에서 사용자는 자신이 직접 조립한 레고 사진을 공유하고 다양한 유저와 소통할 수 있습니다. <br />
 중고 사이트 기준으로 하루 600건 이상 업로드될 정도로 시장이 활발하게 형성되어 있는 만큼, 유저를 위한 중고 거래 기능 또한 제공하고 있습니다.
