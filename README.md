@@ -212,7 +212,7 @@ main - dev - feature[기능]
 
 | Splash | 로그인 | 회원가입 | 프로필 설정 |
 | ------ | -------- | ------------- | -------- |
-| ![splash page](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/2495580b-6579-4298-a13f-dce3e0ffe7b6) | ![로그인 페이지](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/c04f6554-eddb-430f-bdb1-3300ce7ab1bd) | ![회원가입 최종](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/47eda093-4a61-47e8-af7e-89e527955e39) | ![프로필설정](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/59b21602-c708-4ede-bef9-c09a5ba039e1) |
+| ![splash page](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/2495580b-6579-4298-a13f-dce3e0ffe7b6) | ![로그인 페이지](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/c04f6554-eddb-430f-bdb1-3300ce7ab1bd) | ![회원가입 최종](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/47eda093-4a61-47e8-af7e-89e527955e39) | ![프로필설정](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/f5db86de-b67f-461d-b2ae-0bf55fa5d0e0) |
 
 ### 주요기능
 
