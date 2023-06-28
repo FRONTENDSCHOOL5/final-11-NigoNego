@@ -40,8 +40,9 @@ const ChatUser = styled.section`
   width: 100%;
   align-items: center;
   padding: 10px 10px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   /* box-shadow: inset 0 0 10px red; */
+  position: relative;
 
   time {
     color: var(--basic-border-color);
@@ -65,6 +66,8 @@ const ChatUser = styled.section`
     margin-top: 4px;
     p {
       color: var(--basic-grey);
+      font-size: 1.2rem;
+      margin: 5px 0 0 0;
     }
   }
 `;
@@ -77,4 +80,5 @@ const Circle = styled.div`
   top: 15px;
   border-radius: 50%;
   background-color: var(--basic-yellow);
+  position: absolute;
 `;
