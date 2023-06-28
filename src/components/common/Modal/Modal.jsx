@@ -35,7 +35,7 @@ export default function Modal() {
   );
 }
 
-export function LogoutModal({ handleSlideModalClose }) {
+export function LogoutModal({ onClose }) {
   const [auth, setAuth] = useRecoilState(authAtom);
   const [accountname, setAccountnameAtom] = useRecoilState(accountNameAtom);
   const [following, setFollowing] = useRecoilState(followingAtom);
@@ -45,7 +45,6 @@ export function LogoutModal({ handleSlideModalClose }) {
   const resetFollowing = useResetRecoilState(followingAtom);
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
-  console.log(handleSlideModalClose);
 
   const handleLogout = () => {
     console.log('로그아웃 완료');
@@ -56,6 +55,10 @@ export function LogoutModal({ handleSlideModalClose }) {
     navigate('/login');
   };
 
+  // const handleCancle = () => {
+  //   onClose();
+  // };
+
   if (!isOpen) {
     return null;
   }
@@ -64,7 +67,7 @@ export function LogoutModal({ handleSlideModalClose }) {
     <ModalWrapper>
       <ModalText>로그아웃을 할까요?</ModalText>
       <ButtonContainer>
-        <Button type="submit" onClick={{ handleSlideModalClose }}>
+        <Button type="submit" onClick={onClose}>
           취소
         </Button>
         <Button type="submit" delete onClick={handleLogout}>

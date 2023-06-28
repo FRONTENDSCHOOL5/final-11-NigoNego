@@ -138,7 +138,7 @@ export default function ProfileEditPage() {
         console.error('API 요청 실패:', error);
         setIsUserNameValid(true);
       }
-      navigate('/myprofile');
+      navigate('/homefeed');
     } else {
       setIsFormValid(false);
     }
