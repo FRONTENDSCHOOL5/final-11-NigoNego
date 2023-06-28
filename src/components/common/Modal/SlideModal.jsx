@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import slideIcon from '../../../assets/icons/slide-top-icon.png';
 import { LogoutModal, CommentModal } from './Modal';
 
-export default function SlideModal() {
+export default function SlideModal({ closeModal }) {
   const navigate = useNavigate();
   const modalEl = useRef(); //
 
@@ -21,6 +21,7 @@ export default function SlideModal() {
   const handleSlideModalClose = () => {
     setShowLogoutModal(false);
   };
+
   useEffect(() => {
     const handleClickOutside = event => {
       if (modalEl.current && !modalEl.current.contains(event.target)) {
@@ -47,7 +48,7 @@ export default function SlideModal() {
             로그아웃
           </StyledLi>
         </StyledUl>
-        {showLogoutModal && <LogoutModal onClose={handleSlideModalClose} />}
+        {showLogoutModal && <LogoutModal onClose={closeModal} />}
       </SlideModalWrapper>
     </SlideModalBackground>
   );
@@ -95,7 +96,7 @@ const SlideModalWrapper = styled.div`
   border-radius: 10px 10px 0 0;
   position: fixed;
   left: 0px;
-  bottom: 45px;
+  bottom: 1px;
   background-color: white;
   width: 100%;
   z-index: 100;
