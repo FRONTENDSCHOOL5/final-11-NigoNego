@@ -69,6 +69,7 @@ function PostMain() {
         setPostData()가 실행되기도 전에 HomePost 컴포넌트가 렌더링 되니까 여기서 조건을 추가해주는 방법사용 
         보통 이부분에서 로딩 컴포넌트를 만들어서 삼항연산자안에 postdata가 null일때 로딩컴포넌트를 보여주는 방식으로 함
          */}
+      {console.log(postId)}
       <HeaderBasicNav />
       <PostPageWrapper>
         <ContentSection>

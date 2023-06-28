@@ -73,13 +73,12 @@ function HomeFeed(props) {
 const HomePostImg = styled.img`
   width: 100%;
   aspect-ratio: 5 / 3;
-  background: orange;
   border-radius: 10px;
   object-fit: cover;
 `;
 
 const MyHomePostwarpper = styled.div`
-  height: 83vh;
+  height: 86vh;
   padding-bottom: 20px;
   overflow: scroll;
   /* box-shadow: inset 0px 0px 3px 5px rgb(0, 38, 255); */

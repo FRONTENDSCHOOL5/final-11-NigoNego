@@ -36,7 +36,7 @@ export default function SlideModal() {
   }, []);
 
   return (
-    <SlideModalBackground onClick={closeModal}>
+    <SlideModalBackground onClick={handleSlideModalClose}>
       <SlideModalWrapper ref={modalEl}>
         <img src={slideIcon} alt="" />
         <StyledUl>
@@ -91,11 +91,11 @@ const SlideModalBackground = styled.div`
 const SlideModalWrapper = styled.div`
   text-align: center;
   padding: 10px 0;
-  border: 3px solid black;
+  border: 1px solid var(--basic-border-color);
   border-radius: 10px 10px 0 0;
   position: fixed;
   left: 0px;
-  bottom: 66px;
+  bottom: 45px;
   background-color: white;
   width: 100%;
   z-index: 100;

@@ -73,8 +73,8 @@ export default function PostUpload() {
   // console.log(userContent);
   return (
     <>
+      <HeaderUploadNav content={'업로드'} />
       <form onSubmit={handleSubmit}>
-        <HeaderUploadNav content={'업로드'} />
         <BodyGlobal>
           <PostUploadWrapper>
             <SImage />

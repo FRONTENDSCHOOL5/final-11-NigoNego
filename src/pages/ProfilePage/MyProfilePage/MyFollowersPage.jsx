@@ -8,7 +8,7 @@ export default function MyFollowersPage() {
     <>
       <HeaderBasicNav />
       <UserFollow />
-      <Navbar />
+      <Navbar homeV={true} chatV={true} postV={true} profileV={false} />
     </>
   );
 }
