@@ -1,9 +1,12 @@
+# <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/0b43740c-f6f3-45d0-9eca-ac73479205fb" width="28px"/> 니고네고
 ## 니고네고
 ![니고네고 목업](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/48938203/8ee86093-1257-416d-b628-1c3e8ed73367)
 
-- 배포url(추후 배포)
-- Test ID/PW: nigonego@test.com / 123123
 
+- 배포 URL: (추후 배포)
+- Test ID: nigonego@test.com
+- PW: 123123
+  
 <br />
 
 ## 목차
@@ -19,27 +22,28 @@
 10. 리팩토링
 11. 소감
 12. 출처
+    
 <br />
 
-## 1. 프로젝트 소개
-니고네고는 레고를 좋아하는 사람들을 위한 레고 전용 플랫폼입니다. <br />
-니고네고에서 사용자는 자신이 직접 조립한 레고 사진을 공유하고 다양한 유저와 소통할 수 있습니다. <br />
-중고 사이트 기준으로 하루 600건 이상 업로드될 정도로 시장이 활발하게 형성되어 있는 만큼, 유저를 위한 중고 거래 기능 또한 제공하고 있습니다.
+## 1. 서비스 소개
+- 니고네고는 레고를 좋아하는 사람들을 위한 **레고 전용 플랫폼**입니다. <br />
+- 니고네고에서 사용자는 자신이 직접 조립한 레고 사진을 공유하고 다양한 유저와 소통할 수 있습니다. <br />
+- 중고 사이트 기준으로 하루 600건 이상 업로드될 정도로 시장이 활발하게 형성되어 있는 만큼, 유저를 위한 중고 거래 기능 또한 제공하고 있습니다.
 
 <br />
 
 ## <span id="teamInfo">2. 팀 소개</span>
-안녕하세요 저희는 K(김민지)K(권순호)O(오연주)L(이수아)로 이루어진 꿀조입니다!
-
-<br />
+안녕하세요 
+저희는 K(김민지)K(권순호)O(오연주)L(이수아)로 이루어진 꿀조🍯입니다!
 
 ### 1. 팀원 소개
 
 | 권순호 | 김민지 | 오연주 | 이수아 |
 | ------ | -------- | ------------- | -------- |
 | <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/ce15b9da-ed37-4e20-a25e-a13ea239be44" width="180" height="180"> | <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/edb95316-8c20-4aa6-806c-1093e32acbac" width="180" height="180"> | <img src="" width="180" height="180"> | <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/844ca019-f967-4298-9b20-472e67009057" width="180" height="180"> |
-
-
+| 깃허브링크 | -------- | ------------- | -------- |
+    
+<br />
 
 ### 2. 역할 분담
 #### 김민지
@@ -80,26 +84,23 @@
 #### 이수아
  - 무한스크롤 기능구현
  - 상품등록 기능구현
- - 판매중인 상품 마크업 및 기능구현
- - 이미지등록 마크업 및 기능구현
- - YourProfile,HomeFeed 마크업 및 기능구현
- - 하단Navbar 마크업 및 기능구현
- - 좋아요,Followers,Followings 마크업 및 기능구현
- - 무한스크롤 마크업 및 기능구현
- - 상품등록 마크업 및 기능구현
- - 판매중인 상품 마크업 및 기능구현
- - 이미지등록 마크업 및 기능구현
- - YourProfile,HomeFeed 마크업 및 기능구현
- - 하단Navbar 마크업 및 기능구현
- - 좋아요,Followers,Followings 마크업 및 기능구현
-
+ - 판매중인 상품 기능구현
+ - 이미지등록 기능구현
+ - YourProfile,HomeFeed 기능구현
+ - 하단Navbar 기능구현
+ - 좋아요,Followers,Followings 기능구현
+ - 무한스크롤 마크업
+ - 상품등록 마크업
+ - 판매중인 상품 마크업
+ - 이미지등록 마크업
+ - YourProfile,HomeFeed 마크업
+ - 하단Navbar 마크업
+ - 좋아요,Followers,Followings 마크업
 
 <br />
 
-
 ## 3. 개발 기간
-
-2023.06.12 - 2023.06.28
+### 2023.06.12 - 2023.06.28
 
 1주차: 프로젝트 기획, 피그마 디자인 작업, 깃 작업, 역할분담<br />
 2주차: 컴포넌트 분리 및 마크업, 기능구현<br />
@@ -178,6 +179,8 @@ final-11-NigoNego
    └─ styles
 ```
 
+<br />
+
 ## 6. 작업문화
 
 ### 6-1. 데일리스크럼
@@ -203,16 +206,21 @@ main - dev - feature[기능]
 각자 맡은 기능에 집중할 수 있었고, 연관되는 기능이 있을 경우 관련되는 기능들만 merge를 하여 오류가 나더라도 다른 기능에 영향을 주지 않을 수 있었습니다.
 ```
 
+<br />
+
 ## 7.주요기능 
 - 핵심 기능 : 게시물 업로드, 팔로우 기능, 상품 등록, 댓글 
 
+<br />
 
 ## 8. 기능 UI
+
 ### 로그인/회원가입
 
 | Splash | 로그인 | 회원가입 | 프로필 설정 |
 | ------ | -------- | ------------- | -------- |
 | ![splash page](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/2495580b-6579-4298-a13f-dce3e0ffe7b6) | ![로그인 페이지](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/c04f6554-eddb-430f-bdb1-3300ce7ab1bd) | ![회원가입 최종](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/47eda093-4a61-47e8-af7e-89e527955e39) | ![프로필설정](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/f5db86de-b67f-461d-b2ae-0bf55fa5d0e0) |
+
 
 ### 주요기능
 
@@ -220,18 +228,18 @@ main - dev - feature[기능]
 | ------ | -------- | ------------- | -------- |
 | ![홈 피드 ](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/4978e383-511d-4867-b310-ff289ad32349) | ![게시글 상세](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/33077245-31a8-4105-b539-5da975a88557) | ![게시물 업로드](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/58321210-85bd-4805-a681-31ab030baa6a) | ![유저 프로필](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/08d49ae7-c945-4c2e-95cc-c3c9e5e463e4) |
 
+
 ### 그외 기능
 
 | 마이 프로필 | 상품등록 | 모달창 로그아웃 | 채팅 페이지 |
 | ------ | -------- | ------------- | -------- |
 | ![마이 프로필](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/5f11fdcd-bc55-41a8-bf61-d977c3d24265) | ![상품등록](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/8b54e31c-6895-4688-9cd4-dfe71aa44c06) | ![모달창 로그아웃](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/a3da4061-32a0-4d06-b16c-eee0b1fd12ce)| ![채팅방](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/d47275e1-3b4f-49d7-9d15-07317241be44) |
 
-
-
+<br />
 
 ## 9. 컨벤션
 
-| ✒️                                                      |
+| 코드 컨벤션                                                    |
 | ------------------------------------------------------- |
 | ✨ Feat : 새로운 기능 추가                              |
 | 💄 Design : CSS, 사용자 UI 디자인 변경                  |
@@ -244,12 +252,14 @@ main - dev - feature[기능]
 | 🔨 Chore : 빌드 업무, 패키지매니저, 폴더트리, 세팅 수정 |
 | 💡 Comment : 필요한 주석 추가 및 변경                   |
 
----
+<br />
 
 ## 10. 리팩토링 (방향성)
 
----
+<br />
+
 ## 11. 소감
+
 ### 권순호
 
 프로젝트가 다들 처음이라 막막하고 앞이 안보였는데
