@@ -8,9 +8,6 @@
 1. [프로젝트 소개](#projectInfo)
 2. [팀 소개](#teamInfo)
 
-
-<br />
-
 ## <span id="projectInfo">1. 프로젝트 소개</span>
 ![니고네고 목업](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/df811eda-e672-4767-bdd9-a74c0e7d195e)
 니고네고는 레고를 좋아하는 사람들을 위한 레고 전용 플랫폼입니다. <br />
