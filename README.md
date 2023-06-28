@@ -172,33 +172,30 @@ main - dev - feature[기능]
 각자 맡은 기능에 집중할 수 있었고, 연관되는 기능이 있을 경우 관련되는 기능들만 merge를 하여 오류가 나더라도 다른 기능에 영향을 주지 않을 수 있었습니다.
 ```
 
-## 기능 UI
+## [주요 기능]  
+- 핵심 기능 : 게시물 업로드, 팔로우 기능, 상품 등록, 댓글 
 
-### 회원관리
 
-| 로그인 | 회원가입 | 회원정보 수정 | 로그아웃 |
+## [기능 UI]
+### 로그인/회원가입
+
+| Splash | 로그인 | 회원가입 | 프로필 설정 |
 | ------ | -------- | ------------- | -------- |
-| {gif}  |          |               |          |
+| ![splash page](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/2495580b-6579-4298-a13f-dce3e0ffe7b6) | ![로그인 페이지](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/c04f6554-eddb-430f-bdb1-3300ce7ab1bd) | ![회원가입 최종](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/47eda093-4a61-47e8-af7e-89e527955e39) | ![프로필설정](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/59b21602-c708-4ede-bef9-c09a5ba039e1) |
 
-### 판매글
+### 주요기능
 
-| 목록  | 작성 |
-| ----- | ---- |
-| {gif} |      |
+| 홈피드 | 게시글 상세 | 게시글 업로드 | 유저프로필 |
+| ------ | -------- | ------------- | -------- |
+| ![홈 피드 ](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/4978e383-511d-4867-b310-ff289ad32349) | ![게시글 상세](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/33077245-31a8-4105-b539-5da975a88557) | ![게시물 업로드](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/58321210-85bd-4805-a681-31ab030baa6a) | ![유저 프로필](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/08d49ae7-c945-4c2e-95cc-c3c9e5e463e4) |
 
-### 포스트글
+### 그외 기능
 
-| 목록  | 작성 | 삭제 |
-| ----- | ---- | ---- |
-| {gif} |      |      |
+| 마이 프로필 | 상품등록 | 모달창 로그아웃 | 채팅 페이지 |
+| ------ | -------- | ------------- | -------- |
+| ![마이 프로필](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/5f11fdcd-bc55-41a8-bf61-d977c3d24265) | ![상품등록](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/8b54e31c-6895-4688-9cd4-dfe71aa44c06) | ![모달창 로그아웃](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/a3da4061-32a0-4d06-b16c-eee0b1fd12ce)| ![채팅방](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/d47275e1-3b4f-49d7-9d15-07317241be44) |
 
-### 마이페이지
 
-> 기준 : 로그인한 유저
-
-| 정보  | 판매하는 상품 | 작성한 글 |
-| ----- | ------------- | --------- |
-| {gif} |               |           |
 
 
 ## 컨벤션
