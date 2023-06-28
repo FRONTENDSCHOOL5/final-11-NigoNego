@@ -1,31 +1,54 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import arrowLeft from '../../../assets/icons/icon-arrow-left.png';
-import moreIcon from '../../../assets/icons/icon-more-vertical.png';
+import { useNavigate } from 'react-router-dom';
+import SlideModal from '../Modal/SlideModal';
+import { ReactComponent as IconArrowLeft } from '../../../assets/image/IconArrowLeft.svg';
+import { ReactComponent as IconMoreView } from '../../../assets/image/IconMoreView.svg';
 
 export function LBtn({ content }) {
   return <LBtnStyle>{content}</LBtnStyle>;
 }
 
-export function LdisabledBtn({ content }) {
-  return <LdisabledBtnStyle>{content}</LdisabledBtnStyle>;
+export function LdisabledBtn({ h, content }) {
+  return (
+    <LdisabledBtnStyle disabled height={h}>
+      {content}
+    </LdisabledBtnStyle>
+  );
 }
 
-export function MBtn() {
-  return <MBtnStyle>팔로우</MBtnStyle>;
+export function MBtn({ h, content, onClick }) {
+  return (
+    <MBtnStyle height={h} onClick={onClick}>
+      {content}
+    </MBtnStyle>
+  );
 }
 
 export function MdisabledBtn() {
   return <MdisabledBtnStyle>팔로우</MdisabledBtnStyle>;
 }
 
-export function MActivBtn() {
-  return <MActivBtnStyle>언팔로우</MActivBtnStyle>;
+export function MActivBtn({ onClick }) {
+  return <MActivBtnStyle onClick={onClick}>언팔로우</MActivBtnStyle>;
 }
 
-export function MSBtn() {
-  return <MSBtnStyle>저장</MSBtnStyle>;
+export function MSBtn({ content, disabled }) {
+  return <MSBtnStyle disabled={disabled}>{content}</MSBtnStyle>;
 }
+
+export function ProfileEditMSBtn({ content, onClick, disabled }) {
+  return (
+    <MSBtnStyle
+      onClick={onClick}
+      disabled={disabled}
+      className={disabled ? 'disabled' : ''}
+    >
+      {content}
+    </MSBtnStyle>
+  );
+}
+
 export function MSdisabledBtn() {
   return <MSdisabledBtnStyle>저장</MSdisabledBtnStyle>;
 }
@@ -35,14 +58,44 @@ export function SBtn() {
 }
 
 export function SactivBtn() {
-  return <SactivStyle>취소</SactivStyle>;
+  return <SdisabledStyle>취소</SdisabledStyle>;
 }
 
 export function ArrowLeft() {
+  const navigate = useNavigate();
+
+  const handleback = () => {
+    navigate(-1);
+  };
   return (
-    <ArrowLeftStyle>
-      <img src={arrowLeft} alt="" />
+    <ArrowLeftStyle onClick={handleback}>
+      <IconArrowLeft width="24px" height="24px" />
     </ArrowLeftStyle>
+  );
+}
+
+export function MoreIconButton() {
+  const [isSideSlideOpen, setIsSideSlideOpen] = useState(false);
+
+  const handleIconClick = () => {
+    setIsSideSlideOpen(true);
+  };
+
+  const handleModalClose = event => {
+    if (event.target === event.currentTarget) {
+      setIsSideSlideOpen(false);
+    }
+  };
+
+  return (
+    <>
+      <MoreIconButtonStyle onClick={handleIconClick}>
+        <IconMoreView width="24px" height="24px" />
+      </MoreIconButtonStyle>
+      {isSideSlideOpen && (
+        <SlideModal closeModal={handleModalClose}></SlideModal>
+      )}
+    </>
   );
 }
 
@@ -59,15 +112,17 @@ const BtnCommonStlyeDisabled = styled(BtnCommonStlye)`
 `;
 
 const LBtnStyle = styled(BtnCommonStlye)`
-  width: 80%;
+  width: 100%;
   padding: 8px;
 `;
 const LdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
+  height: ${props => props.height}px;
   width: 100%;
   padding: 8px;
 `;
 
 const MBtnStyle = styled(BtnCommonStlye)`
+  height: ${props => props.height}px;
   width: 120px;
   padding: 5px;
 `;
@@ -86,13 +141,33 @@ const MActivBtnStyle = styled(BtnCommonStlye)`
 `;
 const MSBtnStyle = styled(BtnCommonStlye)`
   width: 90px;
-  padding: 8px;
+  height: 32px;
+  padding: 7px;
+  background-color: ${({ disabled }) =>
+    disabled ? ' var(--light-yellow)' : ' var(--basic-yellow)'};
+  color: ${({ disabled }) => (disabled ? '' : 'black')};
+
+  &:hover {
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
 `;
 const MSdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
   width: 90px;
-  padding: 8px;
+  height: 32px;
+  padding: 7px;
 `;
 const SactivStyle = styled(BtnCommonStlye)`
+  /* background-color: var(--basic-yellow); */
+  width: 56px;
+  height: 28px;
+  padding: 5px;
+`;
+const SdisabledStyle = styled(BtnCommonStlyeDisabled)`
   color: var(--basic-grey);
   background-color: white;
   border: 1px solid #767676;
@@ -106,16 +181,12 @@ const ArrowLeftStyle = styled.div`
       vertical-align: middle;
     }
   }
+  :hover {
+    cursor: pointer;
+  }
 `;
 
-export function MoreIconButton() {
-  return (
-    <MoreIconButtonStyle>
-      <img src={moreIcon} alt="" />
-    </MoreIconButtonStyle>
-  );
-}
-
-const MoreIconButtonStyle = styled.button`
+export const MoreIconButtonStyle = styled.button`
+  border: none;
   color: red;
 `;

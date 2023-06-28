@@ -1,77 +1,125 @@
 import React from 'react';
 import styled from 'styled-components';
-import searchIcon from '../../../assets/icons/icon-search.png';
-import { ArrowLeft, MSBtn, MoreIconButton } from '../button/Button';
+import { ReactComponent as IconSearch } from '../../../assets/image/IconSearch.svg';
+// import searchIcon from '../../../assets/icons/icon-search.svg';
+
+import {
+  ArrowLeft,
+  MSBtn,
+  ProfileEditMSBtn,
+  MoreIconButton,
+} from '../button/Button';
 import SearchInput from '../Input/SearchInput';
+import { useNavigate } from 'react-router-dom';
 
 export function HeaderBasicNav() {
+  // 뒤로가기 버튼 구현하기;
   return (
-    <HeaderBasicNavStyle>
+    <HeaderDefaultStyle>
       <ArrowLeft />
       <MoreIconButton />
-    </HeaderBasicNavStyle>
+    </HeaderDefaultStyle>
   );
 }
 
 export function HeaderSearchNav() {
   return (
-    <HeaderSearchNavStyle>
+    <HeaderDefaultStyle>
       <ArrowLeft />
-      <SearchInput />
-    </HeaderSearchNavStyle>
+      <div className="inputComponent">
+        <SearchInput />
+      </div>
+    </HeaderDefaultStyle>
   );
 }
 
-export function HeaderMainNav() {
+export function HeaderMainNav({ content }) {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate('/search'); // 넘어가고자 하는 페이지의 경로를 설정해주세요
+  };
+
   return (
-    <HeaderMainNavStyle>
-      <h1>니고네고 피드</h1>
-      <button type="button">
-        <img src={searchIcon} alt="" />
+    <HeaderDefaultStyle>
+      <h1>{content}</h1>
+
+      <button onClick={handleButtonClick} type="button">
+        <IconSearch width="24px" height="24px" />
       </button>
-    </HeaderMainNavStyle>
+    </HeaderDefaultStyle>
   );
 }
 
-export function HeaderUploadNav() {
+export function HeaderUploadNav({ content, isFormValid }) {
   return (
-    <HeaderUploadNavStyle>
+    <HeaderDefaultStyle>
       <ArrowLeft />
-      <MSBtn />
-    </HeaderUploadNavStyle>
+      <MSBtn content={content} disabled={!isFormValid} />
+    </HeaderDefaultStyle>
   );
 }
 
-export function HeaderChatNav() {
+export function HeaderEditdNav({ content, isFormValid, handleSave }) {
   return (
-    <HeaderChatNavStyle>
+    <HeaderDefaultStyle>
       <ArrowLeft />
+      <ProfileEditMSBtn
+        content={content}
+        onClick={handleSave}
+        disabled={!isFormValid}
+      />
+    </HeaderDefaultStyle>
+  );
+}
+
+export function HeaderChatNav({ content }) {
+  return (
+    <HeaderDefaultStyle>
+      <div className="havetitle">
+        <ArrowLeft />
+        <h2>{content}</h2>
+      </div>
       <MoreIconButton />
-    </HeaderChatNavStyle>
+    </HeaderDefaultStyle>
+  );
+}
+
+export function HeaderContentdNav({ content }) {
+  return (
+    <HeaderDefaultStyle>
+      <ArrowLeft />
+      <h2>{content}</h2>
+    </HeaderDefaultStyle>
   );
 }
 
 // 상단바 기본 style
 const HeaderDefaultStyle = styled.div`
   /* box-shadow: inset 0px 0px 3px 1px rgb(0, 38, 255); */
+  button {
+    border: none;
+  }
   height: 4.8rem;
   border-bottom: 1px solid var(--basic-border-color);
-  padding: 10px 20px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-
-const HeaderBasicNavStyle = styled(HeaderDefaultStyle)``;
-
-const HeaderSearchNavStyle = styled(HeaderDefaultStyle)``;
-
-const HeaderMainNavStyle = styled(HeaderDefaultStyle)`
-  h1 {
-    font-size: 1.8rem;
+  position: static;
+  top: 0;
+  z-index: 100;
+  padding: 0 10px;
+  background-color: #fff;
+  .inputComponent {
+    width: 100%;
+    margin-left: 12px;
+  }
+  .havetitle {
+    display: flex;
+    align-items: center;
+    h2 {
+      margin-left: 12px;
+    }
   }
 `;
-
-const HeaderUploadNavStyle = styled(HeaderDefaultStyle)``;
-
-const HeaderChatNavStyle = styled(HeaderDefaultStyle)``;
