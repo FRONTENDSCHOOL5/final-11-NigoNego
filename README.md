@@ -1,4 +1,4 @@
-## 니고네고 바로가기
+## 니고네고
 ![니고네고 목업](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/df811eda-e672-4767-bdd9-a74c0e7d195e)
 
 - 배포url(추후 배포)
