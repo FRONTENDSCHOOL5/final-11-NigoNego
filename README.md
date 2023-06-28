@@ -72,8 +72,12 @@
 <br />
 
 ## 4. 개발 환경
-(아이콘으로 변경)
-프론트엔드: 리액트, 리코일, 스타일컴포넌트
+프론트엔드: 
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white" />
+<img src="https://img.shields.io/badge/Recoil-색상?style=for-the-badge&logo=기술스택아이콘&logoColor=white" />
+<img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white" />
+
+리액트, 리코일, 스타일컴포넌트
 백엔드: 제공된 API
 협업툴: 깃허브, 깃, 피그마, 노션, 디스코드
 테스트툴: 포스트맨
