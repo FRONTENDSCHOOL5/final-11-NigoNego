@@ -38,11 +38,12 @@
 
 ### 1. 팀원 소개
 
-| 권순호 | 김민지 | 오연주 | 이수아 |
-| ------ | -------- | ------------- | -------- |
+|                                    **권순호**                                    |                                    **김민지**                                    |                                 **오연주**                                 |                                    **이수아**                                    |
+| :---------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------: | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------------: |
 | <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/ce15b9da-ed37-4e20-a25e-a13ea239be44" width="180" height="180"> | <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/edb95316-8c20-4aa6-806c-1093e32acbac" width="180" height="180"> | <img src="" width="180" height="180"> | <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/844ca019-f967-4298-9b20-472e67009057" width="180" height="180"> |
-| 깃허브링크 | -------- | ------------- | -------- |
-    
+| <a href="https://github.com/snowkwon420"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a><br/> | <a href="https://github.com/kimmming"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a><br/> |           <a href="https://github.com/Oh5Yeonju"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a><br/> | <a href="https://github.com/suconpa"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a><br/> |
+|<code>팀원</code> | <code>팀원</code> | <code>팀원</code> | <code>팀원</code> |
+
 <br />
 
 ### 2. 역할 분담
@@ -255,8 +256,12 @@ main - dev - feature[기능]
 <br />
 
 ## 10. 리팩토링 (방향성)
-
-<br />
+- 웹 접근성과 웹 표준을 지키는 코드(lighthouse로 구체적인 수치 기록) 작성하기
+- 컴포넌트 정리하기: 컴포넌트화 하기 전 고민하기
+- recoil을 사용해 데이터 관리하기
+- 기능추가1. 조립된상품/ 조립하기전 상품 구분해서 나누는 서비스 추가하기
+- 기능추가2. 레고 카테고리 나누기 
+- 기능추가3. 지도 api 사용 해서 직거래 위치 pin 해보기
 
 ## 11. 소감
 
