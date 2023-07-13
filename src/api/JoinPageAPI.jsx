@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import { baseUrl } from './Api';
 
 const JoinPageAPI = async email => {
