@@ -16,7 +16,7 @@ export default function ChatUserList({ userId }) {
   const navigate = useNavigate();
 
   const handleChatClick = () => {
-    navigate(`chatroom/${userId}`);
+    navigate(`chatroom`);
   };
   return (
     <ChatUser onClick={handleChatClick}>
