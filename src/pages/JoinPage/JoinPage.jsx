@@ -1,12 +1,11 @@
 import React, { useState, useCallback } from 'react';
-// import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
 import { Wrapper, FormWrapper } from '../LoginPage/LoginPage';
 import MainWrapperF from '../../styles/MainGlobal';
+import JoinPageAPI from '../../api/JoinPageAPI';
 
 const ButtonWrapper = styled.div`
   margin-top: 30px;
@@ -70,24 +69,16 @@ function JoinPage() {
     passwordCheck(event);
   }, []);
 
-  async function onhandlesubmit(event) {
+  function onhandlesubmit(event) {
     event.preventDefault();
-    // if (!isEmailValid || !isPasswordValid) return;
 
-    try {
-      const url = 'https://api.mandarin.weniv.co.kr';
-
-      const res = await axios.post(`${url}/user/emailvalid`, {
-        user: {
-          email,
-        },
-      });
-      console.log('res', res.data);
+    JoinPageAPI(email).then(res => {
       if (res.data.message === '이미 가입된 이메일 주소 입니다.') {
         setIsEmailPossible(false);
         setErrorMessageEM('*이미 가입된 이메일 주소입니다.');
         console.log('이미 가입된 이메일입니다.');
       } else {
+        console.log(res);
         navigate('/joinmember', {
           state: {
             email,
@@ -95,9 +86,7 @@ function JoinPage() {
           },
         });
       }
-    } catch (error) {
-      console.log(error);
-    }
+    });
   }
 
   return (
