@@ -1,22 +1,15 @@
 import React from 'react';
-import axios from 'axios';
 
-const LoginApi = async ({
-  userInput,
-  setAuth,
-  setAccountname,
-  FollowingData,
-  setIsCorrect,
-  setLoginErrMessage,
-}) => {
+const LoginApi = async () => {
   const url = 'https://api.mandarin.weniv.co.kr';
+
   try {
     const res = await axios.post(
       `${url}/user/login`,
       {
         user: {
-          email: userInput.user.email,
-          password: userInput.user.password,
+          email,
+          password,
         },
       },
       {
@@ -26,6 +19,7 @@ const LoginApi = async ({
       },
     );
     // const successRes = res.data;
+    console.log(res.data);
     if (res.data.user) {
       const { token, accountname } = res.data.user;
       console.log(res.data.user.email);
@@ -40,6 +34,8 @@ const LoginApi = async ({
     // 요청이 실패한 경우
     console.error(error);
   }
+
+  return <div></div>;
 };
 
 export default LoginApi;
