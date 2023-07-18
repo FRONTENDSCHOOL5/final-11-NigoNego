@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
 import { authAtom, accountNameAtom, followingAtom } from '../../atom/atoms';
 import MainWrapperF from '../../styles/MainGlobal';
+import LoginApi from '../../api/getData/LoginApi';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -18,7 +19,7 @@ function LoginPage() {
   const [isCorrect, setIsCorrect] = useState(null);
   const navigate = useNavigate();
 
-  const [auth, setAuth] = useRecoilValue(authAtom);
+  const [auth, setAuth] = useRecoilState(authAtom);
   const [accountname, setAccountname] = useRecoilState(accountNameAtom);
   const [following, setFollowing] = useRecoilState(followingAtom);
 
@@ -46,8 +47,19 @@ function LoginPage() {
     }
   }
 
+  const url = 'https://api.mandarin.weniv.co.kr';
+
   async function onhandlesubmit(event) {
     event.preventDefault();
+    LoginApi(
+      email,
+      password,
+      setAuth,
+      setAccountname,
+      FollowingData,
+      setIsCorrect,
+      setLoginErrMessage,
+    );
   }
 
   async function FollowingData(token) {
