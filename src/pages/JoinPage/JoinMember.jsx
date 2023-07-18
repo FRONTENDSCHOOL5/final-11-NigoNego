@@ -15,6 +15,8 @@ import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import { LImage } from '../../components/common/UserImage/UserImage';
 import MainWrapperF from '../../styles/MainGlobal';
 
+import JoinMemberAPI from '../../api/JoinMemberAPI';
+
 export default function JoinMember() {
   const [userName, setUserName] = useState('');
   const [userID, setUserID] = useState('');
@@ -24,9 +26,20 @@ export default function JoinMember() {
   const [isUserIDValid, setIsUserIDValid] = useState(false);
   const [errorMessageID, setErrorMessageID] = useState('');
   const [userImage, setUserImage] = useState('');
+  const location = useLocation();
+
+  const [userInfo, setUserInfo] = useState({
+    user: {
+      username: '',
+      email: location.state.email, // 사용자 이메일 값
+      password: location.state.password, // 사용자 패스워드 값
+      accountname: '',
+      intro: '', // 사용자 소개 값
+      image: '', // 사용자 이미지 값}
+    },
+  });
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleUserNameChange = e => {
     setUserName(e.target.value);
@@ -105,32 +118,7 @@ export default function JoinMember() {
 
     if (isUserNameValid && isUserIDValid) {
       setIsFormValid(true);
-      // 다음 단계로 진행하는 로직 추가
-      try {
-        // API 요청 보내기
-        const response = await axios.post(
-          'https://api.mandarin.weniv.co.kr/user',
-          {
-            user: {
-              username: userName,
-              email: location.state.email, // 사용자 이메일 값
-              password: location.state.password, // 사용자 패스워드 값
-              accountname: userID,
-              intro: userIntro, // 사용자 소개 값
-              image: userImage, // 사용자 이미지 값}
-            },
-          },
-        );
-
-        // 성공적으로 요청을 처리한 후의 로직 추가
-        console.log('회원가입성공:', response.data);
-        navigate('/login');
-      } catch (error) {
-        // API 요청 실패 처리
-        // 여기에 ID 혹은 Name 중복입니다 추가
-        console.error('API 요청 실패:', error);
-        setIsUserNameValid(true);
-      }
+      const res = await JoinMemberAPI();
     } else {
       setIsFormValid(false);
     }
@@ -159,7 +147,7 @@ export default function JoinMember() {
               id="user-name"
               name="user-name"
               placeholder="2~10자 이내"
-              value={userName}
+              value={userInfo.user.userName}
               onChange={handleUserNameChange}
               onBlur={handleNameValid}
             />
@@ -169,7 +157,7 @@ export default function JoinMember() {
               id="user-ID"
               name="user-ID"
               placeholder="영문, 숫자 특수문자만 사용가능"
-              value={userID}
+              value={userInfo.user.userID}
               onChange={handleUserIDChange}
               onBlur={handleIdValid}
               errorMessage={errorMessageID}
@@ -179,7 +167,7 @@ export default function JoinMember() {
               type="text"
               id="user-intro"
               name="user-intro"
-              value={userIntro}
+              value={userInfo.user.userIntro}
               onChange={handleUserIntro}
               placeholder="자신과 판매할 상품에 대해 소개"
             />

@@ -73,7 +73,7 @@ export default function PostUpload() {
       console.log(err);
     }
   };
-
+  console.log(userImage);
   console.log(userContent);
 
   // 재랜더링 확인
@@ -81,8 +81,8 @@ export default function PostUpload() {
   // console.log(userContent);
   return (
     <>
+      <HeaderUploadNav content={'업로드'} />
       <form onSubmit={handleSubmit}>
-        <HeaderUploadNav content={'업로드'} isFormValid={isFormValid} />
         <BodyGlobal>
           <PostUploadWrapper>
             <SImage />

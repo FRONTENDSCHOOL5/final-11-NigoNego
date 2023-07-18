@@ -13,7 +13,7 @@ function ChatPage() {
       <HeaderBasicNav />
       <BodyGlobal>
         <CommonWrapper>
-          <ChatUserList userId="니고네고 공식 계정" />
+          <ChatUserList userId="dummyId" />
           <ChatUserList userId="dummyId1" />
           <ChatUserList userId="dummyId523" />
           <ChatUserList userId="dummyId2" />
