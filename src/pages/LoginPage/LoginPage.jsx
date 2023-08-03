@@ -3,12 +3,11 @@ import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
-import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
 import { authAtom, accountNameAtom, followingAtom } from '../../atom/atoms';
 import MainWrapperF from '../../styles/MainGlobal';
 import LoginApi from '../../api/getData/LoginApi';
-import { ButtonDefault } from '../../components/common/button/Button';
+import { ButtonLong } from '../../components/common/button/Button';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -116,16 +115,16 @@ function LoginPage() {
             )} */}
 
             {isEmailValid && isPasswordValid ? (
-              <ButtonDefault type="submit" disabled={false}>
+              <ButtonLong type="submit" disabled={false}>
                 로그인
-              </ButtonDefault>
+              </ButtonLong>
             ) : (
-              <ButtonDefault
+              <ButtonLong
                 disabled={true}
                 backgroundColor={'var(--light-yellow)'}
               >
                 로그인
-              </ButtonDefault>
+              </ButtonLong>
             )}
           </FormWrapper>
         </form>

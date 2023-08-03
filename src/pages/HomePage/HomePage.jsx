@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { HeaderMainNav } from '../../components/common/Header/Header';
 import Navbar from '../../components/common/Navbar/Navbar';
-import { MBtn } from '../../components/common/button/Button';
+import { ButtonMiddle } from '../../components/common/button/Button';
 import { ReactComponent as LogoColorImg } from '../../assets/image/LogoColorImg.svg';
 import { useNavigate } from 'react-router-dom';
 
@@ -27,7 +27,8 @@ function HomeBlank() {
       <LogoColorImg width="160px" height="160px" />
       <p>유저를 검색해 팔로우 해보세요.</p>
 
-      <MBtn h="44" content="검색" onClick={handleButtonClick} />
+      {/* <ButtonMiddle h="44" content="검색" onClick={handleButtonClick} /> */}
+      <ButtonMiddle onClick={handleButtonClick}>검색</ButtonMiddle>
     </ContentWrapper>
   );
 }

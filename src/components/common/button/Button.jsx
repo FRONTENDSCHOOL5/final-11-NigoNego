@@ -5,47 +5,66 @@ import SlideModal from '../Modal/SlideModal';
 import { ReactComponent as IconArrowLeft } from '../../../assets/image/IconArrowLeft.svg';
 import { ReactComponent as IconMoreView } from '../../../assets/image/IconMoreView.svg';
 
-export function LBtn({ content }) {
-  return <LBtnStyle>{content}</LBtnStyle>;
-}
-
-export const ButtonDefault = props => {
-  const { type, disabled, backgroundColor } = props;
+// 가장 긴 버튼
+export const ButtonLong = props => {
+  const { type, disabled, backgroundColor, onClick } = props;
   console.log(props);
 
   return (
-    <ButtonStyle
+    <ButtonLongStyle
       type={type ? type : 'button'}
       disabled={disabled}
       backgroundColor={backgroundColor}
+      onClick={onClick}
     >
       {props.children}
-    </ButtonStyle>
+    </ButtonLongStyle>
   );
 };
 
-const ButtonStyle = styled.button`
+// 가장 긴 버튼 스타일
+const ButtonLongStyle = styled.button`
   padding: 10px;
   border-radius: 10px;
   background-color: ${props => props.backgroundColor || 'var(--basic-yellow)'};
   border: none;
 `;
 
-export function MBtn({ h, content, onClick }) {
+// 중간 버튼
+export const ButtonMiddle = props => {
+  const { type, disabled, backgroundColor, onClick, border } = props;
+
   return (
-    <MBtnStyle height={h} onClick={onClick}>
-      {content}
-    </MBtnStyle>
+    <ButtonMiddleStyle
+      type={type ? type : 'button'}
+      onClick={onClick}
+      backgroundColor={backgroundColor}
+      border={border}
+    >
+      {props.children}
+    </ButtonMiddleStyle>
   );
-}
+};
 
-export function MdisabledBtn() {
-  return <MdisabledBtnStyle>팔로우</MdisabledBtnStyle>;
-}
+// 중간 버튼 스타일
+const ButtonMiddleStyle = styled.button`
+  padding: 10px;
+  border-radius: 10px;
+  background-color: ${props => props.backgroundColor || 'var(--basic-yellow)'};
+  border: ${props => props.border || 'none'};
+  width: 100px;
+`;
 
-export function MActivBtn({ onClick }) {
-  return <MActivBtnStyle onClick={onClick}>언팔로우</MActivBtnStyle>;
-}
+// 짧은 버튼
+export const ButtonShort = props => {
+  return <ButtonShortStyle></ButtonShortStyle>;
+};
+
+// 짧은 버튼 스타일
+const ButtonShortStyle = styled.button`
+  padding: 10px;
+  width: 50px;
+`;
 
 export function MSBtn({ content, disabled }) {
   return <MSBtnStyle disabled={disabled}>{content}</MSBtnStyle>;
@@ -123,22 +142,6 @@ const BtnCommonStlye = styled.button`
 
 const BtnCommonStlyeDisabled = styled(BtnCommonStlye)`
   background-color: var(--light-yellow);
-`;
-
-const LBtnStyle = styled(BtnCommonStlye)`
-  width: 100%;
-  padding: 8px;
-`;
-
-const MBtnStyle = styled(BtnCommonStlye)`
-  height: ${props => props.height}px;
-  width: 120px;
-  padding: 5px;
-`;
-
-const MdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
-  width: 120px;
-  padding: 8px;
 `;
 
 const MActivBtnStyle = styled(BtnCommonStlye)`
