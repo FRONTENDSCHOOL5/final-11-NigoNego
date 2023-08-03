@@ -9,13 +9,27 @@ export function LBtn({ content }) {
   return <LBtnStyle>{content}</LBtnStyle>;
 }
 
-export function LdisabledBtn({ h, content }) {
+export const ButtonDefault = props => {
+  const { type, disabled, backgroundColor } = props;
+  console.log(props);
+
   return (
-    <LdisabledBtnStyle disabled height={h}>
-      {content}
-    </LdisabledBtnStyle>
+    <ButtonStyle
+      type={type ? type : 'button'}
+      disabled={disabled}
+      backgroundColor={backgroundColor}
+    >
+      {props.children}
+    </ButtonStyle>
   );
-}
+};
+
+const ButtonStyle = styled.button`
+  padding: 10px;
+  border-radius: 10px;
+  background-color: ${props => props.backgroundColor || 'var(--basic-yellow)'};
+  border: none;
+`;
 
 export function MBtn({ h, content, onClick }) {
   return (
@@ -112,11 +126,6 @@ const BtnCommonStlyeDisabled = styled(BtnCommonStlye)`
 `;
 
 const LBtnStyle = styled(BtnCommonStlye)`
-  width: 100%;
-  padding: 8px;
-`;
-const LdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
-  height: ${props => props.height}px;
   width: 100%;
   padding: 8px;
 `;

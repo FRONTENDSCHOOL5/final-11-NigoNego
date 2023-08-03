@@ -172,13 +172,13 @@ export default function JoinMember() {
               placeholder="자신과 판매할 상품에 대해 소개"
             />
 
-            <BtnWrapper>
+            {/* <BtnWrapper>
               {isFormValid ? (
                 <LBtn content="감귤마켓 시작하기" />
               ) : (
                 <LdisabledBtn content="감귤마켓 시작하기" />
               )}
-            </BtnWrapper>
+            </BtnWrapper> */}
           </FormWrapper>
         </form>
       </Wrapper>

@@ -8,6 +8,7 @@ import Input from '../../components/common/Input/Input';
 import { authAtom, accountNameAtom, followingAtom } from '../../atom/atoms';
 import MainWrapperF from '../../styles/MainGlobal';
 import LoginApi from '../../api/getData/LoginApi';
+import { ButtonDefault } from '../../components/common/button/Button';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -108,10 +109,23 @@ function LoginPage() {
               errorMessage={loginErrMessage}
             />
 
-            {isEmailValid && isPasswordValid ? (
+            {/* {isEmailValid && isPasswordValid ? (
               <LBtn type="submit" content="로그인" />
             ) : (
               <LdisabledBtn content="로그인" />
+            )} */}
+
+            {isEmailValid && isPasswordValid ? (
+              <ButtonDefault type="submit" disabled={false}>
+                로그인
+              </ButtonDefault>
+            ) : (
+              <ButtonDefault
+                disabled={true}
+                backgroundColor={'var(--light-yellow)'}
+              >
+                로그인
+              </ButtonDefault>
             )}
           </FormWrapper>
         </form>

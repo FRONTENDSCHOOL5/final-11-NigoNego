@@ -3,7 +3,11 @@ import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
+import {
+  ButtonDefault,
+  LBtn,
+  LdisabledBtn,
+} from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
 import { Wrapper, FormWrapper } from '../LoginPage/LoginPage';
 import MainWrapperF from '../../styles/MainGlobal';
@@ -132,10 +136,15 @@ function JoinPage() {
               errorMessage={errorMessagePW}
             />
             <ButtonWrapper>
-              {isEmailValid && isPasswordValid ? (
+              {/* {isEmailValid && isPasswordValid ? (
                 <LBtn type="submit" content="다음" />
               ) : (
                 <LdisabledBtn content="다음" h="32" />
+              )} */}
+              {isEmailValid && isPasswordValid ? (
+                <ButtonDefault type="submit">다음</ButtonDefault>
+              ) : (
+                <ButtonDefault disabled={true}>다음</ButtonDefault>
               )}
             </ButtonWrapper>
           </FormWrapper>
