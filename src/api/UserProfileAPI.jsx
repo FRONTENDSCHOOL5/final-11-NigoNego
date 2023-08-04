@@ -8,21 +8,21 @@ const UserProfileAPI = () => {
   const token = useRecoilValue(authAtom);
   console.log(token);
 
-  const userProfile = async () => {
+  const getUserProfile = async () => {
+    console.log(1231);
     try {
       const response = await axios.get(URL + '/user/myinfo', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      const res = await response;
-      console.log(res);
+      console.log(response);
     } catch (error) {
       console.log('에러');
     }
   };
 
-  return userProfile;
+  return { getUserProfile };
 };
 
 export default UserProfileAPI;

@@ -87,7 +87,6 @@
 //   }
 // `;
 
-import UserProfileAPI from '../../../api/UserProfileAPI';
 import MyHomePost from '../../../components/HomePost/MyHomePost';
 import Product from '../../../components/Product/Product';
 import ProfileHeader from '../../../components/ProfileHeader/ProfileHeader';
@@ -96,18 +95,13 @@ import { HeaderBasicNav } from '../../../components/common/Header/Header';
 import BodyGlobal from '../../../styles/BodyGlobal';
 import { ReactComponent as BtnVertical } from '../../../assets/image/BtnVertical.svg';
 import { ReactComponent as BtnGrid } from '../../../assets/image/BtnGrid.svg';
-// import PostAlignChangeBut from './../YourProfilePage/PostAlignChangeBut';
-import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { useState } from 'react';
 import HomePostGrid from '../../../components/HomePost/HomePostGrid';
 import { accountNameAtom } from '../../../atom/accountName';
 import { useRecoilValue } from 'recoil';
 export default function MyProfilePage() {
-  console.log(123);
-  const userProfile = UserProfileAPI()();
   const accountName = useRecoilValue(accountNameAtom);
-  console.log(1213213213);
 
   const [isClickedList, setIsClickedList] = useState(true);
   const [isClickedGrid, setIsClickedGrid] = useState(false);
