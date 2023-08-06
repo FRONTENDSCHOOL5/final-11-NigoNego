@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { MImage } from '../UserImage/UserImage';
 import { UserSection, UserName, UserId } from './UserSearch';
-import { SBtn } from '../button/Button';
+import { ButtonShort, SBtn } from '../button/Button';
 import { GetFollowerData } from '../../../api/getData/getData';
 import { useLocation } from 'react-router-dom';
 
@@ -71,7 +71,7 @@ export default function UserFollow() {
                   </UserName>
                   <UserId>{data.intro}</UserId>
                 </UserSection>
-                <SBtn />
+                <ButtonShort>팔로우</ButtonShort>
               </StyledFollower>
             );
           })}
