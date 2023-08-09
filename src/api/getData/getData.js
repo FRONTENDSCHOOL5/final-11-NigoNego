@@ -1,29 +1,28 @@
-// import styled from "styled-components";
-import { getDataBase,postDataBase } from "../Api";
+import createAxiosInstance from '../Api';
 
-// export const token =
-//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGFkMDkxYjJjYjIwNTY2MzM1ZjVmMCIsImV4cCI6MTY5MjAwMjk4NiwiaWF0IjoxNjg2ODE4OTg2fQ.IXRWQpeGB-5D3U3iN4FSKNf2F92wGVA_FLw4SpqLc20';
+const {instance, getDataBase} = createAxiosInstance();
+
 
 // homepost
-export const GetHomePostData = async () => {
+export const GetHomePostData = async (accountname) => {
   try {
     // id부분 props 로 재작업하기
     // const res = await getDataBase.get(`/post/${id}`);
-    const response = await getDataBase.get(`/post/nigonego/userpost`)
+    const response = await getDataBase.get(`/post/${accountname}/userpost`)
+    console.log(accountname);
     return response
-  } catch (err) {
-    console.log("오류")
+  } catch (error) {
+    console.error("error가 떴음",error)
   }
 };
 
 export const GetHomeFeedData = async (skip) => {
   try {
-    // id부분 props 로 재작업하기
-    
+    // id부분 props 로 재작업하
     const response = await getDataBase.get(`/post/feed/?limit=5&skip=${skip}`)
     return response
-  } catch (err) {
-    console.log("오류")
+  } catch (error) {
+    console.error("error가 떴음",error)
   }
 };
 
@@ -39,8 +38,6 @@ export const GetMyProfileData = async () => {
     console.log("오류")
   }
 };
-
-
 
 
 // 팔로워, 팔로잉 리스트
@@ -72,17 +69,17 @@ export const GetProDuctListLimit = async (skip,accountname) => {
 
 
 // 포스트 무한스크롤 가져오기
-export const GetPostListLimit = async (skip,accountname) => {
+export const GetPostListLimit = async (skip,accountName) => {
   try {
     // id부분 props 로 재작업하기
     // const res = await getDataBase.get(`/post/${id}`);
     // const response = await getDataBase.get(`/product/${accountName}/?limit=${limit}&skip=${skip}`)
 
     // const response = await getDataBase.get(`/post/nigonego/userpost/?limit=2&skip=${skip}`)
-    const response = await getDataBase.get(`/post/${accountname}/userpost/?limit=3&skip=${skip}`)
+    const response = await getDataBase.get(`/post/${accountName}/userpost/?limit=3&skip=${skip}`)
     return response
-  } catch (err) {
-    console.log("오류")
+  } catch (error) {
+    console.error("오류????", error);
   }
 };
 
@@ -126,56 +123,3 @@ export const DeleteHeart = async () => {
   }
 };
 
-
-
-
-
-// 무한 스크롤 컴포넌트
-
-
-// function ScrollEvent(width){
-// <Div width={width}/>
-
-// }
-
-
-
-
-// const Div = styled.div`
-
-// width: ${props=>props.width}
-
-
-// `
-
-
-
-
-
-
-
-
-
-
-
-// 복붙코드 
-
-// const homePost = () => {
-  
-// try {
-//   axios({
-//     method: 'GET',
-//     url: `https://api.mandarin.weniv.co.kr/post/nigonego/userpost`,
-
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//       'Content-type': 'application/json',
-//     },
-//   }).then(response => {
-//     setUserData(response.data.post);
-//     // console.log(userData);
-//   });
-// } catch (err) {
-//   console.log('에러');
-// }
-// }

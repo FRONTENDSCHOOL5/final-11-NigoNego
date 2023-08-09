@@ -7,9 +7,9 @@ import HomePost from '../../../components/HomePost/HomePost';
 import CommentInput from '../../../components/common/Comment/CommentInput/Comment';
 import CommentPost from '../../../components/common/Comment/CommentPost/CommentPost';
 import { useLocation } from 'react-router-dom';
-import { authAtom } from '../../../atom/atoms';
 import { useRecoilValue } from 'recoil';
 import { GetCommentData } from '../../../api/getData/getData';
+import authAtom from '../../../atom/authToken';
 
 function PostMain() {
   const auth = useRecoilValue(authAtom);

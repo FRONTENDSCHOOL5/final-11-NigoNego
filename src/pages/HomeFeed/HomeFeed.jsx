@@ -1,16 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useRecoilValue } from 'recoil';
 // import { useNavigate } from 'react-router-dom';
-import { authAtom, accountNameAtom } from '../../atom/atoms';
+import accountNameAtom from '../../atom/accountName';
 import styled from 'styled-components';
-import { GetHomeFeedData } from '../../api/getData/getData';
 import HomePost from '../../components/HomePost/HomePost';
 import Navbar from '../../components/common/Navbar/Navbar';
 import { HeaderBasicNav } from '../../components/common/Header/Header';
+import authAtom from '../../atom/authToken';
+import UseFetchToken from '../../Hooks/UseFetchToken';
 
 function HomeFeed(props) {
   // const [postId, setPostId] = useState(null);
   // const navigate = useNavigate();
+  const { GetHomeFeedData } = UseFetchToken();
+
   const auth = useRecoilValue(authAtom);
 
   const accountname = useRecoilValue(accountNameAtom);
@@ -21,10 +24,9 @@ function HomeFeed(props) {
     fetchData(0); // 초기 데이터 로드
   }, []);
 
-  const fetchData = (skip = 3) => {
-    GetHomeFeedData(skip)
+  const fetchData = skip => {
+    GetHomeFeedData(5, skip)
       .then(response => {
-        console.log(response);
         setUserData(prevData => [...prevData, ...response.data.posts]);
       })
       .catch(error => console.error(error));

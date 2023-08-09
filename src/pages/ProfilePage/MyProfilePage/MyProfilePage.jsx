@@ -9,10 +9,12 @@ import { ReactComponent as BtnGrid } from '../../../assets/image/BtnGrid.svg';
 import styled from 'styled-components';
 import { useState } from 'react';
 import HomePostGrid from '../../../components/HomePost/HomePostGrid';
-import { accountNameAtom } from '../../../atom/accountName';
 import { useRecoilValue } from 'recoil';
+import accountNameAtom from '../../../atom/accountName';
+
 export default function MyProfilePage() {
   const accountName = useRecoilValue(accountNameAtom);
+  console.log(accountNameAtom);
 
   const [isClickedList, setIsClickedList] = useState(true);
   const [isClickedGrid, setIsClickedGrid] = useState(false);

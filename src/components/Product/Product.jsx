@@ -26,6 +26,7 @@ const ProductWrapper = styled.div`
 
 export default function Product({ accountname }) {
   const [userData, setUserData] = useState([]);
+  console.log(accountname);
   const productListRef = useRef(null);
   useEffect(() => {
     fetchData(0); // 초기 데이터 로드
@@ -34,6 +35,8 @@ export default function Product({ accountname }) {
   const fetchData = (skip = 5) => {
     GetProDuctListLimit(skip, accountname)
       .then(response => {
+        console.log(skip);
+        console.log(accountname);
         setUserData(prevData => [...prevData, ...response.data.product]);
       })
       .catch(error => console.error(error));

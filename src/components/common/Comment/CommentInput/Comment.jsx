@@ -2,8 +2,8 @@ import React, { useState, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import userDefaultImage from '../../../../assets/images/basic-profile-img.png';
-import { authAtom } from '../../../../atom/atoms';
 import { useRecoilValue } from 'recoil';
+import authAtom from '../../../../atom/authToken';
 
 export const CommentWrapper = styled.div`
   width: 100%;

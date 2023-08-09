@@ -7,7 +7,7 @@ import { ButtonShort, MoreIconButton } from '../button/Button';
 import SearchInput from '../Input/SearchInput';
 import { useNavigate } from 'react-router-dom';
 
-export function HeaderBasicNav() {
+export function HeaderBasicNav({ children, disabled }) {
   //뒤로가기 구현
   const navigate = useNavigate();
   const handleBack = () => {
@@ -22,13 +22,17 @@ export function HeaderBasicNav() {
   return (
     <HeaderDefaultStyle>
       <IconArrow style={arrow()} onClick={handleBack} />
-      {!isPostUpLoad ? <MoreIconButton /> : <ButtonShort>업로드</ButtonShort>}
+      {!isPostUpLoad ? (
+        <MoreIconButton />
+      ) : (
+        <ButtonShort disabled={disabled}>{children}</ButtonShort>
+      )}
     </HeaderDefaultStyle>
   );
 }
 
 //상단 화살표 스타일
-export const arrow = () => {
+const arrow = () => {
   return {
     width: '24px',
     height: '24px',
@@ -88,12 +92,12 @@ export function HeaderMainNav({ content }) {
   );
 }
 
-export function HeaderUploadNav({ content, isFormValid }) {
+export function HeaderUploadNav(props) {
+  const { disabled, content } = props;
   return (
     <HeaderDefaultStyle>
       <IconArrow />
-      <ButtonShort></ButtonShort>
-      {/* <MSBtn content={content} disabled={!isFormValid} /> */}
+      <ButtonShort disabled={disabled} content={content} />
     </HeaderDefaultStyle>
   );
 }

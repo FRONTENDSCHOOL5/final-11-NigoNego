@@ -8,9 +8,9 @@ import { ReactComponent as BtnImgUpload } from '../../assets/image/BtnImgUpload.
 import { useNavigate } from 'react-router-dom';
 
 // import { HeaderUploadNav } from '../common/Header/Header';
-import { authAtom } from '../../atom/atoms';
 import { useRecoilValue } from 'recoil';
 import BodyGlobal from '../../styles/BodyGlobal';
+import authAtom from '../../atom/authToken';
 
 export default function ProductPage() {
   const user = 'nigonego';

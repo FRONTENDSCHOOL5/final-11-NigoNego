@@ -7,10 +7,16 @@ import { ReactComponent as BtnHeart } from '../../assets/image/BtnHeart.svg';
 import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
 import { click } from '@testing-library/user-event/dist/click';
 import Heart from '../common/Heart/Heart';
+import { useRecoilValue } from 'recoil';
+import accountNameAtom from '../../atom/accountName';
 
 export default function MyHomePost({ accountname }) {
   const [userData, setUserData] = useState([]);
   const postListRef = useRef(null);
+  const accountAtom = useRecoilValue(accountNameAtom);
+  const account = accountname ? accountname : accountAtom;
+
+  console.log(accountname);
 
   const [clickedHeart, setClickedHeart] = useState(Boolean(true));
 
@@ -24,11 +30,12 @@ export default function MyHomePost({ accountname }) {
   }, []);
 
   const fetchData = (skip = 3) => {
-    GetPostListLimit(skip, accountname)
+    GetPostListLimit(skip, account)
       .then(response => {
         setUserData(prevData => [...prevData, ...response.data.post]);
+        console.log('하이!!!');
       })
-      .catch(error => console.error(error));
+      .catch(error => console.log('여기!!!'));
   };
 
   useEffect(() => {

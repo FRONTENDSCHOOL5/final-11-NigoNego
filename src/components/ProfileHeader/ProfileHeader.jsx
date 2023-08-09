@@ -4,17 +4,18 @@ import styled from 'styled-components';
 import ProfileUser from './ProfileUser';
 import MyProfileBtn from './MyProfileBtn';
 import { useRecoilValue } from 'recoil';
-import { accountNameAtom, authAtom } from '../../atom/atoms';
+import accountNameAtom from '../../atom/accountName';
+import authAtom from '../../atom/authToken';
 export default function ProfileHeader() {
   const [myProfileData, setMyProfileData] = useState({});
   const auth = useRecoilValue(authAtom);
-  const accountname = useRecoilValue(accountNameAtom);
+  const accountAtom = useRecoilValue(accountNameAtom);
 
   useEffect(() => {
     try {
       axios({
         method: 'GET',
-        url: `https://api.mandarin.weniv.co.kr/profile/${accountname}`,
+        url: `https://api.mandarin.weniv.co.kr/profile/${accountAtom}`,
 
         headers: {
           Authorization: `Bearer ${auth}`,
