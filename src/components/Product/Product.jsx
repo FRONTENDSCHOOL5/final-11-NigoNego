@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import ProductItem from './ProductItem';
-import UserProfileAPI from '../../api/UserProfileAPI';
+import UseFetchToken from '../../Hooks/UseFetchToken';
 
 const ProductWrapper = styled.div`
   text-align: center;
@@ -25,7 +25,7 @@ const ProductWrapper = styled.div`
 `;
 
 export default function Product({ accountname }) {
-  const { getProductListLimit } = UserProfileAPI();
+  const { getProductListLimit } = UseFetchToken();
   const [userData, setUserData] = useState([]);
   const productListRef = useRef(null);
   useEffect(() => {

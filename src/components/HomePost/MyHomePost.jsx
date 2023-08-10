@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import UserProfileAPI from '../../api/UserProfileAPI';
+import UseFetchToken from '../../Hooks/UseFetchToken';
 import UserSearch from '../common/User/UserSearch';
 import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
 import Heart from '../common/Heart/Heart';
@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil';
 import accountNameAtom from '../../atom/accountName';
 
 export default function MyHomePost({ accountname }) {
-  const { getPostListLimit } = UserProfileAPI();
+  const { getPostListLimit } = UseFetchToken();
   const [userData, setUserData] = useState([]);
   const postListRef = useRef(null);
   const accountAtom = useRecoilValue(accountNameAtom);

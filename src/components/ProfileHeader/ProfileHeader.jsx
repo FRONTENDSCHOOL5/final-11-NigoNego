@@ -6,10 +6,10 @@ import MyProfileBtn from './MyProfileBtn';
 import { useRecoilValue } from 'recoil';
 import accountNameAtom from '../../atom/accountName';
 import authAtom from '../../atom/authToken';
-import UserProfileAPI from '../../api/UserProfileAPI';
+import UseFetchToken from '../../Hooks/UseFetchToken';
 
 export default function ProfileHeader() {
-  const { getProfileData } = UserProfileAPI();
+  const { getProfileData } = UseFetchToken();
   const [myProfileData, setMyProfileData] = useState({});
   const auth = useRecoilValue(authAtom);
   const accountAtom = useRecoilValue(accountNameAtom);
