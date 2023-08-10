@@ -7,20 +7,20 @@ import {
   HeadingWrapper,
   FormWrapper,
   ImageWrapper,
-  // BtnWrapper,
 } from './ProfileEditStyle';
 import { HeaderEditdNav } from '../../../components/common/Header/Header';
 import Input from '../../../components/common/Input/Input';
 import { LImage } from '../../../components/common/UserImage/UserImage';
-import { UploadButtonStyle } from '../../JoinPage/joinMemberStyle';
 import BodyGlobal from '../../../styles/BodyGlobal';
 import { ButtonShort } from '../../../components/common/button/Button';
 import authAtom from '../../../atom/authToken';
+import FileUploadInput from '../../../components/common/Input/FileUploadInput';
+
 export default function ProfileEditPage() {
   const [userName, setUserName] = useState('');
   const [userID, setUserID] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
-  const [userIntro, setUserIntro] = useState(false);
+  const [userIntro, setUserIntro] = useState('');
   const [isUserNameValid, setIsUserNameValid] = useState(false);
   const [isUserIDValid, setIsUserIDValid] = useState(false);
   const [errorMessageID, setErrorMessageID] = useState('');
@@ -164,10 +164,11 @@ export default function ProfileEditPage() {
 
         <ImageWrapper>
           <LImage backgroundUrl={userImage} />
-          <UploadButtonStyle className="input-s">
-            <label htmlFor="input" />
-            <input id="input" type="file" onChange={handleImageUpload} />
-          </UploadButtonStyle>
+          <FileUploadInput
+            id="input"
+            type="file"
+            onChange={handleImageUpload}
+          />
         </ImageWrapper>
         <form onSubmit={handleSubmit}>
           <FormWrapper>

@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Input from '../../components/common/Input/Input';
-import { HeaderUploadNav } from '../../components/common/Header/Header';
-
-import { ReactComponent as BtnImgUpload } from '../../assets/image/BtnImgUpload.svg';
 import { useNavigate } from 'react-router-dom';
-
-// import { HeaderUploadNav } from '../common/Header/Header';
 import { useRecoilValue } from 'recoil';
 import BodyGlobal from '../../styles/BodyGlobal';
 import authAtom from '../../atom/authToken';
+
+import FileUploadInput from '../../components/common/Input/FileUploadInput';
+import { HeaderUploadNav } from '../../components/common/Header/Header';
 
 export default function ProductPage() {
   const user = 'nigonego';
@@ -90,23 +88,20 @@ export default function ProductPage() {
           <li>
             <p className="title">이미지 등록</p>
             <ImgUploadWrapp>
-              <label htmlFor="input">
-                <BtnImgUpload
-                  width="34px"
-                  height="34px"
-                  fill="#c4c4c4"
-                  stroke="#fff"
-                />
-              </label>
-              <input id="input" type="file" onChange={handleImageUpload} />
+              <FileUploadInput
+                id="input"
+                type="file"
+                onChange={handleImageUpload}
+              />
+              <Input id="input" type="file" onChange={handleImageUpload} />
               {itemImage.length > 0 && (
                 <img src={itemImage} alt="" style={{ borderRadius: '10px' }} />
               )}
             </ImgUploadWrapp>
           </li>
           <li>
-            <label className="title">상품명</label>
             <Input
+              label="상품명"
               value={itemName}
               placeholder="2~10자 이내여야 합니다."
               onChange={e => {
@@ -115,8 +110,8 @@ export default function ProductPage() {
             />
           </li>
           <li>
-            <label className="title">가격</label>
             <Input
+              label="가격"
               placeholder="숫자만 입력 가능합니다."
               value={price}
               onChange={e => {
@@ -125,8 +120,8 @@ export default function ProductPage() {
             />
           </li>
           <li>
-            <label className="title">판매링크</label>
             <Input
+              label="판매링크"
               placeholder="URL을 입력해 주세요."
               value={link}
               onChange={e => {
