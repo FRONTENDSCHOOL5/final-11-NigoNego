@@ -3,10 +3,13 @@ import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
-import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
-import { authAtom, accountNameAtom, followingAtom } from '../../atom/atoms';
+import { followingAtom } from '../../atom/atoms';
+import authAtom from '../../atom/authToken';
+import accountNameAtom from '../../atom/accountName';
 import MainWrapperF from '../../styles/MainGlobal';
+import LoginApi from '../../api/getData/LoginApi';
+import { ButtonLong } from '../../components/common/button/Button';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -50,37 +53,15 @@ function LoginPage() {
 
   async function onhandlesubmit(event) {
     event.preventDefault();
-    try {
-      const res = await axios.post(
-        `${url}/user/login`,
-        {
-          user: {
-            email,
-            password,
-          },
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      );
-      // const successRes = res.data;
-      console.log(res.data);
-      if (res.data.user) {
-        const { token, accountname } = res.data.user;
-        console.log(res.data.user.email);
-        setAuth(token);
-        setAccountname(accountname);
-        await FollowingData(token);
-      } else if (res.data.status === 422) {
-        setIsCorrect(false);
-        setLoginErrMessage('*이메일 또는 비밀번호가 일치하지 않습니다.');
-      }
-    } catch (error) {
-      // 요청이 실패한 경우
-      console.error(error);
-    }
+    LoginApi(
+      email,
+      password,
+      setAuth,
+      setAccountname,
+      FollowingData,
+      setIsCorrect,
+      setLoginErrMessage,
+    );
   }
 
   async function FollowingData(token) {
@@ -129,10 +110,23 @@ function LoginPage() {
               errorMessage={loginErrMessage}
             />
 
-            {isEmailValid && isPasswordValid ? (
+            {/* {isEmailValid && isPasswordValid ? (
               <LBtn type="submit" content="로그인" />
             ) : (
               <LdisabledBtn content="로그인" />
+            )} */}
+
+            {isEmailValid && isPasswordValid ? (
+              <ButtonLong type="submit" disabled={false}>
+                로그인
+              </ButtonLong>
+            ) : (
+              <ButtonLong
+                disabled={true}
+                backgroundColor={'var(--light-yellow)'}
+              >
+                로그인
+              </ButtonLong>
             )}
           </FormWrapper>
         </form>

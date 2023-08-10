@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { HeaderUploadNav } from '../../../components/common/Header/Header';
+import { HeaderBasicNav } from '../../../components/common/Header/Header';
 import { SImage } from '../../../components/common/UserImage/UserImage';
 import buttonImg from '../../../assets/images/upload-file.svg';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
-import { authAtom } from '../../../atom/atoms';
 import { useRecoilValue } from 'recoil';
 import BodyGlobal from '../../../styles/BodyGlobal';
+import authAtom from '../../../atom/authToken';
 
 export default function PostUpload() {
   const navigate = useNavigate();
@@ -24,10 +24,11 @@ export default function PostUpload() {
   const auth = useRecoilValue(authAtom);
 
   useEffect(() => {
-    if (content && image) {
+    if (image) {
+      console.log(11111111);
       setIsFormValid(true);
     }
-  }, [content, image]);
+  }, [image]);
 
   const handleImageUpload = e => {
     e.preventDefault();
@@ -41,7 +42,7 @@ export default function PostUpload() {
       url: 'https://api.mandarin.weniv.co.kr/image/uploadfile',
       data: formData,
     }).then(result => {
-      // console.log('요청성공');
+      console.log('요청성공');
       setImage(`https://api.mandarin.weniv.co.kr/${result.data.filename}`);
     });
   };
@@ -73,7 +74,7 @@ export default function PostUpload() {
       console.log(err);
     }
   };
-
+  console.log(userImage);
   console.log(userContent);
 
   // 재랜더링 확인
@@ -81,8 +82,9 @@ export default function PostUpload() {
   // console.log(userContent);
   return (
     <>
+      {console.log(isFormValid)}
+      <HeaderBasicNav disabled={!isFormValid}>업로드</HeaderBasicNav>
       <form onSubmit={handleSubmit}>
-        <HeaderUploadNav content={'업로드'} isFormValid={isFormValid} />
         <BodyGlobal>
           <PostUploadWrapper>
             <SImage />

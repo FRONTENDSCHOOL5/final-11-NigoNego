@@ -30,7 +30,7 @@ export default function ChatRoom() {
   const isBtnDisable = comment === '';
   return (
     <>
-      <HeaderChatNav content="니고네고 공식 계정" />
+      <HeaderChatNav content="니고네고  판매" />
       <BodyGlobal>
         <CommonWrapper>
           <ChatWrapper>

@@ -1,78 +1,69 @@
-import React, { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
 import SlideModal from '../Modal/SlideModal';
-import { ReactComponent as IconArrowLeft } from '../../../assets/image/IconArrowLeft.svg';
 import { ReactComponent as IconMoreView } from '../../../assets/image/IconMoreView.svg';
 
-export function LBtn({ content }) {
-  return <LBtnStyle>{content}</LBtnStyle>;
-}
+//버튼 공통 스타일
+const ButtonCommonStyle = css`
+  padding: 10px;
+  border-radius: 10px;
+  background-color: ${props => props.backgroundColor || 'var(--basic-yellow)'};
+  border: ${props => (props.border ? '1px solid gray' : 'none')};
+`;
 
-export function LdisabledBtn({ h, content }) {
+// 긴 버튼
+export const ButtonLong = ({ type, ...props }) => {
   return (
-    <LdisabledBtnStyle disabled height={h}>
-      {content}
-    </LdisabledBtnStyle>
+    <ButtonLongStyle type={type ? type : 'button'} {...props}>
+      {props.children}
+    </ButtonLongStyle>
   );
-}
+};
 
-export function MBtn({ h, content, onClick }) {
+// 긴 버튼 스타일
+const ButtonLongStyle = styled.button`
+  ${ButtonCommonStyle}
+`;
+
+// 중간 버튼
+export const ButtonMiddle = props => {
+  const { type, disabled, backgroundColor, onClick, border } = props;
+
   return (
-    <MBtnStyle height={h} onClick={onClick}>
-      {content}
-    </MBtnStyle>
-  );
-}
-
-export function MdisabledBtn() {
-  return <MdisabledBtnStyle>팔로우</MdisabledBtnStyle>;
-}
-
-export function MActivBtn({ onClick }) {
-  return <MActivBtnStyle onClick={onClick}>언팔로우</MActivBtnStyle>;
-}
-
-export function MSBtn({ content, disabled }) {
-  return <MSBtnStyle disabled={disabled}>{content}</MSBtnStyle>;
-}
-
-export function ProfileEditMSBtn({ content, onClick, disabled }) {
-  return (
-    <MSBtnStyle
+    <ButtonMiddleStyle
+      type={type ? type : 'button'}
       onClick={onClick}
-      disabled={disabled}
-      className={disabled ? 'disabled' : ''}
+      backgroundColor={backgroundColor}
+      border={border}
     >
-      {content}
-    </MSBtnStyle>
+      {props.children}
+    </ButtonMiddleStyle>
   );
-}
+};
 
-export function MSdisabledBtn() {
-  return <MSdisabledBtnStyle>저장</MSdisabledBtnStyle>;
-}
+// 중간 버튼 스타일
+const ButtonMiddleStyle = styled.button`
+  ${ButtonCommonStyle}
+  width: 100px;
+`;
 
-export function SBtn() {
-  return <SactivStyle>팔로우</SactivStyle>;
-}
-
-export function SactivBtn() {
-  return <SdisabledStyle>취소</SdisabledStyle>;
-}
-
-export function ArrowLeft() {
-  const navigate = useNavigate();
-
-  const handleback = () => {
-    navigate(-1);
-  };
+// 짧은 버튼
+export const ButtonShort = props => {
+  const { disabled, handleSave, content, isFormValid } = props;
   return (
-    <ArrowLeftStyle onClick={handleback}>
-      <IconArrowLeft width="24px" height="24px" />
-    </ArrowLeftStyle>
+    <ButtonShortStyle content={content} disabled={disabled} {...props}>
+      {props.children}
+    </ButtonShortStyle>
   );
-}
+};
+
+// 짧은 버튼 스타일
+const ButtonShortStyle = styled.button`
+  ${ButtonCommonStyle}
+  width: 50px;
+`;
+
+// ====================
 
 export function MoreIconButton() {
   const [isSideSlideOpen, setIsSideSlideOpen] = useState(false);
@@ -99,94 +90,7 @@ export function MoreIconButton() {
   );
 }
 
-const BtnCommonStlye = styled.button`
-  border-radius: 44px;
-  border-style: none;
-  background-color: var(--basic-yellow);
-  color: #000;
-  display: block;
-`;
-
-const BtnCommonStlyeDisabled = styled(BtnCommonStlye)`
-  background-color: var(--light-yellow);
-`;
-
-const LBtnStyle = styled(BtnCommonStlye)`
-  width: 100%;
-  padding: 8px;
-`;
-const LdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
-  height: ${props => props.height}px;
-  width: 100%;
-  padding: 8px;
-`;
-
-const MBtnStyle = styled(BtnCommonStlye)`
-  height: ${props => props.height}px;
-  width: 120px;
-  padding: 5px;
-`;
-
-const MdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
-  width: 120px;
-  padding: 8px;
-`;
-
-const MActivBtnStyle = styled(BtnCommonStlye)`
-  color: var(--basic-grey);
-  background-color: white;
-  border: 1px solid #767676;
-  width: 120px;
-  padding: 5px;
-`;
-const MSBtnStyle = styled(BtnCommonStlye)`
-  width: 90px;
-  height: 32px;
-  padding: 7px;
-  background-color: ${({ disabled }) =>
-    disabled ? ' var(--light-yellow)' : ' var(--basic-yellow)'};
-  color: ${({ disabled }) => (disabled ? '' : 'black')};
-
-  &:hover {
-    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  }
-
-  &.disabled {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-`;
-const MSdisabledBtnStyle = styled(BtnCommonStlyeDisabled)`
-  width: 90px;
-  height: 32px;
-  padding: 7px;
-`;
-const SactivStyle = styled(BtnCommonStlye)`
-  /* background-color: var(--basic-yellow); */
-  width: 56px;
-  height: 28px;
-  padding: 5px;
-`;
-const SdisabledStyle = styled(BtnCommonStlyeDisabled)`
-  color: var(--basic-grey);
-  background-color: white;
-  border: 1px solid #767676;
-  width: 56px;
-  padding: 5px;
-`;
-
-const ArrowLeftStyle = styled.div`
-  & {
-    img {
-      vertical-align: middle;
-    }
-  }
-  :hover {
-    cursor: pointer;
-  }
-`;
-
 export const MoreIconButtonStyle = styled.button`
-  border: none;
+  ${ButtonCommonStyle}
   color: red;
 `;

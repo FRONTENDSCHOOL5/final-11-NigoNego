@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useRecoilValue } from 'recoil';
-import { authAtom } from '../../../atom/atoms';
 import {
   Wrapper,
   HeadingWrapper,
@@ -15,6 +14,8 @@ import Input from '../../../components/common/Input/Input';
 import { LImage } from '../../../components/common/UserImage/UserImage';
 import { UploadButtonStyle } from '../../JoinPage/joinMemberStyle';
 import BodyGlobal from '../../../styles/BodyGlobal';
+import { ButtonShort } from '../../../components/common/button/Button';
+import authAtom from '../../../atom/authToken';
 export default function ProfileEditPage() {
   const [userName, setUserName] = useState('');
   const [userID, setUserID] = useState('');
@@ -106,7 +107,7 @@ export default function ProfileEditPage() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-
+    console.log('dd');
     if (isUserNameValid && isUserIDValid) {
       setIsFormValid(true);
       // 다음 단계로 진행하는 로직 추가
@@ -146,6 +147,10 @@ export default function ProfileEditPage() {
 
   return (
     <Wrapper>
+      <ButtonShort isFormValid={isFormValid} handleSave={handleSubmit}>
+        저장
+      </ButtonShort>
+
       <HeaderEditdNav
         content="저장"
         isFormValid={isFormValid}

@@ -5,8 +5,10 @@ import { recoilPersist } from 'recoil-persist';
 //localStorage에 저장되며, key 이름은 'recoil-persist'로 저장됨
 const { persistAtom } = recoilPersist();
 
-export const followingAtom = atom({
-  key: 'following',
+const accountNameAtom = atom({
+  key: 'accountname',
   default: '',
   effects_UNSTABLE: [persistAtom],
 });
+
+export default accountNameAtom;

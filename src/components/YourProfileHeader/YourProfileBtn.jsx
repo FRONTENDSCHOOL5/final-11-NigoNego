@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MBtn, MActivBtn } from '../common/button/Button';
+import { ButtonMiddle } from '../common/button/Button';
 import { ReactComponent as BtnShare } from '../../assets/image/BtnShare.svg';
 import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
 import { useState } from 'react';
@@ -37,9 +37,16 @@ export default function YourProfileBtn({ myProfileData, accountname }) {
         <BtnComment width="24px" />
       </button>
       {isFollow ? (
-        <MBtn content="팔로우" onClick={e => handleFollow(e)} />
+        // <MBtn content="팔로우" onClick={e => handleFollow(e)} />
+        <ButtonMiddle onClick={e => handleFollow(e)}>팔로우</ButtonMiddle>
       ) : (
-        <MActivBtn onClick={e => handleFollow(e)} />
+        <ButtonMiddle
+          onClick={e => handleFollow(e)}
+          backgroundColor={'#fff'}
+          border={'2px solid var(--basic-grey)'}
+        >
+          언팔로우
+        </ButtonMiddle>
       )}
       <button className="shareBtn" type="button">
         <BtnShare width="24px" />

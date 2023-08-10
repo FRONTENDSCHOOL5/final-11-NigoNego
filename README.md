@@ -12,6 +12,28 @@
 <br />
 
 ## 목차
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bea8f4e316b519a9d4f6628ea18d4cb7a080a9fc
+1. [프로젝트 소개](#1-프로젝트-소개)<br/>
+2. [팀원 소개](#2-팀-소개)<br/>
+3. [개발 기간](#3-개발-기간)<br/>
+4. [개발 환경](#4-개발-환경)<br/>
+5. [폴더 구조](#5-폴더-구조)<br/>
+6. [작업 문화](#6-작업문화)<br/>
+7. [주요 기능](#7-주요기능)<br/>
+8. [기능 UI](#8-기능-ui)<br/>
+9. [컨벤션](#9-컨벤션)<br/>
+10. [리팩토링](#10-리팩토링-방향성)<br/>
+11. [소감](#11-소감)<br/>
+12. [출처](#12-출처)<br/>
+
+<br />
+
+## 1. 프로젝트 소개
+<<<<<<< HEAD
+=======
 
 1. 프로젝트 소개
 2. 팀 소개
@@ -29,6 +51,9 @@
 <br />
 
 ## 1. 서비스 소개
+>>>>>>> 8cadd691a860aa7e033ad64e53f8e52054bb14e8
+=======
+>>>>>>> bea8f4e316b519a9d4f6628ea18d4cb7a080a9fc
 
 - 니고네고는 레고를 좋아하는 사람들을 위한 **레고 전용 플랫폼**입니다. <br />
 - 니고네고에서 사용자는 자신이 직접 조립한 레고 사진을 공유하고 다양한 유저와 소통할 수 있습니다. <br />
@@ -38,6 +63,24 @@
 
 ## <span id="teamInfo">2. 팀 소개</span>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bea8f4e316b519a9d4f6628ea18d4cb7a080a9fc
+안녕하세요.
+저희는 K(권순호)K(김민지)O(오연주)L(이수아)로 이루어진 꿀조🍯입니다!
+
+### 1. 팀원 소개
+
+|                                                                    **권순호**                                                                    |                                                                  **김민지**                                                                   |                                                                   **오연주**                                                                   |                                                                  **이수아**                                                                  |
+| :----------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------: |
+|       <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/268a60a2-6e87-4d90-93da-a429902ae6c0" width="160" >        |      <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/9c83537e-61c0-4115-9eea-5232622b31ec" width="160" >      |      <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/177b2b71-2a0d-4890-b81d-7105eec25d3d" width="160" >       |      <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/c9b974fa-7164-466b-9c79-74312df6fcf7" width="160">      |
+| <a href="https://github.com/snowkwon420"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a><br/> | <a href="https://github.com/kimmming"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a><br/> | <a href="https://github.com/Oh5Yeonju"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a><br/> | <a href="https://github.com/suconpa"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a><br/> |
+|                                                                <code>팀원</code>                                                                 |                                                               <code>팀원</code>                                                               |                                                               <code>팀장</code>                                                                |                                                              <code>팀원</code>                                                               |
+
+
+<<<<<<< HEAD
+=======
 안녕하세요
 저희는 K(김민지)K(권순호)O(오연주)L(이수아)로 이루어진 꿀조🍯입니다!
 
@@ -48,8 +91,10 @@
 | <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/ce15b9da-ed37-4e20-a25e-a13ea239be44" width="180" height="180">  | <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/edb95316-8c20-4aa6-806c-1093e32acbac" width="180" height="180"> |                                                     <img src="" width="180" height="180">                                                      | <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/844ca019-f967-4298-9b20-472e67009057" width="180" height="180"> |
 | <a href="https://github.com/snowkwon420"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a><br/> |  <a href="https://github.com/kimmming"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a><br/>  | <a href="https://github.com/Oh5Yeonju"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a><br/> |  <a href="https://github.com/suconpa"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a><br/>   |
 |                                                                <code>팀원</code>                                                                 |                                                                <code>팀원</code>                                                                |                                                               <code>팀원</code>                                                                |                                                                <code>팀원</code>                                                                |
+>>>>>>> 8cadd691a860aa7e033ad64e53f8e52054bb14e8
+=======
+>>>>>>> bea8f4e316b519a9d4f6628ea18d4cb7a080a9fc
 
-<br />
 
 ### 2. 역할 분담
 
@@ -209,9 +254,21 @@ final-11-NigoNego
 1. 매일 아침 회의 : 당일 진행할 작업 내용 공유
 2. 매일 저녁 회의 : 진행 상황 공유
 ```
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+<img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/f91f41fc-a7f7-4239-8dec-69abe3107c24" width="600" >
+
+=======
 
 <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/a81bc375-5819-46ca-8a80-80b196254b58" width="150px"> <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/595c5907-5a16-407b-a335-13a39566d483" width="150px"> <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/186fb197-b3e6-4edf-a189-15e33f2fbb89" width="150px"> <img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/a81bc375-5819-46ca-8a80-80b196254b58" width="150px">
 
+>>>>>>> 8cadd691a860aa7e033ad64e53f8e52054bb14e8
+=======
+
+<img src="https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/f91f41fc-a7f7-4239-8dec-69abe3107c24" width="600" >
+
+>>>>>>> bea8f4e316b519a9d4f6628ea18d4cb7a080a9fc
 ### 6-2. 페어코딩
 
 라이브쉐어를 이용해 로그인/회원가입 페이지를 함께 작업했습니다. <br /><br />
@@ -229,7 +286,15 @@ main - dev - feature[기능]
 
 <br />
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+## 7. 주요기능
+=======
 ## 7.주요기능
+>>>>>>> 8cadd691a860aa7e033ad64e53f8e52054bb14e8
+=======
+## 7. 주요기능
+>>>>>>> bea8f4e316b519a9d4f6628ea18d4cb7a080a9fc
 
 - 핵심 기능 : 게시물 업로드, 팔로우 기능, 상품 등록, 댓글
 
@@ -242,6 +307,7 @@ main - dev - feature[기능]
 | Splash                                                                                                                    | 로그인                                                                                                                             | 회원가입                                                                                                                             | 프로필 설정                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
 | ![splash page](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/2495580b-6579-4298-a13f-dce3e0ffe7b6) | ![로그인 페이지](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/c04f6554-eddb-430f-bdb1-3300ce7ab1bd) | ![회원가입 최종](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/85488522/47eda093-4a61-47e8-af7e-89e527955e39) | ![프로필설정](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/117130358/f5db86de-b67f-461d-b2ae-0bf55fa5d0e0) |
+
 
 ### 주요기능
 
@@ -259,7 +325,15 @@ main - dev - feature[기능]
 
 ## 9. 컨벤션
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+| 커밋 컨벤션                                             |
+=======
 | 코드 컨벤션                                             |
+>>>>>>> 8cadd691a860aa7e033ad64e53f8e52054bb14e8
+=======
+| 커밋 컨벤션                                             |
+>>>>>>> bea8f4e316b519a9d4f6628ea18d4cb7a080a9fc
 | ------------------------------------------------------- |
 | ✨ Feat : 새로운 기능 추가                              |
 | 💄 Design : CSS, 사용자 UI 디자인 변경                  |
@@ -276,6 +350,21 @@ main - dev - feature[기능]
 
 ## 10. 리팩토링 방향성
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bea8f4e316b519a9d4f6628ea18d4cb7a080a9fc
+#### 📍 반응형으로 제작하기
+
+UI는 반응형으로 구현하였지만 화면이 커지면 무한스크롤이 제대로 동작하지 않았습니다. 무한스크롤 기능을 다시 한 번 구현하여 모든 화면에 대응하는 무한스크롤을 구현하고 싶습니다.
+
+#### 📍 recoil을 사용해 데이터 관리하기
+
+전역으로 관리할 데이터와 아닌 데이터를 구분하지 않고 페이지마다 불러와서 중복된 API가 많았습니다. 이로 인해 API의 통일성이 없어 데이터 통신에 어려움을 겪었습니다.
+
+#### 📍 다른 사람이 구현한 코드 리팩토링하기
+<<<<<<< HEAD
+=======
 #### 반응형으로 제작하기
 
 UI는 반응형으로 구현하였지만 화면이 커지면 무한스크롤이 제대로 동작하지 않았습니다. 무한스크롤 기능을 다시 한 번 구현하여 모든 화면에 대응하는 무한스크롤을 구현하고 싶습니다.
@@ -289,22 +378,43 @@ UI는 반응형으로 구현하였지만 화면이 커지면 무한스크롤이 
 전역으로 관리할 데이터와 아닌 데이터를 구분하지 않고 페이지마다 불러와서 중복된 API가 많았습니다. 이로 인해 API의 통일성이 없어 데이터 통신에 어려움을 겪었습니다.
 
 #### 다른 사람이 구현한 코드 리팩토링하기
+>>>>>>> 8cadd691a860aa7e033ad64e53f8e52054bb14e8
+=======
+>>>>>>> bea8f4e316b519a9d4f6628ea18d4cb7a080a9fc
 
 비슷한 기능을 맡아 작업하다보니 다른 팀원이 구현한 기능에 대한 이해도가 부족하다는 생각이 들었습니다. 다른 사람이 구현한 코드를 리뷰하거나 리팩토링해보고 싶습니다.
 
-#### 웹 접근성과 웹 표준을 지키는 코드(lighthouse로 구체적인 수치 기록) 작성하기
+#### 📍 컴포넌트 정리하기
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bea8f4e316b519a9d4f6628ea18d4cb7a080a9fc
+여러 측면을 고려하여 컴포넌트를 제작하여 재사용성을 높히고 싶습니다.
+
+#### 📍 웹 접근성과 웹 표준을 지키는 코드(lighthouse로 구체적인 수치 기록) 작성하기
+
+#### 📍 기능 및 서비스 추가
+
+조립된상품/ 조립하기전 상품 구분해서 나누는 서비스 추가
+카테고리별 상품 등록 추가
+지도 api 사용 해서 직거래 위치 pin 추가
+<<<<<<< HEAD
+=======
 #### 기능 및 서비스 추가
 
 - 조립된상품/ 조립하기전 상품 구분해서 나누는 서비스 추가하기
 - 레고 카테고리 나누기
 - 지도 api 사용 해서 직거래 위치 pin 해보기
+>>>>>>> 8cadd691a860aa7e033ad64e53f8e52054bb14e8
+=======
+>>>>>>> bea8f4e316b519a9d4f6628ea18d4cb7a080a9fc
 
 <br />
 
 ## 11. 소감
 
-### 권순호
+#### 권순호
 
 프로젝트가 다들 처음이라 막막하고 앞이 안보였는데
 나이로비에서 만난 멋사 동기 여러분들덕분에 여기까지 올 수 있었습니다!
@@ -312,17 +422,17 @@ UI는 반응형으로 구현하였지만 화면이 커지면 무한스크롤이 
 프로젝트를 한번 진행 하고 나니 배우고 싶은 부분이 더욱 많아 졌습니다 (필요에 의해서)
 저희조는 멋사 5기수료 그리고 5.5기로 다시 찾아오겠습니다 저희 레파지토리 자주 확인해주세요
 
-### 김민지
+#### 김민지
 
 초반 프로젝트 설정에서 시간을 많이 소요하고 네명이서 머리를 맞대고 고민해봐도 진도가 늦어서 걱정이 많았지만, 오히려 다같이 고민하고 알아가는 시간이 많아서 좋았습니다.
 무언가 안되면 한명이 고민하는게 아니라 넷이 다 같이 해결해가는 과정이 즐거웠습니다.
 프로젝트 기간이 끝나고도 다같이 공부하며 취업할 때까지 빠져나가지 못하는 개미지옥으로 만들겠습니다.
 
-### 오연주
+#### 오연주
 
-함께 코드에 대해 고민하고 해결해가는 과정이 즐거웠습니다. 돌아보면 부족한 부분에 대한 아쉬운 마음도 있지만 이런 아쉬운 마음 또한 성장의 결과물이라고 생각하고 싶습니다. 함께 성장할 수 있도록 도와주신 멋사 5기 모든 분들께 감사드립니다.
+함께 코드에 대해 고민하고 해결해가는 과정이 즐거웠습니다. 돌이켜보면 부족한 부분에 대한 아쉬운 마음도 있지만 이런 아쉬움 또한 성장의 결과물이라고 생각합니다. 함께 성장할 수 있도록 도와주신 모든 분들께 감사드립니다.
 
-### 이수아
+#### 이수아
 
 많이 부족했고 오류도 정말 많이 봤지만 결국 완성은 시켰다는 마음에 너무 뿌듯하고 정말 많이 배웠습니다.
 해당 기능이 왜 필요하고 동기, 비동기적인 데이터 통신에 대한 공부가 왜 필요한지 리액트의 상태관리는 왜 해야하는지 뼈로 새겼던 프로젝트 였습니다.

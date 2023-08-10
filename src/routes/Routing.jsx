@@ -19,6 +19,8 @@ import JoinMember from '../pages/JoinPage/JoinMember';
 import PostMain from '../pages/PostPage/PostMain/PostMain';
 import HomeBlank from '../pages/HomePage/HomePage';
 import MyFollowersPage from '../pages/ProfilePage/MyProfilePage/MyFollowersPage';
+import { Arrow, HeaderBasicNav } from '../components/common/Header/Header';
+import Product from '../components/Product/Product';
 
 function Routing() {
   return (
@@ -41,7 +43,7 @@ function Routing() {
         <Route path="/product" element={<ProductPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/*" element={<NotFound />} />
-        <Route path="/test" element={<Test />} />
+        {/* <Route path="/test" element={<Product />} /> */}
         <Route path="/postmain" element={<PostMain />} />
       </Routes>
     </BrowserRouter>
