@@ -14,7 +14,7 @@ import accountNameAtom from '../../../atom/accountName';
 
 export default function MyProfilePage() {
   const accountName = useRecoilValue(accountNameAtom);
-  console.log(accountNameAtom);
+  console.log(accountName);
 
   const [isClickedList, setIsClickedList] = useState(true);
   const [isClickedGrid, setIsClickedGrid] = useState(false);

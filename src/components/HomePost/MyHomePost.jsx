@@ -1,22 +1,18 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-
-import { GetPostListLimit } from '../../api/getData/getData';
+import UserProfileAPI from '../../api/UserProfileAPI';
 import UserSearch from '../common/User/UserSearch';
-import { ReactComponent as BtnHeart } from '../../assets/image/BtnHeart.svg';
 import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
-import { click } from '@testing-library/user-event/dist/click';
 import Heart from '../common/Heart/Heart';
 import { useRecoilValue } from 'recoil';
 import accountNameAtom from '../../atom/accountName';
 
 export default function MyHomePost({ accountname }) {
+  const { getPostListLimit } = UserProfileAPI();
   const [userData, setUserData] = useState([]);
   const postListRef = useRef(null);
   const accountAtom = useRecoilValue(accountNameAtom);
   const account = accountname ? accountname : accountAtom;
-
-  console.log(accountname);
 
   const [clickedHeart, setClickedHeart] = useState(Boolean(true));
 
@@ -29,13 +25,13 @@ export default function MyHomePost({ accountname }) {
     fetchData(0); // 초기 데이터 로드
   }, []);
 
-  const fetchData = (skip = 3) => {
-    GetPostListLimit(skip, account)
+  const fetchData = () => {
+    getPostListLimit(account)
       .then(response => {
+        console.log(response);
         setUserData(prevData => [...prevData, ...response.data.post]);
-        console.log('하이!!!');
       })
-      .catch(error => console.log('여기!!!'));
+      .catch(error => console.log('에러'));
   };
 
   useEffect(() => {

@@ -6,35 +6,26 @@ import MyProfileBtn from './MyProfileBtn';
 import { useRecoilValue } from 'recoil';
 import accountNameAtom from '../../atom/accountName';
 import authAtom from '../../atom/authToken';
+import UserProfileAPI from '../../api/UserProfileAPI';
+
 export default function ProfileHeader() {
+  const { getProfileData } = UserProfileAPI();
   const [myProfileData, setMyProfileData] = useState({});
   const auth = useRecoilValue(authAtom);
   const accountAtom = useRecoilValue(accountNameAtom);
+  console.log(accountAtom);
 
   useEffect(() => {
-    try {
-      axios({
-        method: 'GET',
-        url: `https://api.mandarin.weniv.co.kr/profile/${accountAtom}`,
-
-        headers: {
-          Authorization: `Bearer ${auth}`,
-          'Content-type': 'application/json',
-        },
-      }).then(response => {
-        setMyProfileData(response.data.profile);
-        console.log(response);
-      });
-    } catch (err) {
-      console.log('에러');
-    }
+    getProfileData().then(response => {
+      console.log(response.data);
+      setMyProfileData(response.data.user);
+    });
   }, []);
 
   const ProfileHeaderWrapper = styled.div``;
 
   return (
     <ProfileHeaderWrapper>
-      {console.log(myProfileData)}
       {Object.keys(myProfileData).length > 0 && (
         <ProfileUser myProfileData={myProfileData} />
       )}

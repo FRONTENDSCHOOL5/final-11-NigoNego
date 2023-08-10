@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import ProductItem from './ProductItem';
-import { GetProDuctListLimit } from '../../api/getData/getData';
+import UserProfileAPI from '../../api/UserProfileAPI';
 
 const ProductWrapper = styled.div`
   text-align: center;
@@ -25,18 +25,16 @@ const ProductWrapper = styled.div`
 `;
 
 export default function Product({ accountname }) {
+  const { getProductListLimit } = UserProfileAPI();
   const [userData, setUserData] = useState([]);
-  console.log(accountname);
   const productListRef = useRef(null);
   useEffect(() => {
     fetchData(0); // 초기 데이터 로드
   }, []);
 
-  const fetchData = (skip = 5) => {
-    GetProDuctListLimit(skip, accountname)
+  const fetchData = skip => {
+    getProductListLimit(skip, accountname)
       .then(response => {
-        console.log(skip);
-        console.log(accountname);
         setUserData(prevData => [...prevData, ...response.data.product]);
       })
       .catch(error => console.error(error));
