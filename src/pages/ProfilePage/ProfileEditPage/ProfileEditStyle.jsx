@@ -15,12 +15,6 @@ const ImageWrapper = styled.div`
   width: 112px;
   margin: auto;
   position: relative;
-
-  .input-s {
-    position: absolute;
-    bottom: -3px;
-    right: 3px;
-  }
 `;
 
 const FormWrapper = styled.div`

@@ -1,71 +1,47 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-function Input({
-  label,
-  type,
+const Input = ({
   id,
-  name,
-  placeholder,
-  onChange,
-  onBlur,
-  validation,
-  isCorrect,
-  errorMessage,
-}) {
+  ...props
+}) => {
   return (
-    <div>
-      <InputWrapper>
-        <LabelStyle htmlFor={id}>{label}</LabelStyle>
-        <InputStyle
-          type={type}
-          id={id}
-          name={name}
-          placeholder={placeholder}
-          onChange={onChange}
-          onBlur={onBlur}
-          validation={validation}
-          isCorrect={isCorrect}
-        />
-        {!isCorrect && <ErrorMessage>{errorMessage}</ErrorMessage>}
-      </InputWrapper>
-    </div>
+    <>
+      <LabelStyle htmlFor={id} {...props}>
+        {props.label}
+      </LabelStyle>
+      <InputStyle
+        id={id}
+        {...props}
+      />
+      {props.isCorrect ? null : (
+        <ErrorMessage>{props.errorMessage}</ErrorMessage>
+      )}
+    </>
   );
-}
-
-export default Input;
-
-const ErrorMessage = styled.div`
-  color: var(--basic-red);
-`;
-
-const InputWrapper = styled.div`
-  text-align: left;
-`;
+};
 
 const InputStyle = styled.input`
-  width: 100%;
+  width: ${props => props.width || '100%'};
   border: none;
-  border-bottom: 1px solid var(--basic-grey);
   height: 30px;
   &:focus {
     outline: none;
     border-bottom-color: var(--basic-yellow);
   }
-  /* validation안맞거나 아이디 중복 일때 빨간 경고줄 */
-
-  //이전코드
-  /* ${props =>
-    props.isCorrect === false &&
-    css`
-      border-bottom-color: red;
-    `}; */
-
-  //수정후 코드
-  border-bottom-color: ${props => props.isCorrect === false && 'red'};
+  border-bottom: 1px solid #999;
 `;
 
 const LabelStyle = styled.label`
+  text-align: ${props => props.textAlign || 'left'};
   color: black;
   width: 100%;
 `;
+
+// validation 밑줄을 button 컴포넌트에서 처리할 수 있도록 변경?
+const ErrorMessage = styled.div`
+  text-align: ${props => props.textAlign || 'left'};
+  color: var(--basic-red);
+`;
+
+export default Input;

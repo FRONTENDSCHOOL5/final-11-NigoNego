@@ -9,6 +9,8 @@ import { useRecoilValue } from 'recoil';
 import BodyGlobal from '../../../styles/BodyGlobal';
 import authAtom from '../../../atom/authToken';
 
+import FileUploadInput from '../../../components/common/Input/FileUploadInput';
+
 export default function PostUpload() {
   const navigate = useNavigate();
   const user = 'nigonego';
@@ -98,10 +100,18 @@ export default function PostUpload() {
           {image.length > 0 && <UploadImg src={image} alt="" />}
         </BodyGlobal>
       </form>
-      <UploadButtonStyle>
+
+      <FileUploadInput
+        id="input"
+        type="file"
+        onChange={handleImageUpload}
+        right="20px"
+        bottom="20px"
+      />
+      {/* <UploadButtonStyle>
         <label htmlFor="input" />
         <input id="input" type="file" onChange={handleImageUpload} />
-      </UploadButtonStyle>
+      </UploadButtonStyle> */}
     </>
   );
 }

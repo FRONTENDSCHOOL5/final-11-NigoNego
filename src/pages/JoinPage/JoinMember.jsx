@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import {
-  FormWrapper,
-  HeadingWrapper,
-  Wrapper,
-  ImageWrapper,
-  BtnWrapper,
-  UploadButtonStyle,
-} from './joinMemberStyle';
+import FileUploadInput from '../../components/common/Input/FileUploadInput';
 
 import Input from '../../components/common/Input/Input';
 import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
@@ -16,6 +9,7 @@ import { LImage } from '../../components/common/UserImage/UserImage';
 import MainWrapperF from '../../styles/MainGlobal';
 
 import JoinMemberAPI from '../../api/JoinMemberAPI';
+import styled from 'styled-components';
 
 export default function JoinMember() {
   const [userName, setUserName] = useState('');
@@ -131,13 +125,16 @@ export default function JoinMember() {
           <h1>프로필 설정</h1>
           <p>나중에 언제든지 변경할 수 있습니다.</p>
         </HeadingWrapper>
-        <ImageWrapper>
+
+        <FileUploadWrapper>
           <LImage backgroundUrl={userImage} />
-          <UploadButtonStyle className="input-s">
-            <label htmlFor="input" />
-            <input id="input" type="file" onChange={handleImageUpload} />
-          </UploadButtonStyle>
-        </ImageWrapper>
+          <FileUploadInput
+            backgroundUrl={userImage}
+            id="input"
+            type="file"
+            onChange={handleImageUpload}
+          />
+        </FileUploadWrapper>
 
         <form onSubmit={handleSubmit}>
           <FormWrapper>
@@ -185,3 +182,39 @@ export default function JoinMember() {
     </MainWrapperF>
   );
 }
+
+const Wrapper = styled.div`
+  flex-direction: column;
+`;
+const HeadingWrapper = styled.div`
+  text-align: center;
+`;
+
+const FileUploadWrapper = styled.div`
+  margin-top: 1.875rem;
+  width: 112px;
+  margin: auto;
+  position: relative;
+
+  .input-s {
+    position: absolute;
+    bottom: -3px;
+    right: 3px;
+  }
+`;
+
+const FormWrapper = styled.div`
+  margin-top: 1.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  label {
+    color: var(--basic-grey);
+    font-weight: bold;
+  }
+`;
+const BtnWrapper = styled.div`
+  margin-top: 10px;
+`;
