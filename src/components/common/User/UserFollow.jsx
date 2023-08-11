@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { MImage } from '../UserImage/UserImage';
 import { UserSection, UserName, UserId } from './UserSearch';
 import { ButtonShort, SBtn } from '../button/Button';
-import { GetFollowerData } from '../../../api/getData/getData';
 import { useLocation } from 'react-router-dom';
+import UseFetchToken from '../../../Hooks/UseFetchToken';
 
 const StyledFollower = styled.section`
   width: 100%;
@@ -14,6 +14,7 @@ const StyledFollower = styled.section`
 `;
 
 export default function UserFollow() {
+  const { getFollowData } = UseFetchToken();
   const location = useLocation();
   const userGetData = location.state.value;
   const accountname = location.state.myProfileData.accountname;
@@ -22,40 +23,17 @@ export default function UserFollow() {
   const postListRef = useRef(null);
 
   useEffect(() => {
-    fetchData(0); // 초기 데이터 로드
+    fetchData(); // 초기 데이터 로드
   }, []);
 
-  const fetchData = (skip = 5) => {
-    GetFollowerData(accountname, userGetData, skip)
+  const fetchData = () => {
+    getFollowData(accountname)
       .then(response => {
         console.log(response);
         setUserData(prevData => [...prevData, ...response.data]);
       })
       .catch(error => console.error(error));
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const container = postListRef.current;
-      if (container) {
-        const { scrollTop, clientHeight, scrollHeight } = container;
-        if (scrollTop + clientHeight >= scrollHeight) {
-          const skip = userData.length;
-          fetchData(skip);
-        }
-      }
-    };
-    const postList = postListRef.current;
-    if (postList) {
-      postList.addEventListener('scroll', handleScroll);
-    }
-
-    return () => {
-      if (postList) {
-        postList.removeEventListener('scroll', handleScroll);
-      }
-    };
-  }, [userData]);
 
   return (
     <>

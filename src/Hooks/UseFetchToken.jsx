@@ -52,11 +52,23 @@ const UseFetchToken = () => {
     }
   };
 
+  const getFollowData = async accountname => {
+    try {
+      const response = await getDataBase.get(
+        `/profile/${accountname}/following`,
+      );
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return {
     GetHomeFeedData,
     getPostListLimit,
     getProfileData,
     getProductListLimit,
+    getFollowData,
   };
 };
 
