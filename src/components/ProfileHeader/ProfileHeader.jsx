@@ -17,8 +17,7 @@ export default function ProfileHeader() {
 
   useEffect(() => {
     getProfileData().then(response => {
-      console.log(response.data);
-      setMyProfileData(response.data.user);
+      setMyProfileData(response);
     });
   }, []);
 

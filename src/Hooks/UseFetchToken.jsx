@@ -63,12 +63,22 @@ const UseFetchToken = () => {
     }
   };
 
+  const getUserFeed = async accountname => {
+    try {
+      const response = await getDataBase(`/profile/${accountname}`);
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return {
     GetHomeFeedData,
     getPostListLimit,
     getProfileData,
     getProductListLimit,
     getFollowData,
+    getUserFeed,
   };
 };
 

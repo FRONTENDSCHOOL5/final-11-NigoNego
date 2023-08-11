@@ -5,6 +5,8 @@ import { UserSection, UserName, UserId } from './UserSearch';
 import { ButtonShort, SBtn } from '../button/Button';
 import { useLocation } from 'react-router-dom';
 import UseFetchToken from '../../../Hooks/UseFetchToken';
+import atomYourData from '../../../atom/atomYourData';
+import { useRecoilValue } from 'recoil';
 
 const StyledFollower = styled.section`
   width: 100%;
@@ -16,8 +18,8 @@ const StyledFollower = styled.section`
 export default function UserFollow() {
   const { getFollowData } = UseFetchToken();
   const location = useLocation();
-  const userGetData = location.state.value;
-  const accountname = location.state.myProfileData.accountname;
+  const atomData = useRecoilValue(atomYourData);
+  const accountname = atomData.data.profile.accountname;
 
   const [userData, setUserData] = useState([]);
   const postListRef = useRef(null);
