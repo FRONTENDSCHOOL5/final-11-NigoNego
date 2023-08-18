@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { GetCommentData } from '../../../api/getData/getData';
 import authAtom from '../../../atom/authToken';
+import Layout from "../../../styles/Layout";
 
 function PostMain() {
   const auth = useRecoilValue(authAtom);
@@ -64,7 +65,7 @@ function PostMain() {
   //커멘트 시간
 
   return (
-    <>
+    <Layout>
       {/* 여기서 문제였음 postData, postData.id값이 계속 null 이 나왔는데 그이유는 getData가 비동기 함수 인데 
         setPostData()가 실행되기도 전에 HomePost 컴포넌트가 렌더링 되니까 여기서 조건을 추가해주는 방법사용 
         보통 이부분에서 로딩 컴포넌트를 만들어서 삼항연산자안에 postdata가 null일때 로딩컴포넌트를 보여주는 방식으로 함
@@ -89,7 +90,7 @@ function PostMain() {
           />
         )}
       </PostPageWrapper>
-    </>
+    </Layout>
   );
 }
 

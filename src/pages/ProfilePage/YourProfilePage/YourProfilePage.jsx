@@ -13,6 +13,7 @@ import BodyGlobal from '../../../styles/BodyGlobal';
 
 import { ReactComponent as BtnVertical } from '../../../assets/image/BtnVertical.svg';
 import { ReactComponent as BtnGrid } from '../../../assets/image/BtnGrid.svg';
+import Layout from "../../../styles/Layout";
 
 export default function YourProfilePage() {
   const location = useLocation();
@@ -38,7 +39,7 @@ export default function YourProfilePage() {
   };
 
   return (
-    <div>
+    <Layout>
       <HeaderBasicNav />
       <BodyGlobal>
         <YourProfileHeader accountname={accountname} />
@@ -67,7 +68,7 @@ export default function YourProfilePage() {
         {isClickedGrid && <HomePostGrid accountname={accountname} />}
       </BodyGlobal>
       <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
-    </div>
+    </Layout>
   );
 }
 
