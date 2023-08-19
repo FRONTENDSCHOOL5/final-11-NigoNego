@@ -28,7 +28,6 @@ export default function MyHomePost({ accountname }) {
   const fetchData = () => {
     getPostListLimit(account)
       .then(response => {
-        console.log(response);
         setUserData(prevData => [...prevData, ...response.data.post]);
       })
       .catch(error => console.log('에러'));

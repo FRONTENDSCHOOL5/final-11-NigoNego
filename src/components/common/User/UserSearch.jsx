@@ -10,6 +10,7 @@ export default function UserSearch({ data }) {
   const navigate = useNavigate();
   const { getUserFeed } = UseFetchToken();
   const [click, setClick] = useState(false);
+  const { yourAccount } = UseFetchToken();
   const [YourData, setYorData] = useRecoilState(atomYourData);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function UserSearch({ data }) {
     }
   }, [click]);
 
-  function moveToYourProfile() {
+  function moveToYourProfile(e) {
     getUserFeed(data.author.accountname).then(response => {
       setClick(true);
       setYorData(response);

@@ -5,8 +5,9 @@ import { UserSection, UserName, UserId } from './UserSearch';
 import { ButtonShort, SBtn } from '../button/Button';
 import { useLocation } from 'react-router-dom';
 import UseFetchToken from '../../../Hooks/UseFetchToken';
-import atomYourData from '../../../atom/atomYourData';
 import { useRecoilValue } from 'recoil';
+import atomYourAccount from '../../../atom/atomYourAccount';
+import accountNameAtom from '../../../atom/accountName';
 
 const StyledFollower = styled.section`
   width: 100%;
@@ -17,22 +18,28 @@ const StyledFollower = styled.section`
 
 export default function UserFollow() {
   const { getFollowData } = UseFetchToken();
-  const location = useLocation();
-  const atomData = useRecoilValue(atomYourData);
-  const accountname = atomData.data.profile.accountname;
+  const myAccount = useRecoilValue(accountNameAtom);
+  const yourAccount = useRecoilValue(atomYourAccount);
 
+  const location = useLocation();
+  const follower = location.state.value;
+  const userName = location.state.yourData.accountname;
+  console.log(location);
   const [userData, setUserData] = useState([]);
   const postListRef = useRef(null);
-
+  const accountName = userName === myAccount ? myAccount : yourAccount;
   useEffect(() => {
     fetchData(); // 초기 데이터 로드
   }, []);
 
-  const fetchData = () => {
-    getFollowData(accountname)
+  const fetchData = async () => {
+    console.log(myAccount);
+    console.log(userName);
+
+    await getFollowData(accountName, follower)
       .then(response => {
         console.log(response);
-        setUserData(prevData => [...prevData, ...response.data]);
+        setUserData(response.data);
       })
       .catch(error => console.error(error));
   };

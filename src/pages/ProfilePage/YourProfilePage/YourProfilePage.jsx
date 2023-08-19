@@ -17,10 +17,8 @@ import atomYourData from '../../../atom/atomYourData';
 import { useRecoilValue } from 'recoil';
 
 export default function YourProfilePage() {
-  console.log(123132132);
   const atomData = useRecoilValue(atomYourData);
   const accountname = atomData.data.profile.accountname;
-  console.log(accountname);
 
   const [isClickedList, setIsClickedList] = useState(true);
   const [isClickedGrid, setIsClickedGrid] = useState(false);

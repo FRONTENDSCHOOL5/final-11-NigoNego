@@ -29,14 +29,21 @@ const FollowNumberWrapper = styled.div`
 
 export default function ProfileUser({ myProfileData }) {
   const pathName = window.location.pathname;
+  console.log(myProfileData);
   const yourDatAtom = useRecoilValue(atomYourData);
+  console.log(yourDatAtom);
+  const userName = yourDatAtom.data.profile.accountname;
   const yourData =
     pathName === '/myprofile'
       ? myProfileData.data.user
       : yourDatAtom.data.profile;
+  console.log(yourData);
   return (
     <ProfileUserWrapper>
-      <Link to={'/myfollowers'} state={{ value: 'follower' }}>
+      <Link
+        to={'/myfollowers'}
+        state={{ value: 'follower', yourData: yourData }}
+      >
         <FollowNumberWrapper>
           <h3>{yourData.followerCount}</h3>
           <small>followers</small>
@@ -48,7 +55,10 @@ export default function ProfileUser({ myProfileData }) {
         <small>{yourData.accountname}</small>
         <p>{yourData.intro}</p>
       </div>
-      <Link to={`/myfollowers`} state={{ value: 'following' }}>
+      <Link
+        to={`/myfollowers`}
+        state={{ value: 'following', yourData: yourData }}
+      >
         <FollowNumberWrapper>
           <h3>{yourData.followingCount}</h3>
           <small>followings</small>

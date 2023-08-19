@@ -2,8 +2,6 @@ import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import UserSearch from '../common/User/UserSearch';
-import { ReactComponent as BtnHeart } from '../../assets/image/BtnHeart.svg';
-import { ReactComponent as BtnHeartF } from '../../assets/image/BtnHeart.svg';
 import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
 import Heart from '../common/Heart/Heart';
 

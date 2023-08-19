@@ -13,8 +13,7 @@ import { useRecoilValue } from 'recoil';
 import accountNameAtom from '../../../atom/accountName';
 
 export default function MyProfilePage() {
-  const accountName = useRecoilValue(accountNameAtom);
-  console.log(accountName);
+  const myAccount = useRecoilValue(accountNameAtom);
 
   const [isClickedList, setIsClickedList] = useState(true);
   const [isClickedGrid, setIsClickedGrid] = useState(false);
@@ -39,8 +38,8 @@ export default function MyProfilePage() {
     <>
       <HeaderBasicNav />
       <BodyGlobal>
-        <ProfileHeader accountname={accountName} />
-        <Product accountname={accountName} />
+        <ProfileHeader accountname={myAccount} />
+        <Product accountname={myAccount} />
 
         {/* <PostAlignChangeBut /> */}
         <ImgAlignNav>
@@ -62,8 +61,8 @@ export default function MyProfilePage() {
           </button>
         </ImgAlignNav>
 
-        {isClickedList && <MyHomePost accountname={accountName} />}
-        {isClickedGrid && <HomePostGrid accountname={accountName} />}
+        {isClickedList && <MyHomePost accountname={myAccount} />}
+        {isClickedGrid && <HomePostGrid accountname={myAccount} />}
       </BodyGlobal>
       <Navbar homeV={true} chatV={true} postV={true} profileV={false} />
     </>
