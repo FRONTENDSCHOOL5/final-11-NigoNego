@@ -16,9 +16,18 @@ const createAxiosInstance = token => {
     },
   });
 
+  const postDataBase = axios.create({
+    baseURL: baseUrl,
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+
   return {
     getDataBase,
     instance,
+    postDataBase,
   };
 };
 

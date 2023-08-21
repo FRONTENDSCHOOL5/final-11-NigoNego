@@ -61,7 +61,7 @@ function LoginPage() {
       FollowingData,
       setIsCorrect,
       setLoginErrMessage,
-    );
+    ).then(res => console.log(res));
   }
 
   async function FollowingData(token) {

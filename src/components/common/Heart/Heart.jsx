@@ -1,29 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as BtnHeartF } from './../../../assets/icons/BtnHeartF.svg';
-import { PostHeartData, DeleteHeart } from '../../../api/getData/getData';
+import UseFetchToken from '../../../Hooks/UseFetchToken';
+import atomYourData from '../../../atom/atomYourData';
+import { useRecoilValue } from 'recoil';
+import atomId from '../../../atom/atomId';
 
-export default function Heart() {
-  const [like, setLike] = useState(false);
-  const [likeCount, setLikeCount] = useState('0');
+export default function Heart({ userData }) {
+  console.log(userData);
+  const [like, setLike] = useState(userData.hearted);
+  const [likeCount, setLikeCount] = useState(0);
+  const { postHeart, deleteHeart } = UseFetchToken();
 
-  function HeartCount() {
+  const HeartCount = () => {
+    setLike(!like);
+  };
+
+  useEffect(() => {
     if (like) {
-      DeleteHeart().then(response => {
-        setLike(response.data.post.hearted);
-        setLikeCount(response.data.post.heartCount);
-        console.log(response.data.post.heartCount);
-      });
+      console.log('like');
+      postHeart(userData.id).then(res =>
+        setLikeCount(res.data.post.heartCount),
+      );
+      // postHeart(userId.id).then(res => console.log(res));
     } else {
-      PostHeartData().then(response => {
-        setLike(response.data.post.hearted);
-        setLikeCount(response.data.post.heartCount);
-      });
+      // console.log('delete');
+      deleteHeart(userData.id).then(res =>
+        setLikeCount(res.data.post.heartCount),
+      );
     }
-  }
+  }, [like]);
 
+  console.log(likeCount);
   return (
     <button type="button" className="btn" onClick={HeartCount}>
-      {console.log(1111)}
       <BtnHeartF
         fill={like ? '#EF4343' : '#fff'}
         stroke={like ? '#EF4343' : '#767676'}
@@ -32,5 +41,3 @@ export default function Heart() {
     </button>
   );
 }
-
-export { Heart };

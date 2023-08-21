@@ -7,7 +7,7 @@ import createAxiosInstance from '../api/Api';
 
 const UseFetchToken = () => {
   const UserToken = useRecoilValue(authAtom);
-  const { getDataBase } = createAxiosInstance(UserToken);
+  const { getDataBase, postDataBase } = createAxiosInstance(UserToken);
 
   //팔로잉 게시글 목록
   const GetHomeFeedData = async (number, skip) => {
@@ -84,6 +84,24 @@ const UseFetchToken = () => {
     }
   };
 
+  const postHeart = async id => {
+    try {
+      const response = await postDataBase.post(`/post/${id}/heart`);
+      return response;
+    } catch (error) {
+      console.error('좋아요에러', error);
+    }
+  };
+
+  const deleteHeart = async id => {
+    try {
+      const response = await postDataBase.delete(`/post/${id}/unheart`);
+      return response;
+    } catch (error) {
+      console.error('좋아요에러', error);
+    }
+  };
+
   return {
     GetHomeFeedData,
     getPostListLimit,
@@ -92,6 +110,8 @@ const UseFetchToken = () => {
     getFollowData,
     getUserFeed,
     yourAccount,
+    postHeart,
+    deleteHeart,
   };
 };
 
