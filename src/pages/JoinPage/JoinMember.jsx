@@ -26,8 +26,8 @@ export default function JoinMember() {
   const [userInfo, setUserInfo] = useState({
     user: {
       username: '',
-      email: location.state.email, // 사용자 이메일 값
-      password: location.state.password, // 사용자 패스워드 값
+      email: location.state?.email, // 사용자 이메일 값
+      password: location.state?.password, // 사용자 패스워드 값
       accountname: '',
       intro: '', // 사용자 소개 값
       image: '', // 사용자 이미지 값}
