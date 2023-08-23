@@ -21,6 +21,7 @@ import { CommentWrapper } from '../../components/common/Comment/CommentInput/Com
 import { SImage } from '../../components/common/UserImage/UserImage';
 import buttonImg from '../../assets/images/upload-file.svg';
 import BodyGlobal from '../../styles/BodyGlobal';
+import Layout from "../../styles/Layout";
 
 export default function ChatRoom() {
   const [comment, setComment] = useState('');
@@ -29,7 +30,7 @@ export default function ChatRoom() {
   };
   const isBtnDisable = comment === '';
   return (
-    <>
+    <Layout>
       <HeaderChatNav content="니고네고  판매" />
       <BodyGlobal>
         <CommonWrapper>
@@ -110,6 +111,6 @@ export default function ChatRoom() {
           <ChattingSend>전송</ChattingSend>
         </ChattingForm> */}
       {/* </ChatNav> */}
-    </>
+    </Layout>
   );
 }

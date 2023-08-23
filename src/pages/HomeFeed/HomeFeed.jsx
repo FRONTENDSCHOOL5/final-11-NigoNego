@@ -8,6 +8,7 @@ import Navbar from '../../components/common/Navbar/Navbar';
 import { HeaderBasicNav } from '../../components/common/Header/Header';
 import authAtom from '../../atom/authToken';
 import UseFetchToken from '../../Hooks/UseFetchToken';
+import Layout from "../../styles/Layout";
 
 function HomeFeed(props) {
   const { GetHomeFeedData } = UseFetchToken();
@@ -54,7 +55,7 @@ function HomeFeed(props) {
     };
   }, [userData]);
   return (
-    <>
+    <Layout>
       <HeaderBasicNav />
       <MyHomePostwarpper ref={postListRef} className="myHomePost">
         {userData.length > 0 &&
@@ -67,7 +68,7 @@ function HomeFeed(props) {
           })}
       </MyHomePostwarpper>
       <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
-    </>
+    </Layout>
   );
 }
 

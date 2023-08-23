@@ -16,6 +16,8 @@ import { ReactComponent as BtnGrid } from '../../../assets/image/BtnGrid.svg';
 import atomYourData from '../../../atom/atomYourData';
 import { useRecoilValue } from 'recoil';
 
+import Layout from "../../../styles/Layout";
+
 export default function YourProfilePage() {
   const atomData = useRecoilValue(atomYourData);
   const accountname = atomData.data.profile.accountname;
@@ -40,7 +42,7 @@ export default function YourProfilePage() {
   };
 
   return (
-    <div>
+    <Layout>
       <HeaderBasicNav />
       <BodyGlobal>
         <YourProfileHeader accountname={accountname} />
@@ -69,7 +71,7 @@ export default function YourProfilePage() {
         {isClickedGrid && <HomePostGrid accountname={accountname} />}
       </BodyGlobal>
       <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
-    </div>
+    </Layout>
   );
 }
 

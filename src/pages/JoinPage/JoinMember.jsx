@@ -10,6 +10,7 @@ import MainWrapperF from '../../styles/MainGlobal';
 
 import JoinMemberAPI from '../../api/JoinMemberAPI';
 import styled from 'styled-components';
+import Layout from "../../styles/Layout";
 
 export default function JoinMember() {
   const [userName, setUserName] = useState('');
@@ -25,8 +26,8 @@ export default function JoinMember() {
   const [userInfo, setUserInfo] = useState({
     user: {
       username: '',
-      email: location.state.email, // 사용자 이메일 값
-      password: location.state.password, // 사용자 패스워드 값
+      email: location.state?.email, // 사용자 이메일 값
+      password: location.state?.password, // 사용자 패스워드 값
       accountname: '',
       intro: '', // 사용자 소개 값
       image: '', // 사용자 이미지 값}
@@ -119,8 +120,8 @@ export default function JoinMember() {
   };
 
   return (
+      <Layout>
     <MainWrapperF>
-      <Wrapper>
         <HeadingWrapper>
           <h1>프로필 설정</h1>
           <p>나중에 언제든지 변경할 수 있습니다.</p>
@@ -178,8 +179,8 @@ export default function JoinMember() {
             </BtnWrapper> */}
           </FormWrapper>
         </form>
-      </Wrapper>
     </MainWrapperF>
+      </Layout>
   );
 }
 
