@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 import { useRecoilValue } from 'recoil';
 import BodyGlobal from '../../../styles/BodyGlobal';
 import authAtom from '../../../atom/authToken';
-
+import Layout from "../../../styles/Layout";
 import FileUploadInput from '../../../components/common/Input/FileUploadInput';
 
 export default function PostUpload() {
@@ -83,8 +83,7 @@ export default function PostUpload() {
   // console.log(userImage);
   // console.log(userContent);
   return (
-    <>
-      {console.log(isFormValid)}
+    <Layout>
       <HeaderBasicNav disabled={!isFormValid}>업로드</HeaderBasicNav>
       <form onSubmit={handleSubmit}>
         <BodyGlobal>
@@ -108,11 +107,7 @@ export default function PostUpload() {
         right="20px"
         bottom="20px"
       />
-      {/* <UploadButtonStyle>
-        <label htmlFor="input" />
-        <input id="input" type="file" onChange={handleImageUpload} />
-      </UploadButtonStyle> */}
-    </>
+    </Layout>
   );
 }
 

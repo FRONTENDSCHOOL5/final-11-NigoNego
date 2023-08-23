@@ -5,14 +5,15 @@ import Navbar from '../../components/common/Navbar/Navbar';
 import { ButtonMiddle } from '../../components/common/button/Button';
 import { ReactComponent as LogoColorImg } from '../../assets/image/LogoColorImg.svg';
 import { useNavigate } from 'react-router-dom';
+import Layout from "../../styles/Layout";
 
 function HomePage() {
   return (
-    <Wrapper>
+    <Layout>
       <HeaderMainNav content={'니고네고 피드'} />
       <HomeBlank />
       <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
-    </Wrapper>
+    </Layout>
   );
 }
 // localstorage.getItem으로 가져오기 token

@@ -8,10 +8,11 @@ import {
   GoogleBtnLogin,
   FacebookBtnLogin,
 } from './LoginStyle';
+import Layout from "../../styles/Layout";
 
 function LoginMain() {
   return (
-    <Wrapper>
+    <Layout>
       <Logo />
       <LoginSelect>
         <KakaoBtnLogin>카카오톡 계정으로 로그인</KakaoBtnLogin>
@@ -26,7 +27,7 @@ function LoginMain() {
           </li>
         </ul>
       </LoginSelect>
-    </Wrapper>
+    </Layout>
   );
 }
 

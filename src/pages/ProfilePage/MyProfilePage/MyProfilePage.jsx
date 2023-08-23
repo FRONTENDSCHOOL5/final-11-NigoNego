@@ -11,6 +11,7 @@ import { useState } from 'react';
 import HomePostGrid from '../../../components/HomePost/HomePostGrid';
 import { useRecoilValue } from 'recoil';
 import accountNameAtom from '../../../atom/accountName';
+import Layout from "../../../styles/Layout";
 
 export default function MyProfilePage() {
   const myAccount = useRecoilValue(accountNameAtom);
@@ -35,7 +36,7 @@ export default function MyProfilePage() {
   };
 
   return (
-    <>
+    <Layout>
       <HeaderBasicNav />
       <BodyGlobal>
         <ProfileHeader accountname={myAccount} />
@@ -65,7 +66,7 @@ export default function MyProfilePage() {
         {isClickedGrid && <HomePostGrid accountname={myAccount} />}
       </BodyGlobal>
       <Navbar homeV={true} chatV={true} postV={true} profileV={false} />
-    </>
+    </Layout>
   );
 }
 
