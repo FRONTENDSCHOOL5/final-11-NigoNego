@@ -9,6 +9,7 @@ import authAtom from '../../atom/authToken';
 
 import FileUploadInput from '../../components/common/Input/FileUploadInput';
 import { HeaderUploadNav } from '../../components/common/Header/Header';
+import Layout from "../../styles/Layout";
 
 export default function ProductPage() {
   const user = 'nigonego';
@@ -80,7 +81,7 @@ export default function ProductPage() {
   }
 
   return (
-    <GlobalWrapper>
+    <Layout>
       <form onSubmit={handleSubmit}>
         <HeaderUploadNav content="업로드" isFormValid={isFormValid} />
 
@@ -131,7 +132,7 @@ export default function ProductPage() {
           </li>
         </ul>
       </form>
-    </GlobalWrapper>
+    </Layout>
   );
 }
 

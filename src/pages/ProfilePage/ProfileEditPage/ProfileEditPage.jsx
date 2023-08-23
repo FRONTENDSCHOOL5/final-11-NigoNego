@@ -15,6 +15,7 @@ import BodyGlobal from '../../../styles/BodyGlobal';
 import { ButtonShort } from '../../../components/common/button/Button';
 import authAtom from '../../../atom/authToken';
 import FileUploadInput from '../../../components/common/Input/FileUploadInput';
+import Layout from "../../../styles/Layout";
 
 export default function ProfileEditPage() {
   const [userName, setUserName] = useState('');
@@ -146,7 +147,7 @@ export default function ProfileEditPage() {
   };
 
   return (
-    <Wrapper>
+    <Layout>
       <ButtonShort isFormValid={isFormValid} handleSave={handleSubmit}>
         저장
       </ButtonShort>
@@ -205,6 +206,6 @@ export default function ProfileEditPage() {
           </FormWrapper>
         </form>
       </BodyGlobal>
-    </Wrapper>
+    </Layout>
   );
 }

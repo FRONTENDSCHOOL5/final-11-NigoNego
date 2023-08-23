@@ -7,6 +7,7 @@ import { ButtonLong } from '../../components/common/button/Button';
 import Input from '../../components/common/Input/Input';
 import { Wrapper, FormWrapper } from '../LoginPage/LoginPage';
 import MainWrapperF from '../../styles/MainGlobal';
+import Layout from "../../styles/Layout";
 import UseFetchToken from '../../Hooks/UseFetchToken';
 
 const ButtonWrapper = styled.div`
@@ -110,8 +111,8 @@ function JoinPage() {
   }
 
   return (
+      <Layout>
     <MainWrapperF>
-      <Wrapper>
         <h1>회원가입 페이지</h1>
         <form onSubmit={handleSubmit}>
           <FormWrapper>
@@ -154,8 +155,8 @@ function JoinPage() {
             </ButtonWrapper>
           </FormWrapper>
         </form>
-      </Wrapper>
     </MainWrapperF>
+      </Layout>
   );
 }
 
