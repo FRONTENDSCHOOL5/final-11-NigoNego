@@ -7,16 +7,16 @@ import BodyGlobal from '../../../styles/BodyGlobal';
 import { ReactComponent as BtnVertical } from '../../../assets/image/BtnVertical.svg';
 import { ReactComponent as BtnGrid } from '../../../assets/image/BtnGrid.svg';
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import HomePostGrid from '../../../components/HomePost/HomePostGrid';
 import { useRecoilValue } from 'recoil';
-import accountNameAtom from '../../../atom/accountName';
+import atomMyData from '../../../atom/atomMyData';
 
 export default function MyProfilePage() {
-  const myAccount = useRecoilValue(accountNameAtom);
-
   const [isClickedList, setIsClickedList] = useState(true);
   const [isClickedGrid, setIsClickedGrid] = useState(false);
+  const myData = useRecoilValue(atomMyData);
+  const profileMyAccount = myData.data.user.accountname;
 
   const handleClickList = e => {
     e.preventDefault();
@@ -38,8 +38,8 @@ export default function MyProfilePage() {
     <>
       <HeaderBasicNav />
       <BodyGlobal>
-        <ProfileHeader accountname={myAccount} />
-        <Product accountname={myAccount} />
+        <ProfileHeader />
+        <Product profileMyAccount={profileMyAccount} />
 
         {/* <PostAlignChangeBut /> */}
         <ImgAlignNav>
@@ -61,8 +61,8 @@ export default function MyProfilePage() {
           </button>
         </ImgAlignNav>
 
-        {isClickedList && <MyHomePost accountname={myAccount} />}
-        {isClickedGrid && <HomePostGrid accountname={myAccount} />}
+        {isClickedList && <MyHomePost profileMyAccount={profileMyAccount} />}
+        {isClickedGrid && <HomePostGrid />}
       </BodyGlobal>
       <Navbar homeV={true} chatV={true} postV={true} profileV={false} />
     </>

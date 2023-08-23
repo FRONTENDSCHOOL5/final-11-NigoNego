@@ -15,10 +15,14 @@ import { ReactComponent as BtnVertical } from '../../../assets/image/BtnVertical
 import { ReactComponent as BtnGrid } from '../../../assets/image/BtnGrid.svg';
 import atomYourData from '../../../atom/atomYourData';
 import { useRecoilValue } from 'recoil';
+import accountNameAtom from '../../../atom/accountName';
+import atomYourAccount from '../../../atom/atomYourAccount';
 
 export default function YourProfilePage() {
-  const atomData = useRecoilValue(atomYourData);
-  const accountname = atomData.data.profile.accountname;
+  const yourData = useRecoilValue(atomYourAccount);
+  console.log(yourData);
+  const postYourAccount = yourData.data.profile.accountname;
+  console.log(postYourAccount);
 
   const [isClickedList, setIsClickedList] = useState(true);
   const [isClickedGrid, setIsClickedGrid] = useState(false);
@@ -43,8 +47,8 @@ export default function YourProfilePage() {
     <div>
       <HeaderBasicNav />
       <BodyGlobal>
-        <YourProfileHeader accountname={accountname} />
-        <YourProduct accountname={accountname} />
+        <YourProfileHeader />
+        <YourProduct />
 
         <ImgAlignNav>
           <button onClick={e => handleClickList(e)}>
@@ -65,8 +69,8 @@ export default function YourProfilePage() {
           </button>
         </ImgAlignNav>
 
-        {isClickedList && <YourHomePost accountname={accountname} />}
-        {isClickedGrid && <HomePostGrid accountname={accountname} />}
+        {isClickedList && <YourHomePost postYourAccount={postYourAccount} />}
+        {isClickedGrid && <HomePostGrid />}
       </BodyGlobal>
       <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
     </div>

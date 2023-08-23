@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import productImage from '../../assets/images/프사.png';
 
 const ProductListItem = styled.button`
   width: 100%;

@@ -33,9 +33,9 @@ const UseFetchToken = () => {
     }
   };
 
-  const getPostListLimit = async accountName => {
+  const getPostListLimit = async accountname => {
     try {
-      const response = await getDataBase.get(`/post/${accountName}/userpost`);
+      const response = await getDataBase.get(`/post/${accountname}/userpost`);
 
       return response;
     } catch (error) {
@@ -53,11 +53,9 @@ const UseFetchToken = () => {
     }
   };
 
-  const getProductListLimit = async (skip, accountname) => {
+  const getProductListLimit = async accountname => {
     try {
-      const response = await getDataBase.get(
-        `/product/${accountname}/?limit=5&skip=${skip}`,
-      );
+      const response = await getDataBase.get(`product/${accountname}`);
       return response;
     } catch (err) {
       console.error('product오류');

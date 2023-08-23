@@ -6,15 +6,33 @@ import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg'
 import Heart from '../common/Heart/Heart';
 import { useRecoilValue } from 'recoil';
 import accountNameAtom from '../../atom/accountName';
+import atomMyData from '../../atom/atomMyData';
+import atomYourData from '../../atom/atomYourData';
+import atomYourAccount from '../../atom/atomYourAccount';
 
-export default function MyHomePost({ accountname }) {
+export default function MyHomePost({ profileMyAccount, postYourAccount }) {
+  console.log(profileMyAccount);
+  console.log(postYourAccount);
   const { getPostListLimit } = UseFetchToken();
+  const atomYourData = useRecoilValue(atomYourAccount);
+  const myData = useRecoilValue(atomMyData);
+  console.log();
+  const myAccount = myData.data.user.accountname;
+  const yourAccount = atomYourData.data.profile.accountname;
+  const [account, setAccount] = useState();
   const [userData, setUserData] = useState([]);
   const postListRef = useRef(null);
-  const accountAtom = useRecoilValue(accountNameAtom);
-  const account = accountname ? accountname : accountAtom;
-
   const [clickedHeart, setClickedHeart] = useState(Boolean(true));
+
+  useEffect(() => {
+    console.log(postYourAccount);
+    console.log(yourAccount);
+    if (postYourAccount === yourAccount) {
+      setAccount(yourAccount);
+    } else {
+      setAccount(myAccount);
+    }
+  }, [profileMyAccount]);
 
   function handleClickedHeart(e) {
     e.preventDefault();
@@ -22,39 +40,16 @@ export default function MyHomePost({ accountname }) {
   }
 
   useEffect(() => {
-    fetchData(0); // 초기 데이터 로드
-  }, []);
+    fetchData();
+  }, [account]);
 
   const fetchData = () => {
     getPostListLimit(account)
       .then(response => {
-        setUserData(prevData => [...prevData, ...response.data.post]);
+        setUserData(response.data.post);
       })
       .catch(error => console.log('에러'));
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const container = postListRef.current;
-      if (container) {
-        const { scrollTop, clientHeight, scrollHeight } = container;
-        if (scrollTop + clientHeight >= scrollHeight) {
-          const skip = userData.length;
-          fetchData(skip);
-        }
-      }
-    };
-    const postList = postListRef.current;
-    if (postList) {
-      postList.addEventListener('scroll', handleScroll);
-    }
-
-    return () => {
-      if (postList) {
-        postList.removeEventListener('scroll', handleScroll);
-      }
-    };
-  }, [userData]);
 
   return (
     <MyHomePostwarpper ref={postListRef} className="myHomePost">

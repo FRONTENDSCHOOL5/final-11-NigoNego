@@ -1,34 +1,32 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useRecoilValue } from 'recoil';
-// import { useNavigate } from 'react-router-dom';
-import accountNameAtom from '../../atom/accountName';
 import styled from 'styled-components';
 import HomePost from '../../components/HomePost/HomePost';
 import Navbar from '../../components/common/Navbar/Navbar';
 import { HeaderBasicNav } from '../../components/common/Header/Header';
-import authAtom from '../../atom/authToken';
 import UseFetchToken from '../../Hooks/UseFetchToken';
+import atomMyData from '../../atom/atomMyData';
+import { useRecoilState } from 'recoil';
 
-function HomeFeed(props) {
-  const { GetHomeFeedData } = UseFetchToken();
-
-  const auth = useRecoilValue(authAtom);
-
-  const accountname = useRecoilValue(accountNameAtom);
+function HomeFeed() {
+  const { GetHomeFeedData, getProfileData } = UseFetchToken();
+  const [myData, setMyData] = useRecoilState(atomMyData);
   const [userData, setUserData] = useState([]);
+  console.log(myData);
+
   const postListRef = useRef(null);
 
   useEffect(() => {
     fetchData(0); // 초기 데이터 로드
   }, []);
 
-  const fetchData = skip => {
+  const fetchData = async skip => {
     GetHomeFeedData(5, skip)
       .then(response => {
         setUserData(prevData => [...prevData, ...response.data.posts]);
-        console.log(userData);
       })
       .catch(error => console.error(error));
+
+    getProfileData().then(res => setMyData(res));
   };
 
   useEffect(() => {

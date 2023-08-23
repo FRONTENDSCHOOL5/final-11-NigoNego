@@ -9,6 +9,7 @@ import { ReactComponent as HomeIconF } from '../../../assets/icons/icon-home-f.s
 import { ReactComponent as ChatIconF } from '../../../assets/icons/icon-message-circle-f.svg';
 import { ReactComponent as PostIconF } from '../../../assets/icons/icon-edit-f.svg';
 import { ReactComponent as ProfileIconF } from '../../../assets/icons/icon-user-fill-f.svg';
+import { useRecoilValue } from 'recoil';
 
 export default function Navbar({ homeV, chatV, postV, profileV }) {
   const navigate = useNavigate();
@@ -16,8 +17,6 @@ export default function Navbar({ homeV, chatV, postV, profileV }) {
   const [chatFill, setChatFill] = useState(true);
   const [postFill, setPostFill] = useState(true);
   const [profileFill, setProfileFill] = useState(true);
-
-  const user = 'nigonego';
 
   async function handleClick(e) {
     if (e.target.value == '/homefeed') {
@@ -31,9 +30,7 @@ export default function Navbar({ homeV, chatV, postV, profileV }) {
       navigate('/postupload');
     } else if (e.target.value == '/myprofile') {
       setProfileFill(false);
-      navigate('/myprofile', {
-        state: { user },
-      });
+      navigate('/myprofile');
     }
   }
 

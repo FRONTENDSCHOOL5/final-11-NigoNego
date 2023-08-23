@@ -29,15 +29,12 @@ const FollowNumberWrapper = styled.div`
 
 export default function ProfileUser({ myProfileData }) {
   const pathName = window.location.pathname;
-  console.log(myProfileData);
   const yourDatAtom = useRecoilValue(atomYourData);
-  console.log(yourDatAtom);
   const userName = yourDatAtom.data.profile.accountname;
   const yourData =
     pathName === '/myprofile'
       ? myProfileData.data.user
       : yourDatAtom.data.profile;
-  console.log(yourData);
   return (
     <ProfileUserWrapper>
       <Link

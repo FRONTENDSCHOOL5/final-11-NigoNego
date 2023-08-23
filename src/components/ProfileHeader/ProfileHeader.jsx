@@ -7,7 +7,7 @@ import { useRecoilValue } from 'recoil';
 import accountNameAtom from '../../atom/accountName';
 import UseFetchToken from '../../Hooks/UseFetchToken';
 
-export default function ProfileHeader({ myAccount }) {
+export default function ProfileHeader() {
   const { getProfileData } = UseFetchToken();
   const [myProfileData, setMyProfileData] = useState({});
 
@@ -25,7 +25,7 @@ export default function ProfileHeader({ myAccount }) {
   return (
     <ProfileHeaderWrapper>
       {Object.keys(myProfileData).length > 0 && (
-        <ProfileUser myProfileData={myProfileData} myAccount={myAccount} />
+        <ProfileUser myProfileData={myProfileData} />
       )}
       <MyProfileBtn />
     </ProfileHeaderWrapper>

@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { MImage } from '../UserImage/UserImage';
 import { useNavigate } from 'react-router-dom';
 import UseFetchToken from '../../../Hooks/UseFetchToken';
 import { useRecoilState } from 'recoil';
 import atomYourData from '../../../atom/atomYourData';
+import atomYourAccount from '../../../atom/atomYourAccount';
 
 export default function UserSearch({ data }) {
   const navigate = useNavigate();
   const { getUserFeed } = UseFetchToken();
   const [click, setClick] = useState(false);
-  const { yourAccount } = UseFetchToken();
   const [YourData, setYorData] = useRecoilState(atomYourData);
+  const [YourAccount, setYourAccount] = useRecoilState(atomYourAccount);
 
   useEffect(() => {
     if (click) {
@@ -23,6 +24,8 @@ export default function UserSearch({ data }) {
     getUserFeed(data.author.accountname).then(response => {
       setClick(true);
       setYorData(response);
+      setYourAccount(response);
+      console.log(response);
     });
   }
 
