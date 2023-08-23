@@ -13,11 +13,14 @@ import BodyGlobal from '../../../styles/BodyGlobal';
 
 import { ReactComponent as BtnVertical } from '../../../assets/image/BtnVertical.svg';
 import { ReactComponent as BtnGrid } from '../../../assets/image/BtnGrid.svg';
+import atomYourData from '../../../atom/atomYourData';
+import { useRecoilValue } from 'recoil';
+
 import Layout from "../../../styles/Layout";
 
 export default function YourProfilePage() {
-  const location = useLocation();
-  const accountname = location.state.accountname;
+  const atomData = useRecoilValue(atomYourData);
+  const accountname = atomData.data.profile.accountname;
 
   const [isClickedList, setIsClickedList] = useState(true);
   const [isClickedGrid, setIsClickedGrid] = useState(false);

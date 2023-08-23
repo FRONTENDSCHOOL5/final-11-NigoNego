@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import { MImage } from '../UserImage/UserImage';
 import { UserSection, UserName, UserId } from './UserSearch';
 import { ButtonShort, SBtn } from '../button/Button';
-import { GetFollowerData } from '../../../api/getData/getData';
 import { useLocation } from 'react-router-dom';
+import UseFetchToken from '../../../Hooks/UseFetchToken';
+import { useRecoilValue } from 'recoil';
+import atomYourAccount from '../../../atom/atomYourAccount';
+import accountNameAtom from '../../../atom/accountName';
 
 const StyledFollower = styled.section`
   width: 100%;
@@ -14,48 +17,32 @@ const StyledFollower = styled.section`
 `;
 
 export default function UserFollow() {
-  const location = useLocation();
-  const userGetData = location.state.value;
-  const accountname = location.state.myProfileData.accountname;
+  const { getFollowData } = UseFetchToken();
+  const myAccount = useRecoilValue(accountNameAtom);
+  const yourAccount = useRecoilValue(atomYourAccount);
 
+  const location = useLocation();
+  const follower = location.state.value;
+  const userName = location.state.yourData.accountname;
+  console.log(location);
   const [userData, setUserData] = useState([]);
   const postListRef = useRef(null);
-
+  const accountName = userName === myAccount ? myAccount : yourAccount;
   useEffect(() => {
-    fetchData(0); // 초기 데이터 로드
+    fetchData(); // 초기 데이터 로드
   }, []);
 
-  const fetchData = (skip = 5) => {
-    GetFollowerData(accountname, userGetData, skip)
+  const fetchData = async () => {
+    console.log(myAccount);
+    console.log(userName);
+
+    await getFollowData(accountName, follower)
       .then(response => {
         console.log(response);
-        setUserData(prevData => [...prevData, ...response.data]);
+        setUserData(response.data);
       })
       .catch(error => console.error(error));
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const container = postListRef.current;
-      if (container) {
-        const { scrollTop, clientHeight, scrollHeight } = container;
-        if (scrollTop + clientHeight >= scrollHeight) {
-          const skip = userData.length;
-          fetchData(skip);
-        }
-      }
-    };
-    const postList = postListRef.current;
-    if (postList) {
-      postList.addEventListener('scroll', handleScroll);
-    }
-
-    return () => {
-      if (postList) {
-        postList.removeEventListener('scroll', handleScroll);
-      }
-    };
-  }, [userData]);
 
   return (
     <>

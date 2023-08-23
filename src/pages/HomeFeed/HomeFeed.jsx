@@ -11,8 +11,6 @@ import UseFetchToken from '../../Hooks/UseFetchToken';
 import Layout from "../../styles/Layout";
 
 function HomeFeed(props) {
-  // const [postId, setPostId] = useState(null);
-  // const navigate = useNavigate();
   const { GetHomeFeedData } = UseFetchToken();
 
   const auth = useRecoilValue(authAtom);
@@ -28,6 +26,7 @@ function HomeFeed(props) {
   const fetchData = skip => {
     GetHomeFeedData(5, skip)
       .then(response => {
+        // console.log(response);
         setUserData(prevData => [...prevData, ...response.data.posts]);
       })
       .catch(error => console.error(error));

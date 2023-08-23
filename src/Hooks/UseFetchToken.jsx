@@ -32,6 +32,18 @@ const UseFetchToken = () => {
     }
   };
 
+  const yourAccount = async () => {
+    try {
+      const response = await getDataBase.get(
+        `/post/feed
+        `,
+      );
+      return response;
+    } catch (error) {
+      console.error('error가 떴음', error);
+    }
+  };
+
   const getPostListLimit = async accountName => {
     try {
       const response = await getDataBase.get(`/post/${accountName}/userpost`);
@@ -63,12 +75,36 @@ const UseFetchToken = () => {
     }
   };
 
+  const getFollowData = async (accountname, follower) => {
+    try {
+      const response = await getDataBase.get(
+        `/profile/${accountname}/${follower}`,
+      );
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getUserFeed = async accountname => {
+    try {
+      const response = await getDataBase(`/profile/${accountname}`);
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return {
     GetHomeFeedData,
     getPostListLimit,
     getProfileData,
     getProductListLimit,
+    getFollowData,
+    getUserFeed,
+    yourAccount,
     postJoin,
+
   };
 };
 

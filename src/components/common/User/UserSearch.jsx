@@ -2,6 +2,47 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { MImage } from '../UserImage/UserImage';
 import { useNavigate } from 'react-router-dom';
+import UseFetchToken from '../../../Hooks/UseFetchToken';
+import { useRecoilState } from 'recoil';
+import atomYourData from '../../../atom/atomYourData';
+
+export default function UserSearch({ data }) {
+  const navigate = useNavigate();
+  const { getUserFeed } = UseFetchToken();
+  const [click, setClick] = useState(false);
+  const { yourAccount } = UseFetchToken();
+  const [YourData, setYorData] = useRecoilState(atomYourData);
+
+  useEffect(() => {
+    if (click) {
+      navigate('/yourprofile');
+    }
+  }, [click]);
+
+  function moveToYourProfile(e) {
+    getUserFeed(data.author.accountname).then(response => {
+      setClick(true);
+      setYorData(response);
+    });
+  }
+
+  return (
+    // 클릭시 유저 프로필로 이동하는 기능 추가
+    <BtnWrapper onClick={moveToYourProfile}>
+      <StyledUser>
+        <ProfileImgWrapper>
+          <MImage backgroundUrl={data.author.image} />
+        </ProfileImgWrapper>
+        <UserSection>
+          <UserName>
+            <strong>{data.author.username}</strong>
+            <UserId>{data.author.accountname}</UserId>
+          </UserName>
+        </UserSection>
+      </StyledUser>
+    </BtnWrapper>
+  );
+}
 
 export const StyledUser = styled.div`
   height: 5rem;
@@ -45,44 +86,3 @@ const BtnWrapper = styled.button`
     pointer-events: none;
   }
 `;
-
-// GetFollowerData
-
-export default function UserSearch({ data }) {
-  const navigate = useNavigate();
-  const [accountname, setAccountName] = useState('');
-  const [yourProduct, setYourProduct] = useState('');
-  const [follower, setFollower] = useState('');
-  useEffect(() => {
-    if (accountname) {
-      navigate('/yourprofile', {
-        state: {
-          accountname: accountname,
-        },
-      });
-    }
-  }, [accountname]);
-
-  function moveToYourProfile() {
-    setAccountName(data.author.accountname);
-    setYourProduct(data.author);
-    setFollower(data.author);
-  }
-
-  return (
-    // 클릭시 유저 프로필로 이동하는 기능 추가
-    <BtnWrapper onClick={moveToYourProfile}>
-      <StyledUser>
-        <ProfileImgWrapper>
-          <MImage backgroundUrl={data.author.image} />
-        </ProfileImgWrapper>
-        <UserSection>
-          <UserName>
-            <strong>{data.author.username}</strong>
-            <UserId>{data.author.accountname}</UserId>
-          </UserName>
-        </UserSection>
-      </StyledUser>
-    </BtnWrapper>
-  );
-}

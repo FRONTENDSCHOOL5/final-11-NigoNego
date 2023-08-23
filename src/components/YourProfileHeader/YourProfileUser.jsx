@@ -1,10 +1,10 @@
 import React from 'react';
 import ProfileUser from '../ProfileHeader/ProfileUser';
 
-export default function YourProfileUser({ myProfileData }) {
+export default function YourProfileUser() {
   return (
     <div>
-      <ProfileUser myProfileData={myProfileData} />
+      <ProfileUser />
     </div>
   );
 }
