@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import HomePostGrid from '../../../components/HomePost/HomePostGrid';
 import { useRecoilValue } from 'recoil';
-import atomMyData from '../../../atom/atomMyData';
+import accountNameAtom from '../../../atom/accountName';
 
 export default function MyProfilePage() {
   const [isClickedList, setIsClickedList] = useState(true);
@@ -35,7 +35,7 @@ export default function MyProfilePage() {
   };
 
   return (
-    <>
+    <Layout>
       <HeaderBasicNav />
       <BodyGlobal>
         <ProfileHeader />
@@ -65,7 +65,7 @@ export default function MyProfilePage() {
         {isClickedGrid && <HomePostGrid />}
       </BodyGlobal>
       <Navbar homeV={true} chatV={true} postV={true} profileV={false} />
-    </>
+    </Layout>
   );
 }
 

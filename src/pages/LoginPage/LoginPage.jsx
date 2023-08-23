@@ -10,6 +10,7 @@ import accountNameAtom from '../../atom/accountName';
 import MainWrapperF from '../../styles/MainGlobal';
 import LoginApi from '../../api/getData/LoginApi';
 import { ButtonLong } from '../../components/common/button/Button';
+import Layout from "../../styles/Layout";
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -84,8 +85,8 @@ function LoginPage() {
   }
 
   return (
+      <Layout>
     <MainWrapperF>
-      <Wrapper>
         <h1>로그인</h1>
         <form onSubmit={onhandlesubmit}>
           <FormWrapper>
@@ -133,8 +134,8 @@ function LoginPage() {
         <LinkWrapper>
           <Link to="/join">이메일로 회원가입</Link>
         </LinkWrapper>
-      </Wrapper>
     </MainWrapperF>
+      </Layout>
   );
 }
 

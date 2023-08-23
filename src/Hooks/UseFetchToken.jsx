@@ -7,7 +7,21 @@ import createAxiosInstance from '../api/Api';
 
 const UseFetchToken = () => {
   const UserToken = useRecoilValue(authAtom);
+
   const { getDataBase, postDataBase } = createAxiosInstance(UserToken);
+
+
+  //회원가입 페이지 post 요청
+  const postJoin = async data => {
+    try {
+      const response = await instance.post('/user/emailvalid', data);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('로그인 에러', error);
+    }
+  };
+
 
   //팔로잉 게시글 목록
   const GetHomeFeedData = async (number, skip) => {
@@ -110,6 +124,7 @@ const UseFetchToken = () => {
     yourAccount,
     postHeart,
     deleteHeart,
+    postJoin,
   };
 };
 

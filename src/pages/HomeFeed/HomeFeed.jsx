@@ -6,6 +6,7 @@ import { HeaderBasicNav } from '../../components/common/Header/Header';
 import UseFetchToken from '../../Hooks/UseFetchToken';
 import atomMyData from '../../atom/atomMyData';
 import { useRecoilState } from 'recoil';
+import Layout from '../../styles/Layout';
 
 function HomeFeed() {
   const { GetHomeFeedData, getProfileData } = UseFetchToken();
@@ -52,7 +53,7 @@ function HomeFeed() {
     };
   }, [userData]);
   return (
-    <>
+    <Layout>
       <HeaderBasicNav />
       <MyHomePostwarpper ref={postListRef} className="myHomePost">
         {userData.length > 0 &&
@@ -65,7 +66,7 @@ function HomeFeed() {
           })}
       </MyHomePostwarpper>
       <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
-    </>
+    </Layout>
   );
 }
 

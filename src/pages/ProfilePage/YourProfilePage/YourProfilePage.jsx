@@ -18,6 +18,8 @@ import { useRecoilValue } from 'recoil';
 import accountNameAtom from '../../../atom/accountName';
 import atomYourAccount from '../../../atom/atomYourAccount';
 
+import Layout from "../../../styles/Layout";
+
 export default function YourProfilePage() {
   const yourData = useRecoilValue(atomYourAccount);
   console.log(yourData);
@@ -44,7 +46,7 @@ export default function YourProfilePage() {
   };
 
   return (
-    <div>
+    <Layout>
       <HeaderBasicNav />
       <BodyGlobal>
         <YourProfileHeader />
@@ -73,7 +75,7 @@ export default function YourProfilePage() {
         {isClickedGrid && <HomePostGrid />}
       </BodyGlobal>
       <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
-    </div>
+    </Layout>
   );
 }
 
