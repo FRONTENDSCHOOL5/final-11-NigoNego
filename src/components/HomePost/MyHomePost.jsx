@@ -73,7 +73,7 @@ export default function MyHomePost({ accountname }) {
                     <BtnComment width="24px" height="24px" stroke="#767676" />
                     <span>{data.commentCount}</span>
                   </button>
-                  <Heart />
+                  <Heart userData={data} />
                 </div>
               </div>
             </div>

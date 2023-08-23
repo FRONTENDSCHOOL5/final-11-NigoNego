@@ -26,8 +26,8 @@ function HomeFeed(props) {
   const fetchData = skip => {
     GetHomeFeedData(5, skip)
       .then(response => {
-        // console.log(response);
         setUserData(prevData => [...prevData, ...response.data.posts]);
+        console.log(userData);
       })
       .catch(error => console.error(error));
   };
