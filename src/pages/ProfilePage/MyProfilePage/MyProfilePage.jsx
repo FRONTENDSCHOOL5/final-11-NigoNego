@@ -11,6 +11,8 @@ import { useEffect, useState } from 'react';
 import HomePostGrid from '../../../components/HomePost/HomePostGrid';
 import { useRecoilValue } from 'recoil';
 import accountNameAtom from '../../../atom/accountName';
+import Layout from '../../../styles/Layout';
+import atomMyData from '../../../atom/atomMyData';
 
 export default function MyProfilePage() {
   const [isClickedList, setIsClickedList] = useState(true);
