@@ -8,6 +8,8 @@ import UseFetchToken from '../../../Hooks/UseFetchToken';
 import { useRecoilValue } from 'recoil';
 import atomYourAccount from '../../../atom/atomYourAccount';
 import accountNameAtom from '../../../atom/accountName';
+import atomMyData from '../../../atom/atomMyData';
+import atomYourData from '../../../atom/atomYourData';
 
 const StyledFollower = styled.section`
   width: 100%;
@@ -16,24 +18,39 @@ const StyledFollower = styled.section`
   align-items: center;
 `;
 
-export default function UserFollow() {
+export default function UserFollow({ followUserData }) {
+  console.log(followUserData.state.yourData.accountname);
   const { getFollowData } = UseFetchToken();
-  const myAccount = useRecoilValue(accountNameAtom);
-  const yourAccount = useRecoilValue(atomYourAccount);
-
+  const yourData = useRecoilValue(atomYourData);
+  const myData = useRecoilValue(atomMyData);
+  const follower = followUserData.state.value;
   const location = useLocation();
-  const follower = location.state.value;
   const userName = location.state.yourData.accountname;
-  console.log(location);
+  const myAccount = myData.data.user.accountname;
+  const yourAccount = yourData.data.profile.accountname;
+  const [accountName, setAccountName] = useState();
+  console.log(yourAccount);
+  console.log(userName);
+  console.log(myAccount);
   const [userData, setUserData] = useState([]);
+
+  useEffect(() => {
+    console.log(followUserData.state.yourData.accountname);
+    console.log(myAccount);
+    if (followUserData.state.yourData.accountname === myAccount) {
+      setAccountName(myAccount);
+      console.log(accountName);
+    } else {
+      setAccountName(yourAccount);
+    }
+  }, [followUserData]);
+
   const postListRef = useRef(null);
-  const accountName = userName === myAccount ? myAccount : yourAccount;
   useEffect(() => {
     fetchData(); // 초기 데이터 로드
-  }, []);
+  }, [accountName]);
 
   const fetchData = async () => {
-    console.log(myAccount);
     console.log(userName);
 
     await getFollowData(accountName, follower)

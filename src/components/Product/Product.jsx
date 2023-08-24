@@ -48,8 +48,8 @@ export default function Product({ profileMyAccount }) {
   const fetchData = () => {
     getProductListLimit(account)
       .then(response => {
-        console.log(account);
         setUserData(response.data.product);
+        console.log(response);
       })
       .catch(error => console.error(error));
   };
