@@ -1,14 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
-// import {
-//   StyledUser,
-//   ProfileImgWrapper,
-//   UserSection,
-//   UserName,
-//   UserChat,
-//   ChatDate,
-// } from './ChatUserListStyle';
 import { MImage } from '../common/UserImage/UserImage';
 import { useNavigate } from 'react-router-dom';
 
@@ -82,3 +73,4 @@ const Circle = styled.div`
   background-color: var(--basic-yellow);
   position: absolute;
 `;
+

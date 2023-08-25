@@ -1,7 +1,7 @@
 import React from 'react';
 import SVG from '../../assets/images/404 page.svg';
-import { Image, NotFoundText, NotFoundBtn } from './NotFoundStyle';
 import Layout from "../../styles/Layout";
+import styled from 'styled-components';
 
 export default function NotFound() {
   return (
@@ -12,3 +12,17 @@ export default function NotFound() {
     </Layout>
   );
 }
+
+const Image = styled.img`
+  margin-top: 30vh;
+`;
+
+const NotFoundText = styled.p`
+  font-size: 16px;
+`;
+const NotFoundBtn = styled.button`
+  border: none;
+  border-radius: 20px;
+  background-color: var(--basic-yellow);
+  padding: 10px 20px;
+`;
