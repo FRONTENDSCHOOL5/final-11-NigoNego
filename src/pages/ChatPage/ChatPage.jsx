@@ -6,12 +6,14 @@ import styled from 'styled-components';
 import BodyGlobal from './../../styles/BodyGlobal';
 import Layout from "../../styles/Layout";
 
+import {HeaderArrow} from "../../components/common/Header/Header";
+
 const CommonWrapper = styled.section``;
 
 function ChatPage() {
   return (
     <Layout>
-      <HeaderBasicNav />
+        <HeaderArrow content="Followers"/>
       <BodyGlobal>
         <CommonWrapper>
           <ChatUserList userId="dummyId" />

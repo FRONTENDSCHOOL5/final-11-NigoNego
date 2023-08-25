@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HeaderMainNav } from '../../components/common/Header/Header';
+import {HeaderBasic, HeaderMainNav} from '../../components/common/Header/Header';
 import Navbar from '../../components/common/Navbar/Navbar';
 import { ButtonMiddle } from '../../components/common/button/Button';
 import { ReactComponent as LogoColorImg } from '../../assets/image/LogoColorImg.svg';
@@ -10,7 +10,8 @@ import Layout from "../../styles/Layout";
 function HomePage() {
   return (
     <Layout>
-      <HeaderMainNav content={'니고네고 피드'} />
+        <HeaderBasic content="니고네고 피드" />
+      {/*<HeaderMainNav content={'니고네고 피드'} />*/}
       <HomeBlank />
       <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
     </Layout>

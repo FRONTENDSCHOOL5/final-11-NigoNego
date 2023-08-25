@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useRecoilValue } from 'recoil';
-// import { useNavigate } from 'react-router-dom';
 import accountNameAtom from '../../atom/accountName';
 import styled from 'styled-components';
 import HomePost from '../../components/HomePost/HomePost';
 import Navbar from '../../components/common/Navbar/Navbar';
-import { HeaderBasicNav } from '../../components/common/Header/Header';
 import authAtom from '../../atom/authToken';
 import UseFetchToken from '../../Hooks/UseFetchToken';
-import Layout from "../../styles/Layout";
+import Layout from '../../styles/Layout';
+
+import {HeaderBasic} from "../../components/common/Header/Header";
 
 function HomeFeed(props) {
   const { GetHomeFeedData } = UseFetchToken();
@@ -54,9 +54,11 @@ function HomeFeed(props) {
       }
     };
   }, [userData]);
+
   return (
     <Layout>
-      <HeaderBasicNav />
+      <HeaderBasic content="니고네고 피드" />
+      {/*<HeaderMainNav content="니고네고 피드" />*/}
       <MyHomePostwarpper ref={postListRef} className="myHomePost">
         {userData.length > 0 &&
           userData.map(data => {

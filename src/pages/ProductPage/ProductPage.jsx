@@ -8,7 +8,7 @@ import BodyGlobal from '../../styles/BodyGlobal';
 import authAtom from '../../atom/authToken';
 
 import FileUploadInput from '../../components/common/Input/FileUploadInput';
-import { HeaderUploadNav } from '../../components/common/Header/Header';
+import { HeaderArrow } from '../../components/common/Header/Header';
 import Layout from "../../styles/Layout";
 
 export default function ProductPage() {
@@ -83,7 +83,7 @@ export default function ProductPage() {
   return (
     <Layout>
       <form onSubmit={handleSubmit}>
-        <HeaderUploadNav content="업로드" isFormValid={isFormValid} />
+        <HeaderArrow content="업로드" isFormValid={isFormValid} />
 
         <ul>
           <li>

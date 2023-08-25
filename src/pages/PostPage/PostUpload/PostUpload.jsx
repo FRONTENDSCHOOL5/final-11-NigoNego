@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { HeaderBasicNav } from '../../../components/common/Header/Header';
+import { HeaderArrow } from '../../../components/common/Header/Header';
 import { SImage } from '../../../components/common/UserImage/UserImage';
 import buttonImg from '../../../assets/images/upload-file.svg';
 import axios from 'axios';
@@ -84,7 +84,7 @@ export default function PostUpload() {
   // console.log(userContent);
   return (
     <Layout>
-      <HeaderBasicNav disabled={!isFormValid}>업로드</HeaderBasicNav>
+      <HeaderArrow disabled={!isFormValid}>업로드</HeaderArrow>
       <form onSubmit={handleSubmit}>
         <BodyGlobal>
           <PostUploadWrapper>

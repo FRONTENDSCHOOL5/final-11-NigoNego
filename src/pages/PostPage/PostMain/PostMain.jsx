@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 // import Navbar from '../../../components/common/Navbar/Navbar';
 import styled from 'styled-components';
 import axios from 'axios';
-import { HeaderBasicNav } from '../../../components/common/Header/Header';
+import {HeaderArrow} from '../../../components/common/Header/Header';
 import HomePost from '../../../components/HomePost/HomePost';
 import CommentInput from '../../../components/common/Comment/CommentInput/Comment';
 import CommentPost from '../../../components/common/Comment/CommentPost/CommentPost';
@@ -71,7 +71,8 @@ function PostMain() {
         보통 이부분에서 로딩 컴포넌트를 만들어서 삼항연산자안에 postdata가 null일때 로딩컴포넌트를 보여주는 방식으로 함
          */}
       {console.log(postId)}
-      <HeaderBasicNav />
+      <HeaderArrow />
+      {/*<HeaderBasicNav />*/}
       <PostPageWrapper>
         <ContentSection>
           {postData !== null && <HomePost data={postData} />}

@@ -18,6 +18,8 @@ import { useRecoilValue } from 'recoil';
 
 import Layout from "../../../styles/Layout";
 
+import {HeaderArrow} from "../../../components/common/Header/Header";
+
 export default function YourProfilePage() {
   const atomData = useRecoilValue(atomYourData);
   const accountname = atomData.data.profile.accountname;
@@ -43,7 +45,8 @@ export default function YourProfilePage() {
 
   return (
     <Layout>
-      <HeaderBasicNav />
+      <HeaderArrow />
+      {/*<HeaderBasicNav />*/}
       <BodyGlobal>
         <YourProfileHeader accountname={accountname} />
         <YourProduct accountname={accountname} />

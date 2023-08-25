@@ -2,7 +2,7 @@ import MyHomePost from '../../../components/HomePost/MyHomePost';
 import Product from '../../../components/Product/Product';
 import ProfileHeader from '../../../components/ProfileHeader/ProfileHeader';
 import Navbar from '../../../components/common/Navbar/Navbar';
-import { HeaderBasicNav } from '../../../components/common/Header/Header';
+import {HeaderArrow, HeaderBasicNav} from '../../../components/common/Header/Header';
 import BodyGlobal from '../../../styles/BodyGlobal';
 import { ReactComponent as BtnVertical } from '../../../assets/image/BtnVertical.svg';
 import { ReactComponent as BtnGrid } from '../../../assets/image/BtnGrid.svg';
@@ -37,7 +37,8 @@ export default function MyProfilePage() {
 
   return (
     <Layout>
-      <HeaderBasicNav />
+      <HeaderArrow />
+      {/*<HeaderBasicNav />*/}
       <BodyGlobal>
         <ProfileHeader accountname={myAccount} />
         <Product accountname={myAccount} />

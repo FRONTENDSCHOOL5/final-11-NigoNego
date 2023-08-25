@@ -8,7 +8,7 @@ import {
   FormWrapper,
   ImageWrapper,
 } from './ProfileEditStyle';
-import { HeaderEditdNav } from '../../../components/common/Header/Header';
+import { HeaderArrow } from '../../../components/common/Header/Header';
 import Input from '../../../components/common/Input/Input';
 import { LImage } from '../../../components/common/UserImage/UserImage';
 import BodyGlobal from '../../../styles/BodyGlobal';
@@ -152,7 +152,7 @@ export default function ProfileEditPage() {
         저장
       </ButtonShort>
 
-      <HeaderEditdNav
+      <HeaderArrow
         content="저장"
         isFormValid={isFormValid}
         handleSave={handleSubmit}
