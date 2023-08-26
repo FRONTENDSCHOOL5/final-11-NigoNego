@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { NavbarWrapper } from './NavbarStyle';
+
+import styled from 'styled-components';
 import { ReactComponent as HomeIcon } from '../../../assets/icons/icon-home-fill.svg';
 import { ReactComponent as ChatIcon } from '../../../assets/icons/icon-message-circle.svg';
 import { ReactComponent as PostIcon } from '../../../assets/icons/icon-edit.svg';
@@ -67,3 +68,33 @@ export default function Navbar({ homeV, chatV, postV, profileV }) {
     </NavbarWrapper>
   );
 }
+
+const NavbarWrapper = styled.nav`
+  border-top: 1px solid var(--basic-border-color);
+  color: var(--basic-grey);
+  position: fixed;
+  bottom: 0px;
+  background-color: #fff;
+  width: 100%;
+
+  ul {
+    display: flex;
+    justify-content: center;
+  }
+
+  li {
+    width: calc(100% / 4);
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      font-size: 1.4rem;
+      flex-direction: column;
+      align-items: center;
+      * {
+        pointer-events: none;
+      }
+    }
+  }
+`;
