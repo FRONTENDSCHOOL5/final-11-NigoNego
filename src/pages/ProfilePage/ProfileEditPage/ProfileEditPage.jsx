@@ -2,12 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useRecoilValue } from 'recoil';
-import {
-  Wrapper,
-  HeadingWrapper,
-  FormWrapper,
-  ImageWrapper,
-} from './ProfileEditStyle';
+
+import styled from 'styled-components';
 import { HeaderEditdNav } from '../../../components/common/Header/Header';
 import Input from '../../../components/common/Input/Input';
 import { LImage } from '../../../components/common/UserImage/UserImage';
@@ -209,3 +205,37 @@ export default function ProfileEditPage() {
     </Layout>
   );
 }
+
+
+const Wrapper = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+const HeadingWrapper = styled.div`
+  text-align: center;
+`;
+
+const ImageWrapper = styled.div`
+  margin-top: 1.875rem;
+  justify-content: center;
+  width: 112px;
+  margin: auto;
+  position: relative;
+`;
+
+const FormWrapper = styled.div`
+  margin-top: 1.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  label {
+    color: var(--basic-grey);
+    font-weight: bold;
+  }
+`;
+const BtnWrapper = styled.div`
+  margin-top: 10px;
+`;
