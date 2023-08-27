@@ -4,13 +4,12 @@ import axios from 'axios';
 import FileUploadInput from '../../components/common/Input/FileUploadInput';
 
 import Input from '../../components/common/Input/Input';
-import { LBtn, LdisabledBtn } from '../../components/common/button/Button';
+import { ButtonLong } from '../../components/common/button/Button';
 import { LImage } from '../../components/common/UserImage/UserImage';
 import MainWrapperF from '../../styles/MainGlobal';
-
 import JoinMemberAPI from '../../api/JoinMemberAPI';
 import styled from 'styled-components';
-import Layout from "../../styles/Layout";
+import UseFetchToken from '../../Hooks/UseFetchToken';
 
 export default function JoinMember() {
   const [userName, setUserName] = useState('');
@@ -22,6 +21,7 @@ export default function JoinMember() {
   const [errorMessageID, setErrorMessageID] = useState('');
   const [userImage, setUserImage] = useState('');
   const location = useLocation();
+  const { postJoinMemberValid, postJoinImage } = UseFetchToken();
 
   const [userInfo, setUserInfo] = useState({
     user: {
@@ -61,29 +61,23 @@ export default function JoinMember() {
     }
   };
 
+  //validation
   const handleIdValid = async () => {
     const testID = /^[a-zA-Z0-9]+$/.test(userID);
 
     if (testID) {
-      try {
-        const res = await axios.post(
-          'https://api.mandarin.weniv.co.kr/user/accountnamevalid',
-          {
-            user: {
-              accountname: userID,
-            },
-          },
-        );
-        if (res.data.message === '이미 가입된 계정ID 입니다.') {
-          setIsUserIDValid(false);
-          setErrorMessageID('이미 사용 중인 ID 입니다.');
-          console.log(res.data);
-        } else {
-          setIsUserIDValid(true);
-          console.log(res);
-        }
-      } catch (error) {
-        console.log(error);
+      const res = await postJoinMemberValid({
+        user: {
+          accountname: userID,
+        },
+      });
+      if (res.data.message === '이미 가입된 계정ID 입니다.') {
+        setIsUserIDValid(false);
+        setErrorMessageID('이미 사용 중인 ID 입니다.');
+        console.log(res.data);
+      } else {
+        setIsUserIDValid(true);
+        console.log(res);
       }
     } else {
       setIsUserIDValid(false);
@@ -91,37 +85,36 @@ export default function JoinMember() {
     }
   };
 
-  const handleImageUpload = e => {
-    e.preventDefault();
-
+  const handleImageUpload = async e => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append('image', file);
 
-    axios({
-      method: 'POST',
-      url: 'https://api.mandarin.weniv.co.kr/image/uploadfile',
-      data: formData,
-    }).then(result => {
-      const imageUrl = `https://api.mandarin.weniv.co.kr/${result.data.filename}`;
+    await postJoinImage(formData).then(res => {
+      const imageUrl = `https://api.mandarin.weniv.co.kr/${res.data.filename}`;
       setUserImage(imageUrl);
     });
   };
 
-  const handleSubmit = async e => {
+  const idValidHandler = event => {
+    event.preventDefault();
+    handleIdValid();
+  };
+
+  const handleSubmit = e => {
     e.preventDefault();
 
     if (isUserNameValid && isUserIDValid) {
       setIsFormValid(true);
-      const res = await JoinMemberAPI();
+      JoinMemberAPI(userInfo);
     } else {
       setIsFormValid(false);
     }
   };
 
   return (
-      <Layout>
     <MainWrapperF>
+      <Wrapper>
         <HeadingWrapper>
           <h1>프로필 설정</h1>
           <p>나중에 언제든지 변경할 수 있습니다.</p>
@@ -157,7 +150,7 @@ export default function JoinMember() {
               placeholder="영문, 숫자 특수문자만 사용가능"
               value={userInfo.user.userID}
               onChange={handleUserIDChange}
-              onBlur={handleIdValid}
+              onBlur={idValidHandler}
               errorMessage={errorMessageID}
             />
             <Input
@@ -169,18 +162,26 @@ export default function JoinMember() {
               onChange={handleUserIntro}
               placeholder="자신과 판매할 상품에 대해 소개"
             />
-
-            {/* <BtnWrapper>
+            <BtnWrapper>
+              {/* 버튼수정 필요함 */}
               {isFormValid ? (
-                <LBtn content="감귤마켓 시작하기" />
+                <ButtonLong
+                  type="submit"
+                  children="니고네고 시작하기"
+                  disabled={false}
+                />
               ) : (
-                <LdisabledBtn content="감귤마켓 시작하기" />
+                <ButtonLong
+                  type="submit"
+                  children="니고네고 시작하기"
+                  disabled={true}
+                />
               )}
-            </BtnWrapper> */}
+            </BtnWrapper>
           </FormWrapper>
         </form>
+      </Wrapper>
     </MainWrapperF>
-      </Layout>
   );
 }
 
