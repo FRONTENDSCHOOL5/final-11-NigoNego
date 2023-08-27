@@ -8,6 +8,11 @@ const createAxiosInstance = token => {
     headers: { 'Content-Type': 'application/json' },
   });
 
+  const imageInstance = axios.create({
+    baseURL: baseUrl,
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
+
   const getDataBase = axios.create({
     baseURL: baseUrl,
     headers: {
@@ -27,6 +32,7 @@ const createAxiosInstance = token => {
   return {
     getDataBase,
     instance,
+    imageInstance,
     postDataBase,
   };
 };
