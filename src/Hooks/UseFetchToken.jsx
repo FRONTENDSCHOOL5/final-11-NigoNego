@@ -8,8 +8,8 @@ import createAxiosInstance from '../api/Api';
 const UseFetchToken = () => {
   const UserToken = useRecoilValue(authAtom);
 
-  const { getDataBase, postDataBase } = createAxiosInstance(UserToken);
-
+  const { instance, getDataBase, postDataBase, imageInstance } =
+    createAxiosInstance(UserToken);
 
   //회원가입 페이지 post 요청
   const postJoin = async data => {
@@ -22,6 +22,27 @@ const UseFetchToken = () => {
     }
   };
 
+  // 프로필 설정 페이지 api 요청
+  const postJoinMemberValid = async data => {
+    try {
+      const response = await instance.post('/user/accountnamevalid', data);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('로그인 에러', error);
+    }
+  };
+
+  // 프로필 설정 페이지 프로필 이미지 api 요청
+  const postJoinImage = async data => {
+    try {
+      const response = await imageInstance.post('/image/uploadfile', data);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('이미지 업로드 에러', error);
+    }
+  };
 
   //팔로잉 게시글 목록
   const GetHomeFeedData = async (number, skip) => {
@@ -127,6 +148,8 @@ const UseFetchToken = () => {
     postHeart,
     deleteHeart,
     postJoin,
+    postJoinMemberValid,
+    postJoinImage,
   };
 };
 
