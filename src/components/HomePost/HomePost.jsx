@@ -5,12 +5,12 @@ import UserSearch from '../common/User/UserSearch';
 import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
 import Heart from '../common/Heart/Heart';
 import { useRecoilState } from 'recoil';
-import atomId from '../../atom/atomId';
+import accountNameAtom from '../../atom/accountName';
 
 export default function HomePost({ data }) {
   const navigate = useNavigate();
   const postListRef = useRef(null);
-  const [userId, setUserId] = useRecoilState(atomId);
+  const [userId, setUserId] = useRecoilState(accountNameAtom);
 
   const postMainHandler = e => {
     navigate('/postmain', {

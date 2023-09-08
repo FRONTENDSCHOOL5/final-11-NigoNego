@@ -7,7 +7,6 @@ import Input from '../../components/common/Input/Input';
 import { ButtonLong } from '../../components/common/button/Button';
 import { LImage } from '../../components/common/UserImage/UserImage';
 import MainWrapperF from '../../styles/MainGlobal';
-import JoinMemberAPI from '../../api/JoinMemberAPI';
 import styled from 'styled-components';
 import UseFetchToken from '../../Hooks/UseFetchToken';
 
@@ -21,7 +20,8 @@ export default function JoinMember() {
   const [errorMessageID, setErrorMessageID] = useState('');
   const [userImage, setUserImage] = useState('');
   const location = useLocation();
-  const { postJoinMemberValid, postJoinImage } = UseFetchToken();
+  const { postJoinMemberValid, postJoinImage, postJoinMember } =
+    UseFetchToken();
 
   const [userInfo, setUserInfo] = useState({
     user: {
@@ -36,21 +36,22 @@ export default function JoinMember() {
 
   const navigate = useNavigate();
 
+  //이미지 업로드
+  const handleImageUpload = async e => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('image', file);
+
+    await postJoinImage(formData).then(res => {
+      const imageUrl = `https://api.mandarin.weniv.co.kr/${res.data.filename}`;
+      setUserImage(imageUrl);
+    });
+  };
+
+  //사용자 이름 validation
   const handleUserNameChange = e => {
-    setUserName(e.target.value);
-  };
-
-  const handleUserIDChange = e => {
-    const newUserID = e.target.value;
-    setUserID(newUserID);
-    setIsUserIDValid(false); // ID 변경 시에 isUserIDValid 상태를 초기화합니다.
-    if (/^[a-zA-Z0-9]+$/.test(newUserID)) {
-      setErrorMessageID(''); // 유효한 ID인 경우 오류 메시지를 초기화합니다.
-    }
-  };
-
-  const handleUserIntro = e => {
-    setUserIntro(e.target.value);
+    const newUserName = e.target.value;
+    setUserName(newUserName);
   };
 
   const handleNameValid = () => {
@@ -61,7 +62,18 @@ export default function JoinMember() {
     }
   };
 
-  //validation
+  const handleUserIDChange = e => {
+    const newUserID = e.target.value;
+    setUserID(newUserID);
+    console.log(newUserID);
+    console.log(userInfo.user.accountname);
+    setIsUserIDValid(false); // ID 변경 시에 isUserIDValid 상태를 초기화합니다.
+    if (/^[a-zA-Z0-9]+$/.test(newUserID)) {
+      setErrorMessageID(''); // 유효한 ID인 경우 오류 메시지를 초기화합니다.
+    }
+  };
+
+  //accountname validation
   const handleIdValid = async () => {
     const testID = /^[a-zA-Z0-9]+$/.test(userID);
 
@@ -85,31 +97,39 @@ export default function JoinMember() {
     }
   };
 
-  const handleImageUpload = async e => {
-    const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append('image', file);
-
-    await postJoinImage(formData).then(res => {
-      const imageUrl = `https://api.mandarin.weniv.co.kr/${res.data.filename}`;
-      setUserImage(imageUrl);
-    });
-  };
-
   const idValidHandler = event => {
     event.preventDefault();
     handleIdValid();
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleUserIntro = e => {
+    setUserIntro(e.target.value);
+  };
 
+  // 여기에 userdata 에 value 값을 저장하는 로직이 있어야하지 않나...?
+  // => post joinMember
+  const handleSubmit = () => {
+    setUserInfo(prevUserInfo => ({
+      ...prevUserInfo,
+      user: {
+        username: userName,
+        accountname: userID,
+        intro: userIntro,
+        image: userImage,
+      },
+    }));
+    console.log(userInfo);
     if (isUserNameValid && isUserIDValid) {
       setIsFormValid(true);
-      JoinMemberAPI(userInfo);
+      postJoinMember(userInfo);
     } else {
       setIsFormValid(false);
     }
+  };
+
+  const submitHandler = e => {
+    e.preventDefault();
+    handleSubmit();
   };
 
   return (
@@ -130,7 +150,7 @@ export default function JoinMember() {
           />
         </FileUploadWrapper>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={submitHandler}>
           <FormWrapper>
             <Input
               label="사용자이름"
@@ -138,7 +158,7 @@ export default function JoinMember() {
               id="user-name"
               name="user-name"
               placeholder="2~10자 이내"
-              value={userInfo.user.userName}
+              value={userInfo.user.username}
               onChange={handleUserNameChange}
               onBlur={handleNameValid}
             />

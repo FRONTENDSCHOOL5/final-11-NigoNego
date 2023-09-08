@@ -1,7 +1,4 @@
-import React from 'react';
-import axios from 'axios';
 import authAtom from '../atom/authToken';
-import URL from '../api/URL';
 import { useRecoilValue } from 'recoil';
 import createAxiosInstance from '../api/Api';
 
@@ -41,6 +38,21 @@ const UseFetchToken = () => {
       return response;
     } catch (error) {
       console.error('이미지 업로드 에러', error);
+    }
+  };
+  //회원가입창
+  const postJoinMember = async userInfo => {
+    const { username, email, password, accountname, intro, image } = {
+      ...userInfo,
+    };
+    console.log(userInfo);
+    try {
+      const response = await instance.post(`/user`, userInfo);
+      console.log('회원가입성공:', response.data);
+      console.log(userInfo.username);
+      return response;
+    } catch (error) {
+      console.error('API 요청 실패:', error);
     }
   };
 
@@ -150,6 +162,7 @@ const UseFetchToken = () => {
     postJoin,
     postJoinMemberValid,
     postJoinImage,
+    postJoinMember,
   };
 };
 

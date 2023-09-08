@@ -2,7 +2,15 @@ import React from 'react';
 import { URL } from '../URL';
 import axios from 'axios';
 
-const LoginApi = async (email, password, setAuth,setAccountname,FollowingData,setIsCorrect,setLoginErrMessage) => {
+const LoginApi = async (
+  email,
+  password,
+  setAuth,
+  setAccountname,
+  FollowingData,
+  setIsCorrect,
+  setLoginErrMessage,
+) => {
   try {
     const res = await axios.post(
       `${URL}/user/login`,

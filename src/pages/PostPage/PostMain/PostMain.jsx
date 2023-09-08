@@ -10,7 +10,7 @@ import { useLocation } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { GetCommentData } from '../../../api/getData/getData';
 import authAtom from '../../../atom/authToken';
-import Layout from "../../../styles/Layout";
+import Layout from '../../../styles/Layout';
 
 function PostMain() {
   const auth = useRecoilValue(authAtom);
@@ -36,7 +36,7 @@ function PostMain() {
       console.log('post 데이터 전송 실패');
       console.log(error);
     }
-  });
+  }, []);
 
   const getComment = useCallback(async () => {
     GetCommentData(postId).then(response => {

@@ -8,14 +8,10 @@ import Navbar from '../../components/common/Navbar/Navbar';
 import { HeaderBasicNav } from '../../components/common/Header/Header';
 import authAtom from '../../atom/authToken';
 import UseFetchToken from '../../Hooks/UseFetchToken';
-import Layout from "../../styles/Layout";
+import Layout from '../../styles/Layout';
 
 function HomeFeed(props) {
   const { GetHomeFeedData } = UseFetchToken();
-
-  const auth = useRecoilValue(authAtom);
-
-  const accountname = useRecoilValue(accountNameAtom);
   const [userData, setUserData] = useState([]);
   const postListRef = useRef(null);
 
@@ -62,7 +58,7 @@ function HomeFeed(props) {
           userData.map(data => {
             return (
               <>
-                <HomePost data={data} />
+                <HomePost data={data} key={data.index} />
               </>
             );
           })}
