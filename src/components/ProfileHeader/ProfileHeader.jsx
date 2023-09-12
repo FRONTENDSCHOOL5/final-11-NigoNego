@@ -13,7 +13,6 @@ export default function ProfileHeader({ userData, myData }) {
 
   const userProfile = myData ? myData : userData;
 
-  console.log(userProfile);
   useEffect(() => {
     getProfileData().then(response => {
       setMyProfileData(response);

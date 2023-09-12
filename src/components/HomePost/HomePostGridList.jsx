@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import HomePostGridListItem from './HomePostGridListItem';
 export default function HomePostGridList({ userPostData }) {
-  console.log(userPostData);
   return (
     <GridWrapp>
       {userPostData.map((item, index) => {

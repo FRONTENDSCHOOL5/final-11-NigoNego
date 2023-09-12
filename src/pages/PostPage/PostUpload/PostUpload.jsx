@@ -75,9 +75,6 @@ export default function PostUpload() {
     }
   };
 
-  // 재랜더링 확인
-  // console.log(userImage);
-  // console.log(userContent);
   return (
     <Layout>
       <HeaderBasicNav disabled={!isFormValid}>업로드</HeaderBasicNav>

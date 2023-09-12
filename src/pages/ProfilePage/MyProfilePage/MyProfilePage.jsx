@@ -18,12 +18,9 @@ export default function MyProfilePage() {
 
   // Navbar.jsx 에 navigate state
   const location = useLocation();
-  console.log(location.state.userData.user.accountname);
-
   const accountName = location.state.userData.user.accountname;
 
   const userData = location.state.userData.user;
-  console.log(userData);
   const handleClickList = e => {
     e.preventDefault();
     if (!isClickedList) {

@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import UseFetchToken from '../../../Hooks/UseFetchToken';
 
 export default function UserSearch({ data }) {
-  console.log(data.author.username);
   const navigate = useNavigate();
   const { getUserFeed } = UseFetchToken();
   const [click, setClick] = useState(false);
@@ -21,7 +20,6 @@ export default function UserSearch({ data }) {
 
   function moveToYourProfile(e) {
     getUserFeed(data.author.accountname).then(res => {
-      console.log(res);
       setClick(true);
       setUserData(res);
     });

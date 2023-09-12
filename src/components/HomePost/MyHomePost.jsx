@@ -8,7 +8,6 @@ import Heart from '../common/Heart/Heart';
 export default function MyHomePost({ accountName }) {
   const { getPostListLimit } = UseFetchToken();
   const [userData, setUserData] = useState([]);
-  console.log(accountName);
   const postListRef = useRef(null);
 
   const [clickedHeart, setClickedHeart] = useState(Boolean(true));
@@ -26,8 +25,6 @@ export default function MyHomePost({ accountName }) {
     getPostListLimit(accountName)
       .then(res => {
         setUserData(prevData => [...prevData, ...res.data.post]);
-        console.log(res);
-        console.log(accountName);
       })
       .catch(error => console.log('에러'));
   };
