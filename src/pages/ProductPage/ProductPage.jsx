@@ -9,7 +9,7 @@ import authAtom from '../../atom/authToken';
 
 import FileUploadInput from '../../components/common/Input/FileUploadInput';
 import { HeaderUploadNav } from '../../components/common/Header/Header';
-import Layout from "../../styles/Layout";
+import Layout from '../../styles/Layout';
 
 export default function ProductPage() {
   const user = 'nigonego';
@@ -69,7 +69,6 @@ export default function ProductPage() {
           },
         },
       }).then(response => {
-        console.log(response);
         console.log('POST 요청 완료');
         navigate('/myprofile', {
           state: { user },

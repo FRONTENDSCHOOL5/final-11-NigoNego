@@ -4,15 +4,12 @@ import UseFetchToken from '../../Hooks/UseFetchToken';
 import UserSearch from '../common/User/UserSearch';
 import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
 import Heart from '../common/Heart/Heart';
-import { useRecoilValue } from 'recoil';
-import accountNameAtom from '../../atom/accountName';
 
-export default function MyHomePost({ accountname }) {
+export default function MyHomePost({ accountName }) {
   const { getPostListLimit } = UseFetchToken();
   const [userData, setUserData] = useState([]);
   const postListRef = useRef(null);
-  const accountAtom = useRecoilValue(accountNameAtom);
-  const account = accountname ? accountname : accountAtom;
+  console.log(accountName);
 
   const [clickedHeart, setClickedHeart] = useState(Boolean(true));
 
@@ -26,9 +23,11 @@ export default function MyHomePost({ accountname }) {
   }, []);
 
   const fetchData = () => {
-    getPostListLimit(account)
-      .then(response => {
-        setUserData(prevData => [...prevData, ...response.data.post]);
+    getPostListLimit(accountName)
+      .then(res => {
+        setUserData(prevData => [...prevData, ...res.data.post]);
+        console.log(res);
+        // console.log(accountName);
       })
       .catch(error => console.log('에러'));
   };

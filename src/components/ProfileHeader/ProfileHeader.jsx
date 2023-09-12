@@ -12,8 +12,6 @@ export default function ProfileHeader({ myAccount }) {
   const [myProfileData, setMyProfileData] = useState({});
 
   const accountAtom = useRecoilValue(accountNameAtom);
-  console.log(accountAtom);
-
   useEffect(() => {
     getProfileData().then(response => {
       setMyProfileData(response);
