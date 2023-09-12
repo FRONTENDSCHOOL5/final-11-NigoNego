@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import atomYourData from '../../atom/atomYourData';
-import atomId from '../../atom/atomId';
 import accountNameAtom from '../../atom/accountName';
 
 const ProfileUserWrapper = styled.div`
@@ -60,31 +57,6 @@ export default function ProfileUser({ userProfile }) {
         </h3>
         <small>followings</small>
       </FollowNumberWrapper>
-
-      {/* <Link
-        to={'/myfollowers'}
-        state={{ value: 'follower', yourData: yourData }}
-      >
-        <FollowNumberWrapper>
-          <h3>{yourData.followerCount}</h3>
-          <small>followers</small>
-        </FollowNumberWrapper>
-      </Link>
-      <div>
-        <img src={yourData.image} alt="프로필사진" />
-        <h2>{yourData.username}</h2>
-        <small>{yourData.accountname}</small>
-        <p>{yourData.intro}</p>
-      </div>
-      <Link
-        to={`/myfollowers`}
-        state={{ value: 'following', yourData: yourData }}
-      >
-        <FollowNumberWrapper>
-          <h3>{yourData.followingCount}</h3>
-          <small>followings</small>
-        </FollowNumberWrapper>
-      </Link> */}
     </ProfileUserWrapper>
   );
 }
