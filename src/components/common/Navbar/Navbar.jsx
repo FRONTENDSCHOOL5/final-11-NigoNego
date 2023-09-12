@@ -18,7 +18,7 @@ export default function Navbar({ homeV, chatV, postV, profileV }) {
   const [postFill, setPostFill] = useState(true);
   const [profileFill, setProfileFill] = useState(true);
   const { getProfileData } = UseFetchToken();
-  const [user, setUser] = useState();
+  const [userData, setUserData] = useState();
 
   async function handleClick(e) {
     if (e.target.value == '/homefeed') {
@@ -31,11 +31,11 @@ export default function Navbar({ homeV, chatV, postV, profileV }) {
       setPostFill(false);
       navigate('/postupload');
     } else if (e.target.value == '/myprofile') {
-      getProfileData().then(res => setUser(res.data.user.accountname));
-      if (user) {
+      getProfileData().then(res => setUserData(res.data));
+      if (userData) {
         setProfileFill(false);
         navigate('/myprofile', {
-          state: { user },
+          state: { userData },
         });
       }
     }

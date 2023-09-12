@@ -7,11 +7,13 @@ import { useRecoilValue } from 'recoil';
 import accountNameAtom from '../../atom/accountName';
 import UseFetchToken from '../../Hooks/UseFetchToken';
 
-export default function ProfileHeader({ myAccount }) {
+export default function ProfileHeader({ userData, myData }) {
   const { getProfileData } = UseFetchToken();
   const [myProfileData, setMyProfileData] = useState({});
 
-  const accountAtom = useRecoilValue(accountNameAtom);
+  const userProfile = myData ? myData : userData;
+
+  console.log(userProfile);
   useEffect(() => {
     getProfileData().then(response => {
       setMyProfileData(response);
@@ -23,7 +25,7 @@ export default function ProfileHeader({ myAccount }) {
   return (
     <ProfileHeaderWrapper>
       {Object.keys(myProfileData).length > 0 && (
-        <ProfileUser myProfileData={myProfileData} myAccount={myAccount} />
+        <ProfileUser userProfile={userProfile} />
       )}
       <MyProfileBtn />
     </ProfileHeaderWrapper>

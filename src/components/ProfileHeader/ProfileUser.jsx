@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import atomYourData from '../../atom/atomYourData';
+import atomId from '../../atom/atomId';
+import accountNameAtom from '../../atom/accountName';
 
 const ProfileUserWrapper = styled.div`
   /* box-shadow: inset 0 0 10px blue; */
@@ -27,16 +29,39 @@ const FollowNumberWrapper = styled.div`
   padding: 20px 12px;
 `;
 
-export default function ProfileUser({ myProfileData }) {
-  const pathName = window.location.pathname;
-  const yourDatAtom = useRecoilValue(atomYourData);
-  const yourData =
-    pathName === '/myprofile'
-      ? myProfileData.data.user
-      : yourDatAtom.data.profile;
+export default function ProfileUser({ userProfile }) {
+  const [click, setClick] = useState();
+  const accountAtom = useRecoilValue(accountNameAtom);
+  console.log(userProfile);
+  console.log(accountAtom);
+  const myData = userProfile.hasOwnProperty('author') ? userProfile : null;
+
   return (
     <ProfileUserWrapper>
-      <Link
+      <FollowNumberWrapper>
+        <h3>
+          {myData
+            ? userProfile.author.followerCount
+            : userProfile.followerCount}
+        </h3>
+        <small>followers</small>
+      </FollowNumberWrapper>
+      <div>
+        <img src={userProfile.image} alt="프로필사진" />
+        <h2>{myData ? userProfile.author.username : userProfile.username}</h2>
+        <small>{userProfile.accountname}</small>
+        <p>{myData ? userProfile.author.intro : userProfile.intro}</p>
+      </div>
+      <FollowNumberWrapper>
+        <h3>
+          {myData
+            ? userProfile.author.followingCount
+            : userProfile.followingCount}
+        </h3>
+        <small>followings</small>
+      </FollowNumberWrapper>
+
+      {/* <Link
         to={'/myfollowers'}
         state={{ value: 'follower', yourData: yourData }}
       >
@@ -59,7 +84,7 @@ export default function ProfileUser({ myProfileData }) {
           <h3>{yourData.followingCount}</h3>
           <small>followings</small>
         </FollowNumberWrapper>
-      </Link>
+      </Link> */}
     </ProfileUserWrapper>
   );
 }

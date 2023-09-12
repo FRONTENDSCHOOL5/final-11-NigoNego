@@ -17,7 +17,6 @@ export default function Heart({ userData }) {
 
   useEffect(() => {
     if (like) {
-      console.log('like');
       postHeart(userData.id).then(res =>
         setLikeCount(res.data.post.heartCount),
       );
@@ -30,7 +29,6 @@ export default function Heart({ userData }) {
     }
   }, [like]);
 
-  console.log(likeCount);
   return (
     <button type="button" className="btn" onClick={HeartCount}>
       <BtnHeartF

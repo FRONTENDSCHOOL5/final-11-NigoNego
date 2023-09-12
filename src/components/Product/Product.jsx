@@ -25,7 +25,6 @@ const ProductWrapper = styled.div`
 `;
 
 export default function Product({ accountName }) {
-  console.log(accountName);
   const { getProductListLimit } = UseFetchToken();
   const [userData, setUserData] = useState([]);
   const productListRef = useRef(null);
