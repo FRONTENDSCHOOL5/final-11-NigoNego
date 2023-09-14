@@ -7,9 +7,6 @@ import UseFetchToken from '../../Hooks/UseFetchToken';
 const ProfileHeaderWrapper = styled.div``;
 
 export default function ProfileHeader({ accountname }) {
-  console.log(accountname);
-
-  useEffect(() => {}, []);
 
   return (
     <ProfileHeaderWrapper>
