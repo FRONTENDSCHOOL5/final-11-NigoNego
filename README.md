@@ -5,7 +5,7 @@
 ![니고네고 목업](https://github.com/FRONTENDSCHOOL5/final-11-NigoNego/assets/48938203/8ee86093-1257-416d-b628-1c3e8ed73367)
 
 ```
-🏠 배포 URL: (추후 배포)
+🏠 배포 URL: https://nigonego.netlify.app/
 🔐 Test ID/PW: nigonego@test.com / 123123
 ```
 
