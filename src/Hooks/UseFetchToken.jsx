@@ -135,12 +135,29 @@ const UseFetchToken = () => {
   const postJoinImage = async data => {
     try {
       const response = await imageInstance.post('/image/uploadfile', data);
-      console.log(response);
       return response;
     } catch (error) {
       console.error('이미지 업로드 에러', error);
     }
   };
+
+  const postProductUpload = async (itemName, price, link, itemImage) => {
+    try {
+      const response = await postDataBase.post('/product', {
+        data: {
+          product: {
+            itemName: itemName,
+            price: Number(price), //1원 이상
+            link: link,
+            itemImage: `${itemImage}`,
+          },
+        },
+      });
+      return response;
+    } catch(error) {
+      console.log(error);
+    }
+  }
 
   return {
     GetHomeFeedData,
@@ -155,6 +172,7 @@ const UseFetchToken = () => {
     postJoin,
     postPostUpload,
     postJoinImage,
+    postProductUpload,
   };
 };
 

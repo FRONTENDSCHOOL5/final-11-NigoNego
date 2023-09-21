@@ -22,11 +22,10 @@ export default function ProductPage() {
   const [itemImage, setItemImage] = useState('');
 
   const auth = useRecoilValue(authAtom);
-  const { postJoinImage } = useFetchToken();
+  const { postJoinImage, postProductUpload } = useFetchToken();
 
   const [isFormValid, setIsFormValid] = useState(false);
   // const [isBtnActive, setIsBtnActive] = useState(Boolean(false));
-  console.log(isFormValid);
 
   useEffect(() => {
     if (itemName && price && link && itemImage) {
@@ -48,34 +47,10 @@ export default function ProductPage() {
   };
   function handleSubmit(e) {
     e.preventDefault();
-    // 게시글 작성 api 호출
-    try {
-      axios({
-        method: 'POST',
-        url: `https://api.mandarin.weniv.co.kr/product`,
-        headers: {
-          Authorization: `Bearer ${auth}`,
-          'Content-type': 'application/json',
-        },
 
-        data: {
-          product: {
-            itemName: itemName,
-            price: Number(price), //1원 이상
-            link: link,
-            itemImage: `${itemImage}`,
-          },
-        },
-      }).then(response => {
-        console.log(response);
-        console.log('POST 요청 완료');
-        navigate('/myprofile', {
-          state: { user },
-        });
-      });
-    } catch (err) {
-      console.log(err);
-    }
+    postProductUpload(itemName, price, link, itemImage).then(response => {
+      navigate('/myprofile');
+    });
   }
 
   return (
