@@ -24,7 +24,7 @@ export default function PostUpload() {
   const [userContent, setUserContent] = useState('');
 
   const auth = useRecoilValue(authAtom);
-  const { postJoinImage } = useFetchToken();
+  const { postPostUpload, postJoinImage } = useFetchToken();
 
   useEffect(() => {
     if (content && image) {
@@ -46,30 +46,9 @@ export default function PostUpload() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // 게시글 작성 api 호출
-    try {
-      axios({
-        method: 'POST',
-        url: `https://api.mandarin.weniv.co.kr/post`,
-        headers: {
-          Authorization: `Bearer ${auth}`,
-          'Content-type': 'application/json',
-        },
-        data: {
-          post: {
-            content: content,
-            image: `${image}`,
-          },
-        },
-      }).then(response => {
-        navigate('/myprofile', {
-          state: { user },
-        });
-        console.log(response);
-      });
-    } catch (err) {
-      console.log(err);
-    }
+    postPostUpload(content, image).then(response => {
+      navigate('/myprofile');
+    });
   };
 
   return (

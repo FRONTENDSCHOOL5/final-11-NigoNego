@@ -116,6 +116,21 @@ const UseFetchToken = () => {
     }
   };
 
+  const postPostUpload = async (content, image) => {
+    try {
+      const response = await postDataBase.post('/post', {
+        data: {
+          post: {
+            content: content,
+            image: image,
+          },
+        },
+      });
+      return response;
+    } catch(error) {
+      console.log(error);
+    }
+  }
 
   const postJoinImage = async data => {
     try {
@@ -138,6 +153,7 @@ const UseFetchToken = () => {
     postHeart,
     deleteHeart,
     postJoin,
+    postPostUpload,
     postJoinImage,
   };
 };
