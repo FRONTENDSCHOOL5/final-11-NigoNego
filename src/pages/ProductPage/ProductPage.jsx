@@ -11,6 +11,7 @@ import FileUploadInput from '../../components/common/Input/FileUploadInput';
 import { HeaderUploadNav } from '../../components/common/Header/Header';
 import Layout from "../../styles/Layout";
 
+import useFetchToken from "../../Hooks/UseFetchToken";
 export default function ProductPage() {
   const user = 'nigonego';
   const navigate = useNavigate();
@@ -21,6 +22,8 @@ export default function ProductPage() {
   const [itemImage, setItemImage] = useState('');
 
   const auth = useRecoilValue(authAtom);
+  const { postJoinImage } = useFetchToken();
+
   const [isFormValid, setIsFormValid] = useState(false);
   // const [isBtnActive, setIsBtnActive] = useState(Boolean(false));
   console.log(isFormValid);
@@ -38,15 +41,10 @@ export default function ProductPage() {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append('image', file);
-    axios({
-      method: 'POST',
-      url: 'https://api.mandarin.weniv.co.kr/image/uploadfile',
-      data: formData,
-    }).then(result => {
-      console.log('요청성공');
-      console.log(result);
-      setItemImage(`https://api.mandarin.weniv.co.kr/${result.data.filename}`);
-    });
+
+    postJoinImage(formData).then(response => {
+      setItemImage(`https://api.mandarin.weniv.co.kr/${response.data.filename}`);
+    })
   };
   function handleSubmit(e) {
     e.preventDefault();
