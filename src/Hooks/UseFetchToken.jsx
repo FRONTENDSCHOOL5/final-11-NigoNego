@@ -8,7 +8,7 @@ import createAxiosInstance from '../api/Api';
 const UseFetchToken = () => {
   const UserToken = useRecoilValue(authAtom);
 
-  const { getDataBase, postDataBase } = createAxiosInstance(UserToken);
+  const { getDataBase, postDataBase, instance, imageInstance } = createAxiosInstance(UserToken);
 
 
   //회원가입 페이지 post 요청
@@ -116,6 +116,17 @@ const UseFetchToken = () => {
     }
   };
 
+
+  const postJoinImage = async data => {
+    try {
+      const response = await imageInstance.post('/image/uploadfile', data);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('이미지 업로드 에러', error);
+    }
+  };
+
   return {
     GetHomeFeedData,
     getPostListLimit,
@@ -127,6 +138,7 @@ const UseFetchToken = () => {
     postHeart,
     deleteHeart,
     postJoin,
+    postJoinImage,
   };
 };
 
