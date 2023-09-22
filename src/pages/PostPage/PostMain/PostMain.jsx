@@ -10,7 +10,7 @@ import { useLocation } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { GetCommentData } from '../../../api/getData/getData';
 import authAtom from '../../../atom/authToken';
-import Layout from "../../../styles/Layout";
+import Layout from '../../../styles/Layout';
 
 function PostMain() {
   const auth = useRecoilValue(authAtom);
@@ -30,7 +30,6 @@ function PostMain() {
           'Content-Type': 'application/json',
         },
       });
-      console.log(res);
       setPostData(res.data.post);
     } catch (error) {
       console.log('post 데이터 전송 실패');

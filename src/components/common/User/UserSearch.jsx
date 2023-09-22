@@ -3,26 +3,25 @@ import styled from 'styled-components';
 import { MImage } from '../UserImage/UserImage';
 import { useNavigate } from 'react-router-dom';
 import UseFetchToken from '../../../Hooks/UseFetchToken';
-import { useRecoilState } from 'recoil';
-import atomYourData from '../../../atom/atomYourData';
 
 export default function UserSearch({ data }) {
   const navigate = useNavigate();
   const { getUserFeed } = UseFetchToken();
   const [click, setClick] = useState(false);
-  const { yourAccount } = UseFetchToken();
-  const [YourData, setYorData] = useRecoilState(atomYourData);
+  const [userData, setUserData] = useState();
 
   useEffect(() => {
     if (click) {
-      navigate('/yourprofile');
+      navigate('/yourprofile', {
+        state: { data },
+      });
     }
   }, [click]);
 
   function moveToYourProfile(e) {
-    getUserFeed(data.author.accountname).then(response => {
+    getUserFeed(data.author.accountname).then(res => {
       setClick(true);
-      setYorData(response);
+      setUserData(res);
     });
   }
 

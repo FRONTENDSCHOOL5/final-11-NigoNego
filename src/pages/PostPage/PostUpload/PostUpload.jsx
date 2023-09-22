@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 import { useRecoilValue } from 'recoil';
 import BodyGlobal from '../../../styles/BodyGlobal';
 import authAtom from '../../../atom/authToken';
-import Layout from "../../../styles/Layout";
+import Layout from '../../../styles/Layout';
 import FileUploadInput from '../../../components/common/Input/FileUploadInput';
 
 export default function PostUpload() {
@@ -27,7 +27,6 @@ export default function PostUpload() {
 
   useEffect(() => {
     if (image) {
-      console.log(11111111);
       setIsFormValid(true);
     }
   }, [image]);
@@ -70,18 +69,12 @@ export default function PostUpload() {
         navigate('/myprofile', {
           state: { user },
         });
-        console.log(response);
       });
     } catch (err) {
       console.log(err);
     }
   };
-  console.log(userImage);
-  console.log(userContent);
 
-  // 재랜더링 확인
-  // console.log(userImage);
-  // console.log(userContent);
   return (
     <Layout>
       <HeaderBasicNav disabled={!isFormValid}>업로드</HeaderBasicNav>
