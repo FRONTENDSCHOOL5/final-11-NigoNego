@@ -60,39 +60,25 @@ function LoginPage() {
   async function onhandlesubmit(event) {
     event.preventDefault();
     await submitHandler();
-    followValid();
   }
   //submit 버튼 끝//
 
-  const newData = { user: { email: email, password: password } };
-
   //postLogin 요청 시작//
   const submitHandler = async () => {
-    console.log(newData);
-
-    await postLogin(newData).then(res => {
+    const res = await postLogin({ user: { email: email, password: password } });
+    if (res.data.user) {
       const { token, accountname } = res.data.user;
+      console.log(res.data.user.email);
       setAuth(token);
       setAccountname(accountname);
-    });
-  };
-  //postLogin 요청 끝//
-
-  //getUserInfo API요청 시작//
-  //Follower 데이터가 없으면 home으로 있으면 homefeed로 가는 로직
-  const followValid = async () => {
-    console.log(auth);
-    const res = await getUserInfo();
-    const { following } = res.data.user;
-    setFollowing(following);
-
-    if (Object.keys(following).length === 0) {
-      navigate('/home');
-    } else {
+      console.log(auth);
       navigate('/homefeed');
+    } else if (res.data.status === 422) {
+      setIsCorrect(false);
+      setLoginErrMessage('*이메일 또는 비밀번호가 일치하지 않습니다.');
     }
   };
-  //getUserInfo API요청 끝//
+  //postLogin 요청 끝//
 
   return (
     <Layout>
