@@ -14,7 +14,7 @@ export default function JoinMember() {
   const [userName, setUserName] = useState('');
   const [userID, setUserID] = useState('');
   const [isFormValid, setIsFormValid] = useState(true);
-  const [userIntro, setUserIntro] = useState(false);
+  const [userIntro, setUserIntro] = useState('');
   const [isUserNameValid, setIsUserNameValid] = useState(false);
   const [isUserIDValid, setIsUserIDValid] = useState(false);
   const [errorMessageID, setErrorMessageID] = useState('');
@@ -26,8 +26,8 @@ export default function JoinMember() {
   const [userInfo, setUserInfo] = useState({
     user: {
       username: '',
-      email: location.state?.email, // 사용자 이메일 값
-      password: location.state?.password, // 사용자 패스워드 값
+      email: location.state?.email || '', // 사용자 이메일 값
+      password: location.state?.password || '', // 사용자 패스워드 값
       accountname: '',
       intro: '', // 사용자 소개 값
       image: '', // 사용자 이미지 값}
@@ -51,6 +51,7 @@ export default function JoinMember() {
   //사용자 이름 validation
   const handleUserNameChange = e => {
     const newUserName = e.target.value;
+    console.log(newUserName);
     setUserName(newUserName);
   };
 
@@ -103,25 +104,26 @@ export default function JoinMember() {
   };
 
   const handleUserIntro = e => {
-    setUserIntro(e.target.value);
+    const newIntro = e.target.value;
+    setUserIntro(newIntro);
   };
 
   // 여기에 userdata 에 value 값을 저장하는 로직이 있어야하지 않나...?
   // => post joinMember
-  const handleSubmit = () => {
-    setUserInfo(prevUserInfo => ({
-      ...prevUserInfo,
+  const handleSubmit = async () => {
+    const updateUserInfo = {
+      ...userInfo,
       user: {
+        ...userInfo.user,
         username: userName,
         accountname: userID,
         intro: userIntro,
         image: userImage,
       },
-    }));
-    console.log(userInfo);
+    };
     if (isUserNameValid && isUserIDValid) {
       setIsFormValid(true);
-      postJoinMember(userInfo);
+      await postJoinMember(updateUserInfo);
     } else {
       setIsFormValid(false);
     }
@@ -130,6 +132,7 @@ export default function JoinMember() {
   const submitHandler = e => {
     e.preventDefault();
     handleSubmit();
+    navigate('/login');
   };
 
   return (
@@ -158,7 +161,7 @@ export default function JoinMember() {
               id="user-name"
               name="user-name"
               placeholder="2~10자 이내"
-              value={userInfo.user.username}
+              value={userName}
               onChange={handleUserNameChange}
               onBlur={handleNameValid}
             />
@@ -168,7 +171,7 @@ export default function JoinMember() {
               id="user-ID"
               name="user-ID"
               placeholder="영문, 숫자 특수문자만 사용가능"
-              value={userInfo.user.userID}
+              value={userID}
               onChange={handleUserIDChange}
               onBlur={idValidHandler}
               errorMessage={errorMessageID}
@@ -178,7 +181,7 @@ export default function JoinMember() {
               type="text"
               id="user-intro"
               name="user-intro"
-              value={userInfo.user.userIntro}
+              value={userIntro}
               onChange={handleUserIntro}
               placeholder="자신과 판매할 상품에 대해 소개"
             />
