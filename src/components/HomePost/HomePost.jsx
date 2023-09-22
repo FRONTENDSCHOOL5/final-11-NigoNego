@@ -13,6 +13,7 @@ export default function HomePost({ data }) {
   const [userId, setUserId] = useRecoilState(atomId);
 
   const postMainHandler = e => {
+    // 여기에 댓글 API 넣기
     navigate('/postmain', {
       state: {
         id: data.id,

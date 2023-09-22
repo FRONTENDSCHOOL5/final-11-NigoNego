@@ -5,7 +5,7 @@ import Navbar from '../../components/common/Navbar/Navbar';
 import { ButtonMiddle } from '../../components/common/button/Button';
 import { ReactComponent as LogoColorImg } from '../../assets/image/LogoColorImg.svg';
 import { useNavigate } from 'react-router-dom';
-import Layout from "../../styles/Layout";
+import Layout from '../../styles/Layout';
 
 function HomePage() {
   return (
@@ -28,7 +28,6 @@ function HomeBlank() {
       <LogoColorImg width="160px" height="160px" />
       <p>유저를 검색해 팔로우 해보세요.</p>
 
-      {/* <ButtonMiddle h="44" content="검색" onClick={handleButtonClick} /> */}
       <ButtonMiddle onClick={handleButtonClick}>검색</ButtonMiddle>
     </ContentWrapper>
   );
@@ -41,15 +40,6 @@ const ContentWrapper = styled.div`
   align-items: center;
   gap: 10px;
   margin-top: 4.8rem;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  img {
-    height: 100px;
-    width: 100px;
-  }
 `;
 
 export default HomePage;

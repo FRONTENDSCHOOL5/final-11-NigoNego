@@ -21,6 +21,7 @@ export default function MyProfilePage() {
   const accountName = location.state.userData.user.accountname;
 
   const userData = location.state.userData.user;
+  console.log(location);
   const handleClickList = e => {
     e.preventDefault();
     if (!isClickedList) {

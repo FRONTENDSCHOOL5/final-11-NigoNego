@@ -113,6 +113,17 @@ const UseFetchToken = () => {
     }
   };
 
+  const getFeedData = async (num, skip) => {
+    try {
+      const response = await getDataBase.get(
+        `/post/feed/?limit=${num}&skip=${skip}`,
+      );
+      return response.data.posts;
+    } catch (error) {
+      console.error('getFeed에러', error);
+    }
+  };
+
   return {
     GetHomeFeedData,
     getPostListLimit,
@@ -124,6 +135,7 @@ const UseFetchToken = () => {
     postHeart,
     deleteHeart,
     postJoin,
+    getFeedData,
   };
 };
 

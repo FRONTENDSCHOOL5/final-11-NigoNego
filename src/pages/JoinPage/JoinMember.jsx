@@ -34,8 +34,6 @@ export default function JoinMember() {
     },
   });
 
-  const navigate = useNavigate();
-
   const handleUserNameChange = e => {
     setUserName(e.target.value);
   };
