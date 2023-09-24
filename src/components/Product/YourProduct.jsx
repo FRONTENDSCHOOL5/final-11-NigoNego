@@ -16,6 +16,6 @@ const ProductWrapper = styled.div`
   }
 `;
 
-export default function YourProduct({ accountname }) {
-  return <Product accountname={accountname} />;
+export default function YourProduct({ accountName }) {
+  return <Product accountName={accountName} />;
 }

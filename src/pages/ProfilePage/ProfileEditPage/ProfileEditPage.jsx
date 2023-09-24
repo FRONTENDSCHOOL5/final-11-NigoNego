@@ -15,7 +15,7 @@ import BodyGlobal from '../../../styles/BodyGlobal';
 import { ButtonShort } from '../../../components/common/button/Button';
 import authAtom from '../../../atom/authToken';
 import FileUploadInput from '../../../components/common/Input/FileUploadInput';
-import Layout from "../../../styles/Layout";
+import Layout from '../../../styles/Layout';
 
 export default function ProfileEditPage() {
   const [userName, setUserName] = useState('');
@@ -72,10 +72,8 @@ export default function ProfileEditPage() {
           // setIsFormValid(false);
 
           setErrorMessageID('이미 사용 중인 ID 입니다.');
-          console.log(res.data);
         } else {
           setIsUserIDValid(true);
-          console.log(res);
           setIsFormValid(true);
         }
       } catch (error) {
@@ -108,7 +106,6 @@ export default function ProfileEditPage() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log('dd');
     if (isUserNameValid && isUserIDValid) {
       setIsFormValid(true);
       // 다음 단계로 진행하는 로직 추가

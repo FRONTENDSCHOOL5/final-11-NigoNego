@@ -9,8 +9,9 @@ import authAtom from '../../atom/authToken';
 
 import FileUploadInput from '../../components/common/Input/FileUploadInput';
 import { HeaderUploadNav } from '../../components/common/Header/Header';
-import Layout from "../../styles/Layout";
+import Layout from '../../styles/Layout';
 
+import useFetchToken from "../../Hooks/UseFetchToken";
 export default function ProductPage() {
   const user = 'nigonego';
   const navigate = useNavigate();
@@ -21,9 +22,10 @@ export default function ProductPage() {
   const [itemImage, setItemImage] = useState('');
 
   const auth = useRecoilValue(authAtom);
+  const { postJoinImage, postProductUpload } = useFetchToken();
+
   const [isFormValid, setIsFormValid] = useState(false);
   // const [isBtnActive, setIsBtnActive] = useState(Boolean(false));
-  console.log(isFormValid);
 
   useEffect(() => {
     if (itemName && price && link && itemImage) {
@@ -38,46 +40,18 @@ export default function ProductPage() {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append('image', file);
-    axios({
-      method: 'POST',
-      url: 'https://api.mandarin.weniv.co.kr/image/uploadfile',
-      data: formData,
-    }).then(result => {
-      console.log('요청성공');
-      console.log(result);
-      setItemImage(`https://api.mandarin.weniv.co.kr/${result.data.filename}`);
-    });
+
+    postJoinImage(formData).then(response => {
+      setItemImage(`https://api.mandarin.weniv.co.kr/${response.data.filename}`);
+    })
   };
   function handleSubmit(e) {
     e.preventDefault();
-    // 게시글 작성 api 호출
-    try {
-      axios({
-        method: 'POST',
-        url: `https://api.mandarin.weniv.co.kr/product`,
-        headers: {
-          Authorization: `Bearer ${auth}`,
-          'Content-type': 'application/json',
-        },
 
-        data: {
-          product: {
-            itemName: itemName,
-            price: Number(price), //1원 이상
-            link: link,
-            itemImage: `${itemImage}`,
-          },
-        },
-      }).then(response => {
-        console.log(response);
-        console.log('POST 요청 완료');
-        navigate('/myprofile', {
-          state: { user },
-        });
-      });
-    } catch (err) {
-      console.log(err);
-    }
+    postProductUpload(itemName, price, link, itemImage).then(response => {
+      navigate('/myprofile');
+    });
+
   }
 
   return (

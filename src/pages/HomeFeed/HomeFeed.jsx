@@ -24,7 +24,6 @@ function HomeFeed(props) {
     GetHomeFeedData(5, skip)
       .then(response => {
         setUserData(prevData => [...prevData, ...response.data.posts]);
-        console.log(userData);
       })
       .catch(error => console.error(error));
   };

@@ -34,7 +34,6 @@ const UseFetchToken = () => {
   const postJoin = async data => {
     try {
       const response = await instance.post('/user/emailvalid', data);
-      console.log(response);
       return response;
     } catch (error) {
       console.error('회원가입 에러', error);
@@ -93,8 +92,7 @@ const UseFetchToken = () => {
   const yourAccount = async () => {
     try {
       const response = await getDataBase.get(
-        `/post/feed
-        `,
+        '/post/feed',
       );
       return response;
     } catch (error) {
@@ -105,7 +103,6 @@ const UseFetchToken = () => {
   const getPostListLimit = async accountName => {
     try {
       const response = await getDataBase.get(`/post/${accountName}/userpost`);
-
       return response;
     } catch (error) {
       console.error('post오류');
@@ -171,6 +168,67 @@ const UseFetchToken = () => {
     }
   };
 
+  const postPostUpload = async (content, image) => {
+    try {
+      const response = await postDataBase.post('/post', {
+        data: {
+          post: {
+            content: content,
+            image: image,
+          },
+        },
+      });
+      return response;
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
+  const postJoinImage = async data => {
+    try {
+      const response = await imageInstance.post('/image/uploadfile', data);
+      return response;
+    } catch (error) {
+      console.error('이미지 업로드 에러', error);
+    }
+  };
+
+  const postProductUpload = async (itemName, price, link, itemImage) => {
+    try {
+      const response = await postDataBase.post('/product', {
+        data: {
+          product: {
+            itemName: itemName,
+            price: Number(price), //1원 이상
+            link: link,
+            itemImage: `${itemImage}`,
+          },
+        },
+      });
+      return response;
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
+  const getUserData = async (postId) => {
+    try {
+      const response = await getDataBase.get(`/post/${postId}`);
+      return response;
+    } catch (error) {
+      console.error('좋아요에러', error);
+    }
+  };
+
+  const getCommentData = async (postId) => {
+    try {
+      const response = await getDataBase.get(`/post/${postId}/comments`)
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return {
     GetHomeFeedData,
     getPostListLimit,
@@ -187,6 +245,11 @@ const UseFetchToken = () => {
     postJoinMember,
     postLogin,
     getUserInfo,
+    postPostUpload,
+    postJoinImage,
+    postProductUpload,
+    getUserData,
+    getCommentData,
   };
 };
 

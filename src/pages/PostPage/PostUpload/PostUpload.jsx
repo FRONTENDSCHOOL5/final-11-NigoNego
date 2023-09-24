@@ -8,9 +8,9 @@ import { useNavigate } from 'react-router';
 import { useRecoilValue } from 'recoil';
 import BodyGlobal from '../../../styles/BodyGlobal';
 import authAtom from '../../../atom/authToken';
-import Layout from "../../../styles/Layout";
+import Layout from '../../../styles/Layout';
 import FileUploadInput from '../../../components/common/Input/FileUploadInput';
-
+import useFetchToken from "../../../Hooks/UseFetchToken";
 export default function PostUpload() {
   const navigate = useNavigate();
   const user = 'nigonego';
@@ -24,13 +24,14 @@ export default function PostUpload() {
   const [userContent, setUserContent] = useState('');
 
   const auth = useRecoilValue(authAtom);
+  const { postPostUpload, postJoinImage } = useFetchToken();
 
   useEffect(() => {
-    if (image) {
-      console.log(11111111);
+    if (content && image) {
+
       setIsFormValid(true);
     }
-  }, [image]);
+  }, [content, image]);
 
   const handleImageUpload = e => {
     e.preventDefault();
@@ -39,49 +40,20 @@ export default function PostUpload() {
     const formData = new FormData();
     formData.append('image', file);
 
-    axios({
-      method: 'POST',
-      url: 'https://api.mandarin.weniv.co.kr/image/uploadfile',
-      data: formData,
-    }).then(result => {
-      console.log('요청성공');
-      setImage(`https://api.mandarin.weniv.co.kr/${result.data.filename}`);
+    postJoinImage(formData).then(response => {
+      setImage(`https://api.mandarin.weniv.co.kr/${response.data.filename}`);
     });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    // 게시글 작성 api 호출
-    try {
-      axios({
-        method: 'POST',
-        url: `https://api.mandarin.weniv.co.kr/post`,
-        headers: {
-          Authorization: `Bearer ${auth}`,
-          'Content-type': 'application/json',
-        },
-        data: {
-          post: {
-            content: content,
-            image: `${image}`,
-          },
-        },
-      }).then(response => {
-        navigate('/myprofile', {
-          state: { user },
-        });
-        console.log(response);
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  console.log(userImage);
-  console.log(userContent);
 
-  // 재랜더링 확인
-  // console.log(userImage);
-  // console.log(userContent);
+    postPostUpload(content, image).then(response => {
+      navigate('/myprofile');
+    });
+
+  };
+
   return (
     <Layout>
       <HeaderBasicNav disabled={!isFormValid}>업로드</HeaderBasicNav>

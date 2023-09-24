@@ -29,11 +29,17 @@ const createAxiosInstance = token => {
     },
   });
 
+  const imageInstance = axios.create({
+    baseURL: baseUrl,
+    headers: {'Content-Type': 'multipart/form-data'},
+  });
+
   return {
     getDataBase,
     instance,
     imageInstance,
     postDataBase,
+    imageInstance,
   };
 };
 
