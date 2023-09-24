@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const NavbarWrapper = styled.nav`
   border-top: 1px solid var(--basic-border-color);
   color: var(--basic-grey);
-  position: fixed;
+  position: absolute;
   bottom: 0px;
   background-color: #fff;
   width: 100%;

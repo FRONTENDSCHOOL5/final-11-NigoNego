@@ -8,9 +8,8 @@ import createAxiosInstance from '../api/Api';
 const UseFetchToken = () => {
   const UserToken = useRecoilValue(authAtom);
 
-  const { getDataBase, postDataBase, instance } =
-    createAxiosInstance(UserToken);
-
+  const { getDataBase, postDataBase, instance, imageInstance } = createAxiosInstance(UserToken);
+  
   //회원가입 페이지 post 요청
   const postJoin = async data => {
     try {
@@ -113,6 +112,49 @@ const UseFetchToken = () => {
     }
   };
 
+  const postPostUpload = async (content, image) => {
+    try {
+      const response = await postDataBase.post('/post', {
+        data: {
+          post: {
+            content: content,
+            image: image,
+          },
+        },
+      });
+      return response;
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
+  const postJoinImage = async data => {
+    try {
+      const response = await imageInstance.post('/image/uploadfile', data);
+      return response;
+    } catch (error) {
+      console.error('이미지 업로드 에러', error);
+    }
+  };
+
+  const postProductUpload = async (itemName, price, link, itemImage) => {
+    try {
+      const response = await postDataBase.post('/product', {
+        data: {
+          product: {
+            itemName: itemName,
+            price: Number(price), //1원 이상
+            link: link,
+            itemImage: `${itemImage}`,
+          },
+        },
+      });
+      return response;
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
   return {
     GetHomeFeedData,
     getPostListLimit,
@@ -124,6 +166,9 @@ const UseFetchToken = () => {
     postHeart,
     deleteHeart,
     postJoin,
+    postPostUpload,
+    postJoinImage,
+    postProductUpload,
   };
 };
 
