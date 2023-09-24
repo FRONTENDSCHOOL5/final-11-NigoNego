@@ -35,8 +35,7 @@ const UseFetchToken = () => {
   const yourAccount = async () => {
     try {
       const response = await getDataBase.get(
-        `/post/feed
-        `,
+        '/post/feed',
       );
       return response;
     } catch (error) {
@@ -155,6 +154,24 @@ const UseFetchToken = () => {
     }
   }
 
+  const getUserData = async (postId) => {
+    try {
+      const response = await getDataBase.get(`/post/${postId}`);
+      return response;
+    } catch (error) {
+      console.error('좋아요에러', error);
+    }
+  };
+
+  const getCommentData = async (postId) => {
+    try {
+      const response = await getDataBase.get(`/post/${postId}/comments`)
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return {
     GetHomeFeedData,
     getPostListLimit,
@@ -169,6 +186,8 @@ const UseFetchToken = () => {
     postPostUpload,
     postJoinImage,
     postProductUpload,
+    getUserData,
+    getCommentData,
   };
 };
 
