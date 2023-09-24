@@ -9,19 +9,16 @@ const UseFetchToken = () => {
   const UserToken = useRecoilValue(authAtom);
 
   const { getDataBase, postDataBase, instance, imageInstance } = createAxiosInstance(UserToken);
-
-
+  
   //회원가입 페이지 post 요청
   const postJoin = async data => {
     try {
       const response = await instance.post('/user/emailvalid', data);
-      console.log(response);
       return response;
     } catch (error) {
       console.error('로그인 에러', error);
     }
   };
-
 
   //팔로잉 게시글 목록
   const GetHomeFeedData = async (number, skip) => {
@@ -49,7 +46,6 @@ const UseFetchToken = () => {
   const getPostListLimit = async accountName => {
     try {
       const response = await getDataBase.get(`/post/${accountName}/userpost`);
-
       return response;
     } catch (error) {
       console.error('post오류');

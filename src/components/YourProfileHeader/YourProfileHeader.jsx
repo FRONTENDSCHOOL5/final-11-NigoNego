@@ -7,14 +7,6 @@ import UseFetchToken from '../../Hooks/UseFetchToken';
 const ProfileHeaderWrapper = styled.div``;
 
 export default function ProfileHeader({ accountname }) {
-  const [yourProfileData, setYourProfileData] = useState({});
-  const { getFollowData } = UseFetchToken();
-
-  useEffect(() => {
-    getFollowData(accountname).then(response => {
-      setYourProfileData(response.data.post);
-    });
-  }, []);
 
   return (
     <ProfileHeaderWrapper>

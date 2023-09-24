@@ -8,10 +8,9 @@ import CommentInput from '../../../components/common/Comment/CommentInput/Commen
 import CommentPost from '../../../components/common/Comment/CommentPost/CommentPost';
 import { useLocation } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-// import { GetCommentData } from '../../../api/getData/getData';
 import authAtom from '../../../atom/authToken';
-import Layout from "../../../styles/Layout";
 import useFetchToken from "../../../Hooks/UseFetchToken";
+import Layout from '../../../styles/Layout';
 
 function PostMain() {
   const auth = useRecoilValue(authAtom);
@@ -28,6 +27,7 @@ function PostMain() {
     if(postId && commentData) {
       getData();
       getComment();
+
     }
   }, [postId, commentData]);
 

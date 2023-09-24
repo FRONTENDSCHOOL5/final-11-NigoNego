@@ -9,6 +9,7 @@ import { ReactComponent as HomeIconF } from '../../../assets/icons/icon-home-f.s
 import { ReactComponent as ChatIconF } from '../../../assets/icons/icon-message-circle-f.svg';
 import { ReactComponent as PostIconF } from '../../../assets/icons/icon-edit-f.svg';
 import { ReactComponent as ProfileIconF } from '../../../assets/icons/icon-user-fill-f.svg';
+import UseFetchToken from '../../../Hooks/UseFetchToken';
 
 export default function Navbar({ homeV, chatV, postV, profileV }) {
   const navigate = useNavigate();
@@ -16,8 +17,8 @@ export default function Navbar({ homeV, chatV, postV, profileV }) {
   const [chatFill, setChatFill] = useState(true);
   const [postFill, setPostFill] = useState(true);
   const [profileFill, setProfileFill] = useState(true);
-
-  const user = 'nigonego';
+  const { getProfileData } = UseFetchToken();
+  const [userData, setUserData] = useState();
 
   async function handleClick(e) {
     if (e.target.value == '/homefeed') {
@@ -30,10 +31,13 @@ export default function Navbar({ homeV, chatV, postV, profileV }) {
       setPostFill(false);
       navigate('/postupload');
     } else if (e.target.value == '/myprofile') {
-      setProfileFill(false);
-      navigate('/myprofile', {
-        state: { user },
-      });
+      getProfileData().then(res => setUserData(res.data));
+      if (userData) {
+        setProfileFill(false);
+        navigate('/myprofile', {
+          state: { userData },
+        });
+      }
     }
   }
 

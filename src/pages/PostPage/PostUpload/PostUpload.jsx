@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 import { useRecoilValue } from 'recoil';
 import BodyGlobal from '../../../styles/BodyGlobal';
 import authAtom from '../../../atom/authToken';
-import Layout from "../../../styles/Layout";
+import Layout from '../../../styles/Layout';
 import FileUploadInput from '../../../components/common/Input/FileUploadInput';
 import useFetchToken from "../../../Hooks/UseFetchToken";
 export default function PostUpload() {
@@ -28,6 +28,7 @@ export default function PostUpload() {
 
   useEffect(() => {
     if (content && image) {
+
       setIsFormValid(true);
     }
   }, [content, image]);
@@ -46,9 +47,11 @@ export default function PostUpload() {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     postPostUpload(content, image).then(response => {
       navigate('/myprofile');
     });
+
   };
 
   return (

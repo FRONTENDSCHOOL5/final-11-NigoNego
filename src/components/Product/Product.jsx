@@ -24,7 +24,7 @@ const ProductWrapper = styled.div`
   }
 `;
 
-export default function Product({ accountname }) {
+export default function Product({ accountName }) {
   const { getProductListLimit } = UseFetchToken();
   const [userData, setUserData] = useState([]);
   const productListRef = useRef(null);
@@ -33,7 +33,7 @@ export default function Product({ accountname }) {
   }, []);
 
   const fetchData = skip => {
-    getProductListLimit(skip, accountname)
+    getProductListLimit(skip, accountName)
       .then(response => {
         setUserData(prevData => [...prevData, ...response.data.product]);
       })
