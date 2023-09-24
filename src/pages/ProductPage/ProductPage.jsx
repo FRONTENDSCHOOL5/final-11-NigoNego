@@ -9,7 +9,7 @@ import authAtom from '../../atom/authToken';
 
 import FileUploadInput from '../../components/common/Input/FileUploadInput';
 import { HeaderUploadNav } from '../../components/common/Header/Header';
-import Layout from "../../styles/Layout";
+import Layout from '../../styles/Layout';
 
 import useFetchToken from "../../Hooks/UseFetchToken";
 export default function ProductPage() {
@@ -51,6 +51,7 @@ export default function ProductPage() {
     postProductUpload(itemName, price, link, itemImage).then(response => {
       navigate('/myprofile');
     });
+
   }
 
   return (

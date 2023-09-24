@@ -8,7 +8,7 @@ import Navbar from '../../components/common/Navbar/Navbar';
 import { HeaderBasicNav } from '../../components/common/Header/Header';
 import authAtom from '../../atom/authToken';
 import UseFetchToken from '../../Hooks/UseFetchToken';
-import Layout from "../../styles/Layout";
+import Layout from '../../styles/Layout';
 
 function HomeFeed(props) {
   const { GetHomeFeedData } = UseFetchToken();
@@ -27,7 +27,6 @@ function HomeFeed(props) {
     GetHomeFeedData(5, skip)
       .then(response => {
         setUserData(prevData => [...prevData, ...response.data.posts]);
-        console.log(userData);
       })
       .catch(error => console.error(error));
   };

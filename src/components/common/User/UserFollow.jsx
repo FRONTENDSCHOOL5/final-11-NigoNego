@@ -24,7 +24,6 @@ export default function UserFollow() {
   const location = useLocation();
   const follower = location.state.value;
   const userName = location.state.yourData.accountname;
-  console.log(location);
   const [userData, setUserData] = useState([]);
   const postListRef = useRef(null);
   const accountName = userName === myAccount ? myAccount : yourAccount;
@@ -33,12 +32,8 @@ export default function UserFollow() {
   }, []);
 
   const fetchData = async () => {
-    console.log(myAccount);
-    console.log(userName);
-
     await getFollowData(accountName, follower)
       .then(response => {
-        console.log(response);
         setUserData(response.data);
       })
       .catch(error => console.error(error));

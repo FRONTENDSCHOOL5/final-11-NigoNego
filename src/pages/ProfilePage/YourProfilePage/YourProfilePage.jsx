@@ -1,29 +1,25 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
 import YourProduct from '../../../components/Product/YourProduct';
 import YourHomePost from '../../../components/HomePost/YourHomePost';
 import YourProfileHeader from '../../../components/YourProfileHeader/YourProfileHeader';
 import Navbar from '../../../components/common/Navbar/Navbar';
 import { HeaderBasicNav } from '../../../components/common/Header/Header';
 import HomePostGrid from '../../../components/HomePost/HomePostGrid';
-
 import styled from 'styled-components';
 import BodyGlobal from '../../../styles/BodyGlobal';
-
 import { ReactComponent as BtnVertical } from '../../../assets/image/BtnVertical.svg';
 import { ReactComponent as BtnGrid } from '../../../assets/image/BtnGrid.svg';
-import atomYourData from '../../../atom/atomYourData';
-import { useRecoilValue } from 'recoil';
-
-import Layout from "../../../styles/Layout";
+import Layout from '../../../styles/Layout';
+import ProfileHeader from '../../../components/ProfileHeader/ProfileHeader';
 
 export default function YourProfilePage() {
-  const atomData = useRecoilValue(atomYourData);
-  const accountname = atomData.data.profile.accountname;
-
   const [isClickedList, setIsClickedList] = useState(true);
   const [isClickedGrid, setIsClickedGrid] = useState(false);
+  // UserSearch에 navigate
+  const location = useLocation();
+  const userAccount = location.state.data.author.accountname;
+  const userData = location.state.data;
 
   const handleClickList = e => {
     e.preventDefault();
@@ -45,9 +41,8 @@ export default function YourProfilePage() {
     <Layout>
       <HeaderBasicNav />
       <BodyGlobal>
-        <YourProfileHeader accountname={accountname} />
-        <YourProduct accountname={accountname} />
-
+        <ProfileHeader userData={userData} />
+        <YourProduct accountName={userAccount} />
         <ImgAlignNav>
           <button onClick={e => handleClickList(e)}>
             <BtnGrid
@@ -66,9 +61,8 @@ export default function YourProfilePage() {
             />
           </button>
         </ImgAlignNav>
-
-        {isClickedList && <YourHomePost accountname={accountname} />}
-        {isClickedGrid && <HomePostGrid accountname={accountname} />}
+        {isClickedList && <YourHomePost accountName={userAccount} />}
+        {isClickedGrid && <HomePostGrid />}
       </BodyGlobal>
       <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
     </Layout>

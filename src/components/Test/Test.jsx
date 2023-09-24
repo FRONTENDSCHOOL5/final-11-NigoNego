@@ -10,10 +10,6 @@ export default function Test() {
   return (
     <div>
       <HomePost />
-      {/* <ProfileHeader /> */}
-      {/* <Product /> */}
-      {/* <ProfileUser /> */}
-      {/* <ProfileHeader /> */}
     </div>
   );
 }
