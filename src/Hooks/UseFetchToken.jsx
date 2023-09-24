@@ -1,22 +1,79 @@
-import React from 'react';
-import axios from 'axios';
 import authAtom from '../atom/authToken';
-import URL from '../api/URL';
 import { useRecoilValue } from 'recoil';
 import createAxiosInstance from '../api/Api';
 
 const UseFetchToken = () => {
   const UserToken = useRecoilValue(authAtom);
 
-  const { getDataBase, postDataBase, instance, imageInstance } = createAxiosInstance(UserToken);
-  
+  const { instance, getDataBase, postDataBase, imageInstance } =
+    createAxiosInstance(UserToken);
+
+  // 로그인 페이지 api 요청
+  const postLogin = async data => {
+    try {
+      const response = await instance.post('/user/login', data);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('로그인 에러', error);
+    }
+  };
+
+  // 로그인 페이지 followingData get 요청
+  const getUserInfo = async () => {
+    try {
+      const response = await getDataBase.get('/user/myinfo');
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('팔로잉데이터 요청 에러', error);
+    }
+  };
+
   //회원가입 페이지 post 요청
   const postJoin = async data => {
     try {
       const response = await instance.post('/user/emailvalid', data);
       return response;
     } catch (error) {
-      console.error('로그인 에러', error);
+      console.error('회원가입 에러', error);
+    }
+  };
+
+  // 프로필 설정 페이지 api 요청
+  const postJoinMemberValid = async data => {
+    try {
+      const response = await instance.post('/user/accountnamevalid', data);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('프로필 설정 에러', error);
+    }
+  };
+
+  // 프로필 설정 페이지 프로필 이미지 api 요청
+  const postJoinImage = async data => {
+    try {
+      const response = await imageInstance.post('/image/uploadfile', data);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('이미지 업로드 에러', error);
+    }
+  };
+  //회원가입창
+  const postJoinMember = async userInfo => {
+    const { username, email, password, accountname, intro, image } = {
+      ...userInfo,
+    };
+    console.log(userInfo);
+    try {
+      const response = await instance.post(`/user`, userInfo);
+      console.log('회원가입성공:', response.data);
+      console.log(userInfo.username);
+      return response;
+    } catch (error) {
+      console.error('API 요청 실패:', error);
     }
   };
 
@@ -183,6 +240,11 @@ const UseFetchToken = () => {
     postHeart,
     deleteHeart,
     postJoin,
+    postJoinMemberValid,
+    postJoinImage,
+    postJoinMember,
+    postLogin,
+    getUserInfo,
     postPostUpload,
     postJoinImage,
     postProductUpload,

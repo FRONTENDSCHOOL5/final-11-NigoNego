@@ -9,13 +9,10 @@ import { HeaderBasicNav } from '../../components/common/Header/Header';
 import authAtom from '../../atom/authToken';
 import UseFetchToken from '../../Hooks/UseFetchToken';
 import Layout from '../../styles/Layout';
+import HomePage from '../HomePage/HomePage';
 
 function HomeFeed(props) {
   const { GetHomeFeedData } = UseFetchToken();
-
-  const auth = useRecoilValue(authAtom);
-
-  const accountname = useRecoilValue(accountNameAtom);
   const [userData, setUserData] = useState([]);
   const postListRef = useRef(null);
 
@@ -57,14 +54,11 @@ function HomeFeed(props) {
     <Layout>
       <HeaderBasicNav />
       <MyHomePostwarpper ref={postListRef} className="myHomePost">
-        {userData.length > 0 &&
-          userData.map(data => {
-            return (
-              <>
-                <HomePost data={data} />
-              </>
-            );
-          })}
+        {userData.length > 0 ? (
+          userData.map(data => <HomePost data={data} key={data.index} />)
+        ) : (
+          <HomePage />
+        )}
       </MyHomePostwarpper>
       <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
     </Layout>

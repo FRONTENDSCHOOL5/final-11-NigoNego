@@ -10,7 +10,8 @@ import accountNameAtom from '../../atom/accountName';
 import MainWrapperF from '../../styles/MainGlobal';
 import LoginApi from '../../api/getData/LoginApi';
 import { ButtonLong } from '../../components/common/button/Button';
-import Layout from "../../styles/Layout";
+import Layout from '../../styles/Layout';
+import UseFetchToken from '../../Hooks/UseFetchToken';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -21,11 +22,12 @@ function LoginPage() {
   const [loginErrMessage, setLoginErrMessage] = useState('');
   const [isCorrect, setIsCorrect] = useState(null);
   const navigate = useNavigate();
-
   const [auth, setAuth] = useRecoilState(authAtom);
   const [accountname, setAccountname] = useRecoilState(accountNameAtom);
   const [following, setFollowing] = useRecoilState(followingAtom);
+  const { postLogin, getUserInfo } = UseFetchToken();
 
+  //이메일 검증 시작
   function emailCheck(event) {
     setEmail(event.target.value);
     const testEmail =
@@ -39,7 +41,9 @@ function LoginPage() {
       setIsEmailValid(false);
     }
   }
+  //이메일 검증 끝
 
+  //패스워드 validation 시작
   function passwordCheck(event) {
     setPassword(event.target.value);
     const testPassword = /^[A-Za-z0-9]{5,20}$/;
@@ -49,44 +53,36 @@ function LoginPage() {
       setIsPasswordValid(false);
     }
   }
+  //패스워드 validataion 끝
 
-  const url = 'https://api.mandarin.weniv.co.kr';
-
+  //여기서 then 과 await의 차이점이 뭔지 모르고 사용했음
+  //submit 버튼 시작//
   async function onhandlesubmit(event) {
     event.preventDefault();
-    LoginApi(
-      email,
-      password,
-      setAuth,
-      setAccountname,
-      FollowingData,
-      setIsCorrect,
-      setLoginErrMessage,
-    ).then(res => console.log(res));
+    await submitHandler();
   }
+  //submit 버튼 끝//
 
-  async function FollowingData(token) {
-    try {
-      const res = await axios.get(`${url}/user/myinfo`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const { following } = res.data.user;
-      setFollowing(following);
-      if (Object.keys(following).length === 0) {
-        navigate('/home');
-      } else {
-        navigate('/homefeed');
-      }
-    } catch (error) {
-      console.error(error);
+  //postLogin 요청 시작//
+  const submitHandler = async () => {
+    const res = await postLogin({ user: { email: email, password: password } });
+    if (res.data.user) {
+      const { token, accountname } = res.data.user;
+      console.log(res.data.user.email);
+      setAuth(token);
+      setAccountname(accountname);
+      console.log(auth);
+      navigate('/homefeed');
+    } else if (res.data.status === 422) {
+      setIsCorrect(false);
+      setLoginErrMessage('*이메일 또는 비밀번호가 일치하지 않습니다.');
     }
-  }
+  };
+  //postLogin 요청 끝//
 
   return (
-      <Layout>
-    <MainWrapperF>
+    <Layout>
+      <MainWrapperF>
         <h1>로그인</h1>
         <form onSubmit={onhandlesubmit}>
           <FormWrapper>
@@ -134,8 +130,8 @@ function LoginPage() {
         <LinkWrapper>
           <Link to="/join">이메일로 회원가입</Link>
         </LinkWrapper>
-    </MainWrapperF>
-      </Layout>
+      </MainWrapperF>
+    </Layout>
   );
 }
 
