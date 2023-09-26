@@ -91,9 +91,7 @@ const UseFetchToken = () => {
 
   const yourAccount = async () => {
     try {
-      const response = await getDataBase.get(
-        '/post/feed',
-      );
+      const response = await getDataBase.get('/post/feed');
       return response;
     } catch (error) {
       console.error('error가 떴음', error);
@@ -179,17 +177,8 @@ const UseFetchToken = () => {
         },
       });
       return response;
-    } catch(error) {
-      console.log(error);
-    }
-  }
-
-  const postJoinImage = async data => {
-    try {
-      const response = await imageInstance.post('/image/uploadfile', data);
-      return response;
     } catch (error) {
-      console.error('이미지 업로드 에러', error);
+      console.log(error);
     }
   };
 
@@ -206,12 +195,12 @@ const UseFetchToken = () => {
         },
       });
       return response;
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  const getUserData = async (postId) => {
+  const getUserData = async postId => {
     try {
       const response = await getDataBase.get(`/post/${postId}`);
       return response;
@@ -220,14 +209,14 @@ const UseFetchToken = () => {
     }
   };
 
-  const getCommentData = async (postId) => {
+  const getCommentData = async postId => {
     try {
-      const response = await getDataBase.get(`/post/${postId}/comments`)
+      const response = await getDataBase.get(`/post/${postId}/comments`);
       return response;
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return {
     GetHomeFeedData,
@@ -246,7 +235,6 @@ const UseFetchToken = () => {
     postLogin,
     getUserInfo,
     postPostUpload,
-    postJoinImage,
     postProductUpload,
     getUserData,
     getCommentData,
