@@ -11,6 +11,7 @@ import authAtom from '../../../atom/authToken';
 import Layout from '../../../styles/Layout';
 import FileUploadInput from '../../../components/common/Input/FileUploadInput';
 import useFetchToken from "../../../Hooks/UseFetchToken";
+import UserProfileCircle from "../../../components/common/User/UserProfileCircle";
 export default function PostUpload() {
   const navigate = useNavigate();
   const user = 'nigonego';
@@ -60,7 +61,7 @@ export default function PostUpload() {
       <form onSubmit={handleSubmit}>
         <BodyGlobal>
           <PostUploadWrapper>
-            <SImage />
+            <UserProfileCircle isWidth="48px"/>
             <textarea
               className="inputPost"
               placeholder="게시글 입력하기"
@@ -87,16 +88,18 @@ const PostUploadWrapper = styled.div`
   /* box-shadow: inset 0 0 10px red; */
   margin-top: 10px;
   display: flex;
+  justify-content: space-between;
+  
   textarea {
-    display: block;
-    border: 0px;
-    width: 80vw;
-    min-height: 30vh;
-    padding: 12px 6px;
-    resize: none;
-    margin: auto;
-  }
+    border: none;
+    width: calc(100% - 60px);
+    min-height: 140px;
+    padding: 10px;
+    box-sizing: border-box;
+    line-height: 1.2em;
+    white-space: pre-wrap;
 `;
+
 
 const UploadImg = styled.img`
   margin-top: 10px;
@@ -109,23 +112,23 @@ const UploadImg = styled.img`
   margin-left: 53px;
 `;
 
-const UploadButtonStyle = styled.div`
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  label {
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-    background-image: url(${buttonImg});
-    background-size: cover;
-  }
-
-  input {
-    display: none;
-  }
-
-  input::file-selector-button {
-    display: none;
-  }
-`;
+// const UploadButtonStyle = styled.div`
+//   position: fixed;
+//   bottom: 16px;
+//   right: 16px;
+//   label {
+//     width: 50px;
+//     height: 50px;
+//     display: inline-block;
+//     background-image: url(${buttonImg});
+//     background-size: cover;
+//   }
+//
+//   input {
+//     display: none;
+//   }
+//
+//   input::file-selector-button {
+//     display: none;
+//   }
+// `;
