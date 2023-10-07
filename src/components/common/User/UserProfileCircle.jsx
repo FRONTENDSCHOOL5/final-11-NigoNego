@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import basicImg from '../../../assets/images/basic-profile-img.png';
 
-const UserProfileCircle = () => {
+const UserProfileCircle = ({isWidth}) => {
     return (
-        <UserProfileCircleStyle style={{ backgroundImage: `url(${basicImg})`}}>
+        <UserProfileCircleStyle isWidth={isWidth} style={{ backgroundImage: `url(${basicImg})`}}>
         </UserProfileCircleStyle>
     )
 }
@@ -11,8 +11,9 @@ const UserProfileCircle = () => {
 export default UserProfileCircle;
 
 const UserProfileCircleStyle = styled.div`
-  width: 100%;
-  aspect-ratio: 1/1;
+  width: ${({isWidth}) => (isWidth ? isWidth : '100%')};
+  height: ${({isWidth}) => isWidth};
+
   border-radius: 50%;
   background-size: cover;
 `
