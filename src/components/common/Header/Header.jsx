@@ -21,7 +21,7 @@ export function HeaderBasicNav({ children, disabled }) {
   // 뒤로가기 버튼 구현하기;
   return (
     <HeaderDefaultStyle>
-      <IconArrow style={arrow()} onClick={handleBack} />
+      <Arrow />
       {!isPostUpLoad ? (
         <MoreIconButton />
       ) : (
@@ -47,7 +47,7 @@ export function Arrow() {
   };
   return (
     <ArrowLeftStyle onClick={handleback}>
-      <IconArrow />
+      <IconArrow style={arrow()} />
     </ArrowLeftStyle>
   );
 }
@@ -96,7 +96,7 @@ export function HeaderUploadNav(props) {
   const { disabled, content } = props;
   return (
     <HeaderDefaultStyle>
-      <IconArrow />
+      <Arrow />
       <ButtonShort disabled={disabled} content={content} />
     </HeaderDefaultStyle>
   );
@@ -105,7 +105,7 @@ export function HeaderUploadNav(props) {
 export function HeaderEditdNav({ content, isFormValid, handleSave }) {
   return (
     <HeaderDefaultStyle>
-      <IconArrow />
+      <Arrow />
       <ProfileEditMSBtn
         content={content}
         onClick={handleSave}
@@ -119,7 +119,7 @@ export function HeaderChatNav(props) {
   return (
     <HeaderDefaultStyle>
       <div className="havetitle">
-        <IconArrow />
+        <Arrow />
         <h2>{props.children}</h2>
       </div>
       <MoreIconButton />
