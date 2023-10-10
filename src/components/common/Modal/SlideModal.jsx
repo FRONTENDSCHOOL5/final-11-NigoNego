@@ -73,30 +73,39 @@ export function CommentSlideModal({ isMyComment, closeModal }) {
 }
 
 const SlideModalBackground = styled.div`
-  position: fixed;
-  display: flex;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.2);
-  width: 100%;
+  width: 390px;
   height: 100%;
   z-index: 999;
   overflow: hidden;
 `;
 const SlideModalWrapper = styled.div`
+  /* 일단 고정 width 값으로 진행  */
+  width: 390px;
   text-align: center;
+  margin: 0 auto;
   padding: 10px 0;
   border: 1px solid var(--basic-border-color);
   border-radius: 10px 10px 0 0;
   position: fixed;
-  left: 0px;
   bottom: 1px;
   background-color: white;
-  width: 100%;
   z-index: 100;
   cursor: pointer;
+  animation: fadeInModal 0.5s ease;
+  @keyframes fadeInModal {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
 `;
 
 const StyledUl = styled.ul`
