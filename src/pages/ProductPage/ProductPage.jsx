@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
 import Input from '../../components/common/Input/Input';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import BodyGlobal from '../../styles/BodyGlobal';
 import authAtom from '../../atom/authToken';
 
 import FileUploadInput from '../../components/common/Input/FileUploadInput';
-import { HeaderUploadNav } from '../../components/common/Header/Header';
+import { HeaderBasicNav } from '../../components/common/Header/Header';
 import Layout from '../../styles/Layout';
 
 import useFetchToken from "../../Hooks/UseFetchToken";
 export default function ProductPage() {
-  const user = 'nigonego';
   const navigate = useNavigate();
 
   const [itemName, setItemName] = useState('');
@@ -21,16 +18,13 @@ export default function ProductPage() {
   const [link, setLink] = useState('');
   const [itemImage, setItemImage] = useState('');
 
-  const auth = useRecoilValue(authAtom);
   const { postJoinImage, postProductUpload } = useFetchToken();
 
   const [isFormValid, setIsFormValid] = useState(false);
-  // const [isBtnActive, setIsBtnActive] = useState(Boolean(false));
 
   useEffect(() => {
     if (itemName && price && link && itemImage) {
       setIsFormValid(true);
-      // setIsBtnActive(Boolean(true))
     }
   }, [itemName, price, link, itemImage]);
 
@@ -57,7 +51,7 @@ export default function ProductPage() {
   return (
     <Layout>
       <form onSubmit={handleSubmit}>
-        <HeaderUploadNav content="업로드" isFormValid={isFormValid} />
+        <HeaderBasicNav disabled={!isFormValid}>업로드</HeaderBasicNav>
 
         <ul>
           <li>
