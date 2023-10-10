@@ -145,10 +145,6 @@ export default function ProfileEditPage() {
 
   return (
     <Layout>
-      <ButtonShort isFormValid={isFormValid} handleSave={handleSubmit}>
-        저장
-      </ButtonShort>
-
       <HeaderEditdNav
         content="저장"
         isFormValid={isFormValid}
