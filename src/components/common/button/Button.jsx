@@ -80,7 +80,7 @@ export function MoreIconButton() {
 
   return (
     <>
-      <MoreIconButtonStyle onClick={handleIconClick}>
+      <MoreIconButtonStyle onClick={handleIconClick} backgroundColor="none">
         <IconMoreView width="24px" height="24px" />
       </MoreIconButtonStyle>
       {isSideSlideOpen && (
@@ -92,5 +92,4 @@ export function MoreIconButton() {
 
 export const MoreIconButtonStyle = styled.button`
   ${ButtonCommonStyle}
-  color: red;
 `;
