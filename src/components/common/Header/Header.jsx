@@ -17,19 +17,30 @@ export function HeaderBasicNav({ children, disabled }) {
   //주소가 postupload 일 때만 업로드 버튼 랜더링
   const pathName = window.location.pathname;
   const isPostUpLoad = pathName == '/postupload';
+  const isProductUpLoad = pathName == '/product';
 
   // 뒤로가기 버튼 구현하기;
   return (
     <HeaderDefaultStyle>
       <Arrow />
-      {!isPostUpLoad ? (
+      {(!isPostUpLoad && !isProductUpLoad) ? (
         <MoreIconButton />
       ) : (
         <ButtonShort disabled={disabled}>{children}</ButtonShort>
       )}
+
     </HeaderDefaultStyle>
   );
 }
+
+// export function HeaderUploadNav({ disabled, children }) {
+//     return (
+//         <HeaderDefaultStyle>
+//             <Arrow />
+//             <ButtonShort disabled={disabled}>{children}</ButtonShort>
+//         </HeaderDefaultStyle>
+//     );
+// }
 
 //상단 화살표 스타일
 const arrow = () => {
@@ -92,15 +103,6 @@ export function HeaderMainNav({ content }) {
   );
 }
 
-export function HeaderUploadNav(props) {
-  const { disabled, content } = props;
-  return (
-    <HeaderDefaultStyle>
-      <Arrow />
-      <ButtonShort disabled={disabled} content={content} />
-    </HeaderDefaultStyle>
-  );
-}
 
 export function HeaderEditdNav({ content, isFormValid, handleSave }) {
   return (

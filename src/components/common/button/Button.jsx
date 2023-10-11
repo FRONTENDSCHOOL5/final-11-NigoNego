@@ -48,11 +48,10 @@ const ButtonMiddleStyle = styled.button`
 `;
 
 // 짧은 버튼
-export const ButtonShort = props => {
-  const { disabled, handleSave, content, isFormValid } = props;
+export const ButtonShort = ({disabled, children}) => {
   return (
-    <ButtonShortStyle content={content} disabled={disabled} {...props}>
-      {props.children}
+    <ButtonShortStyle disabled={disabled}>
+      {children}
     </ButtonShortStyle>
   );
 };
